@@ -1,4 +1,24 @@
-<p align="center"><img src="https://www.southtexastack.com/prodimages/5147-DEFAULT-l.jpg" height="128" width="128" /></p>
-
 # rowel
-Spur's Design System and Component Library
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).

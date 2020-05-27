@@ -8,6 +8,6 @@ export default {}
 
 <style>
 .root {
-  @apply h-10 bg-light-watermelon text-blue-jeans;
+  @apply h-10 px-5 bg-light-watermelon text-blue-jeans;
 }
 </style>

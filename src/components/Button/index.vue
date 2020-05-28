@@ -1,7 +1,5 @@
 <template>
-  <button
-    class="w-32 p-2 text-white rounded-lg active:bg-heavy-black focus:bg-heavy-black disabled:bg-grey-300 hover:underline focus:outline-none"
-  >
+  <button class="root">
     <slot />
   </button>
 </template>
@@ -11,15 +9,34 @@ export default {}
 </script>
 
 <style scoped>
+.root {
+  @apply w-32 p-2 rounded-lg;
+}
+
+.root:active {
+  @apply bg-heavy-black;
+}
+
+.root:focus {
+  @apply bg-heavy-black outline-none;
+}
+
+.root:disabled {
+  @apply bg-grey-300;
+}
+
+.root:hover {
+  @apply underline;
+}
 .primary {
-  @apply bg-black;
+  @apply text-white bg-black;
 }
 
 .secondary {
-  @apply bg-white;
+  @apply text-black bg-white;
 }
 
 .danger {
-  @apply bg-state-error-100;
+  @apply text-white bg-state-error-100;
 }
 </style>

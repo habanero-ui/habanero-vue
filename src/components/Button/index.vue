@@ -1,13 +1,9 @@
 <template>
-  <button class="root">Button</button>
+  <button class="p-2 text-white bg-black rounded-lg hover:underline">
+    <slot />
+  </button>
 </template>
 
 <script>
 export default {}
 </script>
-
-<style>
-.root {
-  @apply h-10 bg-light-watermelon text-blue-jeans;
-}
-</style>

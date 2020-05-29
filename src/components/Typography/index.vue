@@ -86,6 +86,7 @@ function getIsVariantValid(value) {
 <style scoped>
 .root {
   display: block;
+  font-family: 'Inter var', sans-serif;
 }
 .body-extra-small {
   @apply text-body-extra-small;

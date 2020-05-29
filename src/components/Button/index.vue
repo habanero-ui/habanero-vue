@@ -1,40 +1,264 @@
 <template>
-  <button class="root"><slot /></button>
+  <button :class="classes" :type="type">
+    <Typography class="button__text" v-if="text" variant="button">
+      {{ text }}
+    </Typography>
+  </button>
 </template>
 
 <script>
-export default {}
+import includes from 'lodash/includes'
+import Typography from '../Typography/index'
+
+export default {
+  props: {
+    appearance: {
+      default: 'primary',
+      type: String,
+      validator: getIsAppearanceValid,
+    },
+    intent: {
+      default: 'none',
+      type: String,
+      validator: getIsIntentValid,
+    },
+    size: {
+      default: 'medium',
+      type: String,
+      validator: getIsSizeValid,
+    },
+    text: {
+      type: String,
+    },
+    type: {
+      default: 'button',
+      type: String,
+    },
+  },
+  components: {
+    Typography,
+  },
+  computed: {
+    classes() {
+      return [
+        'button',
+        `button--appearance-${this.appearance}`,
+        `button--intent-${this.intent}`,
+        `button--size-${this.size}`,
+      ]
+    },
+  },
+}
+
+function getIsAppearanceValid(value) {
+  const isValid = includes(['primary', 'secondary', 'text'], value)
+
+  if (!isValid) {
+    // eslint-disable-next-line no-console
+    console.error(
+      'Button: The "appearance" prop must be one of the following:',
+      String(['primary', 'secondary', 'text']),
+    )
+  }
+
+  return isValid
+}
+
+function getIsIntentValid(value) {
+  const isValid = includes(
+    ['error', 'info', 'none', 'success', 'warning'],
+    value,
+  )
+
+  if (!isValid) {
+    // eslint-disable-next-line no-console
+    console.error(
+      'Button: The "intent" prop must be one of the following:',
+      String(['error', 'info', 'none', 'success', 'warning']),
+    )
+  }
+
+  return isValid
+}
+
+function getIsSizeValid(value) {
+  const isValid = includes(['small', 'medium'], value)
+
+  if (!isValid) {
+    // eslint-disable-next-line no-console
+    console.error(
+      'Button: The "size" prop must be one of the following:',
+      String(['small', 'medium']),
+    )
+  }
+
+  return isValid
+}
 </script>
 
 <style scoped>
-.root {
-  @apply w-32 p-2 rounded-lg;
+.button {
+  @apply relative flex items-center h-11 min-w-32 px-10 rounded-lg border border-transparent outline-none;
 }
 
-.root:active {
-  @apply bg-heavy-black;
+.button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
-.root:focus {
-  @apply bg-heavy-black outline-none;
+.button::before {
+  @apply absolute inset-0 -m-px3 transition-colors duration-300 ease-in-out border border-transparent;
+  border-radius: 0.625rem;
+  content: '';
 }
 
-.root:disabled {
-  @apply bg-grey-300;
+.button::after {
+  @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;
+  background-color: #000;
+  /* border-radius: 0.625rem; */
+  border-radius: 0.5rem;
+  content: '';
 }
 
-.root:hover {
+.button:hover .button__text {
   @apply underline;
 }
-.primary {
-  @apply text-white bg-black;
+
+.button:hover::after {
+  opacity: 0.05;
 }
 
-.secondary {
-  @apply text-black bg-white;
+.button:active::after {
+  opacity: 0.3;
 }
 
-.danger {
-  @apply text-white bg-state-error-100;
+.button--appearance-primary.button--intent-none {
+  @apply bg-black border-black text-white;
+}
+
+.button--appearance-primary.button--intent-none:focus::before {
+  @apply border-black;
+}
+
+.button--appearance-primary.button--intent-error {
+  @apply bg-state-error-100 border-state-error-100 text-white;
+}
+
+.button--appearance-primary.button--intent-error:focus::before {
+  @apply border-state-error-100;
+}
+
+.button--appearance-primary.button--intent-info {
+  @apply bg-state-info border-state-info text-white;
+}
+
+.button--appearance-primary.button--intent-info:focus::before {
+  @apply border-state-info;
+}
+
+.button--appearance-primary.button--intent-success {
+  @apply bg-state-success border-state-success text-white;
+}
+
+.button--appearance-primary.button--intent-success:focus::before {
+  @apply border-state-success;
+}
+
+.button--appearance-primary.button--intent-warning {
+  @apply bg-state-warning border-state-warning;
+}
+
+.button--appearance-primary.button--intent-warning:focus::before {
+  @apply border-state-warning;
+}
+
+/**
+  Appearance - Secondary ---------- 
+ */
+.button--appearance-secondary.button--intent-none {
+  @apply border-black;
+}
+
+.button--appearance-secondary.button--intent-none:focus::before {
+  @apply border-black;
+}
+
+.button--appearance-secondary.button--intent-error {
+  @apply border-state-error-100 text-state-error-100;
+}
+
+.button--appearance-secondary.button--intent-error:focus::before {
+  @apply border-state-error-100;
+}
+
+.button--appearance-secondary.button--intent-info {
+  @apply border-state-info text-state-info;
+}
+
+.button--appearance-secondary.button--intent-info:focus::before {
+  @apply border-state-info;
+}
+
+.button--appearance-secondary.button--intent-success {
+  @apply border-state-success text-state-success;
+}
+
+.button--appearance-secondary.button--intent-success:focus::before {
+  @apply border-state-success;
+}
+
+.button--appearance-secondary.button--intent-warning {
+  @apply border-state-warning text-state-warning;
+}
+
+.button--appearance-secondary.button--intent-warning:focus::before {
+  @apply border-state-warning;
+}
+
+.button--appearance-text.button--intent-none {
+}
+
+.button--appearance-text.button--intent-none:focus::before {
+  @apply border-black;
+}
+
+.button--appearance-text.button--intent-error {
+  @apply text-state-error-100;
+}
+
+.button--appearance-text.button--intent-error:focus::before {
+  @apply border-state-error-100;
+}
+
+.button--appearance-text.button--intent-info {
+  @apply text-state-info;
+}
+
+.button--appearance-text.button--intent-info:focus::before {
+  @apply border-state-info;
+}
+
+.button--appearance-text.button--intent-success {
+  @apply text-state-success;
+}
+
+.button--appearance-text.button--intent-success:focus::before {
+  @apply border-state-success;
+}
+
+.button--appearance-text.button--intent-warning {
+  @apply text-state-warning;
+}
+
+.button--appearance-text.button--intent-warning:focus::before {
+  @apply border-state-warning;
+}
+
+.button--size-medium {
+  @apply h-11;
+}
+
+.button--size-small {
+  @apply h-8;
 }
 </style>

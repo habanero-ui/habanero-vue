@@ -15,26 +15,10 @@ export default {
   },
   computed: {
     classes() {
-      return ['root', this.variant]
+      return ['typography', `typography--${this.variant}`]
     },
     is() {
-      return (
-        this.component ||
-        {
-          'body-extra-small': 'span',
-          'body-large': 'span',
-          'body-small': 'span',
-          button: 'span',
-          h1: 'h1',
-          h2: 'h2',
-          h3: 'h3',
-          h4: 'h4',
-          h5: 'h5',
-          h6: 'h6',
-          'label-large': 'label',
-          'label-small': 'label',
-        }[this.variant]
-      )
+      return this.component || 'span'
     },
   },
 }
@@ -84,66 +68,66 @@ function getIsVariantValid(value) {
 </script>
 
 <style scoped>
-.root {
+.typography {
   display: block;
   font-family: 'Inter var', sans-serif;
 }
-.body-extra-small {
+.typography--body-extra-small {
   @apply text-body-extra-small;
   font-weight: 400;
   line-height: 0.875rem;
 }
-.body-large {
+.typography--body-large {
   @apply text-body-large;
   font-weight: 400;
   line-height: 1.188rem;
 }
-.body-small {
+.typography--body-small {
   @apply text-body-small;
   font-weight: 400;
   line-height: 1.06rem;
 }
-.button {
+.typography--button {
   @apply text-button;
   font-weight: 700;
   line-height: 1.188rem;
 }
-.h1 {
+.typography--h1 {
   @apply text-h1;
   font-weight: 700;
   line-height: 8.25rem;
 }
-.h2 {
+.typography--h2 {
   @apply text-h2;
   font-weight: 600;
   line-height: 4.19rem;
 }
-.h3 {
+.typography--h3 {
   @apply text-h3;
   font-weight: 600;
   line-height: 3.625rem;
 }
-.h4 {
+.typography--h4 {
   @apply text-h4;
   font-weight: 600;
   line-height: 2.375rem;
 }
-.h5 {
+.typography--h5 {
   @apply text-h5;
   font-weight: 600;
   line-height: 1.625rem;
 }
-.h6 {
+.typography--h6 {
   @apply text-h6;
   font-weight: 400;
   line-height: 1.5rem;
 }
-.label-large {
+.typography--label-large {
   @apply text-label-large;
   font-weight: 600;
   line-height: 1rem;
 }
-.label-small {
+.typography--label-small {
   @apply text-label-small;
   font-weight: 600;
   line-height: 0.875rem;

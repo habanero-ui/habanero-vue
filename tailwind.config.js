@@ -48,6 +48,13 @@ module.exports = {
         'label-large': '1rem',
         'label-small': '0.75rem',
       },
+      spacing: {
+        px3: '3px',
+        '11': '2.75rem',
+      },
+      minWidth: {
+        '32': '8rem',
+      },
     },
   },
   variants: {

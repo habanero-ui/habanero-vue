@@ -1,15 +1,9 @@
 import { action } from '@storybook/addon-actions'
-import { text } from '@storybook/addon-knobs'
 import CalendarIcon from '../../../icons/CalendarIcon'
 import Button from '../index'
 
 export default () => ({
   components: { Button, CalendarIcon },
-  props: {
-    text: {
-      default: text('Text', 'Button Text'),
-    },
-  },
   template: `
     <div class="p-6">
       <div class="flex pb-6">

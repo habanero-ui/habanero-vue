@@ -102,7 +102,7 @@ function getIsSizeValid(value) {
 
 <style scoped>
 .button {
-  @apply relative flex justify-center items-center h-11 min-w-11 rounded-lg border border-transparent outline-none;
+  @apply relative flex-none flex justify-center items-center h-11 min-w-11 rounded-lg border border-transparent outline-none;
 }
 
 .button[disabled] {
@@ -133,10 +133,6 @@ function getIsSizeValid(value) {
 
 .button:active::after {
   opacity: 0.3;
-}
-
-.button--has-text {
-  @apply min-w-32 px-10;
 }
 
 .button--appearance-primary.button--intent-none {
@@ -262,10 +258,15 @@ function getIsSizeValid(value) {
 }
 
 .button--size-medium {
-  @apply h-11;
+  @apply min-w-11 h-11;
 }
 
 .button--size-small {
-  @apply h-8;
+  @apply min-w-8 h-8;
+}
+
+.button--size-medium.button--has-text,
+.button--size-small.button--has-text {
+  @apply min-w-32 px-10;
 }
 </style>

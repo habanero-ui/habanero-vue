@@ -1,4 +1,4 @@
-name: CI
+name: Build and Deploy
 
 on:
   push:
@@ -62,4 +62,4 @@ jobs:
         with:
           args: deploy --only hosting:production
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          FIREBASE_TOKEN: ${{ secrets.SPURBOT_FIREBASE_TOKEN }}

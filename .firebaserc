@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "rowel-ui"
+  },
+  "targets": {
+    "rowel-ui": {
+      "hosting": {
+        "production": [
+          "rowel-ui"
+        ]
+      }
+    }
+  }
+}

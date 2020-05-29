@@ -1,47 +1,64 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   push:
-    branches: [ master ]
-#  pull_request:
-#    branches: [ master ]
+    branches:
+      - master
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
+    name: Build
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      
-    - name: Setup Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: 10
+      - name: Checkout Repo
+        uses: actions/checkout@master
 
-    - name: Install dependencies
-      run: npm ci
-      
-    - name: Semantic Release
-      uses: cycjimmy/semantic-release-action@v2
-      with:
-        semantic_version: 16
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        
-    - name: Do something when a new release published
-      if: steps.semantic.outputs.new_release_published == 'true'
-      run: |
-        echo ${{ steps.semantic.outputs.new_release_version }}
-        echo ${{ steps.semantic.outputs.new_release_major_version }}
-        echo ${{ steps.semantic.outputs.new_release_minor_version }}
-        echo ${{ steps.semantic.outputs.new_release_patch_version }}
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Tests
+        env:
+          CI: true
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v2
+        with:
+          semantic_version: 16
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Archive Production Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: build
+          path: build
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+
+      - name: Download Artifact
+        uses: actions/download-artifact@master
+        with:
+          name: build
+
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting:production
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

@@ -20,5 +20,9 @@ yarn-error.log*
 *.sln
 *.sw?
 
+# Firebase
+/.firebase
+firebase-debug.log
+
 # Storybook
 storybook-static

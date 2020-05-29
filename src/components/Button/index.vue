@@ -3,6 +3,7 @@
     <Typography class="button__text" v-if="text" variant="button">
       {{ text }}
     </Typography>
+    <slot />
   </button>
 </template>
 
@@ -42,6 +43,9 @@ export default {
     classes() {
       return [
         'button',
+        {
+          'button--has-text': !!this.text,
+        },
         `button--appearance-${this.appearance}`,
         `button--intent-${this.intent}`,
         `button--size-${this.size}`,
@@ -98,7 +102,7 @@ function getIsSizeValid(value) {
 
 <style scoped>
 .button {
-  @apply relative flex items-center h-11 min-w-32 px-10 rounded-lg border border-transparent outline-none;
+  @apply relative flex justify-center items-center h-11 min-w-11 rounded-lg border border-transparent outline-none;
 }
 
 .button[disabled] {
@@ -107,7 +111,7 @@ function getIsSizeValid(value) {
 }
 
 .button::before {
-  @apply absolute inset-0 -m-px3 transition-colors duration-300 ease-in-out border border-transparent;
+  @apply absolute inset-0 pointer-events-none -m-px3 transition-colors duration-300 ease-in-out border border-transparent;
   border-radius: 0.625rem;
   content: '';
 }
@@ -115,7 +119,6 @@ function getIsSizeValid(value) {
 .button::after {
   @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;
   background-color: #000;
-  /* border-radius: 0.625rem; */
   border-radius: 0.5rem;
   content: '';
 }
@@ -130,6 +133,10 @@ function getIsSizeValid(value) {
 
 .button:active::after {
   opacity: 0.3;
+}
+
+.button--has-text {
+  @apply min-w-32 px-10;
 }
 
 .button--appearance-primary.button--intent-none {

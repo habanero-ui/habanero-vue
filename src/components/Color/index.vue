@@ -1,7 +1,7 @@
 <template>
   <Typography v-if="name" variant="body-extra-small">
     <div :class="classes">
-      <div>{{ name }}</div>
+      <div>{{ name.replace('-', ' ') }}</div>
       <div>#{{ hex }}</div>
     </div>
   </Typography>

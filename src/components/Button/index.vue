@@ -104,75 +104,59 @@ function getIsSizeValid(value) {
 .button {
   @apply relative flex-none flex justify-center items-center h-11 min-w-11 rounded-lg border border-transparent outline-none;
 }
-
 .button[disabled] {
   cursor: not-allowed;
   opacity: 0.5;
 }
-
 .button::before {
   @apply absolute inset-0 pointer-events-none -m-px3 transition-colors duration-300 ease-in-out border border-transparent;
   border-radius: 0.625rem;
   content: '';
 }
-
 .button::after {
   @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;
   background-color: #000;
   border-radius: 0.5rem;
   content: '';
 }
-
 .button:hover .button__text {
   @apply underline;
 }
-
 .button:hover::after {
   opacity: 0.05;
 }
-
 .button:active::after {
   opacity: 0.3;
 }
-
 .button--appearance-primary.button--intent-none {
   @apply bg-black border-black text-white;
 }
-
 .button--appearance-primary.button--intent-none:focus::before {
   @apply border-black;
 }
-
 .button--appearance-primary.button--intent-error {
-  @apply bg-state-error-100 border-state-error-100 text-white;
+  @apply bg-error-100 border-error-100 text-white;
 }
-
 .button--appearance-primary.button--intent-error:focus::before {
-  @apply border-state-error-100;
+  @apply border-error-100;
 }
-
 .button--appearance-primary.button--intent-info {
-  @apply bg-state-info border-state-info text-white;
+  @apply bg-info border-info text-white;
 }
-
 .button--appearance-primary.button--intent-info:focus::before {
-  @apply border-state-info;
+  @apply border-info;
 }
-
 .button--appearance-primary.button--intent-success {
-  @apply bg-state-success border-state-success text-white;
+  @apply bg-success border-success text-white;
 }
-
 .button--appearance-primary.button--intent-success:focus::before {
-  @apply border-state-success;
+  @apply border-success;
 }
-
 .button--appearance-primary.button--intent-warning {
-  @apply bg-state-warning border-state-warning;
+  @apply bg-warning border-warning;
 }
-
 .button--appearance-primary.button--intent-warning:focus::before {
-  @apply border-state-warning;
+  @apply border-warning;
 }
 
 /**
@@ -181,90 +165,68 @@ function getIsSizeValid(value) {
 .button--appearance-secondary.button--intent-none {
   @apply border-black;
 }
-
 .button--appearance-secondary.button--intent-none:focus::before {
   @apply border-black;
 }
-
 .button--appearance-secondary.button--intent-error {
-  @apply border-state-error-100 text-state-error-100;
+  @apply border-error-100 text-error-100;
 }
-
 .button--appearance-secondary.button--intent-error:focus::before {
-  @apply border-state-error-100;
+  @apply border-error-100;
 }
-
 .button--appearance-secondary.button--intent-info {
-  @apply border-state-info text-state-info;
+  @apply border-info text-info;
 }
-
 .button--appearance-secondary.button--intent-info:focus::before {
-  @apply border-state-info;
+  @apply border-info;
 }
-
 .button--appearance-secondary.button--intent-success {
-  @apply border-state-success text-state-success;
+  @apply border-success text-success;
 }
-
 .button--appearance-secondary.button--intent-success:focus::before {
-  @apply border-state-success;
+  @apply border-success;
 }
-
 .button--appearance-secondary.button--intent-warning {
-  @apply border-state-warning text-state-warning;
+  @apply border-warning text-warning;
 }
-
 .button--appearance-secondary.button--intent-warning:focus::before {
-  @apply border-state-warning;
+  @apply border-warning;
 }
-
 .button--appearance-text.button--intent-none {
 }
-
 .button--appearance-text.button--intent-none:focus::before {
   @apply border-black;
 }
-
 .button--appearance-text.button--intent-error {
-  @apply text-state-error-100;
+  @apply text-error-100;
 }
-
 .button--appearance-text.button--intent-error:focus::before {
-  @apply border-state-error-100;
+  @apply border-error-100;
 }
-
 .button--appearance-text.button--intent-info {
-  @apply text-state-info;
+  @apply text-info;
 }
-
 .button--appearance-text.button--intent-info:focus::before {
-  @apply border-state-info;
+  @apply border-info;
 }
-
 .button--appearance-text.button--intent-success {
-  @apply text-state-success;
+  @apply text-success;
 }
-
 .button--appearance-text.button--intent-success:focus::before {
-  @apply border-state-success;
+  @apply border-success;
 }
-
 .button--appearance-text.button--intent-warning {
-  @apply text-state-warning;
+  @apply text-warning;
 }
-
 .button--appearance-text.button--intent-warning:focus::before {
-  @apply border-state-warning;
+  @apply border-warning;
 }
-
 .button--size-medium {
   @apply min-w-11 h-11;
 }
-
 .button--size-small {
   @apply min-w-8 h-8;
 }
-
 .button--size-medium.button--has-text,
 .button--size-small.button--has-text {
   @apply min-w-32 px-10;

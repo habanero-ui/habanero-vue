@@ -2,7 +2,7 @@
   <Typography v-if="hex && name" variant="body-extra-small">
     <div :class="classes">
       <div>{{ name.replace('-', ' ') }}</div>
-      <div>#{{ hex }}</div>
+      <div>{{ hex }}</div>
     </div>
   </Typography>
 </template>
@@ -10,11 +10,10 @@
 <script>
 import Typography from '../Typography/index'
 
+const tailwindConfig = require('../../../tailwind.config.js')
+
 export default {
   props: {
-    hex: {
-      type: String,
-    },
     name: {
       type: String,
     },
@@ -25,6 +24,9 @@ export default {
   computed: {
     classes() {
       return ['swatch', `swatch--color-${this.name}`]
+    },
+    hex() {
+      return tailwindConfig.theme.extend.colors[this.name]
     },
   },
 }

@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       colors: {
         // Surface
+        white: '#FFFFFF',
         'heavy-black': '#242324',
         black: '#3E3B3E',
         'grey-500': '#7C7C86',

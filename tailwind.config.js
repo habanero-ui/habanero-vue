@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       colors: {
         // Surface
+        white: '#FFFFFF',
         'heavy-black': '#242324',
         black: '#3E3B3E',
         'grey-500': '#7C7C86',
@@ -18,18 +19,18 @@ module.exports = {
         beige: '#F3F2E7',
         'dark-beige': '#E4E3D9',
         // Secondary Colors
-        blue: '#a6eff5',
+        blue: '#A6EFF5',
         green: '#97ECC2',
         orange: '#FCB68A',
         pink: '#FAB5D3',
-        purple: '#b6a4ff',
+        purple: '#B6A4FF',
         // Supportive Colors
-        'state-info': '#3C6EEA',
-        'state-success': '#3AA76D',
-        'state-warning': '#F1B34D',
-        'state-error-100': '#DA1E28',
-        'state-error-200': '#BA1B23',
-        'state-error-300': '#750E13',
+        info: '#3C6EEA',
+        success: '#3AA76D',
+        warning: '#F1B34D',
+        'error-300': '#750E13',
+        'error-200': '#BA1B23',
+        'error-100': '#DA1E28',
         // Transparent Overlays
         'white-half': 'rgba(255,255,255, 0.5)',
         'black-half': 'rgba(36, 35, 36, 0.5)',

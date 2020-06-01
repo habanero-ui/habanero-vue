@@ -32,7 +32,7 @@ export default {
 
 <style scoped>
 .swatch {
-  @apply flex items-center capitalize justify-between p-4 h-12;
+  @apply flex items-center justify-between h-12 p-4 capitalize cursor-pointer;
 }
 
 /**

@@ -102,14 +102,15 @@ function getIsSizeValid(value) {
 
 <style scoped>
 .button {
-  @apply relative flex-none flex justify-center items-center h-11 min-w-11 rounded-lg border border-transparent outline-none;
+  @apply relative flex-none flex justify-center items-center rounded-lg border border-transparent outline-none;
 }
 .button[disabled] {
   cursor: not-allowed;
   opacity: 0.5;
 }
 .button::before {
-  @apply absolute inset-0 pointer-events-none -m-px3 transition-colors duration-300 ease-in-out border border-transparent;
+  @apply absolute inset-0 pointer-events-none transition-colors duration-300 ease-in-out border border-transparent;
+  margin: -3px;
   border-radius: 0.625rem;
   content: '';
 }
@@ -123,10 +124,10 @@ function getIsSizeValid(value) {
   @apply underline;
 }
 .button:hover::after {
-  opacity: 0.05;
+  opacity: 0.1;
 }
 .button:active::after {
-  opacity: 0.3;
+  opacity: 0.25;
 }
 .button--appearance-primary.button--intent-none {
   @apply bg-black border-black text-white;
@@ -192,8 +193,6 @@ function getIsSizeValid(value) {
 .button--appearance-secondary.button--intent-warning:focus::before {
   @apply border-warning;
 }
-.button--appearance-text.button--intent-none {
-}
 .button--appearance-text.button--intent-none:focus::before {
   @apply border-black;
 }
@@ -222,13 +221,21 @@ function getIsSizeValid(value) {
   @apply border-warning;
 }
 .button--size-medium {
-  @apply min-w-11 h-11;
+  height: 2.75rem;
+  min-width: 2.75rem;
 }
 .button--size-small {
-  @apply min-w-8 h-8;
+  @apply h-8;
+  min-width: 2rem;
 }
 .button--size-medium.button--has-text,
 .button--size-small.button--has-text {
-  @apply min-w-32 px-10;
+  @apply px-6;
+  min-width: 8rem;
+}
+.button--appearance-text.button--size-medium.button--has-text,
+.button--appearance-text.button--size-small.button--has-text {
+  @apply px-4;
+  min-width: 7.5rem;
 }
 </style>

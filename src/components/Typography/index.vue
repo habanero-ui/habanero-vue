@@ -73,62 +73,62 @@ function getIsVariantValid(value) {
   font-family: 'Inter var', sans-serif;
 }
 .typography--body-extra-small {
-  @apply text-body-extra-small;
+  font-size: 0.75rem;
   font-weight: 400;
   line-height: 0.875rem;
 }
 .typography--body-large {
-  @apply text-body-large;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.188rem;
 }
 .typography--body-small {
-  @apply text-body-small;
+  font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.06rem;
 }
 .typography--button {
-  @apply text-button;
+  font-size: 1rem;
   font-weight: 700;
   line-height: 1.188rem;
 }
 .typography--h1 {
-  @apply text-h1;
+  font-size: 6.875rem;
   font-weight: 700;
   line-height: 8.25rem;
 }
 .typography--h2 {
-  @apply text-h2;
+  font-size: 3.5rem;
   font-weight: 600;
   line-height: 4.19rem;
 }
 .typography--h3 {
-  @apply text-h3;
+  font-size: 3rem;
   font-weight: 600;
   line-height: 3.625rem;
 }
 .typography--h4 {
-  @apply text-h4;
+  font-size: 2rem;
   font-weight: 600;
   line-height: 2.375rem;
 }
 .typography--h5 {
-  @apply text-h5;
+  font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.625rem;
 }
 .typography--h6 {
-  @apply text-h6;
+  font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.5rem;
 }
 .typography--label-large {
-  @apply text-label-large;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 1rem;
 }
 .typography--label-small {
-  @apply text-label-small;
+  font-size: 0.75rem;
   font-weight: 600;
   line-height: 0.875rem;
 }

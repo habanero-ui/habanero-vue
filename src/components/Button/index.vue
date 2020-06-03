@@ -120,13 +120,13 @@ function getIsSizeValid(value) {
   border-radius: 0.5rem;
   content: '';
 }
-.button:hover .button__text {
+.button:hover:not([disabled]) .button__text {
   @apply underline;
 }
-.button:hover::after {
+.button:hover:not([disabled])::after {
   opacity: 0.1;
 }
-.button:active::after {
+.button:active:not([disabled])::after {
   opacity: 0.25;
 }
 .button--appearance-primary.button--intent-none {

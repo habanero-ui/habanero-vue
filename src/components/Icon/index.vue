@@ -41,7 +41,7 @@ function getIsSizeValid(value) {
 
 <style scoped>
 .icon {
-  @apply flex items-center justify-center overflow-hidden;
+  @apply flex items-center justify-center fill-current overflow-hidden;
 }
 
 .icon--size-large {

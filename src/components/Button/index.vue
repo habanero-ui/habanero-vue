@@ -123,11 +123,17 @@ function getIsSizeValid(value) {
 .button:hover .button__text {
   @apply underline;
 }
+.button[disabled]:hover .button__text {
+  @apply no-underline;
+}
 .button:hover::after {
   opacity: 0.1;
 }
 .button:active::after {
   opacity: 0.25;
+}
+.button[disabled]:hover::after {
+  @apply hidden;
 }
 .button--appearance-primary.button--intent-none {
   @apply bg-black border-black text-white;

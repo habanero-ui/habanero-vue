@@ -1,8 +1,5 @@
 <template>
-  <div
-    v-html="require(`!!html-loader!./../../icons/${name}.svg`)"
-    :class="classes"
-  ></div>
+  <div v-html="require(`!./../../icons/${name}.svg`)" :class="classes"></div>
 </template>
 
 <script>

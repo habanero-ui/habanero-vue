@@ -41,7 +41,12 @@ function getIsSizeValid(value) {
 
 <style scoped>
 .icon {
-  @apply flex items-center justify-center overflow-hidden;
+  @apply flex-none fill-current overflow-hidden;
+}
+
+.icon > svg {
+  height: 100%;
+  width: 100%;
 }
 
 .icon--size-large {

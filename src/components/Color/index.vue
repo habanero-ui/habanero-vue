@@ -1,8 +1,13 @@
 <template>
-  <Typography v-if="hex && name" variant="body-extra-small">
+  <Typography
+    v-if="hex && name"
+    variant="body-extra-small"
+    @click.native="copyToClipboard"
+  >
     <div :class="classes">
       <div>{{ name.replace('-', ' ') }}</div>
-      <div>{{ hex }}</div>
+      <div>{{ copied ? 'Copied to clipboard!' : hex }}</div>
+      <input type="hidden" ref="hex" :value="hex" />
     </div>
   </Typography>
 </template>
@@ -21,12 +26,36 @@ export default {
   components: {
     Typography,
   },
+  data: () => ({
+    copied: false,
+  }),
   computed: {
     classes() {
       return ['swatch', `swatch--color-${this.name}`]
     },
     hex() {
       return tailwindConfig.theme.extend.colors[this.name]
+    },
+  },
+  methods: {
+    copyToClipboard($event) {
+      let value = this.$refs['hex']
+      value.setAttribute('type', 'text')
+      value.select()
+
+      try {
+        document.execCommand('copy')
+        this.copied = true
+
+        setTimeout(() => {
+          this.copied = false
+        }, 1200)
+      } catch (err) {
+        alert('Could not copy color to clipboard')
+      }
+
+      value.setAttribute('type', 'hidden')
+      window.getSelection().removeAllRanges()
     },
   },
 }

@@ -10,18 +10,18 @@ export default () => ({
   },
   template: `
     <div>
-      <Typography variant="h1">{{ text }}</Typography>
-      <Typography variant="h2">{{ text }}</Typography>
-      <Typography variant="h3">{{ text }}</Typography>
-      <Typography variant="h4">{{ text }}</Typography>
-      <Typography variant="h5">{{ text }}</Typography>
-      <Typography variant="h6">{{ text }}</Typography>
-      <Typography variant="body-large">{{ text }}</Typography>
-      <Typography variant="body-small">{{ text }}</Typography>
-      <Typography variant="body-extra-small">{{ text }}</Typography>
-      <Typography variant="label-large">{{ text }}</Typography>
-      <Typography variant="label-small">{{ text }}</Typography>
-      <Typography variant="button">{{ text }}</Typography>
+      <Typography variant="h1">h1: {{ text }}</Typography>
+      <Typography variant="h2">h2: {{ text }}</Typography>
+      <Typography variant="h3">h3: {{ text }}</Typography>
+      <Typography variant="h4">h4: {{ text }}</Typography>
+      <Typography variant="h5">h5: {{ text }}</Typography>
+      <Typography variant="h6">h6: {{ text }}</Typography>
+      <Typography variant="body-large">body-large: {{ text }}</Typography>
+      <Typography variant="body-small">body-small: {{ text }}</Typography>
+      <Typography variant="body-extra-small">body-extra-small: {{ text }}</Typography>
+      <Typography variant="label-large">label-large: {{ text }}</Typography>
+      <Typography variant="label-small">label-small: {{ text }}</Typography>
+      <Typography variant="button">button: {{ text }}</Typography>
     </div>
   `,
 })

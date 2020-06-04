@@ -5,12 +5,12 @@ export default () => ({
     Icon,
   },
   data: () => ({
-    names: [
+    movements: ['chevron-up', 'chevron-down', 'chevron-left', 'chevron-right'],
+    objects: [
       'apartment',
       'badge',
       'bell',
       'currency',
-      'employees',
       'file-download',
       'file-upload',
       'flag',
@@ -18,13 +18,20 @@ export default () => ({
       'info',
       'map-pin',
       'settings',
-      'user-delete',
-      'user-star',
     ],
+    persons: ['employees', 'user-delete', 'user-star'],
   }),
   template: `
-    <div class="flex items-center p-6">
-      <Icon v-for="name in names" :name="name" class="mr-4" />
+    <div class="p-6">
+      <div class="flex items-center mb-6">
+        <Icon v-for="icon in movements" :name="icon" class="mr-4" />
+      </div>
+      <div class="flex items-center mb-6">
+        <Icon v-for="icon in objects" :name="icon" class="mr-4" />
+      </div>
+      <div class="flex items-center mb-6">
+        <Icon v-for="icon in persons" :name="icon" class="mr-4" />
+      </div>
     </div>
   `,
 })

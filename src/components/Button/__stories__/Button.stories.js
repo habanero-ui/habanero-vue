@@ -5,6 +5,7 @@ export { default as Small } from './ButtonSmall.story'
 export { default as WithIcon } from './ButtonWithIcon.story'
 export { default as WithIconSmall } from './ButtonWithIconSmall.story'
 export { default as WithTextAndIcon } from './ButtonWithTextAndIcon.story'
+export { default as WithTextAndIconOnLeft } from './ButtonWithTextAndIconOnLeft.story'
 
 export default {
   title: 'Button',

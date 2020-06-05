@@ -9,15 +9,28 @@
     >
       {{ text }}
     </Typography>
+    <Icon
+      v-if="iconName"
+      class="button__icon"
+      :color="color"
+      :colorIsBackground="appearance === 'primary'"
+      :name="iconName"
+      :size="size"
+    />
     <slot />
   </button>
 </template>
 
 <script>
 import includes from 'lodash/includes'
+import Icon from '../Icon/index'
 import Typography from '../Typography/index'
 
 export default {
+  components: {
+    Icon,
+    Typography,
+  },
   props: {
     appearance: {
       default: 'primary',
@@ -28,6 +41,13 @@ export default {
       default: 'none',
       type: String,
       validator: getIsColorValid,
+    },
+    iconName: {
+      type: String,
+    },
+    iconSide: {
+      default: 'right',
+      validator: getIsIconSideValid,
     },
     size: {
       default: 'medium',
@@ -42,15 +62,13 @@ export default {
       type: String,
     },
   },
-  components: {
-    Typography,
-  },
   computed: {
     classes() {
       return [
         'button',
         {
           'button--has-text': !!this.text,
+          'button--icon-left': this.iconSide === 'left',
         },
         `button--appearance-${this.appearance}`,
         `button--color-${this.color}`,
@@ -85,6 +103,20 @@ function getIsColorValid(value) {
     console.error(
       'Button: The "color" prop must be one of the following:',
       String(['error', 'info', 'none', 'subtle', 'success', 'warning']),
+    )
+  }
+
+  return isValid
+}
+
+function getIsIconSideValid(value) {
+  const isValid = includes(['left', 'right'], value)
+
+  if (!isValid) {
+    // eslint-disable-next-line no-console
+    console.error(
+      'Button: The "iconSide" prop must be one of the following:',
+      String(['left', 'right']),
     )
   }
 
@@ -246,5 +278,20 @@ function getIsSizeValid(value) {
 .button--appearance-text.button--size-small.button--has-text {
   @apply px-4;
   min-width: 7.5rem;
+}
+.button__text + .button__icon {
+  @apply ml-4 -mr-2;
+}
+.button--appearance-text > .button__text + .button__icon {
+  @apply ml-3 -mr-1;
+}
+.button--icon-left {
+  @apply flex-row-reverse;
+}
+.button--icon-left > .button__text + .button__icon {
+  @apply mr-4 -ml-2;
+}
+.button--icon-left.button--appearance-text > .button__text + .button__icon {
+  @apply mr-3 -ml-1;
 }
 </style>

@@ -1,9 +1,15 @@
 import { action } from '@storybook/addon-actions'
+import { text } from '@storybook/addon-knobs'
 import Icon from '../../Icon'
 import Button from '../index'
 
 export default () => ({
   components: { Button, Icon },
+  props: {
+    text: {
+      default: text('Text', 'Button Text'),
+    },
+  },
   data: () => ({
     appearances: ['primary', 'secondary', 'text'],
     colors: ['none', 'error', 'info', 'subtle', 'success', 'warning'],
@@ -20,7 +26,9 @@ export default () => ({
           class="mr-6"
           :color="color"
           iconName="bell"
+          iconSide="left"
           :key="appearance"
+          :text="text"
           @click.native="action"
         />
       </div>

@@ -25,11 +25,11 @@ export default () => ({
           :appearance="appearance"
           class="mr-6"
           :color="color"
+          iconName="bell"
           :key="appearance"
           :text="text"
-          @click.native="action">
-          <Icon class="ml-4 -mr-2" :color="color" :colorIsBackground="appearance === 'primary'" name="bell" />
-        </Button>
+          @click.native="action"
+        />
       </div>
     </div>
   `,

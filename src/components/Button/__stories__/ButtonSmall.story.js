@@ -10,8 +10,8 @@ export default () => ({
     },
   },
   data: () => ({
-    appearances: ['primary', 'secondary', 'text'],
     colors: ['none', 'error', 'info', 'subtle', 'success', 'warning'],
+    variants: ['primary', 'secondary', 'text'],
   }),
   template: `
     <div class="p-6">
@@ -20,13 +20,13 @@ export default () => ({
         class="flex pb-6"
         :key="color">
         <Button
-          v-for="appearance in appearances"
-          :appearance="appearance"
+          v-for="variant in variants"
           class="mr-6"
           :color="color"
-          :key="appearance"
+          :key="variant"
           size="small"
           :text="text"
+          :variant="variant"
           @click.native="action"
         />
       </div>

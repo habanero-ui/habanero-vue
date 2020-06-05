@@ -94,8 +94,11 @@ function getIsSizeValid(value) {
 .icon--color-info.icon--color-is-background {
   @apply text-white;
 }
-.icon--color-subtle:not(.icon--color-is-background) {
+.icon--color-subtle {
   @apply text-subtle;
+}
+.icon--color-subtle.icon--color-is-background {
+  @apply text-white;
 }
 .icon--color-success {
   @apply text-success;

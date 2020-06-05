@@ -9,32 +9,25 @@ export default () => ({
       default: text('Text', 'Button Text'),
     },
   },
+  data: () => ({
+    appearances: ['primary', 'secondary', 'text'],
+    colors: ['none', 'error', 'info', 'subtle', 'success', 'warning'],
+  }),
   template: `
     <div class="p-6">
-      <div class="flex pb-6">
-        <Button class="mr-6" :text="text" @click.native="action" />
-        <Button class="mr-6" appearance="secondary" :text="text" @click.native="action" />
-        <Button class="mr-6" appearance="text" :text="text" @click.native="action" />
-      </div>
-      <div class="flex pb-6">
-        <Button class="mr-6" appearance="primary" color="error" :text="text" @click.native="action" />
-        <Button class="mr-6" appearance="secondary" color="error" :text="text" @click.native="action" />
-        <Button class="mr-6" appearance="text" color="error" :text="text" @click.native="action" />
-      </div>
-      <div class="flex pb-6">
-        <Button class="mr-6" appearance="primary" color="info" :text="text" @click.native="action" />
-        <Button class="mr-6" appearance="secondary" color="info" :text="text" @click.native="action" />
-        <Button class="mr-6" appearance="text" color="info" :text="text" @click.native="action" />
-      </div>
-      <div class="flex pb-6">
-        <Button class="mr-6" appearance="primary" color="success" :text="text" @click.native="action" />
-        <Button class="mr-6" appearance="secondary" color="success" :text="text" @click.native="action" />
-        <Button class="mr-6" appearance="text" color="success" :text="text" @click.native="action" />
-      </div>
-      <div class="flex pb-6">
-        <Button class="mr-6" appearance="primary" color="warning" :text="text" @click.native="action" />
-        <Button class="mr-6" appearance="secondary" color="warning" :text="text" @click.native="action" />
-        <Button class="mr-6" appearance="text" color="warning" :text="text" @click.native="action" />
+      <div
+        v-for="color in colors"
+        class="flex pb-6"
+        :key="color">
+        <Button
+          v-for="appearance in appearances"
+          :appearance="appearance"
+          class="mr-6"
+          :color="color"
+          :key="appearance"
+          :text="text"
+          @click.native="action"
+        />
       </div>
     </div>
   `,

@@ -4,7 +4,7 @@ export default () => ({
   components: { ListItem },
   data: () => ({
     items: [
-      { primaryText: 'Subtle' },
+      { primaryText: 'Default' },
       { primaryText: 'Error', status: 'error' },
       { primaryText: 'Info', status: 'info' },
       { primaryText: 'Success', status: 'success' },

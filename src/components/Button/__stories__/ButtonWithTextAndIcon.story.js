@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions'
 import { text } from '@storybook/addon-knobs'
-import Button from '../index'
 import Icon from '../../Icon'
+import Button from '../index'
 
 export default () => ({
   components: { Button, Icon },
@@ -10,32 +10,26 @@ export default () => ({
       default: text('Text', 'Button Text'),
     },
   },
+  data: () => ({
+    appearances: ['primary', 'secondary', 'text'],
+    colors: ['none', 'error', 'info', 'subtle', 'success', 'warning'],
+  }),
   template: `
     <div class="p-6">
-      <div class="flex pb-6">
-        <Button class="mr-6" :text="text" @click.native="action"><Icon name="bell" class="ml-4 -mr-2" /></Button>
-        <Button class="mr-6" appearance="secondary" :text="text" @click.native="action"><Icon name="bell" class="ml-4 -mr-2" /></Button>
-        <Button class="mr-6" appearance="text" :text="text" @click.native="action"><Icon name="bell" class="ml-3 -mr-1" /></Button>
-      </div>
-      <div class="flex pb-6">
-        <Button class="mr-6" appearance="primary" color="error" :text="text" @click.native="action"><Icon name="bell" class="ml-4 -mr-2" /></Button>
-        <Button class="mr-6" appearance="secondary" color="error" :text="text" @click.native="action"><Icon name="bell" class="ml-4 -mr-2" /></Button>
-        <Button class="mr-6" appearance="text" color="error" :text="text" @click.native="action"><Icon name="bell" class="ml-3 -mr-1" /></Button>
-      </div>
-      <div class="flex pb-6">
-        <Button class="mr-6" appearance="primary" color="info" :text="text" @click.native="action"><Icon name="bell" class="ml-4 -mr-2" /></Button>
-        <Button class="mr-6" appearance="secondary" color="info" :text="text" @click.native="action"><Icon name="bell" class="ml-4 -mr-2" /></Button>
-        <Button class="mr-6" appearance="text" color="info" :text="text" @click.native="action"><Icon name="bell" class="ml-3 -mr-1" /></Button>
-      </div>
-      <div class="flex pb-6">
-        <Button class="mr-6" appearance="primary" color="success" :text="text" @click.native="action"><Icon name="bell" class="ml-4 -mr-2" /></Button>
-        <Button class="mr-6" appearance="secondary" color="success" :text="text" @click.native="action"><Icon name="bell" class="ml-4 -mr-2" /></Button>
-        <Button class="mr-6" appearance="text" color="success" :text="text" @click.native="action"><Icon name="bell" class="ml-3 -mr-1" /></Button>
-      </div>
-      <div class="flex pb-6">
-        <Button class="mr-6" appearance="primary" color="warning" :text="text" @click.native="action"><Icon name="bell" class="ml-4 -mr-2" /></Button>
-        <Button class="mr-6" appearance="secondary" color="warning" :text="text" @click.native="action"><Icon name="bell" class="ml-4 -mr-2" /></Button>
-        <Button class="mr-6" appearance="text" color="warning" :text="text" @click.native="action"><Icon name="bell" class="ml-3 -mr-1" /></Button>
+      <div
+        v-for="color in colors"
+        class="flex pb-6"
+        :key="color">
+        <Button
+          v-for="appearance in appearances"
+          :appearance="appearance"
+          class="mr-6"
+          :color="color"
+          :key="appearance"
+          :text="text"
+          @click.native="action">
+          <Icon class="ml-4 -mr-2" :color="color" :colorIsBackground="appearance === 'primary'" name="bell" />
+        </Button>
       </div>
     </div>
   `,

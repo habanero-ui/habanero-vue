@@ -9,7 +9,7 @@ export default () => ({
     },
   },
   data: () => ({
-    colors: ['none', 'subtle', 'error', 'info', 'success', 'warning'],
+    colors: ['none', 'error', 'info', 'subtle', 'success', 'warning'],
   }),
   template: `
     <div class="items-start p-6">
@@ -19,6 +19,9 @@ export default () => ({
           :colorIsBackground="true">
           {{ color }}
         </Typography>
+      </div>
+      <div class="bg-purple p-2 w-24">
+        <Typography class="text-heavy-black">custom</Typography>
       </div>
     </div>
   `,

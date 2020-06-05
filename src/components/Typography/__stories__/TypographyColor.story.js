@@ -9,7 +9,7 @@ export default () => ({
     },
   },
   data: () => ({
-    colors: ['none', 'subtle', 'error', 'info', 'success', 'warning'],
+    colors: ['none', 'error', 'info', 'subtle', 'success', 'warning'],
   }),
   template: `
     <div class="p-6">
@@ -19,6 +19,7 @@ export default () => ({
         :key="color">
         {{ color }}
       </Typography>
+      <Typography class="text-purple">custom</Typography>
     </div>
   `,
 })

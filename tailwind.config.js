@@ -27,6 +27,7 @@ module.exports = {
         // Supportive Colors
         error: '#DA1E28',
         info: '#3C6EEA',
+        subtle: '#7C7C86',
         success: '#3AA76D',
         warning: '#F1B34D',
         // Transparent Overlays

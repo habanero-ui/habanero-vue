@@ -135,6 +135,9 @@ export default {
 .swatch--color-info {
   @apply bg-info text-white;
 }
+.swatch--color-subtle {
+  @apply bg-subtle text-white;
+}
 .swatch--color-success {
   @apply bg-success text-white;
 }

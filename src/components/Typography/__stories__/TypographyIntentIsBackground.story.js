@@ -24,15 +24,7 @@ export default () => ({
   `,
   methods: {
     getWrapperBGClass(intent) {
-      if (intent === 'none') {
-        return 'bg-black'
-      }
-
-      if (intent === 'subtle') {
-        return 'bg-gray-500'
-      }
-
-      return `bg-${intent}`
+      return intent === 'none' ? 'bg-black' : `bg-${intent}`
     },
   },
 })

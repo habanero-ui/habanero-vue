@@ -1,6 +1,12 @@
 <template>
   <button :class="classes" :type="type">
-    <Typography class="button__text" v-if="text" variant="button">
+    <Typography
+      v-if="text"
+      class="button__text"
+      :intent="intent"
+      :intentIsBackground="appearance === 'primary'"
+      variant="button"
+    >
       {{ text }}
     </Typography>
     <slot />
@@ -70,7 +76,7 @@ function getIsAppearanceValid(value) {
 
 function getIsIntentValid(value) {
   const isValid = includes(
-    ['error', 'info', 'none', 'success', 'warning'],
+    ['error', 'info', 'none', 'subtle', 'success', 'warning'],
     value,
   )
 
@@ -78,7 +84,7 @@ function getIsIntentValid(value) {
     // eslint-disable-next-line no-console
     console.error(
       'Button: The "intent" prop must be one of the following:',
-      String(['error', 'info', 'none', 'success', 'warning']),
+      String(['error', 'info', 'none', 'subtle', 'success', 'warning']),
     )
   }
 
@@ -130,25 +136,31 @@ function getIsSizeValid(value) {
   opacity: 0.25;
 }
 .button--appearance-primary.button--intent-none {
-  @apply bg-black border-black text-white;
+  @apply bg-black border-black;
 }
 .button--appearance-primary.button--intent-none:focus::before {
   @apply border-black;
 }
 .button--appearance-primary.button--intent-error {
-  @apply bg-error border-error text-white;
+  @apply bg-error border-error;
 }
 .button--appearance-primary.button--intent-error:focus::before {
   @apply border-error;
 }
 .button--appearance-primary.button--intent-info {
-  @apply bg-info border-info text-white;
+  @apply bg-info border-info;
 }
 .button--appearance-primary.button--intent-info:focus::before {
   @apply border-info;
 }
+.button--appearance-primary.button--intent-subtle {
+  @apply bg-subtle border-subtle;
+}
+.button--appearance-primary.button--intent-subtle:focus::before {
+  @apply border-subtle;
+}
 .button--appearance-primary.button--intent-success {
-  @apply bg-success border-success text-white;
+  @apply bg-success border-success;
 }
 .button--appearance-primary.button--intent-success:focus::before {
   @apply border-success;
@@ -170,25 +182,31 @@ function getIsSizeValid(value) {
   @apply border-black;
 }
 .button--appearance-secondary.button--intent-error {
-  @apply border-error text-error;
+  @apply border-error;
 }
 .button--appearance-secondary.button--intent-error:focus::before {
   @apply border-error;
 }
 .button--appearance-secondary.button--intent-info {
-  @apply border-info text-info;
+  @apply border-info;
 }
 .button--appearance-secondary.button--intent-info:focus::before {
   @apply border-info;
 }
+.button--appearance-secondary.button--intent-subtle {
+  @apply border-subtle;
+}
+.button--appearance-secondary.button--intent-subtle:focus::before {
+  @apply border-subtle;
+}
 .button--appearance-secondary.button--intent-success {
-  @apply border-success text-success;
+  @apply border-success;
 }
 .button--appearance-secondary.button--intent-success:focus::before {
   @apply border-success;
 }
 .button--appearance-secondary.button--intent-warning {
-  @apply border-warning text-warning;
+  @apply border-warning;
 }
 .button--appearance-secondary.button--intent-warning:focus::before {
   @apply border-warning;
@@ -196,26 +214,17 @@ function getIsSizeValid(value) {
 .button--appearance-text.button--intent-none:focus::before {
   @apply border-black;
 }
-.button--appearance-text.button--intent-error {
-  @apply text-error;
-}
 .button--appearance-text.button--intent-error:focus::before {
   @apply border-error;
-}
-.button--appearance-text.button--intent-info {
-  @apply text-info;
 }
 .button--appearance-text.button--intent-info:focus::before {
   @apply border-info;
 }
-.button--appearance-text.button--intent-success {
-  @apply text-success;
+.button--appearance-text.button--intent-subtle:focus::before {
+  @apply border-subtle;
 }
 .button--appearance-text.button--intent-success:focus::before {
   @apply border-success;
-}
-.button--appearance-text.button--intent-warning {
-  @apply text-warning;
 }
 .button--appearance-text.button--intent-warning:focus::before {
   @apply border-warning;

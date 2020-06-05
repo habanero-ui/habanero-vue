@@ -119,8 +119,11 @@ function getIsVariantValid(value) {
 .typography--intent-info.typography--intent-is-background {
   @apply text-white;
 }
-.typography--intent-subtle:not(.typography--intent-is-background) {
-  @apply text-gray-500;
+.typography--intent-subtle {
+  @apply text-subtle;
+}
+.typography--intent-subtle.typography--intent-is-background {
+  @apply text-white;
 }
 .typography--intent-success {
   @apply text-success;

@@ -1,8 +1,8 @@
 <template>
   <li :class="classes">
-    <Icon v-if="iconName" :name="iconName" />
+    <Icon v-if="iconName" class="mr-4 -ml-2" :name="iconName" />
     <div class="list-item__text">
-      <Typography v-if="primaryText" variant="label-large">
+      <Typography v-if="primaryText">
         {{ primaryText }}
       </Typography>
       <Typography
@@ -21,8 +21,12 @@
       </Typography>
     </div>
     <div class="ml-auto">
-      <Typography v-if="primaryStatus" variant="body-extra-small">
-        {{ primaryStatus }}
+      <Typography
+        v-if="primaryStatusText"
+        :intent="primaryStatusTextIntent"
+        variant="body-extra-small"
+      >
+        {{ primaryStatusText }}
       </Typography>
       <Icon v-if="isNavigation" class="-mr-2" name="chevron-right" />
     </div>
@@ -48,14 +52,20 @@ export default {
       default: false,
       type: Boolean,
     },
+    primaryStatusText: {
+      type: String,
+    },
+    primaryStatusTextIntent: {
+      type: String,
+    },
     primaryText: {
-      type: [Function, String],
+      type: String,
     },
     secondaryText: {
-      type: [Function, String],
+      type: String,
     },
     tertiaryText: {
-      type: [Function, String],
+      type: String,
     },
   },
   computed: {

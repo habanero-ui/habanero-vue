@@ -1,5 +1,5 @@
 <template>
-  <component :class="classes" :is="is"><slot /></component>
+  <component :class="classes" :is="component"><slot /></component>
 </template>
 
 <script>
@@ -7,7 +7,18 @@ import includes from 'lodash/includes'
 
 export default {
   props: {
-    component: { type: String },
+    component: {
+      default: 'span',
+      type: String,
+    },
+    intent: {
+      default: 'none',
+      validator: getIsIntentValid,
+    },
+    intentIsBackground: {
+      default: false,
+      type: Boolean,
+    },
     variant: {
       default: 'body-large',
       validator: getIsVariantValid,
@@ -15,12 +26,33 @@ export default {
   },
   computed: {
     classes() {
-      return ['typography', `typography--${this.variant}`]
-    },
-    is() {
-      return this.component || 'span'
+      return [
+        'typography',
+        {
+          'typography--intent-is-background': this.intentIsBackground,
+        },
+        `typography--intent-${this.intent}`,
+        `typography--variant-${this.variant}`,
+      ]
     },
   },
+}
+
+function getIsIntentValid(value) {
+  const isValid = includes(
+    ['error', 'info', 'none', 'success', 'warning'],
+    value,
+  )
+
+  if (!isValid) {
+    // eslint-disable-next-line no-console
+    console.error(
+      'Typography: The "intent" prop must be one of the following:',
+      String(['error', 'info', 'none', 'success', 'warning']),
+    )
+  }
+
+  return isValid
 }
 
 function getIsVariantValid(value) {
@@ -72,62 +104,89 @@ function getIsVariantValid(value) {
   display: block;
   font-family: 'Inter var', sans-serif;
 }
-.typography--body-extra-small {
+.typography--intent-none.typography--intent-is-background {
+  @apply text-white;
+}
+.typography--intent-error {
+  @apply text-error-100;
+}
+.typography--intent-error.typography--intent-is-background {
+  @apply text-white;
+}
+.typography--intent-info {
+  @apply text-info;
+}
+.typography--intent-info.typography--intent-is-background {
+  @apply text-white;
+}
+.typography--intent-success {
+  @apply text-success;
+}
+.typography--intent-success.typography--intent-is-background {
+  @apply text-white;
+}
+.typography--intent-warning {
+  @apply text-warning;
+}
+.typography--intent-warning.typography--intent-is-background {
+  @apply text-black;
+}
+.typography--variant-body-extra-small {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 0.875rem;
 }
-.typography--body-large {
+.typography--variant-body-large {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.188rem;
 }
-.typography--body-small {
+.typography--variant-body-small {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.06rem;
 }
-.typography--button {
+.typography--variant-button {
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.188rem;
 }
-.typography--h1 {
+.typography--variant-h1 {
   font-size: 6.875rem;
   font-weight: 700;
   line-height: 8.25rem;
 }
-.typography--h2 {
+.typography--variant-h2 {
   font-size: 3.5rem;
   font-weight: 600;
   line-height: 4.19rem;
 }
-.typography--h3 {
+.typography--variant-h3 {
   font-size: 3rem;
   font-weight: 600;
   line-height: 3.625rem;
 }
-.typography--h4 {
+.typography--variant-h4 {
   font-size: 2rem;
   font-weight: 600;
   line-height: 2.375rem;
 }
-.typography--h5 {
+.typography--variant-h5 {
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.625rem;
 }
-.typography--h6 {
+.typography--variant-h6 {
   font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.5rem;
 }
-.typography--label-large {
+.typography--variant-label-large {
   font-size: 1rem;
   font-weight: 600;
   line-height: 1rem;
 }
-.typography--label-small {
+.typography--variant-label-small {
   font-size: 0.75rem;
   font-weight: 600;
   line-height: 0.875rem;

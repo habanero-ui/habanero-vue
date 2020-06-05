@@ -16,7 +16,7 @@ export default () => ({
       <Typography variant="h4">h4: {{ text }}</Typography>
       <Typography variant="h5">h5: {{ text }}</Typography>
       <Typography variant="h6">h6: {{ text }}</Typography>
-      <Typography variant="body-large">body-large: {{ text }}</Typography>
+      <Typography>body-large: {{ text }}</Typography>
       <Typography variant="body-small">body-small: {{ text }}</Typography>
       <Typography variant="body-extra-small">body-extra-small: {{ text }}</Typography>
       <Typography variant="label-large">label-large: {{ text }}</Typography>

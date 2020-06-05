@@ -108,7 +108,7 @@ function getIsVariantValid(value) {
   @apply text-white;
 }
 .typography--intent-error {
-  @apply text-error-100;
+  @apply text-error;
 }
 .typography--intent-error.typography--intent-is-background {
   @apply text-white;

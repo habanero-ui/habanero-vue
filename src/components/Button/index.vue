@@ -136,10 +136,10 @@ function getIsSizeValid(value) {
   @apply border-black;
 }
 .button--appearance-primary.button--intent-error {
-  @apply bg-error-100 border-error-100 text-white;
+  @apply bg-error border-error text-white;
 }
 .button--appearance-primary.button--intent-error:focus::before {
-  @apply border-error-100;
+  @apply border-error;
 }
 .button--appearance-primary.button--intent-info {
   @apply bg-info border-info text-white;
@@ -170,10 +170,10 @@ function getIsSizeValid(value) {
   @apply border-black;
 }
 .button--appearance-secondary.button--intent-error {
-  @apply border-error-100 text-error-100;
+  @apply border-error text-error;
 }
 .button--appearance-secondary.button--intent-error:focus::before {
-  @apply border-error-100;
+  @apply border-error;
 }
 .button--appearance-secondary.button--intent-info {
   @apply border-info text-info;
@@ -197,10 +197,10 @@ function getIsSizeValid(value) {
   @apply border-black;
 }
 .button--appearance-text.button--intent-error {
-  @apply text-error-100;
+  @apply text-error;
 }
 .button--appearance-text.button--intent-error:focus::before {
-  @apply border-error-100;
+  @apply border-error;
 }
 .button--appearance-text.button--intent-info {
   @apply text-info;

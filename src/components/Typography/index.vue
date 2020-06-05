@@ -40,7 +40,7 @@ export default {
 
 function getIsIntentValid(value) {
   const isValid = includes(
-    ['error', 'info', 'none', 'success', 'warning'],
+    ['error', 'info', 'none', 'subtle', 'success', 'warning'],
     value,
   )
 
@@ -48,7 +48,7 @@ function getIsIntentValid(value) {
     // eslint-disable-next-line no-console
     console.error(
       'Typography: The "intent" prop must be one of the following:',
-      String(['error', 'info', 'none', 'success', 'warning']),
+      String(['error', 'info', 'none', 'subtle', 'success', 'warning']),
     )
   }
 
@@ -118,6 +118,9 @@ function getIsVariantValid(value) {
 }
 .typography--intent-info.typography--intent-is-background {
   @apply text-white;
+}
+.typography--intent-subtle:not(.typography--intent-is-background) {
+  @apply text-gray-500;
 }
 .typography--intent-success {
   @apply text-success;

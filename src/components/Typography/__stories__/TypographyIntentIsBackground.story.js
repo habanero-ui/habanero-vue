@@ -9,7 +9,7 @@ export default () => ({
     },
   },
   data: () => ({
-    intents: ['none', 'error', 'info', 'success', 'warning'],
+    intents: ['none', 'subtle', 'error', 'info', 'success', 'warning'],
   }),
   template: `
     <div class="items-start p-6">
@@ -24,7 +24,15 @@ export default () => ({
   `,
   methods: {
     getWrapperBGClass(intent) {
-      return intent === 'none' ? 'bg-black' : `bg-${intent}`
+      if (intent === 'none') {
+        return 'bg-black'
+      }
+
+      if (intent === 'subtle') {
+        return 'bg-gray-500'
+      }
+
+      return `bg-${intent}`
     },
   },
 })

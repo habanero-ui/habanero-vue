@@ -9,7 +9,7 @@ export default () => ({
     },
   },
   data: () => ({
-    intents: ['none', 'error', 'info', 'success', 'warning'],
+    intents: ['none', 'subtle', 'error', 'info', 'success', 'warning'],
   }),
   template: `
     <div class="p-6">

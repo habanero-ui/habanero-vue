@@ -7,7 +7,11 @@ export default () => ({
   }),
   template: `
     <div>
-      <ListItem v-for="item in items" :key="item" :primaryText="item" />
+      <ListItem
+        v-for="item in items"
+        :key="item"
+        :primaryText="item"
+      />
     </div>
   `,
 })

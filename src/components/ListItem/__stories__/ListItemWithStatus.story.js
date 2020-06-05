@@ -4,14 +4,23 @@ export default () => ({
   components: { ListItem },
   data: () => ({
     items: [
-      { primaryText: 'Alpha', status: 'error' },
-      { primaryText: 'Bravo', status: 'success' },
-      { primaryText: 'Charlie', status: 'warning' },
+      { primaryText: 'Subtle' },
+      { primaryText: 'Error', status: 'error' },
+      { primaryText: 'Info', status: 'info' },
+      { primaryText: 'Success', status: 'success' },
+      { primaryText: 'Warning', status: 'warning' },
     ],
   }),
   template: `
     <div>
-      <ListItem v-for="item in items" :key="item.primaryText" :primaryText="item.primaryText" secondaryText="Description" :primaryStatusText="item.status" :primaryStatusTextIntent="item.status" />
+      <ListItem
+        v-for="item in items"
+        :key="item.primaryText"
+        primaryStatusText="Status"
+        :primaryStatusTextIntent="item.status"
+        :primaryText="item.primaryText"
+        secondaryText="Description"
+      />
     </div>
   `,
 })

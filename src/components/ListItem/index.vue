@@ -15,14 +15,16 @@
       <Typography
         v-if="tertiaryText"
         class="list-item__text__line--tertiary"
+        intent="subtle"
         variant="body-small"
       >
         {{ tertiaryText }}
       </Typography>
     </div>
-    <div class="ml-auto">
+    <div class="flex items-center ml-auto">
       <Typography
         v-if="primaryStatusText"
+        :class="isNavigation && 'mr-2'"
         :intent="primaryStatusTextIntent"
         variant="body-extra-small"
       >
@@ -56,6 +58,7 @@ export default {
       type: String,
     },
     primaryStatusTextIntent: {
+      default: 'subtle',
       type: String,
     },
     primaryText: {
@@ -125,6 +128,6 @@ export default {
   @apply mt-1;
 }
 .list-item__text__line--tertiary {
-  @apply text-gray-500 mt-1;
+  @apply mt-1;
 }
 </style>

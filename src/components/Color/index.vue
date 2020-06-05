@@ -129,22 +129,19 @@ export default {
 /**
   Color - Supportive ---------- 
  */
+.swatch--color-error {
+  @apply bg-error text-white;
+}
 .swatch--color-info {
   @apply bg-info text-white;
+}
+.swatch--color-subtle {
+  @apply bg-subtle text-white;
 }
 .swatch--color-success {
   @apply bg-success text-white;
 }
 .swatch--color-warning {
   @apply bg-warning text-black;
-}
-.swatch--color-error-300 {
-  @apply bg-error-300 text-white;
-}
-.swatch--color-error-200 {
-  @apply bg-error-200 text-white;
-}
-.swatch--color-error-100 {
-  @apply bg-error-100 text-white;
 }
 </style>

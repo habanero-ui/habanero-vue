@@ -24,13 +24,13 @@ export default () => ({
   template: `
     <div class="p-6">
       <div class="flex items-center mb-6">
-        <Icon v-for="icon in movements" :name="icon" class="mr-4" />
+        <Icon v-for="movement in movements" :key="movement" :name="movement" class="mr-4" />
       </div>
       <div class="flex items-center mb-6">
-        <Icon v-for="icon in objects" :name="icon" class="mr-4" />
+        <Icon v-for="object in objects" :key="object" :name="object" class="mr-4" />
       </div>
       <div class="flex items-center mb-6">
-        <Icon v-for="icon in persons" :name="icon" class="mr-4" />
+        <Icon v-for="person in persons" :key="person" :name="person" class="mr-4" />
       </div>
     </div>
   `,

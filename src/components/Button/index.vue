@@ -1,27 +1,48 @@
 <template>
   <button :class="classes" :type="type">
-    <Typography class="button__text" v-if="text" variant="button">
+    <Typography
+      v-if="text"
+      class="button__text"
+      :color="color"
+      :colorIsBackground="variant === 'primary'"
+      variant="button"
+    >
       {{ text }}
     </Typography>
+    <Icon
+      v-if="iconName"
+      class="button__icon"
+      :color="color"
+      :colorIsBackground="variant === 'primary'"
+      :name="iconName"
+      :size="size"
+    />
     <slot />
   </button>
 </template>
 
 <script>
 import includes from 'lodash/includes'
+import Icon from '../Icon/index'
 import Typography from '../Typography/index'
 
 export default {
+  components: {
+    Icon,
+    Typography,
+  },
   props: {
-    appearance: {
-      default: 'primary',
-      type: String,
-      validator: getIsAppearanceValid,
-    },
-    intent: {
+    color: {
       default: 'none',
       type: String,
-      validator: getIsIntentValid,
+      validator: getIsColorValid,
+    },
+    iconName: {
+      type: String,
+    },
+    iconSide: {
+      default: 'right',
+      validator: getIsIconSideValid,
     },
     size: {
       default: 'medium',
@@ -35,9 +56,11 @@ export default {
       default: 'button',
       type: String,
     },
-  },
-  components: {
-    Typography,
+    variant: {
+      default: 'primary',
+      type: String,
+      validator: getIsVariantValid,
+    },
   },
   computed: {
     classes() {
@@ -45,40 +68,41 @@ export default {
         'button',
         {
           'button--has-text': !!this.text,
+          'button--icon-left': this.iconSide === 'left',
         },
-        `button--appearance-${this.appearance}`,
-        `button--intent-${this.intent}`,
+        `button--color-${this.color}`,
         `button--size-${this.size}`,
+        `button--variant-${this.variant}`,
       ]
     },
   },
 }
 
-function getIsAppearanceValid(value) {
-  const isValid = includes(['primary', 'secondary', 'text'], value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Button: The "appearance" prop must be one of the following:',
-      String(['primary', 'secondary', 'text']),
-    )
-  }
-
-  return isValid
-}
-
-function getIsIntentValid(value) {
+function getIsColorValid(value) {
   const isValid = includes(
-    ['error', 'info', 'none', 'success', 'warning'],
+    ['error', 'info', 'none', 'subtle', 'success', 'warning'],
     value,
   )
 
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
-      'Button: The "intent" prop must be one of the following:',
-      String(['error', 'info', 'none', 'success', 'warning']),
+      'Button: The "color" prop must be one of the following:',
+      String(['error', 'info', 'none', 'subtle', 'success', 'warning']),
+    )
+  }
+
+  return isValid
+}
+
+function getIsIconSideValid(value) {
+  const isValid = includes(['left', 'right'], value)
+
+  if (!isValid) {
+    // eslint-disable-next-line no-console
+    console.error(
+      'Button: The "iconSide" prop must be one of the following:',
+      String(['left', 'right']),
     )
   }
 
@@ -93,6 +117,20 @@ function getIsSizeValid(value) {
     console.error(
       'Button: The "size" prop must be one of the following:',
       String(['small', 'medium']),
+    )
+  }
+
+  return isValid
+}
+
+function getIsVariantValid(value) {
+  const isValid = includes(['primary', 'secondary', 'text'], value)
+
+  if (!isValid) {
+    // eslint-disable-next-line no-console
+    console.error(
+      'Button: The "variant" prop must be one of the following:',
+      String(['primary', 'secondary', 'text']),
     )
   }
 
@@ -129,95 +167,98 @@ function getIsSizeValid(value) {
 .button:active:not([disabled])::after {
   opacity: 0.25;
 }
-.button--appearance-primary.button--intent-none {
-  @apply bg-black border-black text-white;
+.button--variant-primary.button--color-none {
+  @apply bg-black border-black;
 }
-.button--appearance-primary.button--intent-none:focus::before {
+.button--variant-primary.button--color-none:focus::before {
   @apply border-black;
 }
-.button--appearance-primary.button--intent-error {
-  @apply bg-error-100 border-error-100 text-white;
+.button--variant-primary.button--color-error {
+  @apply bg-error border-error;
 }
-.button--appearance-primary.button--intent-error:focus::before {
-  @apply border-error-100;
+.button--variant-primary.button--color-error:focus::before {
+  @apply border-error;
 }
-.button--appearance-primary.button--intent-info {
-  @apply bg-info border-info text-white;
+.button--variant-primary.button--color-info {
+  @apply bg-info border-info;
 }
-.button--appearance-primary.button--intent-info:focus::before {
+.button--variant-primary.button--color-info:focus::before {
   @apply border-info;
 }
-.button--appearance-primary.button--intent-success {
-  @apply bg-success border-success text-white;
+.button--variant-primary.button--color-subtle {
+  @apply bg-subtle border-subtle;
 }
-.button--appearance-primary.button--intent-success:focus::before {
+.button--variant-primary.button--color-subtle:focus::before {
+  @apply border-subtle;
+}
+.button--variant-primary.button--color-success {
+  @apply bg-success border-success;
+}
+.button--variant-primary.button--color-success:focus::before {
   @apply border-success;
 }
-.button--appearance-primary.button--intent-warning {
+.button--variant-primary.button--color-warning {
   @apply bg-warning border-warning;
 }
-.button--appearance-primary.button--intent-warning:focus::before {
+.button--variant-primary.button--color-warning:focus::before {
   @apply border-warning;
 }
 
 /**
-  Appearance - Secondary ---------- 
+  Variant - Secondary ---------- 
  */
-.button--appearance-secondary.button--intent-none {
+.button--variant-secondary.button--color-none {
   @apply border-black;
 }
-.button--appearance-secondary.button--intent-none:focus::before {
+.button--variant-secondary.button--color-none:focus::before {
   @apply border-black;
 }
-.button--appearance-secondary.button--intent-error {
-  @apply border-error-100 text-error-100;
+.button--variant-secondary.button--color-error {
+  @apply border-error;
 }
-.button--appearance-secondary.button--intent-error:focus::before {
-  @apply border-error-100;
+.button--variant-secondary.button--color-error:focus::before {
+  @apply border-error;
 }
-.button--appearance-secondary.button--intent-info {
-  @apply border-info text-info;
-}
-.button--appearance-secondary.button--intent-info:focus::before {
+.button--variant-secondary.button--color-info {
   @apply border-info;
 }
-.button--appearance-secondary.button--intent-success {
-  @apply border-success text-success;
+.button--variant-secondary.button--color-info:focus::before {
+  @apply border-info;
 }
-.button--appearance-secondary.button--intent-success:focus::before {
+.button--variant-secondary.button--color-subtle {
+  @apply border-subtle;
+}
+.button--variant-secondary.button--color-subtle:focus::before {
+  @apply border-subtle;
+}
+.button--variant-secondary.button--color-success {
   @apply border-success;
 }
-.button--appearance-secondary.button--intent-warning {
-  @apply border-warning text-warning;
+.button--variant-secondary.button--color-success:focus::before {
+  @apply border-success;
 }
-.button--appearance-secondary.button--intent-warning:focus::before {
+.button--variant-secondary.button--color-warning {
   @apply border-warning;
 }
-.button--appearance-text.button--intent-none:focus::before {
+.button--variant-secondary.button--color-warning:focus::before {
+  @apply border-warning;
+}
+.button--variant-text.button--color-none:focus::before {
   @apply border-black;
 }
-.button--appearance-text.button--intent-error {
-  @apply text-error-100;
+.button--variant-text.button--color-error:focus::before {
+  @apply border-error;
 }
-.button--appearance-text.button--intent-error:focus::before {
-  @apply border-error-100;
-}
-.button--appearance-text.button--intent-info {
-  @apply text-info;
-}
-.button--appearance-text.button--intent-info:focus::before {
+.button--variant-text.button--color-info:focus::before {
   @apply border-info;
 }
-.button--appearance-text.button--intent-success {
-  @apply text-success;
+.button--variant-text.button--color-subtle:focus::before {
+  @apply border-subtle;
 }
-.button--appearance-text.button--intent-success:focus::before {
+.button--variant-text.button--color-success:focus::before {
   @apply border-success;
 }
-.button--appearance-text.button--intent-warning {
-  @apply text-warning;
-}
-.button--appearance-text.button--intent-warning:focus::before {
+.button--variant-text.button--color-warning:focus::before {
   @apply border-warning;
 }
 .button--size-medium {
@@ -233,9 +274,24 @@ function getIsSizeValid(value) {
   @apply px-6;
   min-width: 8rem;
 }
-.button--appearance-text.button--size-medium.button--has-text,
-.button--appearance-text.button--size-small.button--has-text {
+.button--variant-text.button--size-medium.button--has-text,
+.button--variant-text.button--size-small.button--has-text {
   @apply px-4;
   min-width: 7.5rem;
+}
+.button__text + .button__icon {
+  @apply ml-4 -mr-2;
+}
+.button--variant-text > .button__text + .button__icon {
+  @apply ml-3 -mr-1;
+}
+.button--icon-left {
+  @apply flex-row-reverse;
+}
+.button--icon-left > .button__text + .button__icon {
+  @apply mr-4 -ml-2;
+}
+.button--icon-left.button--variant-text > .button__text + .button__icon {
+  @apply mr-3 -ml-1;
 }
 </style>

@@ -24,7 +24,7 @@
       <Typography v-if="primaryStatus" variant="body-extra-small">
         {{ primaryStatus }}
       </Typography>
-      <span class="-mr-2" v-if="isNavigation">{{ '>' }}</span>
+      <Icon v-if="isNavigation" class="-mr-2" name="chevron-right" />
     </div>
   </li>
 </template>

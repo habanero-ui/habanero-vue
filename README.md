@@ -1,5 +1,7 @@
 # rowel
 
+[![npm](https://img.shields.io/npm/v/rowel.svg?style=flat-square)](https://www.npmjs.com/package/rowel)
+
 ## Project setup
 ```
 npm install

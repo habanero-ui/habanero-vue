@@ -12,24 +12,24 @@ export default () => ({
         <Button class="mr-6" appearance="text" size="small" @click.native="action"><Icon name="bell" /></Button>
       </div>
       <div class="flex pb-6">
-        <Button class="mr-6" appearance="primary" intent="error" size="small" @click.native="action"><Icon name="bell" /></Button>
-        <Button class="mr-6" appearance="secondary" intent="error" size="small" @click.native="action"><Icon name="bell" /></Button>
-        <Button class="mr-6" appearance="text" intent="error" size="small" @click.native="action"><Icon name="bell" /></Button>
+        <Button class="mr-6" appearance="primary" color="error" size="small" @click.native="action"><Icon name="bell" /></Button>
+        <Button class="mr-6" appearance="secondary" color="error" size="small" @click.native="action"><Icon name="bell" /></Button>
+        <Button class="mr-6" appearance="text" color="error" size="small" @click.native="action"><Icon name="bell" /></Button>
       </div>
       <div class="flex pb-6">
-        <Button class="mr-6" appearance="primary" intent="info" size="small" @click.native="action"><Icon name="bell" /></Button>
-        <Button class="mr-6" appearance="secondary" intent="info" size="small" @click.native="action"><Icon name="bell" /></Button>
-        <Button class="mr-6" appearance="text" intent="info" size="small" @click.native="action"><Icon name="bell" /></Button>
+        <Button class="mr-6" appearance="primary" color="info" size="small" @click.native="action"><Icon name="bell" /></Button>
+        <Button class="mr-6" appearance="secondary" color="info" size="small" @click.native="action"><Icon name="bell" /></Button>
+        <Button class="mr-6" appearance="text" color="info" size="small" @click.native="action"><Icon name="bell" /></Button>
       </div>
       <div class="flex pb-6">
-        <Button class="mr-6" appearance="primary" intent="success" size="small" @click.native="action"><Icon name="bell" /></Button>
-        <Button class="mr-6" appearance="secondary" intent="success" size="small" @click.native="action"><Icon name="bell" /></Button>
-        <Button class="mr-6" appearance="text" intent="success" size="small" @click.native="action"><Icon name="bell" /></Button>
+        <Button class="mr-6" appearance="primary" color="success" size="small" @click.native="action"><Icon name="bell" /></Button>
+        <Button class="mr-6" appearance="secondary" color="success" size="small" @click.native="action"><Icon name="bell" /></Button>
+        <Button class="mr-6" appearance="text" color="success" size="small" @click.native="action"><Icon name="bell" /></Button>
       </div>
       <div class="flex pb-6">
-        <Button class="mr-6" appearance="primary" intent="warning" size="small" @click.native="action"><Icon name="bell" /></Button>
-        <Button class="mr-6" appearance="secondary" intent="warning" size="small" @click.native="action"><Icon name="bell" /></Button>
-        <Button class="mr-6" appearance="text" intent="warning" size="small" @click.native="action"><Icon name="bell" /></Button>
+        <Button class="mr-6" appearance="primary" color="warning" size="small" @click.native="action"><Icon name="bell" /></Button>
+        <Button class="mr-6" appearance="secondary" color="warning" size="small" @click.native="action"><Icon name="bell" /></Button>
+        <Button class="mr-6" appearance="text" color="warning" size="small" @click.native="action"><Icon name="bell" /></Button>
       </div>
     </div>
   `,

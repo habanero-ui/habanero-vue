@@ -1,7 +1,7 @@
 import Typography from '../index'
+export { default as Color } from './TypographyColor.story'
+export { default as ColorBackground } from './TypographyColorBackground.story'
 export { default as Default } from './TypographyDefault.story'
-export { default as Intent } from './TypographyIntent.story'
-export { default as IntentIsBackground } from './TypographyIntentIsBackground.story'
 
 export default {
   title: 'Typography',

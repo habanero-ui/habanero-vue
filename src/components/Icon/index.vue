@@ -7,11 +7,11 @@ import includes from 'lodash/includes'
 
 export default {
   props: {
-    intent: {
+    color: {
       default: 'none',
-      validator: getIsIntentValid,
+      validator: getIsColorValid,
     },
-    intentIsBackground: {
+    colorIsBackground: {
       default: false,
       type: Boolean,
     },
@@ -30,16 +30,16 @@ export default {
       return [
         'icon',
         {
-          'icon--intent-is-background': this.intentIsBackground,
+          'icon--color-is-background': this.colorIsBackground,
         },
-        `icon--intent-${this.intent}`,
+        `icon--color-${this.color}`,
         `icon--size-${this.size}`,
       ]
     },
   },
 }
 
-function getIsIntentValid(value) {
+function getIsColorValid(value) {
   const isValid = includes(
     ['error', 'info', 'none', 'subtle', 'success', 'warning'],
     value,
@@ -48,7 +48,7 @@ function getIsIntentValid(value) {
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
-      'Typography: The "intent" prop must be one of the following:',
+      'Icon: The "color" prop must be one of the following:',
       String(['error', 'info', 'none', 'subtle', 'success', 'warning']),
     )
   }
@@ -79,34 +79,34 @@ function getIsSizeValid(value) {
   height: 100%;
   width: 100%;
 }
-.icon--intent-none.icon--intent-is-background {
+.icon--color-none.icon--color-is-background {
   @apply text-white;
 }
-.icon--intent-error {
+.icon--color-error {
   @apply text-error;
 }
-.icon--intent-error.icon--intent-is-background {
+.icon--color-error.icon--color-is-background {
   @apply text-white;
 }
-.icon--intent-info {
+.icon--color-info {
   @apply text-info;
 }
-.icon--intent-info.icon--intent-is-background {
+.icon--color-info.icon--color-is-background {
   @apply text-white;
 }
-.icon--intent-subtle:not(.icon--intent-is-background) {
+.icon--color-subtle:not(.icon--color-is-background) {
   @apply text-subtle;
 }
-.icon--intent-success {
+.icon--color-success {
   @apply text-success;
 }
-.icon--intent-success.icon--intent-is-background {
+.icon--color-success.icon--color-is-background {
   @apply text-white;
 }
-.icon--intent-warning {
+.icon--color-warning {
   @apply text-warning;
 }
-.icon--intent-warning.icon--intent-is-background {
+.icon--color-warning.icon--color-is-background {
   @apply text-black;
 }
 .icon--size-large {

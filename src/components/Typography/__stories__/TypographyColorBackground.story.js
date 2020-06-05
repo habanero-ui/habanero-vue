@@ -9,22 +9,22 @@ export default () => ({
     },
   },
   data: () => ({
-    intents: ['none', 'subtle', 'error', 'info', 'success', 'warning'],
+    colors: ['none', 'subtle', 'error', 'info', 'success', 'warning'],
   }),
   template: `
     <div class="items-start p-6">
-      <div v-for="intent in intents" class="p-2 w-24" :class="getWrapperBGClass(intent)" :key="intent">
+      <div v-for="color in colors" class="p-2 w-24" :class="getWrapperBGClass(color)" :key="color">
         <Typography
-          :intent="intent"
-          :intentIsBackground="true">
-          {{ intent }}
+          :color="color"
+          :colorIsBackground="true">
+          {{ color }}
         </Typography>
       </div>
     </div>
   `,
   methods: {
-    getWrapperBGClass(intent) {
-      return intent === 'none' ? 'bg-black' : `bg-${intent}`
+    getWrapperBGClass(color) {
+      return color === 'none' ? 'bg-black' : `bg-${color}`
     },
   },
 })

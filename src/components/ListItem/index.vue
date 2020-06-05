@@ -15,7 +15,7 @@
       <Typography
         v-if="tertiaryText"
         class="list-item__text__line--tertiary"
-        intent="subtle"
+        color="subtle"
         variant="body-small"
       >
         {{ tertiaryText }}
@@ -25,7 +25,7 @@
       <Typography
         v-if="primaryStatusText"
         :class="isNavigation && 'mr-2'"
-        :intent="primaryStatusTextIntent"
+        :color="primaryStatusTextColor"
         variant="body-extra-small"
       >
         {{ primaryStatusText }}
@@ -57,7 +57,7 @@ export default {
     primaryStatusText: {
       type: String,
     },
-    primaryStatusTextIntent: {
+    primaryStatusTextColor: {
       default: 'subtle',
       type: String,
     },

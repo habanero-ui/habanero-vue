@@ -17,24 +17,24 @@ export default () => ({
         <Button disabled class="mr-6" appearance="text" :text="text" @click.native="action" />
       </div>
       <div class="flex pb-6">
-        <Button disabled class="mr-6" appearance="primary" intent="error" :text="text" @click.native="action" />
-        <Button disabled class="mr-6" appearance="secondary" intent="error" :text="text" @click.native="action" />
-        <Button disabled class="mr-6" appearance="text" intent="error" :text="text" @click.native="action" />
+        <Button disabled class="mr-6" appearance="primary" color="error" :text="text" @click.native="action" />
+        <Button disabled class="mr-6" appearance="secondary" color="error" :text="text" @click.native="action" />
+        <Button disabled class="mr-6" appearance="text" color="error" :text="text" @click.native="action" />
       </div>
       <div class="flex pb-6">
-        <Button disabled class="mr-6" appearance="primary" intent="info" :text="text" @click.native="action" />
-        <Button disabled class="mr-6" appearance="secondary" intent="info" :text="text" @click.native="action" />
-        <Button disabled class="mr-6" appearance="text" intent="info" :text="text" @click.native="action" />
+        <Button disabled class="mr-6" appearance="primary" color="info" :text="text" @click.native="action" />
+        <Button disabled class="mr-6" appearance="secondary" color="info" :text="text" @click.native="action" />
+        <Button disabled class="mr-6" appearance="text" color="info" :text="text" @click.native="action" />
       </div>
       <div class="flex pb-6">
-        <Button disabled class="mr-6" appearance="primary" intent="success" :text="text" @click.native="action" />
-        <Button disabled class="mr-6" appearance="secondary" intent="success" :text="text" @click.native="action" />
-        <Button disabled class="mr-6" appearance="text" intent="success" :text="text" @click.native="action" />
+        <Button disabled class="mr-6" appearance="primary" color="success" :text="text" @click.native="action" />
+        <Button disabled class="mr-6" appearance="secondary" color="success" :text="text" @click.native="action" />
+        <Button disabled class="mr-6" appearance="text" color="success" :text="text" @click.native="action" />
       </div>
       <div class="flex pb-6">
-        <Button disabled class="mr-6" appearance="primary" intent="warning" :text="text" @click.native="action" />
-        <Button disabled class="mr-6" appearance="secondary" intent="warning" :text="text" @click.native="action" />
-        <Button disabled class="mr-6" appearance="text" intent="warning" :text="text" @click.native="action" />
+        <Button disabled class="mr-6" appearance="primary" color="warning" :text="text" @click.native="action" />
+        <Button disabled class="mr-6" appearance="secondary" color="warning" :text="text" @click.native="action" />
+        <Button disabled class="mr-6" appearance="text" color="warning" :text="text" @click.native="action" />
       </div>
     </div>
   `,

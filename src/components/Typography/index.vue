@@ -11,11 +11,11 @@ export default {
       default: 'span',
       type: String,
     },
-    intent: {
+    color: {
       default: 'none',
-      validator: getIsIntentValid,
+      validator: getIsColorValid,
     },
-    intentIsBackground: {
+    colorIsBackground: {
       default: false,
       type: Boolean,
     },
@@ -29,16 +29,16 @@ export default {
       return [
         'typography',
         {
-          'typography--intent-is-background': this.intentIsBackground,
+          'typography--color-is-background': this.colorIsBackground,
         },
-        `typography--intent-${this.intent}`,
+        `typography--color-${this.color}`,
         `typography--variant-${this.variant}`,
       ]
     },
   },
 }
 
-function getIsIntentValid(value) {
+function getIsColorValid(value) {
   const isValid = includes(
     ['error', 'info', 'none', 'subtle', 'success', 'warning'],
     value,
@@ -47,7 +47,7 @@ function getIsIntentValid(value) {
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
-      'Typography: The "intent" prop must be one of the following:',
+      'Typography: The "color" prop must be one of the following:',
       String(['error', 'info', 'none', 'subtle', 'success', 'warning']),
     )
   }
@@ -104,37 +104,37 @@ function getIsVariantValid(value) {
   display: block;
   font-family: 'Inter var', sans-serif;
 }
-.typography--intent-none.typography--intent-is-background {
+.typography--color-none.typography--color-is-background {
   @apply text-white;
 }
-.typography--intent-error {
+.typography--color-error {
   @apply text-error;
 }
-.typography--intent-error.typography--intent-is-background {
+.typography--color-error.typography--color-is-background {
   @apply text-white;
 }
-.typography--intent-info {
+.typography--color-info {
   @apply text-info;
 }
-.typography--intent-info.typography--intent-is-background {
+.typography--color-info.typography--color-is-background {
   @apply text-white;
 }
-.typography--intent-subtle {
+.typography--color-subtle {
   @apply text-subtle;
 }
-.typography--intent-subtle.typography--intent-is-background {
+.typography--color-subtle.typography--color-is-background {
   @apply text-white;
 }
-.typography--intent-success {
+.typography--color-success {
   @apply text-success;
 }
-.typography--intent-success.typography--intent-is-background {
+.typography--color-success.typography--color-is-background {
   @apply text-white;
 }
-.typography--intent-warning {
+.typography--color-warning {
   @apply text-warning;
 }
-.typography--intent-warning.typography--intent-is-background {
+.typography--color-warning.typography--color-is-background {
   @apply text-black;
 }
 .typography--variant-body-extra-small {

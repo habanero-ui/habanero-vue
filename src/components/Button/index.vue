@@ -3,8 +3,8 @@
     <Typography
       v-if="text"
       class="button__text"
-      :intent="intent"
-      :intentIsBackground="appearance === 'primary'"
+      :color="color"
+      :colorIsBackground="appearance === 'primary'"
       variant="button"
     >
       {{ text }}
@@ -24,10 +24,10 @@ export default {
       type: String,
       validator: getIsAppearanceValid,
     },
-    intent: {
+    color: {
       default: 'none',
       type: String,
-      validator: getIsIntentValid,
+      validator: getIsColorValid,
     },
     size: {
       default: 'medium',
@@ -53,7 +53,7 @@ export default {
           'button--has-text': !!this.text,
         },
         `button--appearance-${this.appearance}`,
-        `button--intent-${this.intent}`,
+        `button--color-${this.color}`,
         `button--size-${this.size}`,
       ]
     },
@@ -74,7 +74,7 @@ function getIsAppearanceValid(value) {
   return isValid
 }
 
-function getIsIntentValid(value) {
+function getIsColorValid(value) {
   const isValid = includes(
     ['error', 'info', 'none', 'subtle', 'success', 'warning'],
     value,
@@ -83,7 +83,7 @@ function getIsIntentValid(value) {
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
-      'Button: The "intent" prop must be one of the following:',
+      'Button: The "color" prop must be one of the following:',
       String(['error', 'info', 'none', 'subtle', 'success', 'warning']),
     )
   }
@@ -135,98 +135,98 @@ function getIsSizeValid(value) {
 .button:active:not([disabled])::after {
   opacity: 0.25;
 }
-.button--appearance-primary.button--intent-none {
+.button--appearance-primary.button--color-none {
   @apply bg-black border-black;
 }
-.button--appearance-primary.button--intent-none:focus::before {
+.button--appearance-primary.button--color-none:focus::before {
   @apply border-black;
 }
-.button--appearance-primary.button--intent-error {
+.button--appearance-primary.button--color-error {
   @apply bg-error border-error;
 }
-.button--appearance-primary.button--intent-error:focus::before {
+.button--appearance-primary.button--color-error:focus::before {
   @apply border-error;
 }
-.button--appearance-primary.button--intent-info {
+.button--appearance-primary.button--color-info {
   @apply bg-info border-info;
 }
-.button--appearance-primary.button--intent-info:focus::before {
+.button--appearance-primary.button--color-info:focus::before {
   @apply border-info;
 }
-.button--appearance-primary.button--intent-subtle {
+.button--appearance-primary.button--color-subtle {
   @apply bg-subtle border-subtle;
 }
-.button--appearance-primary.button--intent-subtle:focus::before {
+.button--appearance-primary.button--color-subtle:focus::before {
   @apply border-subtle;
 }
-.button--appearance-primary.button--intent-success {
+.button--appearance-primary.button--color-success {
   @apply bg-success border-success;
 }
-.button--appearance-primary.button--intent-success:focus::before {
+.button--appearance-primary.button--color-success:focus::before {
   @apply border-success;
 }
-.button--appearance-primary.button--intent-warning {
+.button--appearance-primary.button--color-warning {
   @apply bg-warning border-warning;
 }
-.button--appearance-primary.button--intent-warning:focus::before {
+.button--appearance-primary.button--color-warning:focus::before {
   @apply border-warning;
 }
 
 /**
   Appearance - Secondary ---------- 
  */
-.button--appearance-secondary.button--intent-none {
+.button--appearance-secondary.button--color-none {
   @apply border-black;
 }
-.button--appearance-secondary.button--intent-none:focus::before {
+.button--appearance-secondary.button--color-none:focus::before {
   @apply border-black;
 }
-.button--appearance-secondary.button--intent-error {
+.button--appearance-secondary.button--color-error {
   @apply border-error;
 }
-.button--appearance-secondary.button--intent-error:focus::before {
+.button--appearance-secondary.button--color-error:focus::before {
   @apply border-error;
 }
-.button--appearance-secondary.button--intent-info {
+.button--appearance-secondary.button--color-info {
   @apply border-info;
 }
-.button--appearance-secondary.button--intent-info:focus::before {
+.button--appearance-secondary.button--color-info:focus::before {
   @apply border-info;
 }
-.button--appearance-secondary.button--intent-subtle {
+.button--appearance-secondary.button--color-subtle {
   @apply border-subtle;
 }
-.button--appearance-secondary.button--intent-subtle:focus::before {
+.button--appearance-secondary.button--color-subtle:focus::before {
   @apply border-subtle;
 }
-.button--appearance-secondary.button--intent-success {
+.button--appearance-secondary.button--color-success {
   @apply border-success;
 }
-.button--appearance-secondary.button--intent-success:focus::before {
+.button--appearance-secondary.button--color-success:focus::before {
   @apply border-success;
 }
-.button--appearance-secondary.button--intent-warning {
+.button--appearance-secondary.button--color-warning {
   @apply border-warning;
 }
-.button--appearance-secondary.button--intent-warning:focus::before {
+.button--appearance-secondary.button--color-warning:focus::before {
   @apply border-warning;
 }
-.button--appearance-text.button--intent-none:focus::before {
+.button--appearance-text.button--color-none:focus::before {
   @apply border-black;
 }
-.button--appearance-text.button--intent-error:focus::before {
+.button--appearance-text.button--color-error:focus::before {
   @apply border-error;
 }
-.button--appearance-text.button--intent-info:focus::before {
+.button--appearance-text.button--color-info:focus::before {
   @apply border-info;
 }
-.button--appearance-text.button--intent-subtle:focus::before {
+.button--appearance-text.button--color-subtle:focus::before {
   @apply border-subtle;
 }
-.button--appearance-text.button--intent-success:focus::before {
+.button--appearance-text.button--color-success:focus::before {
   @apply border-success;
 }
-.button--appearance-text.button--intent-warning:focus::before {
+.button--appearance-text.button--color-warning:focus::before {
   @apply border-warning;
 }
 .button--size-medium {

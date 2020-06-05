@@ -17,7 +17,7 @@ export default () => ({
         v-for="item in items"
         :key="item.primaryText"
         primaryStatusText="Status"
-        :primaryStatusTextIntent="item.status"
+        :primaryStatusTextColor="item.status"
         :primaryText="item.primaryText"
         secondaryText="Description"
       />

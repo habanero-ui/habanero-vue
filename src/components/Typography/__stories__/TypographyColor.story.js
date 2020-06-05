@@ -9,15 +9,15 @@ export default () => ({
     },
   },
   data: () => ({
-    intents: ['none', 'subtle', 'error', 'info', 'success', 'warning'],
+    colors: ['none', 'subtle', 'error', 'info', 'success', 'warning'],
   }),
   template: `
     <div class="p-6">
       <Typography
-        v-for="intent in intents"
-        :intent="intent"
-        :key="intent">
-        {{ intent }}
+        v-for="color in colors"
+        :color="color"
+        :key="color">
+        {{ color }}
       </Typography>
     </div>
   `,

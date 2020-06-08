@@ -102,7 +102,7 @@ function getIsVariantValid(value) {
 <style scoped>
 .typography {
   display: block;
-  font-family: 'Inter var', sans-serif;
+  font-family: inter, sans-serif;
 }
 .typography--color-none.typography--color-is-background {
   @apply text-white;

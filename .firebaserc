@@ -1,12 +1,12 @@
 {
   "projects": {
-    "default": "rowel-ui"
+    "default": "spur-habanero"
   },
   "targets": {
-    "rowel-ui": {
+    "spur-habanero": {
       "hosting": {
         "production": [
-          "rowel-ui"
+          "spur-habanero"
         ]
       }
     }

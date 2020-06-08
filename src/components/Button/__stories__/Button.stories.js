@@ -1,12 +1,12 @@
 import Button from '../index'
+export { default as ColorsAndVariants } from './ButtonColorsAndVariants.story'
 export { default as Default } from './ButtonDefault.story'
 export { default as Disabled } from './ButtonDisabled.story'
+export { default as Icon } from './ButtonIcon.story'
+export { default as IconAndText } from './ButtonIconAndText.story'
+export { default as IconSide } from './ButtonIconSide.story'
 export { default as IconSize } from './ButtonIconSize.story'
-export { default as Small } from './ButtonSmall.story'
-export { default as WithIcon } from './ButtonWithIcon.story'
-export { default as WithIconSmall } from './ButtonWithIconSmall.story'
-export { default as WithTextAndIcon } from './ButtonWithTextAndIcon.story'
-export { default as WithTextAndIconOnLeft } from './ButtonWithTextAndIconOnLeft.story'
+export { default as Size } from './ButtonSize.story'
 
 export default {
   title: 'Button',

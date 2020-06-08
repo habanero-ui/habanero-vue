@@ -1,4 +1,4 @@
-# rowel
+# Habanero for Vue
 
 Spur's Design System and Component Library
 

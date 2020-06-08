@@ -7,4 +7,5 @@ Spur's Design System and Component Library
 # Roadmap
 
 - [ ] Update README with useful info + branding
+- [ ] Add more to .npmignore to reduce installed size
 - [ ] Fill out Roadmap

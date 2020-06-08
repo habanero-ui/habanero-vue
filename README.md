@@ -8,4 +8,5 @@ Spur's Design System and Component Library
 
 - [ ] Update README with useful info + branding
 - [ ] Add more to .npmignore to reduce installed size
+- [ ] Stack component (https://seek-oss.github.io/braid-design-system/components/Stack/)
 - [ ] Fill out Roadmap

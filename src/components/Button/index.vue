@@ -15,7 +15,7 @@
       :color="color"
       :colorIsBackground="variant === 'primary'"
       :name="iconName"
-      :size="size"
+      :size="iconSize || size"
     />
     <slot />
   </button>
@@ -43,6 +43,9 @@ export default {
     iconSide: {
       default: 'right',
       validator: getIsIconSideValid,
+    },
+    iconSize: {
+      type: String,
     },
     size: {
       default: 'medium',

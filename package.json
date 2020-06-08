@@ -1,9 +1,9 @@
 {
-  "name": "rowel",
+  "name": "habanero-vue",
   "version": "0.0.0",
-  "main": "./dist/rowel.common.js",
+  "main": "./dist/habanero-vue.common.js",
   "scripts": {
-    "build": "vue-cli-service build --target lib --name rowel ./src/index.js",
+    "build": "vue-cli-service build --target lib --name habanero-vue ./src/index.js",
     "build-storybook": "build-storybook",
     "clean": "rimraf dist",
     "prebuild": "npm run clean",

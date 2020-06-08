@@ -5,7 +5,17 @@ export default () => ({
     Icon,
   },
   data: () => ({
-    movements: ['chevron-up', 'chevron-down', 'chevron-left', 'chevron-right'],
+    movements: [
+      'chevron-up',
+      'chevron-down',
+      'chevron-left',
+      'chevron-right',
+      'sort',
+      'sort-ascending',
+      'sort-descending',
+      'plus',
+      'minus',
+    ],
     objects: [
       'apartment',
       'award',

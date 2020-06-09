@@ -84,7 +84,6 @@ export default {
         `button--color-${this.color}`,
         `button--size-${this.size}`,
         `button--variant-${this.variant}`,
-        this.isLoading ? 'button--loading' : '',
       ]
     },
   },

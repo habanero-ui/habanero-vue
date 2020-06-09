@@ -36,28 +36,25 @@
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
     "eslint-plugin-vue": "^5.2.3",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.9",
     "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
     "tailwindcss": "^1.2.0",
     "vue-template-compiler": "^2.5.22",
     "webpack-merge": "^4.2.2"
   },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
-  },
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,vue}": "eslint --cache --fix",
+    "*.{css,js,vue}": "prettier --write"
+  }
 }

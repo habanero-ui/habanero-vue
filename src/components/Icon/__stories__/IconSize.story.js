@@ -4,11 +4,14 @@ export default () => ({
   components: {
     Icon,
   },
+  data: () => ({
+    sizes: ['small', 'medium', 'large'],
+  }),
   template: `
-    <div class="flex items-center p-6">
-      <Icon class="mr-4" name="badge" size="small" />
-      <Icon class="mr-4" name="badge" />
-      <Icon class="mr-4" name="badge" size="large" />
+    <div class="p-6">
+      <div v-for="size in sizes" class="pb-4" :key="size">
+        <Icon name="badge" :size="size" />
+      </div>
     </div>
   `,
 })

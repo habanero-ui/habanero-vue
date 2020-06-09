@@ -1,15 +1,10 @@
-import { text } from '@storybook/addon-knobs'
+import colors from '../../../constants/colors'
 import Typography from '../index'
 
 export default () => ({
   components: { Typography },
-  props: {
-    text: {
-      default: text('Text', 'Some Text'),
-    },
-  },
   data: () => ({
-    colors: ['none', 'error', 'info', 'subtle', 'success', 'warning'],
+    colors,
   }),
   template: `
     <div class="items-start p-6">

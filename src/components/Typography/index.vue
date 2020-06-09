@@ -6,6 +6,7 @@
 
 <script>
 import includes from 'lodash/includes'
+import colors from '../../constants/colors'
 
 export default {
   props: {
@@ -41,16 +42,13 @@ export default {
 }
 
 function getIsColorValid(value) {
-  const isValid = includes(
-    ['error', 'info', 'none', 'subtle', 'success', 'warning'],
-    value,
-  )
+  const isValid = includes(colors, value)
 
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
       'Typography: The "color" prop must be one of the following:',
-      String(['error', 'info', 'none', 'subtle', 'success', 'warning']),
+      String(colors),
     )
   }
 
@@ -108,6 +106,42 @@ function getIsVariantValid(value) {
 }
 .typography--color-none.typography--color-is-background {
   @apply text-white;
+}
+.typography--color-gold {
+  @apply text-gold;
+}
+.typography--color-gold.typography--color-is-background {
+  @apply text-white;
+}
+.typography--color-blue {
+  @apply text-blue;
+}
+.typography--color-blue.typography--color-is-background {
+  @apply text-black;
+}
+.typography--color-green {
+  @apply text-green;
+}
+.typography--color-green.typography--color-is-background {
+  @apply text-black;
+}
+.typography--color-orange {
+  @apply text-orange;
+}
+.typography--color-orange.typography--color-is-background {
+  @apply text-black;
+}
+.typography--color-pink {
+  @apply text-pink;
+}
+.typography--color-pink.typography--color-is-background {
+  @apply text-black;
+}
+.typography--color-purple {
+  @apply text-purple;
+}
+.typography--color-purple.typography--color-is-background {
+  @apply text-black;
 }
 .typography--color-error {
   @apply text-error;

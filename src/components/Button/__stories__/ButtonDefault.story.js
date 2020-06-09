@@ -1,5 +1,6 @@
 import { action } from '@storybook/addon-actions'
 import { boolean, select, text } from '@storybook/addon-knobs'
+import colors from '../../../constants/colors'
 import iconList from '../../Icon/__stories__/iconList'
 import Button from '../index'
 
@@ -7,11 +8,7 @@ export default () => ({
   components: { Button },
   props: {
     color: {
-      default: select(
-        'color',
-        ['none', 'error', 'info', 'subtle', 'success', 'warning'],
-        'none',
-      ),
+      default: select('color', colors, 'none'),
     },
     disabled: {
       default: boolean('disabled', false),

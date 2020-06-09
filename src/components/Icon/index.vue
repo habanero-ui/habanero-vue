@@ -4,6 +4,7 @@
 
 <script>
 import includes from 'lodash/includes'
+import colors from '../../constants/colors'
 
 export default {
   props: {
@@ -40,16 +41,13 @@ export default {
 }
 
 function getIsColorValid(value) {
-  const isValid = includes(
-    ['error', 'info', 'none', 'subtle', 'success', 'warning'],
-    value,
-  )
+  const isValid = includes(colors, value)
 
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
       'Icon: The "color" prop must be one of the following:',
-      String(['error', 'info', 'none', 'subtle', 'success', 'warning']),
+      String(colors),
     )
   }
 
@@ -82,17 +80,53 @@ function getIsSizeValid(value) {
 .icon--color-none.icon--color-is-background {
   @apply text-white;
 }
+.icon--color-blue {
+  @apply text-blue;
+}
+.icon--color-blue.icon--color-is-background {
+  @apply text-black;
+}
 .icon--color-error {
   @apply text-error;
 }
 .icon--color-error.icon--color-is-background {
   @apply text-white;
 }
+.icon--color-gold {
+  @apply text-gold;
+}
+.icon--color-gold.icon--color-is-background {
+  @apply text-white;
+}
+.icon--color-green {
+  @apply text-green;
+}
+.icon--color-green.icon--color-is-background {
+  @apply text-black;
+}
 .icon--color-info {
   @apply text-info;
 }
 .icon--color-info.icon--color-is-background {
   @apply text-white;
+}
+.icon--color-orange {
+  @apply text-orange;
+}
+.icon--color-orange.icon--color-is-background {
+  @apply text-black;
+}
+.icon--color-pink {
+  @apply text-pink;
+}
+.icon--color-pink.icon--color-is-background {
+  @apply text-black;
+}
+.icon--color-purple {
+  @apply text-purple;
+}
+.icon--color-purple.icon--color-is-background {
+  @apply text-black;
 }
 .icon--color-subtle {
   @apply text-subtle;

@@ -6,6 +6,7 @@ export { default as Icon } from './ButtonIcon.story'
 export { default as IconAndText } from './ButtonIconAndText.story'
 export { default as IconSide } from './ButtonIconSide.story'
 export { default as IconSize } from './ButtonIconSize.story'
+export { default as Loading } from './ButtonLoading.story'
 export { default as Size } from './ButtonSize.story'
 
 export default {

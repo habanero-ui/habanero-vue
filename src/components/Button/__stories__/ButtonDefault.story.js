@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions'
 import { boolean, select, text } from '@storybook/addon-knobs'
 import colors from '../../../constants/colors'
-import iconList from '../../Icon/__stories__/iconList'
+import icons from '../../../constants/icons'
 import Button from '../index'
 
 export default () => ({
@@ -14,7 +14,7 @@ export default () => ({
       default: boolean('disabled', false),
     },
     iconName: {
-      default: select('iconName', [undefined, ...iconList]),
+      default: select('iconName', [undefined, ...icons]),
     },
     iconSide: {
       default: select('iconSide', ['left', 'right'], 'right'),
@@ -30,6 +30,9 @@ export default () => ({
         },
         '',
       ),
+    },
+    isLoading: {
+      default: boolean('isLoading', false),
     },
     size: {
       default: select('size', ['small', 'medium'], 'medium'),
@@ -50,6 +53,7 @@ export default () => ({
         :iconName="iconName"
         :iconSide="iconSide"
         :iconSize="iconSize"
+        :isLoading="isLoading"
         :size="size"
         :text="text"
         :variant="variant"

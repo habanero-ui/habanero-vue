@@ -1,9 +1,14 @@
 import { action } from '@storybook/addon-actions'
-import Icon from '../../Icon'
+import { text } from '@storybook/addon-knobs'
 import Button from '../index'
 
 export default () => ({
-  components: { Button, Icon },
+  components: { Button },
+  props: {
+    text: {
+      default: text('Text', 'Text'),
+    },
+  },
   data: () => ({
     colors: ['none', 'error', 'info', 'subtle', 'success', 'warning'],
     variants: ['primary', 'secondary', 'text'],
@@ -12,14 +17,14 @@ export default () => ({
     <div class="p-6">
       <div
         v-for="color in colors"
-        class="flex pb-6"
+        class="flex pb-4"
         :key="color">
         <Button
           v-for="variant in variants"
-          class="mr-6"
+          class="mr-4"
           :color="color"
-          iconName="bell"
           :key="variant"
+          :text="text"
           :variant="variant"
           @click.native="action"
         />

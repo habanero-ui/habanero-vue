@@ -1,9 +1,10 @@
+import colors from '../../../constants/colors'
 import Icon from '../index'
 
 export default () => ({
   components: { Icon },
   data: () => ({
-    colors: ['none', 'error', 'info', 'subtle', 'success', 'warning'],
+    colors,
   }),
   template: `
     <div class="items-start p-6">

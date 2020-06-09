@@ -6,17 +6,12 @@ export default () => ({
   components: { Button },
   props: {
     isLoading: {
-      default: boolean('Loading', true),
+      default: boolean('isLoading', true),
     },
   },
   template: `
     <div class="p-6">
-      <Button
-        :isLoading="isLoading"
-        class="mr-6"
-        text="Text"
-        @click.native="action"
-      />
+      <Button :isLoading="isLoading" text="Text" @click.native="action" />
     </div>
   `,
   methods: {

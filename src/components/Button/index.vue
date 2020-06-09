@@ -24,7 +24,7 @@
 
 <script>
 import includes from 'lodash/includes'
-
+import colors from '../../constants/colors'
 import Icon from '../Icon/index'
 import LoadingIndicator from '../LoadingIndicator/index'
 import Typography from '../Typography/index'
@@ -93,16 +93,13 @@ export default {
 }
 
 function getIsColorValid(value) {
-  const isValid = includes(
-    ['error', 'info', 'none', 'subtle', 'success', 'warning', 'gold'],
-    value,
-  )
+  const isValid = includes(colors, value)
 
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
       'Button: The "color" prop must be one of the following:',
-      String(['error', 'info', 'none', 'subtle', 'success', 'warning', 'gold']),
+      String(colors),
     )
   }
 

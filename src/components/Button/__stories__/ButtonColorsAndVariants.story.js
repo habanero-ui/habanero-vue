@@ -1,5 +1,6 @@
 import { action } from '@storybook/addon-actions'
 import { text } from '@storybook/addon-knobs'
+import colors from '../../../constants/colors'
 import Button from '../index'
 
 export default () => ({
@@ -10,21 +11,8 @@ export default () => ({
     },
   },
   data: () => ({
-    colors: [
-      'none',
-      'gold',
-      'error',
-      'info',
-      'subtle',
-      'success',
-      'warning',
-      'blue',
-      'green',
-      'orange',
-      'pink',
-      'purple',
-    ],
     variants: ['primary', 'secondary', 'text'],
+    colors,
   }),
   template: `
     <div class="p-6">

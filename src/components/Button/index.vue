@@ -1,7 +1,7 @@
 <template>
-  <button :class="classes" :type="type">
+  <button :class="classes" :disabled="isLoading" :type="type">
     <Typography
-      v-if="text"
+      v-if="text && !isLoading"
       class="button__text"
       :color="color"
       :colorIsBackground="variant === 'primary'"
@@ -10,7 +10,7 @@
       {{ text }}
     </Typography>
     <Icon
-      v-if="iconName"
+      v-if="iconName && !isLoading"
       class="button__icon"
       :color="color"
       :colorIsBackground="variant === 'primary'"
@@ -18,17 +18,21 @@
       :size="iconSize || size"
     />
     <slot />
+    <LoadingIndicator v-if="isLoading" />
   </button>
 </template>
 
 <script>
 import includes from 'lodash/includes'
+
 import Icon from '../Icon/index'
+import LoadingIndicator from '../LoadingIndicator/index'
 import Typography from '../Typography/index'
 
 export default {
   components: {
     Icon,
+    LoadingIndicator,
     Typography,
   },
   props: {
@@ -46,6 +50,10 @@ export default {
     },
     iconSize: {
       type: String,
+    },
+    isLoading: {
+      default: false,
+      type: Boolean,
     },
     size: {
       default: 'medium',
@@ -76,6 +84,7 @@ export default {
         `button--color-${this.color}`,
         `button--size-${this.size}`,
         `button--variant-${this.variant}`,
+        this.isLoading ? 'button--loading' : '',
       ]
     },
   },
@@ -83,7 +92,7 @@ export default {
 
 function getIsColorValid(value) {
   const isValid = includes(
-    ['error', 'info', 'none', 'subtle', 'success', 'warning'],
+    ['error', 'info', 'none', 'subtle', 'success', 'warning', 'gold'],
     value,
   )
 
@@ -91,7 +100,7 @@ function getIsColorValid(value) {
     // eslint-disable-next-line no-console
     console.error(
       'Button: The "color" prop must be one of the following:',
-      String(['error', 'info', 'none', 'subtle', 'success', 'warning']),
+      String(['error', 'info', 'none', 'subtle', 'success', 'warning', 'gold']),
     )
   }
 
@@ -176,6 +185,12 @@ function getIsVariantValid(value) {
 .button--variant-primary.button--color-none:focus::before {
   @apply border-black;
 }
+.button--variant-primary.button--color-gold {
+  @apply bg-gold border-gold;
+}
+.button--variant-primary.button--color-gold:focus::before {
+  @apply border-gold;
+}
 .button--variant-primary.button--color-error {
   @apply bg-error border-error;
 }
@@ -216,6 +231,12 @@ function getIsVariantValid(value) {
 .button--variant-secondary.button--color-none:focus::before {
   @apply border-black;
 }
+.button--variant-secondary.button--color-gold {
+  @apply border-gold;
+}
+.button--variant-secondary.button--color-gold:focus::before {
+  @apply border-gold;
+}
 .button--variant-secondary.button--color-error {
   @apply border-error;
 }
@@ -246,8 +267,15 @@ function getIsVariantValid(value) {
 .button--variant-secondary.button--color-warning:focus::before {
   @apply border-warning;
 }
+
+/**
+  Variant - Text ---------- 
+ */
 .button--variant-text.button--color-none:focus::before {
   @apply border-black;
+}
+.button--variant-text.button--color-gold:focus::before {
+  @apply border-gold;
 }
 .button--variant-text.button--color-error:focus::before {
   @apply border-error;
@@ -264,6 +292,15 @@ function getIsVariantValid(value) {
 .button--variant-text.button--color-warning:focus::before {
   @apply border-warning;
 }
+.button--variant-text.button--size-medium.button--has-text,
+.button--variant-text.button--size-small.button--has-text {
+  @apply px-4;
+  min-width: 7.5rem;
+}
+
+/**
+  Size ---------------------- 
+ */
 .button--size-medium {
   height: 2.75rem;
   min-width: 2.75rem;
@@ -277,11 +314,10 @@ function getIsVariantValid(value) {
   @apply px-6;
   min-width: 8rem;
 }
-.button--variant-text.button--size-medium.button--has-text,
-.button--variant-text.button--size-small.button--has-text {
-  @apply px-4;
-  min-width: 7.5rem;
-}
+
+/**
+  Icon ---------------------- 
+ */
 .button__text + .button__icon {
   @apply ml-4 -mr-2;
 }

@@ -40,7 +40,7 @@ export default {
 
 function getIsColorValid(value) {
   const isValid = includes(
-    ['error', 'info', 'none', 'subtle', 'success', 'warning'],
+    ['error', 'info', 'none', 'subtle', 'success', 'warning', 'gold'],
     value,
   )
 
@@ -48,7 +48,7 @@ function getIsColorValid(value) {
     // eslint-disable-next-line no-console
     console.error(
       'Typography: The "color" prop must be one of the following:',
-      String(['error', 'info', 'none', 'subtle', 'success', 'warning']),
+      String(['error', 'info', 'none', 'subtle', 'success', 'warning', 'gold']),
     )
   }
 
@@ -105,6 +105,12 @@ function getIsVariantValid(value) {
   font-family: inter, sans-serif;
 }
 .typography--color-none.typography--color-is-background {
+  @apply text-white;
+}
+.typography--color-gold {
+  @apply text-gold;
+}
+.typography--color-gold.typography--color-is-background {
   @apply text-white;
 }
 .typography--color-error {

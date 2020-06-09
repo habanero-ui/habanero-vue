@@ -10,7 +10,7 @@ export default () => ({
     },
   },
   data: () => ({
-    colors: ['none', 'error', 'info', 'subtle', 'success', 'warning'],
+    colors: ['none', 'gold', 'error', 'info', 'subtle', 'success', 'warning'],
     variants: ['primary', 'secondary', 'text'],
   }),
   template: `

@@ -1,13 +1,23 @@
 module.exports = {
   root: true,
-  extends: ['standard', 'eslint:recommended', 'plugin:vue/essential'],
+  extends: [
+    'plugin:prettier/recommended',
+    'standard',
+    'eslint:recommended',
+    'plugin:vue/recommended',
+    'prettier',
+    'prettier/vue',
+  ],
   parserOptions: {
     parser: 'babel-eslint',
   },
-  plugins: ['vue'],
+  plugins: ['prettier', 'vue'],
   env: {
     browser: true,
     node: true,
   },
-  rules: {},
+  rules: {
+    'vue/attribute-hyphenation': ['error', 'never'],
+    'vue/no-v-html': 0,
+  },
 }

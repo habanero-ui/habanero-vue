@@ -1,5 +1,5 @@
 <template>
-  <div v-html="require(`!./../../icons/${name}.js`)" :class="classes"></div>
+  <div :class="classes" v-html="require(`!./../../icons/${name}.js`)" />
 </template>
 
 <script>

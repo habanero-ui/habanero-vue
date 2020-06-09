@@ -1,5 +1,7 @@
 <template>
-  <component :class="classes" :is="component"><slot /></component>
+  <component :is="component" :class="classes">
+    <slot />
+  </component>
 </template>
 
 <script>

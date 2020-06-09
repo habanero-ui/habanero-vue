@@ -7,7 +7,7 @@
     <div :class="classes">
       <div>{{ name.replace('-', ' ') }}</div>
       <div>{{ copied ? 'Copied to clipboard!' : hex }}</div>
-      <input type="hidden" ref="hex" :value="hex" />
+      <input ref="hex" type="hidden" :value="hex" />
     </div>
   </Typography>
 </template>
@@ -18,13 +18,14 @@ import Typography from '../Typography/index'
 const tailwindConfig = require('../../../tailwind.config.js')
 
 export default {
-  props: {
-    name: {
-      type: String,
-    },
-  },
   components: {
     Typography,
+  },
+  props: {
+    name: {
+      default: undefined,
+      type: String,
+    },
   },
   data: () => ({
     copied: false,

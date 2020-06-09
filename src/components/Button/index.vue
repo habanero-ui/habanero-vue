@@ -20,7 +20,7 @@
       :size="iconSize || size"
     />
     <slot />
-    <LoadingIndicator
+    <Spinner
       v-if="isLoading"
       :color="color"
       :colorIsBackground="variant === 'primary'"
@@ -33,13 +33,13 @@
 import includes from 'lodash/includes'
 import colors from '../../constants/colors'
 import Icon from '../Icon/index'
-import LoadingIndicator from '../LoadingIndicator/index'
+import Spinner from '../Spinner/index'
 import Typography from '../Typography/index'
 
 export default {
   components: {
     Icon,
-    LoadingIndicator,
+    Spinner,
     Typography,
   },
   props: {

@@ -1,21 +1,21 @@
 import colors from '../../../constants/colors'
-import LoadingIndicator from '../index'
+import Spinner from '../index'
 
 export default () => ({
-  components: { LoadingIndicator },
+  components: { Spinner },
   data: () => ({
     colors,
   }),
   template: `
     <div class="flex flex-col items-start p-6">
       <div v-for="color in colors" class="p-2" :class="getWrapperBGClass(color)" :key="color">
-        <LoadingIndicator
+        <Spinner
           :color="color"
           :colorIsBackground="true"
         />
       </div>
       <div class="bg-purple p-2">
-        <LoadingIndicator class="text-heavy-black" name="badge" />
+        <Spinner class="text-heavy-black" name="badge" />
       </div>
     </div>
   `,

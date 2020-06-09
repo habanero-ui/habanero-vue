@@ -16,7 +16,7 @@ Spur's Design System and Component Library
 ## Buttons
 
 - Using opacity/percentage to handle hover/active states of buttons (instead of 3 separate colors like what we see with error buttons in styleguide)
-- Do we want the loading-indicator color to match the button text color?
+- Do we want the spinner color to match the button text color?
 
 ## Icons (these are a mute point if we replace one at a time with icons that fit conditions/params)
 

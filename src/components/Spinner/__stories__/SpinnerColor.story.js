@@ -1,14 +1,14 @@
 import colors from '../../../constants/colors'
-import LoadingIndicator from '../index'
+import Spinner from '../index'
 
 export default () => ({
-  components: { LoadingIndicator },
+  components: { Spinner },
   data: () => ({
     colors,
   }),
   template: `
     <div class="p-6">
-      <LoadingIndicator
+      <Spinner
         v-for="color in colors"
         class="mb-4"
         :color="color"

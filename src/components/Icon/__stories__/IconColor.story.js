@@ -1,17 +1,18 @@
+import colors from '../../../constants/colors'
 import Icon from '../index'
 
 export default () => ({
   components: {
     Icon,
   },
+  data: () => ({
+    colors,
+  }),
   template: `
     <div class="p-6">
-      <Icon class="mb-4" name="badge" />
-      <Icon class="mb-4" color="error" name="badge" />
-      <Icon class="mb-4" color="info" name="badge" />
-      <Icon class="mb-4" color="subtle" name="badge" />
-      <Icon class="mb-4" color="success" name="badge" />
-      <Icon class="mb-4" color="warning" name="badge" />
+      <div v-for="color in colors" class="pb-4" :key="color">
+        <Icon name="badge" :color="color" />
+      </div>
       <Icon class="text-purple mb-4" name="badge" />
     </div>
   `,

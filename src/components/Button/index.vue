@@ -3,6 +3,7 @@
     <Typography
       v-if="text"
       class="button__text"
+      :class="{ invisible: isLoading }"
       :color="color"
       :colorIsBackground="variant === 'primary'"
       variant="button"
@@ -12,23 +13,33 @@
     <Icon
       v-if="iconName"
       class="button__icon"
+      :class="{ invisible: isLoading }"
       :color="color"
       :colorIsBackground="variant === 'primary'"
       :name="iconName"
       :size="iconSize || size"
     />
     <slot />
+    <Spinner
+      v-if="isLoading"
+      :color="color"
+      :colorIsBackground="variant === 'primary'"
+      style="position: absolute;"
+    />
   </button>
 </template>
 
 <script>
 import includes from 'lodash/includes'
+import colors from '../../constants/colors'
 import Icon from '../Icon/index'
+import Spinner from '../Spinner/index'
 import Typography from '../Typography/index'
 
 export default {
   components: {
     Icon,
+    Spinner,
     Typography,
   },
   props: {
@@ -48,6 +59,10 @@ export default {
     iconSize: {
       default: undefined,
       type: String,
+    },
+    isLoading: {
+      default: false,
+      type: Boolean,
     },
     size: {
       default: 'medium',
@@ -75,6 +90,7 @@ export default {
         {
           'button--has-text': !!this.text,
           'button--icon-left': this.iconSide === 'left',
+          'button--is-loading': !!this.isLoading,
         },
         `button--color-${this.color}`,
         `button--size-${this.size}`,
@@ -85,16 +101,13 @@ export default {
 }
 
 function getIsColorValid(value) {
-  const isValid = includes(
-    ['error', 'info', 'none', 'subtle', 'success', 'warning'],
-    value,
-  )
+  const isValid = includes(colors, value)
 
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
       'Button: The "color" prop must be one of the following:',
-      String(['error', 'info', 'none', 'subtle', 'success', 'warning']),
+      String(colors),
     )
   }
 
@@ -152,6 +165,9 @@ function getIsVariantValid(value) {
   cursor: not-allowed;
   opacity: 0.5;
 }
+.button--is-loading {
+  pointer-events: none;
+}
 .button::before {
   @apply absolute inset-0 pointer-events-none transition-colors duration-300 ease-in-out border border-transparent;
   margin: -3px;
@@ -178,6 +194,42 @@ function getIsVariantValid(value) {
 }
 .button--variant-primary.button--color-none:focus::before {
   @apply border-black;
+}
+.button--variant-primary.button--color-gold {
+  @apply bg-gold border-gold;
+}
+.button--variant-primary.button--color-gold:focus::before {
+  @apply border-gold;
+}
+.button--variant-primary.button--color-blue {
+  @apply bg-blue border-blue;
+}
+.button--variant-primary.button--color-blue:focus::before {
+  @apply border-blue;
+}
+.button--variant-primary.button--color-green {
+  @apply bg-green border-green;
+}
+.button--variant-primary.button--color-green:focus::before {
+  @apply border-green;
+}
+.button--variant-primary.button--color-orange {
+  @apply bg-orange border-orange;
+}
+.button--variant-primary.button--color-orange:focus::before {
+  @apply border-orange;
+}
+.button--variant-primary.button--color-pink {
+  @apply bg-pink border-pink;
+}
+.button--variant-primary.button--color-pink:focus::before {
+  @apply border-pink;
+}
+.button--variant-primary.button--color-purple {
+  @apply bg-purple border-purple;
+}
+.button--variant-primary.button--color-purple:focus::before {
+  @apply border-purple;
 }
 .button--variant-primary.button--color-error {
   @apply bg-error border-error;
@@ -219,6 +271,42 @@ function getIsVariantValid(value) {
 .button--variant-secondary.button--color-none:focus::before {
   @apply border-black;
 }
+.button--variant-secondary.button--color-gold {
+  @apply border-gold;
+}
+.button--variant-secondary.button--color-gold:focus::before {
+  @apply border-gold;
+}
+.button--variant-secondary.button--color-blue {
+  @apply border-blue;
+}
+.button--variant-secondary.button--color-blue:focus::before {
+  @apply border-blue;
+}
+.button--variant-secondary.button--color-green {
+  @apply border-green;
+}
+.button--variant-secondary.button--color-green:focus::before {
+  @apply border-green;
+}
+.button--variant-secondary.button--color-orange {
+  @apply border-orange;
+}
+.button--variant-secondary.button--color-orange:focus::before {
+  @apply border-orange;
+}
+.button--variant-secondary.button--color-pink {
+  @apply border-pink;
+}
+.button--variant-secondary.button--color-pink:focus::before {
+  @apply border-pink;
+}
+.button--variant-secondary.button--color-purple {
+  @apply border-purple;
+}
+.button--variant-secondary.button--color-purple:focus::before {
+  @apply border-purple;
+}
 .button--variant-secondary.button--color-error {
   @apply border-error;
 }
@@ -249,8 +337,30 @@ function getIsVariantValid(value) {
 .button--variant-secondary.button--color-warning:focus::before {
   @apply border-warning;
 }
+
+/**
+  Variant - Text ---------- 
+ */
 .button--variant-text.button--color-none:focus::before {
   @apply border-black;
+}
+.button--variant-text.button--color-gold:focus::before {
+  @apply border-gold;
+}
+.button--variant-text.button--color-blue:focus::before {
+  @apply border-blue;
+}
+.button--variant-text.button--color-green:focus::before {
+  @apply border-green;
+}
+.button--variant-text.button--color-orange:focus::before {
+  @apply border-orange;
+}
+.button--variant-text.button--color-pink:focus::before {
+  @apply border-pink;
+}
+.button--variant-text.button--color-purple:focus::before {
+  @apply border-purple;
 }
 .button--variant-text.button--color-error:focus::before {
   @apply border-error;
@@ -267,6 +377,15 @@ function getIsVariantValid(value) {
 .button--variant-text.button--color-warning:focus::before {
   @apply border-warning;
 }
+.button--variant-text.button--size-medium.button--has-text,
+.button--variant-text.button--size-small.button--has-text {
+  @apply px-4;
+  min-width: 7.5rem;
+}
+
+/**
+  Size ---------------------- 
+ */
 .button--size-medium {
   height: 2.75rem;
   min-width: 2.75rem;
@@ -280,11 +399,10 @@ function getIsVariantValid(value) {
   @apply px-6;
   min-width: 8rem;
 }
-.button--variant-text.button--size-medium.button--has-text,
-.button--variant-text.button--size-small.button--has-text {
-  @apply px-4;
-  min-width: 7.5rem;
-}
+
+/**
+  Icon ---------------------- 
+ */
 .button__text + .button__icon {
   @apply ml-4 -mr-2;
 }

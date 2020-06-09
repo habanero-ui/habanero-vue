@@ -1,4 +1,5 @@
 import { text } from '@storybook/addon-knobs'
+import colors from '../../../constants/colors'
 import Typography from '../index'
 
 export default () => ({
@@ -9,7 +10,7 @@ export default () => ({
     },
   },
   data: () => ({
-    colors: ['none', 'error', 'info', 'subtle', 'success', 'warning'],
+    colors,
   }),
   template: `
     <div class="p-6">

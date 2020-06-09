@@ -82,6 +82,42 @@ function getIsSizeValid(value) {
 .icon--color-none.icon--color-is-background {
   @apply text-white;
 }
+.icon--color-gold {
+  @apply text-error;
+}
+.icon--color-gold.icon--color-is-background {
+  @apply text-white;
+}
+.icon--color-blue {
+  @apply text-error;
+}
+.icon--color-blue.icon--color-is-background {
+  @apply text-white;
+}
+.icon--color-green {
+  @apply text-error;
+}
+.icon--color-green.icon--color-is-background {
+  @apply text-white;
+}
+.icon--color-orange {
+  @apply text-error;
+}
+.icon--color-orange.icon--color-is-background {
+  @apply text-white;
+}
+.icon--color-pink {
+  @apply text-error;
+}
+.icon--color-pink.icon--color-is-background {
+  @apply text-white;
+}
+.icon--color-purple {
+  @apply text-error;
+}
+.icon--color-purple.icon--color-is-background {
+  @apply text-white;
+}
 .icon--color-error {
   @apply text-error;
 }

@@ -115,6 +115,36 @@ function getIsVariantValid(value) {
 .typography--color-gold.typography--color-is-background {
   @apply text-white;
 }
+.typography--color-blue {
+  @apply text-blue;
+}
+.typography--color-blue.typography--color-is-background {
+  @apply text-black;
+}
+.typography--color-green {
+  @apply text-green;
+}
+.typography--color-green.typography--color-is-background {
+  @apply text-black;
+}
+.typography--color-orange {
+  @apply text-orange;
+}
+.typography--color-orange.typography--color-is-background {
+  @apply text-black;
+}
+.typography--color-pink {
+  @apply text-pink;
+}
+.typography--color-pink.typography--color-is-background {
+  @apply text-black;
+}
+.typography--color-purple {
+  @apply text-purple;
+}
+.typography--color-purple.typography--color-is-background {
+  @apply text-black;
+}
 .typography--color-error {
   @apply text-error;
 }

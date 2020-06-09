@@ -9,7 +9,20 @@ export default () => ({
     color: {
       default: select(
         'color',
-        ['none', 'error', 'info', 'subtle', 'success', 'warning'],
+        [
+          'none',
+          'error',
+          'info',
+          'subtle',
+          'success',
+          'warning',
+          'gold',
+          'blue',
+          'green',
+          'orange',
+          'pink',
+          'purple',
+        ],
         'none',
       ),
     },

@@ -193,6 +193,36 @@ function getIsVariantValid(value) {
 .button--variant-primary.button--color-gold:focus::before {
   @apply border-gold;
 }
+.button--variant-primary.button--color-blue {
+  @apply bg-blue border-blue;
+}
+.button--variant-primary.button--color-blue:focus::before {
+  @apply border-blue;
+}
+.button--variant-primary.button--color-green {
+  @apply bg-green border-green;
+}
+.button--variant-primary.button--color-green:focus::before {
+  @apply border-green;
+}
+.button--variant-primary.button--color-orange {
+  @apply bg-orange border-orange;
+}
+.button--variant-primary.button--color-orange:focus::before {
+  @apply border-orange;
+}
+.button--variant-primary.button--color-pink {
+  @apply bg-pink border-pink;
+}
+.button--variant-primary.button--color-pink:focus::before {
+  @apply border-pink;
+}
+.button--variant-primary.button--color-purple {
+  @apply bg-purple border-purple;
+}
+.button--variant-primary.button--color-purple:focus::before {
+  @apply border-purple;
+}
 .button--variant-primary.button--color-error {
   @apply bg-error border-error;
 }
@@ -239,6 +269,36 @@ function getIsVariantValid(value) {
 .button--variant-secondary.button--color-gold:focus::before {
   @apply border-gold;
 }
+.button--variant-secondary.button--color-blue {
+  @apply border-blue;
+}
+.button--variant-secondary.button--color-blue:focus::before {
+  @apply border-blue;
+}
+.button--variant-secondary.button--color-green {
+  @apply border-green;
+}
+.button--variant-secondary.button--color-green:focus::before {
+  @apply border-green;
+}
+.button--variant-secondary.button--color-orange {
+  @apply border-orange;
+}
+.button--variant-secondary.button--color-orange:focus::before {
+  @apply border-orange;
+}
+.button--variant-secondary.button--color-pink {
+  @apply border-pink;
+}
+.button--variant-secondary.button--color-pink:focus::before {
+  @apply border-pink;
+}
+.button--variant-secondary.button--color-purple {
+  @apply border-purple;
+}
+.button--variant-secondary.button--color-purple:focus::before {
+  @apply border-purple;
+}
 .button--variant-secondary.button--color-error {
   @apply border-error;
 }
@@ -278,6 +338,21 @@ function getIsVariantValid(value) {
 }
 .button--variant-text.button--color-gold:focus::before {
   @apply border-gold;
+}
+.button--variant-text.button--color-blue:focus::before {
+  @apply border-blue;
+}
+.button--variant-text.button--color-green:focus::before {
+  @apply border-green;
+}
+.button--variant-text.button--color-orange:focus::before {
+  @apply border-orange;
+}
+.button--variant-text.button--color-pink:focus::before {
+  @apply border-pink;
+}
+.button--variant-text.button--color-purple:focus::before {
+  @apply border-purple;
 }
 .button--variant-text.button--color-error:focus::before {
   @apply border-error;

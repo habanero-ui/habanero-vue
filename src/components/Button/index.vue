@@ -1,5 +1,5 @@
 <template>
-  <button :class="classes" :disabled="isLoading" :type="type">
+  <button :class="classes" :type="type">
     <Typography
       v-if="text"
       class="button__text"
@@ -20,7 +20,12 @@
       :size="iconSize || size"
     />
     <slot />
-    <LoadingIndicator v-if="isLoading" class="absolute" />
+    <LoadingIndicator
+      v-if="isLoading"
+      :color="color"
+      :colorIsBackground="variant === 'primary'"
+      style="position: absolute;"
+    />
   </button>
 </template>
 
@@ -85,6 +90,7 @@ export default {
         {
           'button--has-text': !!this.text,
           'button--icon-left': this.iconSide === 'left',
+          'button--is-loading': !!this.isLoading,
         },
         `button--color-${this.color}`,
         `button--size-${this.size}`,
@@ -158,6 +164,9 @@ function getIsVariantValid(value) {
 .button[disabled] {
   cursor: not-allowed;
   opacity: 0.5;
+}
+.button--is-loading {
+  pointer-events: none;
 }
 .button::before {
   @apply absolute inset-0 pointer-events-none transition-colors duration-300 ease-in-out border border-transparent;

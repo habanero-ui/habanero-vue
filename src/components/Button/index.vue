@@ -42,6 +42,7 @@ export default {
       validator: getIsColorValid,
     },
     iconName: {
+      default: undefined,
       type: String,
     },
     iconSide: {
@@ -49,6 +50,7 @@ export default {
       validator: getIsIconSideValid,
     },
     iconSize: {
+      default: undefined,
       type: String,
     },
     isLoading: {
@@ -61,6 +63,7 @@ export default {
       validator: getIsSizeValid,
     },
     text: {
+      default: undefined,
       type: String,
     },
     type: {

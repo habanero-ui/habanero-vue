@@ -44,6 +44,7 @@ export default {
   components: { Icon, Typography },
   props: {
     iconName: {
+      default: undefined,
       type: String,
     },
     isActionable: {
@@ -55,6 +56,7 @@ export default {
       type: Boolean,
     },
     primaryStatusText: {
+      default: undefined,
       type: String,
     },
     primaryStatusTextColor: {
@@ -62,12 +64,15 @@ export default {
       type: String,
     },
     primaryText: {
+      default: undefined,
       type: String,
     },
     secondaryText: {
+      default: undefined,
       type: String,
     },
     tertiaryText: {
+      default: undefined,
       type: String,
     },
   },

@@ -1,8 +1,9 @@
 <template>
   <button :class="classes" :disabled="isLoading" :type="type">
     <Typography
-      v-if="text && !isLoading"
+      v-if="text"
       class="button__text"
+      :class="{ invisible: isLoading }"
       :color="color"
       :colorIsBackground="variant === 'primary'"
       variant="button"
@@ -10,15 +11,16 @@
       {{ text }}
     </Typography>
     <Icon
-      v-if="iconName && !isLoading"
+      v-if="iconName"
       class="button__icon"
+      :class="{ invisible: isLoading }"
       :color="color"
       :colorIsBackground="variant === 'primary'"
       :name="iconName"
       :size="iconSize || size"
     />
     <slot />
-    <LoadingIndicator v-if="isLoading" />
+    <LoadingIndicator v-if="isLoading" class="absolute" />
   </button>
 </template>
 

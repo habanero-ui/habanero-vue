@@ -2,20 +2,19 @@
   <div class="slideover" :class="{ 'is-active': isOpen }" @click.self="close">
     <div class="slideover-inner">
       <header class="slideover-header">
-        <Button
-          iconName="chevron-left"
-          iconSide="left"
-          text="Back"
-          @click.native="close"
-        />
-        <Button
+        <Typography class="test" variant="body-small" @click.native="close">
+          <Icon name="chevron-left" class="ml-2 mr-1" />
+          Back
+        </Typography>
+        <Typography
           v-if="hasOpenInNewWindowListener"
-          iconName="new-window"
-          iconSide="right"
-          iconSize="small"
-          text="Open in new window"
+          class="test"
+          variant="body-small"
           @click.native="openInNewWindow"
-        />
+        >
+          Open in new window
+          <Icon name="new-window" size="small" class="mx-2" />
+        </Typography>
       </header>
       <div class="slideover-container">
         <slot />
@@ -25,11 +24,13 @@
 </template>
 
 <script>
-import Button from '../Button/index'
+import Icon from '../Icon/index'
+import Typography from '../Typography/index'
 
 export default {
   components: {
-    Button,
+    Icon,
+    Typography,
   },
   props: {
     isOpen: {
@@ -54,6 +55,9 @@ export default {
 </script>
 
 <style scoped>
+.test {
+  @apply h-10 flex items-center text-white cursor-pointer;
+}
 .slideover {
   @apply absolute inset-0 z-50 min-h-screen w-full bg-black-half overflow-hidden pointer-events-none opacity-0;
   top: 0;

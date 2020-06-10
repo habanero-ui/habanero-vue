@@ -16,10 +16,7 @@
         />
       </div>
       <div class="slideover-container">
-        <div>
-          <!-- <component :is="child" v-bind="childprops"></component> -->
-        </div>
-        <!-- <LoadingOverlay v-if="enableLoader" class="is-slideover" /> -->
+        <slot />
       </div>
     </div>
   </div>
@@ -34,7 +31,7 @@ export default {
   },
   props: {
     isOpen: {
-      default: true,
+      default: false,
       type: Boolean,
     },
   },

@@ -15,6 +15,7 @@ export default () => ({
       'sort-descending',
       'plus',
       'minus',
+      'new-window',
     ],
     objects: [
       'apartment',

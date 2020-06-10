@@ -25,6 +25,7 @@ export default [
   'info',
   'map-pin',
   'minus',
+  'new-window',
   'options',
   'parking',
   'plus',

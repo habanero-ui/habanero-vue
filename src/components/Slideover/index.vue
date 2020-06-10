@@ -1,7 +1,11 @@
 <template>
-  <div class="slideover" :class="{ 'is-active': isOpen }" @click.self="close">
-    <div class="slideover-inner">
-      <header class="slideover-header">
+  <div
+    class="slideover"
+    :class="{ 'slideover--is-open': isOpen }"
+    @click.self="close"
+  >
+    <div class="slideover__panel">
+      <header class="slideover__header">
         <Button
           iconName="chevron-left"
           iconSide="left"
@@ -17,7 +21,7 @@
           @click.native="openInNewWindow"
         />
       </header>
-      <div class="slideover-container">
+      <div class="slideover__content">
         <slot />
       </div>
     </div>
@@ -60,22 +64,19 @@ export default {
   transition: opacity 300ms ease-in-out;
   will-change: transform;
 }
-.slideover-inner {
+.slideover__panel {
   @apply absolute right-0 flex flex-col max-w-xl w-full h-screen;
   transform: translateX(100%);
   transition: transform 300ms ease-in-out;
   will-change: transform;
 }
-.slideover.is-active {
+.slideover--is-open {
   @apply pointer-events-auto opacity-100;
 }
-.slideover.is-active .slideover-inner {
+.slideover--is-open .slideover__panel {
   transform: translateX(0);
 }
-.slideover-header {
+.slideover__header {
   @apply flex justify-between bg-black;
-}
-.slideover-container {
-  @apply flex flex-col flex-grow bg-white;
 }
 </style>

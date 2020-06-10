@@ -1,0 +1,23 @@
+<template>
+  <div class="slideover-header-button" tabIndex="0"><slot /></div>
+</template>
+
+<style scoped>
+.slideover-header-button {
+  @apply relative flex items-center cursor-pointer outline-none px-6;
+}
+.slideover-header-button::after {
+  @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;
+  background-color: theme('colors.white');
+  content: '';
+}
+.slideover-header-button:hover::after {
+  opacity: 0.1;
+}
+.slideover-header-button:active::after {
+  opacity: 0.25;
+}
+.slideover-header-button:focus {
+  box-shadow: 0 0 0 2px white inset;
+}
+</style>

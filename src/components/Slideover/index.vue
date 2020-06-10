@@ -2,31 +2,33 @@
   <div
     class="slideover"
     :class="{ 'slideover--is-open': isOpen }"
-    @click.self="close"
+    @click.self="handleBackgroundClick"
   >
     <div class="slideover__panel">
       <header class="slideover__header">
-        <div class="slideover__back-button" @click="handleBackClick">
+        <SlideoverHeaderButton @click.native="handleBackClick">
           <Icon
             :colorIsBackground="true"
             class="slideover__back-icon"
-            name="chevron-left"
+            name="arrow-left"
           />
-          <Typography :colorIsBackground="true" @click.native="close">
+          <Typography :colorIsBackground="true">
             Back
           </Typography>
-        </div>
-        <div class="">
-          <Typography
-            v-if="hasOpenInNewWindowListener"
-            class="test"
-            variant="body-small"
-            @click.native="openInNewWindow"
-          >
+        </SlideoverHeaderButton>
+        <SlideoverHeaderButton
+          v-if="hasOpenInNewWindowListener"
+          @click.native="handleOpenInNewWindowClick"
+        >
+          <Typography :colorIsBackground="true">
             Open in new window
           </Typography>
-          <Icon name="new-window" size="small" class="mx-2" />
-        </div>
+          <Icon
+            class="slideover__new-window-icon"
+            :colorIsBackground="true"
+            name="new-window"
+          />
+        </SlideoverHeaderButton>
       </header>
       <div class="slideover__content">
         <slot />
@@ -38,15 +40,17 @@
 <script>
 import Icon from '../Icon/index'
 import Typography from '../Typography/index'
+import SlideoverHeaderButton from './SlideoverHeaderButton'
 
 export default {
   components: {
     Icon,
+    SlideoverHeaderButton,
     Typography,
   },
   props: {
     isOpen: {
-      default: false,
+      default: undefined,
       type: Boolean,
     },
   },
@@ -57,7 +61,10 @@ export default {
   },
   methods: {
     handleBackClick() {
-      this.$emit('isOpenChange', !this.isOpen)
+      this.$emit('isOpenChange', false)
+    },
+    handleBackgroundClick() {
+      this.$emit('isOpenChange', false)
     },
     handleOpenInNewWindowClick(e) {
       this.$emit('openInNewWindow', e)
@@ -82,14 +89,14 @@ export default {
 .slideover__header {
   @apply h-16 flex justify-between bg-black;
 }
-.slideover__back-button {
-  @apply flex items-center px-4;
-}
 .slideover__back-icon {
   @apply mr-4;
 }
+.slideover__new-window-icon {
+  @apply ml-4;
+}
 .slideover__content {
-  @apply flex flex-col flex-1;
+  @apply bg-white flex flex-col flex-1;
 }
 .slideover--is-open {
   @apply pointer-events-auto opacity-100;

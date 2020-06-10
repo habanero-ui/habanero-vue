@@ -176,7 +176,7 @@ function getIsVariantValid(value) {
 }
 .button::after {
   @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;
-  background-color: #000;
+  background-color: black;
   border-radius: 0.5rem;
   content: '';
 }

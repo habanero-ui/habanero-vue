@@ -4,7 +4,8 @@
     :disabled="disabled"
     :tabIndex="disabled ? -1 : 0"
     @click="handleClick"
-    @keyup.enter.space="handleKeyup"
+    @keydown.enter.space="handleKeyDown"
+    @keyup.enter.space="handleKeyUp"
   >
     <slot>
       <Typography :variant="isSelected ? 'label-large' : 'body-large'">
@@ -39,11 +40,15 @@ export default {
       type: String,
     },
   },
+  data: () => ({
+    isKeyDown: false,
+  }),
   computed: {
     classes() {
       return [
         'tab',
         {
+          'tab--is-key-down': !!this.isKeyDown,
           'tab--is-selected': !!this.isSelected,
         },
       ]
@@ -55,7 +60,14 @@ export default {
 
       this.$emit('select', this.name)
     },
-    handleKeyup() {
+    handleKeyDown() {
+      if (this.isSelected || this.disabled) return
+
+      this.isKeyDown = true
+    },
+    handleKeyUp() {
+      this.isKeyDown = false
+
       if (this.isSelected || this.disabled) return
 
       this.$emit('select', this.name)
@@ -76,7 +88,7 @@ export default {
 }
 .tab::after {
   @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;
-  background-color: #000;
+  background-color: black;
   content: '';
 }
 .tab[disabled] {
@@ -93,6 +105,9 @@ export default {
   opacity: 0.1;
 }
 .tab:active:not([disabled])::after {
+  opacity: 0.25;
+}
+.tab--is-key-down::after {
   opacity: 0.25;
 }
 </style>

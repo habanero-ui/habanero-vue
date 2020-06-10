@@ -6,6 +6,10 @@ export default () => ({
   },
   data: () => ({
     movements: [
+      'arrow-up',
+      'arrow-down',
+      'arrow-left',
+      'arrow-right',
       'chevron-up',
       'chevron-down',
       'chevron-left',

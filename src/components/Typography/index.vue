@@ -193,6 +193,9 @@ function getIsVariantValid(value) {
   font-weight: 700;
   line-height: 1.188rem;
 }
+.typography--variant-button:hover {
+  text-decoration: underline;
+}
 .typography--variant-h1 {
   font-size: 6.875rem;
   font-weight: 700;

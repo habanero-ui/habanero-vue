@@ -165,6 +165,9 @@ function getIsVariantValid(value) {
   cursor: not-allowed;
   opacity: 0.5;
 }
+.button[disabled] .button__text {
+  pointer-events: none;
+}
 .button--is-loading {
   pointer-events: none;
 }

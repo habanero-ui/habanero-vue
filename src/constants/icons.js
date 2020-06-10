@@ -1,5 +1,9 @@
 export default [
   'apartment',
+  'arrow-down',
+  'arrow-left',
+  'arrow-right',
+  'arrow-up',
   'award',
   'badge',
   'bell',

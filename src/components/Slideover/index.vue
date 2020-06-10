@@ -6,20 +6,27 @@
   >
     <div class="slideover__panel">
       <header class="slideover__header">
-        <Button
-          iconName="chevron-left"
-          iconSide="left"
-          text="Back"
-          @click.native="close"
-        />
-        <Button
-          v-if="hasOpenInNewWindowListener"
-          iconName="new-window"
-          iconSide="right"
-          iconSize="small"
-          text="Open in new window"
-          @click.native="openInNewWindow"
-        />
+        <div class="slideover__back-button" @click="handleBackClick">
+          <Icon
+            :colorIsBackground="true"
+            class="slideover__back-icon"
+            name="chevron-left"
+          />
+          <Typography :colorIsBackground="true" @click.native="close">
+            Back
+          </Typography>
+        </div>
+        <div class="">
+          <Typography
+            v-if="hasOpenInNewWindowListener"
+            class="test"
+            variant="body-small"
+            @click.native="openInNewWindow"
+          >
+            Open in new window
+          </Typography>
+          <Icon name="new-window" size="small" class="mx-2" />
+        </div>
       </header>
       <div class="slideover__content">
         <slot />
@@ -29,11 +36,13 @@
 </template>
 
 <script>
-import Button from '../Button/index'
+import Icon from '../Icon/index'
+import Typography from '../Typography/index'
 
 export default {
   components: {
-    Button,
+    Icon,
+    Typography,
   },
   props: {
     isOpen: {
@@ -47,10 +56,10 @@ export default {
     },
   },
   methods: {
-    close() {
-      this.isOpen = false
+    handleBackClick() {
+      this.$emit('isOpenChange', !this.isOpen)
     },
-    openInNewWindow(e) {
+    handleOpenInNewWindowClick(e) {
       this.$emit('openInNewWindow', e)
     },
   },
@@ -70,13 +79,22 @@ export default {
   transition: transform 300ms ease-in-out;
   will-change: transform;
 }
+.slideover__header {
+  @apply h-16 flex justify-between bg-black;
+}
+.slideover__back-button {
+  @apply flex items-center px-4;
+}
+.slideover__back-icon {
+  @apply mr-4;
+}
+.slideover__content {
+  @apply flex flex-col flex-1;
+}
 .slideover--is-open {
   @apply pointer-events-auto opacity-100;
 }
 .slideover--is-open .slideover__panel {
   transform: translateX(0);
-}
-.slideover__header {
-  @apply flex justify-between bg-black;
 }
 </style>

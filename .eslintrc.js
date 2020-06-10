@@ -17,6 +17,7 @@ module.exports = {
     node: true,
   },
   rules: {
+    'no-console': 1,
     'vue/attribute-hyphenation': ['error', 'never'],
     'vue/no-v-html': 0,
   },

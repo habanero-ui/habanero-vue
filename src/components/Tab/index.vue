@@ -1,17 +1,64 @@
 <template>
-  <div class="tab" :tabIndex="disabled ? -1 : 0">Tab</div>
+  <div
+    :class="classes"
+    :disabled="disabled"
+    :tabIndex="disabled ? -1 : 0"
+    @click="handleClick"
+    @keyup.enter.space="handleKeyup"
+  >
+    <slot>
+      <Typography :variant="isSelected ? 'label-large' : 'body-large'">
+        {{ text }}
+      </Typography>
+    </slot>
+  </div>
 </template>
 
 <script>
+import Typography from '../Typography'
+
 export default {
+  components: {
+    Typography,
+  },
   props: {
     disabled: {
       default: false,
       type: Boolean,
     },
-    value: {
+    isSelected: {
+      default: false,
+      type: Boolean,
+    },
+    name: {
       default: undefined,
       type: [Number, String],
+    },
+    text: {
+      default: undefined,
+      type: String,
+    },
+  },
+  computed: {
+    classes() {
+      return [
+        'tab',
+        {
+          'tab--is-selected': !!this.isSelected,
+        },
+      ]
+    },
+  },
+  methods: {
+    handleClick() {
+      if (this.isSelected || this.disabled) return
+
+      this.$emit('select', this.name)
+    },
+    handleKeyup() {
+      if (this.isSelected || this.disabled) return
+
+      this.$emit('select', this.name)
     },
   },
 }
@@ -22,6 +69,11 @@ export default {
   @apply border-b-2 border-grey-300 cursor-pointer flex flex-none items-center h-10 px-6 relative outline-none;
   min-width: 8rem;
 }
+.tab::before {
+  @apply absolute inset-0 pointer-events-none transition-colors duration-300 ease-in-out border-2 border-transparent;
+  margin-bottom: -2px;
+  content: '';
+}
 .tab::after {
   @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;
   background-color: #000;
@@ -31,13 +83,16 @@ export default {
   cursor: not-allowed;
   opacity: 0.5;
 }
+.tab--is-selected {
+  @apply border-info;
+}
+.tab:focus:not([disabled])::before {
+  @apply border-info;
+}
 .tab:hover:not([disabled])::after {
   opacity: 0.1;
 }
 .tab:active:not([disabled])::after {
   opacity: 0.25;
-}
-.tab:focus:not([disabled]) {
-  @apply border-info;
 }
 </style>

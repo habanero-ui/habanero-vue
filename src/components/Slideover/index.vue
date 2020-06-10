@@ -11,6 +11,7 @@
             :colorIsBackground="true"
             class="slideover__back-icon"
             name="arrow-left"
+            size="small"
           />
           <Typography :colorIsBackground="true">
             Back
@@ -24,9 +25,10 @@
             Open in new window
           </Typography>
           <Icon
-            class="slideover__new-window-icon"
             :colorIsBackground="true"
+            class="slideover__new-window-icon"
             name="new-window"
+            size="small"
           />
         </SlideoverHeaderButton>
       </header>

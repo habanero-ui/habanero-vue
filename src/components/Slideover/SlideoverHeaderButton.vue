@@ -4,11 +4,10 @@
 
 <style scoped>
 .slideover-header-button {
-  @apply relative flex items-center cursor-pointer outline-none px-6;
+  @apply relative flex items-center cursor-pointer outline-none select-none px-6;
 }
 .slideover-header-button::after {
-  @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;
-  background-color: theme('colors.white');
+  @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out bg-white;
   content: '';
 }
 .slideover-header-button:hover::after {

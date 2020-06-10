@@ -1,5 +1,9 @@
 export default [
   'apartment',
+  'arrow-down',
+  'arrow-left',
+  'arrow-right',
+  'arrow-up',
   'award',
   'badge',
   'bell',
@@ -25,6 +29,7 @@ export default [
   'info',
   'map-pin',
   'minus',
+  'new-window',
   'options',
   'parking',
   'plus',

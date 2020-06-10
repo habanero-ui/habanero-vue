@@ -6,6 +6,10 @@ export default () => ({
   },
   data: () => ({
     movements: [
+      'arrow-up',
+      'arrow-down',
+      'arrow-left',
+      'arrow-right',
       'chevron-up',
       'chevron-down',
       'chevron-left',
@@ -15,6 +19,7 @@ export default () => ({
       'sort-descending',
       'plus',
       'minus',
+      'new-window',
     ],
     objects: [
       'apartment',

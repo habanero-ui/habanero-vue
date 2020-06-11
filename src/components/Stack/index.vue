@@ -68,13 +68,13 @@ export default {
 }
 
 function getIsAlignValid(value) {
-  const isValid = includes([undefined, 'center', 'left', 'right'], value)
+  const isValid = includes([undefined, 'center', 'end', 'start'], value)
 
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
       'Stack: The "align" prop must be one of the following when defined:',
-      String(['center', 'left', 'right']),
+      String(['center', 'end', 'start']),
     )
   }
 
@@ -106,10 +106,10 @@ function getIsDirectionValid(value) {
 .stack--align-center {
   align-items: center;
 }
-.stack--align-left {
+.stack--align-start {
   align-items: flex-start;
 }
-.stack--align-right {
+.stack--align-end {
   align-items: flex-end;
 }
 .stack--direction-column {

@@ -8,7 +8,7 @@ export default () => ({
     align: {
       default: select(
         'align',
-        [undefined, 'center', 'left', 'right'],
+        [undefined, 'center', 'end', 'start'],
         undefined,
       ),
     },

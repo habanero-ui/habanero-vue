@@ -61,7 +61,7 @@ export default {
       this.$emit('select', this.name)
     },
     handleKeyDown() {
-      if (this.isSelected || this.disabled) return
+      if (this.disabled) return
 
       this.isKeyDown = true
     },

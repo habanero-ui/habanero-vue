@@ -10,11 +10,11 @@ export default () => ({
     isSelected: {
       default: boolean('isSelected', true),
     },
+    name: {
+      default: text('name', 'a'),
+    },
     text: {
       default: text('text', 'Text'),
-    },
-    value: {
-      default: text('value', 'a'),
     },
   },
   template: `
@@ -22,9 +22,8 @@ export default () => ({
       <Tab
         :disabled="disabled"
         :isSelected="isSelected"
-        name="text"
+        :name="text"
         :text="text"
-        :value="value"
       />
     </div>
   `,

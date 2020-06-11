@@ -16,6 +16,7 @@ export default [
   'chevron-right',
   'chevron-up',
   'child',
+  'close',
   'currency',
   'eye',
   'file-download',

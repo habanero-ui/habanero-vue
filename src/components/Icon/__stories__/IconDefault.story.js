@@ -19,6 +19,7 @@ export default () => ({
       'sort-descending',
       'plus',
       'minus',
+      'close',
       'new-window',
     ],
     objects: [

@@ -1,5 +1,9 @@
 <template>
-  <Slideover class="slideover-form" :isOpen="true">
+  <Slideover
+    class="slideover-form"
+    :isOpen="true"
+    @isOpenChange="handleBackgroundClick"
+  >
     <SlideoverHeader
       class="slideover-form__header"
       :backText="backText"
@@ -49,10 +53,13 @@ export default {
   },
   methods: {
     handleBackClick() {
-      this.$emit('back', false)
+      this.$emit('isOpenChange', false)
+    },
+    handleBackgroundClick() {
+      this.$emit('isOpenChange', false)
     },
     handleCancelClick() {
-      this.$emit('cancel', false)
+      this.$emit('isOpenChange', false)
     },
     handleSaveClick() {
       this.$emit('save', {})

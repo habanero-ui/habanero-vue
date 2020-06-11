@@ -23,16 +23,14 @@ export default () => ({
         :cancelText="cancelText"
         :saveText="saveText"
         :isOpen="true"
-        @back="back"
-        @cancel="cancel"
+        @isOpenChange="isOpenChange"
         @save="save">
         Some Content for the Slideover
       </SlideoverForm
     </div>
   `,
   methods: {
-    back: action('back'),
-    cancel: action('cancel'),
+    isOpenChange: action('handleIsOpenChange'),
     save: action('save'),
   },
 })

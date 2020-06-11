@@ -13,6 +13,9 @@ export default () => ({
     text: {
       default: text('text', 'Text'),
     },
+    value: {
+      default: text('value', 'a'),
+    },
   },
   template: `
     <div class="flex flex-start p-6"> 
@@ -21,6 +24,7 @@ export default () => ({
         :isSelected="isSelected"
         name="text"
         :text="text"
+        :value="value"
       />
     </div>
   `,

@@ -7,14 +7,12 @@ export default () => ({
     <div class="absolute inset-0">
       <Slideover
         :isOpen="true"
-        @isOpenChange="isOpenChange"
-        @openInNewWindow="openInNewWindow">
+        @isOpenChange="isOpenChange">
         Some Content for the Slideover
       </Slideover>
     </div>
   `,
   methods: {
     isOpenChange: action('handleIsOpenChange'),
-    openInNewWindow: action('openInNewWindow'),
   },
 })

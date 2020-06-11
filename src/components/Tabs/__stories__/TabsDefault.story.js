@@ -6,11 +6,11 @@ export default () => ({
   components: { Tab, Tabs },
   template: `
     <div class="p-6">
-      <Tabs selectedName="about" @selectedNameChange="handleSelectedNameChange">
-        <Tab name="home" text="Home" />
-        <Tab name="about" text="About" />
-        <Tab disabled name="contact" text="Contact" />
-        <Tab name="pricing" text="Pricing" />
+      <Tabs selectedName="About" @selectedNameChange="handleSelectedNameChange">
+        <Tab name="Home" />
+        <Tab name="About" />
+        <Tab disabled name="Contact" />
+        <Tab name="Pricing" />
       </Tabs>
     </div>
   `,

@@ -9,7 +9,7 @@
   >
     <slot>
       <Typography :variant="isSelected ? 'label-large' : 'body-large'">
-        {{ text }}
+        {{ text || name }}
       </Typography>
     </slot>
   </div>
@@ -76,7 +76,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .tab {
   @apply border-b-2 border-grey-300 cursor-pointer flex flex-none items-center h-10 px-6 relative outline-none;
   min-width: 8rem;

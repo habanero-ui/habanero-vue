@@ -4,15 +4,15 @@ import Tabs from '../index'
 export default () => ({
   components: { Tab, Tabs },
   data: () => ({
-    selectedName: 'home',
+    selectedName: 'Home',
   }),
   template: `
     <div class="p-6">
       <Tabs :selectedName="selectedName" @selectedNameChange="handleSelectedNameChange">
-        <Tab name="home" text="Home" />
-        <Tab name="about" text="About" />
-        <Tab name="contact" text="Contact" />
-        <Tab name="pricing" text="Pricing" />
+        <Tab name="Home" />
+        <Tab name="About" />
+        <Tab name="Contact" />
+        <Tab name="Pricing" />
       </Tabs>
     </div>
   `,

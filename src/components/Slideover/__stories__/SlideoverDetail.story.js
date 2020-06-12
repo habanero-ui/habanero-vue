@@ -19,12 +19,14 @@ export default () => ({
         :backText="backText"
         :openInNewWindowText="openInNewWindowText"
         :isOpen="true"
-        @isOpenChange="isOpenChange">
+        @isOpenChange="isOpenChange"
+        @openInNewWindow="openInNewWindow">
         Some Content for the Slideover
       </SlideoverDetail>
     </div>
   `,
   methods: {
     isOpenChange: action('handleIsOpenChange'),
+    openInNewWindow: action('openInNewWindow'),
   },
 })

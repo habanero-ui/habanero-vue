@@ -15,14 +15,18 @@ export default () => ({
     saveText: {
       default: text('saveText', 'Save'),
     },
+    openInNewWindowText: {
+      default: text('openInNewWindowText', 'Open in new window'),
+    },
   },
   template: `
     <div class="absolute inset-0">
       <Slideover
         :backText="backText"
         :cancelText="cancelText"
-        :saveText="saveText"
         :isOpen="true"
+        :openInNewWindowText="openInNewWindowText"
+        :saveText="saveText"
         @isOpenChange="isOpenChange"
         @openInNewWindow="openInNewWindow"
         @save="save">

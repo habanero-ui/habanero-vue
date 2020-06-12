@@ -1,36 +1,30 @@
 import { action } from '@storybook/addon-actions'
 import { text } from '@storybook/addon-knobs'
 
-import SlideoverForm from '../SlideoverForm'
+import SlideoverDetail from '../SlideoverDetail'
 
 export default () => ({
-  components: { SlideoverForm },
+  components: { SlideoverDetail },
   props: {
     backText: {
       default: text('backText', 'Back'),
     },
-    cancelText: {
-      default: text('cancelText', 'Cancel'),
-    },
-    saveText: {
-      default: text('saveText', 'Save'),
+    openInNewWindowText: {
+      default: text('openInNewWindowText', 'Open in new window'),
     },
   },
   template: `
     <div class="absolute inset-0">
-      <SlideoverForm
+      <SlideoverDetail
         :backText="backText"
-        :cancelText="cancelText"
-        :saveText="saveText"
+        :openInNewWindowText="openInNewWindowText"
         :isOpen="true"
-        @isOpenChange="isOpenChange"
-        @save="save">
+        @isOpenChange="isOpenChange">
         Some Content for the Slideover
-      </SlideoverForm>
+      </SlideoverDetail>
     </div>
   `,
   methods: {
     isOpenChange: action('handleIsOpenChange'),
-    save: action('save'),
   },
 })

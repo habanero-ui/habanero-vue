@@ -16,7 +16,7 @@
       @click.native="handleOpenInNewWindowClick"
     >
       <Typography :colorIsBackground="true">
-        Open in new window
+        {{ openInNewWindowText }}
       </Typography>
       <Icon
         :colorIsBackground="true"
@@ -43,6 +43,15 @@ export default {
     backText: {
       default: 'Back',
       type: String,
+    },
+    openInNewWindowText: {
+      default: 'Open in new window',
+      type: String,
+    },
+  },
+  computed: {
+    hasOpenInNewWindowListener() {
+      return this.$listeners && this.$listeners.openInNewWindow
     },
   },
   methods: {

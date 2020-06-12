@@ -1,12 +1,14 @@
 <template>
   <footer class="slideover-footer">
     <Button
+      v-if="hasCancelListener"
       class="slideover-footer__button"
       variant="secondary"
       :text="cancelText"
       @click.native="handleCancelClick"
     />
     <Button
+      v-if="hasSaveListener"
       class="slideover-footer__button"
       :text="saveText"
       @click.native="handleSaveClick"
@@ -29,6 +31,14 @@ export default {
     saveText: {
       default: 'Save',
       type: String,
+    },
+  },
+  computed: {
+    hasCancelListener() {
+      return this.$listeners && this.$listeners.cancel
+    },
+    hasSaveListener() {
+      return this.$listeners && this.$listeners.save
     },
   },
   methods: {

@@ -16,7 +16,7 @@
 export default {
   props: {
     isOpen: {
-      default: undefined,
+      default: false,
       type: Boolean,
     },
   },

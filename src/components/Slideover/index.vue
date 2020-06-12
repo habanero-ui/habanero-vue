@@ -45,7 +45,7 @@ export default {
       type: String,
     },
     isOpen: {
-      default: undefined,
+      default: false,
       type: Boolean,
     },
     openInNewWindowText: {

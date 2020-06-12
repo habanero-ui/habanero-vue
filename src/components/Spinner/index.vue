@@ -66,7 +66,7 @@ function getIsSizeValid(value) {
 }
 </script>
 
-<style>
+<style scoped>
 .spinner {
   @apply relative pointer-events-none transition-opacity duration-300;
   animation-delay: 0.2s;

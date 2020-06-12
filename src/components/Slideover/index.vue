@@ -1,28 +1,77 @@
 <template>
-  <div
+  <Drawer
     class="slideover"
-    :class="{ 'slideover--is-open': isOpen }"
-    @click.self="handleBackgroundClick"
+    :isOpen="true"
+    @isOpenChange="handleBackgroundClick"
   >
-    <div class="slideover__panel">
-      <div class="slideover__content">
-        <slot />
-      </div>
+    <SlideoverHeader
+      class="slideover__header"
+      :backText="backText"
+      :openInNewWindowText="openInNewWindowText"
+      @back="handleBackClick"
+      @openInNewWindow="handleOpenInNewWindowClick"
+    />
+    <div class="slideover__content">
+      <slot />
     </div>
-  </div>
+    <SlideoverFooter
+      class="slideover__footer"
+      :cancelText="cancelText"
+      :saveText="saveText"
+      @cancel="handleCancelClick"
+      @save="handleSaveClick"
+    />
+  </Drawer>
 </template>
 
 <script>
+import Drawer from '../Drawer/index'
+import SlideoverFooter from './SlideoverFooter'
+import SlideoverHeader from './SlideoverHeader'
+
 export default {
+  components: {
+    Drawer,
+    SlideoverFooter,
+    SlideoverHeader,
+  },
   props: {
+    backText: {
+      default: 'Back',
+      type: String,
+    },
+    cancelText: {
+      default: 'Cancel',
+      type: String,
+    },
     isOpen: {
       default: undefined,
       type: Boolean,
     },
+    openInNewWindowText: {
+      default: 'Open in new window',
+      type: String,
+    },
+    saveText: {
+      default: 'Save',
+      type: String,
+    },
   },
   methods: {
+    handleBackClick() {
+      this.$emit('isOpenChange', false)
+    },
     handleBackgroundClick() {
       this.$emit('isOpenChange', false)
+    },
+    handleCancelClick() {
+      this.$emit('isOpenChange', false)
+    },
+    handleOpenInNewWindowClick(e) {
+      this.$emit('openInNewWindow', e)
+    },
+    handleSaveClick() {
+      this.$emit('save', {})
     },
   },
 }
@@ -30,24 +79,13 @@ export default {
 
 <style scoped>
 .slideover {
-  @apply absolute inset-0 z-50 min-h-screen w-full bg-black-half overflow-hidden pointer-events-none opacity-0;
-  top: 0;
-  transition: opacity 300ms ease-in-out;
-  will-change: transform;
+  @apply flex;
 }
-.slideover__panel {
-  @apply absolute right-0 flex flex-col max-w-xl w-full h-screen;
-  transform: translateX(100%);
-  transition: transform 300ms ease-in-out;
-  will-change: transform;
+.slideover__header {
 }
 .slideover__content {
-  @apply bg-white flex flex-col flex-1;
+  @apply flex-grow;
 }
-.slideover--is-open {
-  @apply pointer-events-auto opacity-100;
-}
-.slideover--is-open .slideover__panel {
-  transform: translateX(0);
+.slideover__footer {
 }
 </style>

@@ -67,7 +67,7 @@ export default () => ({
   template: `
     <div class="p-6">
       <div class="flex items-center mb-6">
-        <Icon v-for="movement in movements" :key="movement" :name="movement" class="mr-4" />
+        <Icon v-for="movement in movements" :key="movement" :name="movement" class="mr-4 text-purple" />
       </div>
       <div class="flex items-center mb-6">
         <Icon v-for="object in objects" :key="object" :name="object" class="mr-4" />

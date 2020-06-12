@@ -1,5 +1,5 @@
 <template>
-  <footer class="slideover-footer">
+  <footer v-if="hasCancelListener || hasSaveListener" class="slideover-footer">
     <Button
       v-if="hasCancelListener"
       class="slideover-footer__button"
@@ -42,11 +42,11 @@ export default {
     },
   },
   methods: {
-    handleCancelClick() {
-      this.$emit('cancel')
+    handleCancelClick(e) {
+      this.$emit('cancel', e)
     },
-    handleSaveClick() {
-      this.$emit('save')
+    handleSaveClick(e) {
+      this.$emit('save', e)
     },
   },
 }

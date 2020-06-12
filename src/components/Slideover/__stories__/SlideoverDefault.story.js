@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions'
-import { text } from '@storybook/addon-knobs'
+import { boolean, text } from '@storybook/addon-knobs'
 
 import Slideover from '../index'
 
@@ -12,8 +12,28 @@ export default () => ({
     cancelText: {
       default: text('cancelText', 'Cancel'),
     },
+    isCancelVisible: {
+      default: boolean('isCancelVisible', true),
+    },
+    isOpenInNewWindowVisible: {
+      default: boolean('isOpenInNewWindowVisible', true),
+    },
+    isSaveVisible: {
+      default: boolean('isSaveVisible', true),
+    },
     saveText: {
       default: text('saveText', 'Save'),
+    },
+  },
+  computed: {
+    listeners() {
+      return {
+        ...(this.isCancelVisible ? { cancel: this.cancel } : {}),
+        ...(this.isOpenInNewWindowVisible
+          ? { openInNewWindow: this.openInNewWindow }
+          : {}),
+        ...(this.isSaveVisible ? { save: this.save } : {}),
+      }
     },
   },
   template: `
@@ -23,13 +43,13 @@ export default () => ({
         :cancelText="cancelText"
         :saveText="saveText"
         :isOpen="true"
-        @isOpenChange="isOpenChange"
-        @openInNewWindow="openInNewWindow"
-        @save="save">
+        v-on="listeners"
+        @isOpenChange="isOpenChange">
       </Slideover>
     </div>
   `,
   methods: {
+    cancel: action('cancel'),
     isOpenChange: action('handleIsOpenChange'),
     openInNewWindow: action('openInNewWindow'),
     save: action('save'),

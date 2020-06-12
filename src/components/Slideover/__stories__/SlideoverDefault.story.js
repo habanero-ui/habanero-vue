@@ -42,10 +42,12 @@ export default () => ({
   template: `
     <div class="absolute inset-0">
       <Slideover
+        v-on="listeners"
+        :isOpen="true"
         :backText="backText"
         :cancelText="cancelText"
-        :isOpen="true"
-        v-on="listeners"
+        :openInNewWindowText="openInNewWindowText"
+        :saveText="saveText"
         @isOpenChange="isOpenChange">
       </Slideover>
     </div>

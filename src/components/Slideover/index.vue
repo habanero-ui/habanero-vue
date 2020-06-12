@@ -1,7 +1,7 @@
 <template>
   <Drawer
     class="slideover"
-    :isOpen="true"
+    :isOpen="isOpen"
     @isOpenChange="handleBackgroundClick"
   >
     <SlideoverHeader

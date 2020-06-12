@@ -9,7 +9,7 @@
       :backText="backText"
       :openInNewWindowText="openInNewWindowText"
       @back="handleBackClick"
-      @openInNewWindow="handleOpenInNewWindowClick"
+      v-on="headerListeners"
     />
     <div class="slideover__content">
       <slot />
@@ -18,8 +18,7 @@
       class="slideover__footer"
       :cancelText="cancelText"
       :saveText="saveText"
-      @cancel="handleCancelClick"
-      @save="handleSaveClick"
+      v-on="footerListeners"
     />
   </Drawer>
 </template>
@@ -57,6 +56,38 @@ export default {
       type: String,
     },
   },
+  computed: {
+    footerListeners() {
+      if (!this.$listeners) {
+        return {}
+      }
+
+      return {
+        ...(this.$listeners.cancel ? { cancel: this.handleCancelClick } : {}),
+        ...(this.$listeners.save ? { save: this.handleSaveClick } : {}),
+      }
+    },
+    hasCancelListener() {
+      return this.$listeners && this.$listeners.cancel
+    },
+    hasOpenInNewWindowListener() {
+      return this.$listeners && this.$listeners.openInNewWindow
+    },
+    hasSaveListener() {
+      return this.$listeners && this.$listeners.save
+    },
+    headerListeners() {
+      if (!this.$listeners) {
+        return {}
+      }
+
+      return {
+        ...(this.$listeners.openInNewWindow
+          ? { openInNewWindow: this.handleOpenInNewWindowClick }
+          : {}),
+      }
+    },
+  },
   methods: {
     handleBackClick() {
       this.$emit('isOpenChange', false)
@@ -64,14 +95,14 @@ export default {
     handleBackgroundClick() {
       this.$emit('isOpenChange', false)
     },
-    handleCancelClick() {
-      this.$emit('isOpenChange', false)
+    handleCancelClick(e) {
+      this.$emit('cancel', e)
     },
     handleOpenInNewWindowClick(e) {
       this.$emit('openInNewWindow', e)
     },
-    handleSaveClick() {
-      this.$emit('save', {})
+    handleSaveClick(e) {
+      this.$emit('save', e)
     },
   },
 }

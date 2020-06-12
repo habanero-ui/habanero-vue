@@ -55,8 +55,8 @@ export default {
     },
   },
   methods: {
-    handleBackClick() {
-      this.$emit('back')
+    handleBackClick(e) {
+      this.$emit('back', e)
     },
     handleOpenInNewWindowClick(e) {
       this.$emit('openInNewWindow', e)

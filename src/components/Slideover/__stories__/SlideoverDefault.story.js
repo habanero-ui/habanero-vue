@@ -24,6 +24,9 @@ export default () => ({
     saveText: {
       default: text('saveText', 'Save'),
     },
+    openInNewWindowText: {
+      default: text('openInNewWindowText', 'Open in new window'),
+    },
   },
   computed: {
     listeners() {
@@ -41,7 +44,6 @@ export default () => ({
       <Slideover
         :backText="backText"
         :cancelText="cancelText"
-        :saveText="saveText"
         :isOpen="true"
         v-on="listeners"
         @isOpenChange="isOpenChange">

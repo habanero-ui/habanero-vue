@@ -44,7 +44,7 @@ export default {
 
 <style scoped>
 .slideover-footer {
-  @apply flex items-center justify-end bg-grey-100;
+  @apply flex flex-none mt-auto items-center justify-end bg-grey-100;
   height: 5.5rem;
 }
 </style>

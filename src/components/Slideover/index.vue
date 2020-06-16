@@ -1,17 +1,13 @@
 <template>
-  <Drawer class="slideover" :isOpen="isOpen" :onIsOpenChange="onIsOpenChange">
+  <Drawer :isOpen="isOpen" :onIsOpenChange="onIsOpenChange">
     <SlideoverHeader
-      class="slideover__header"
       :backText="backText"
       :openInNewWindowText="openInNewWindowText"
       :onBack="onIsOpenChange"
       :onOpenInNewWindow="onOpenInNewWindow"
     />
-    <div class="slideover__content">
-      <slot />
-    </div>
+    <slot />
     <SlideoverFooter
-      class="slideover__footer"
       :cancelText="cancelText"
       :saveText="saveText"
       :onCancel="onCancel"
@@ -71,12 +67,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.slideover {
-  @apply flex;
-}
-.slideover__content {
-  @apply flex-grow;
-}
-</style>

@@ -15,6 +15,9 @@ export default () => ({
     isCancelVisible: {
       default: boolean('isCancelVisible', true),
     },
+    isOpen: {
+      default: boolean('isOpen', true),
+    },
     isOpenInNewWindowVisible: {
       default: boolean('isOpenInNewWindowVisible', true),
     },
@@ -42,7 +45,7 @@ export default () => ({
   template: `
     <div class="absolute inset-0">
       <Slideover
-        :isOpen="true"
+        :isOpen="isOpen"
         :backText="backText"
         :cancelText="cancelText"
         :openInNewWindowText="openInNewWindowText"
@@ -50,8 +53,12 @@ export default () => ({
         :onCancel="isCancelVisible && onCancel"
         :onIsOpenChange="onIsOpenChange"
         :onOpenInNewWindow="isOpenInNewWindowVisible && onOpenInNewWindow"
-        :onSave="isSaveVisible && onSave"
-        >
+        :onSave="isSaveVisible && onSave">
+        <div class="flex-1 overflow-y-auto">
+          <div style="background: linear-gradient(to bottom right, #36d, #fff); height: 4000px;">
+            Some Scrolling Content
+          </div>
+        </div>
       </Slideover>
     </div>
   `,

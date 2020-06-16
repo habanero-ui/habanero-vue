@@ -35,6 +35,10 @@ export default {
       default: undefined,
       type: [Number, String],
     },
+    onSelect: {
+      default: undefined,
+      type: Function,
+    },
     text: {
       default: undefined,
       type: String,
@@ -58,7 +62,7 @@ export default {
     handleClick() {
       if (this.isSelected || this.disabled) return
 
-      this.$emit('select', this.name)
+      this.onSelect(this.name)
     },
     handleKeyDown() {
       if (this.disabled) return
@@ -70,7 +74,7 @@ export default {
 
       if (this.isSelected || this.disabled) return
 
-      this.$emit('select', this.name)
+      this.onSelect(this.name)
     },
   },
 }

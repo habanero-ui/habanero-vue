@@ -8,7 +8,7 @@ export default () => ({
   }),
   template: `
     <div class="p-6">
-      <Tabs :selectedName="selectedName" @selectedNameChange="handleSelectedNameChange">
+      <Tabs :selectedName="selectedName" :onSelectedNameChange="handleSelectedNameChange">
         <Tab name="Home" />
         <Tab name="About" />
         <Tab name="Contact" />

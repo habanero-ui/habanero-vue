@@ -4,16 +4,16 @@ import set from 'lodash/set'
 
 export default {
   props: {
+    onSelectedNameChange: {
+      default: undefined,
+      type: Function,
+    },
     selectedName: {
       default: undefined,
       type: [Number, String],
     },
   },
   methods: {
-    handleTabClick(name) {
-      this.$emit('selectedNameChange', name)
-    },
-
     mapSlotNode(vnode) {
       if (!(vnode.componentOptions && vnode.componentOptions.tag === 'Tab')) {
         return vnode
@@ -24,8 +24,11 @@ export default {
 
       return {
         ...set(vnode, 'componentOptions.propsData.isSelected', isSelected),
-        ...set(vnode, 'componentOptions.listeners.select', this.handleTabClick),
-        ...set(vnode, 'componentOptions.listeners.select', this.handleTabClick),
+        ...set(
+          vnode,
+          'componentOptions.propsData.onSelect',
+          this.onSelectedNameChange,
+        ),
       }
     },
   },

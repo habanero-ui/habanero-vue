@@ -1,6 +1,5 @@
 import { action } from '@storybook/addon-actions'
 import { select, text } from '@storybook/addon-knobs'
-import inputs from '../../../constants/inputs'
 import TextInput from '../index'
 
 export default () => ({
@@ -10,7 +9,11 @@ export default () => ({
       default: text('placeholder', 'Email address'),
     },
     type: {
-      default: select('type', inputs, 'email'),
+      default: select(
+        'type',
+        ['email', 'number', 'password', 'search', 'text', 'tel', 'url'],
+        'email',
+      ),
     },
   },
   template: `

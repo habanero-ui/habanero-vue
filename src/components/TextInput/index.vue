@@ -1,10 +1,5 @@
 <template>
-  <input
-    :class="classes"
-    :type="type"
-    @blur="update($event)"
-    @input="update($event)"
-  />
+  <input :class="classes" @blur="update($event)" @input="update($event)" />
 </template>
 
 <script>

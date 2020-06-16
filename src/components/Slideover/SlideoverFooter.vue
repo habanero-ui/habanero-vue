@@ -1,5 +1,13 @@
 <template>
-  <footer v-if="onCancel || onConfirm" class="slideover-footer">
+  <footer v-if="onCancel || onConfirm || onDestroy" class="slideover-footer">
+    <div class="pl-6">
+      <Button
+        v-if="onDestroy"
+        color="error"
+        :text="destroyText"
+        @click.native="onDestroy"
+      />
+    </div>
     <Stack class="px-6" direction="row" space="6">
       <Button
         v-if="onCancel"
@@ -30,11 +38,19 @@ export default {
       default: 'Confirm',
       type: String,
     },
+    destroyText: {
+      default: 'Destroy',
+      type: String,
+    },
     onCancel: {
       default: undefined,
       type: Function,
     },
     onConfirm: {
+      default: undefined,
+      type: Function,
+    },
+    onDestroy: {
       default: undefined,
       type: Function,
     },
@@ -44,7 +60,7 @@ export default {
 
 <style scoped>
 .slideover-footer {
-  @apply flex flex-none mt-auto items-center justify-end bg-grey-100;
+  @apply flex flex-none mt-auto items-center justify-between bg-grey-100;
   height: 5.5rem;
 }
 </style>

@@ -15,11 +15,17 @@ export default () => ({
     confirmText: {
       default: text('confirmText', 'Confirm'),
     },
+    destroyText: {
+      default: text('destroyText', 'Destroy'),
+    },
     isCancelVisible: {
       default: boolean('isCancelVisible', true),
     },
     isConfirmVisible: {
       default: boolean('isConfirmVisible', true),
+    },
+    isDestroyVisible: {
+      default: boolean('isDestroyVisible', true),
     },
     isOpen: {
       default: boolean('isOpen', true),
@@ -38,11 +44,13 @@ export default () => ({
         :backText="backText"
         :cancelText="cancelText"
         :confirmText="confirmText"
+        :destroyText="destroyText"
         :openInNewWindowText="openInNewWindowText"
-        :onCancel="isCancelVisible && onCancel"
-        :onConfirm="isConfirmVisible && onConfirm"
+        :onCancel="isCancelVisible ? onCancel : undefined"
+        :onConfirm="isConfirmVisible ? onConfirm : undefined"
+        :onDestroy="isDestroyVisible ? onDestroy : undefined"
         :onIsOpenChange="onIsOpenChange"
-        :onOpenInNewWindow="isOpenInNewWindowVisible && onOpenInNewWindow">
+        :onOpenInNewWindow="isOpenInNewWindowVisible ? onOpenInNewWindow : undefined">
         <div class="flex-1 overflow-y-auto">
           <div style="background: linear-gradient(to bottom right, #36d, #fff); height: 4000px;">
             Some Scrolling Content
@@ -54,6 +62,7 @@ export default () => ({
   methods: {
     onCancel: action('onCancel'),
     onConfirm: action('onConfirm'),
+    onDestroy: action('onDestroy'),
     onIsOpenChange: action('onIsOpenChange'),
     onOpenInNewWindow: action('onOpenInNewWindow'),
   },

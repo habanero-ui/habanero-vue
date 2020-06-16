@@ -10,8 +10,10 @@
     <SlideoverFooter
       :cancelText="cancelText"
       :confirmText="confirmText"
+      :destroyText="destroyText"
       :onCancel="onCancel"
       :onConfirm="onConfirm"
+      :onDestroy="onDestroy"
     />
   </Drawer>
 </template>
@@ -40,6 +42,10 @@ export default {
       default: 'Confirm',
       type: String,
     },
+    destroyText: {
+      default: 'Destroy',
+      type: String,
+    },
     isOpen: {
       default: false,
       type: Boolean,
@@ -49,6 +55,10 @@ export default {
       type: Function,
     },
     onConfirm: {
+      default: undefined,
+      type: Function,
+    },
+    onDestroy: {
       default: undefined,
       type: Function,
     },

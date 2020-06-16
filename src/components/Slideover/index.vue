@@ -9,9 +9,9 @@
     <slot />
     <SlideoverFooter
       :cancelText="cancelText"
-      :saveText="saveText"
+      :confirmText="confirmText"
       :onCancel="onCancel"
-      :onSave="onSave"
+      :onConfirm="onConfirm"
     />
   </Drawer>
 </template>
@@ -36,11 +36,19 @@ export default {
       default: 'Cancel',
       type: String,
     },
+    confirmText: {
+      default: 'Confirm',
+      type: String,
+    },
     isOpen: {
       default: false,
       type: Boolean,
     },
     onCancel: {
+      default: undefined,
+      type: Function,
+    },
+    onConfirm: {
       default: undefined,
       type: Function,
     },
@@ -52,16 +60,8 @@ export default {
       default: undefined,
       type: Function,
     },
-    onSave: {
-      default: undefined,
-      type: Function,
-    },
     openInNewWindowText: {
       default: 'Open in new window',
-      type: String,
-    },
-    saveText: {
-      default: 'Save',
       type: String,
     },
   },

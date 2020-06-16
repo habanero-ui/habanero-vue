@@ -12,8 +12,14 @@ export default () => ({
     cancelText: {
       default: text('cancelText', 'Cancel'),
     },
+    confirmText: {
+      default: text('confirmText', 'Confirm'),
+    },
     isCancelVisible: {
       default: boolean('isCancelVisible', true),
+    },
+    isConfirmVisible: {
+      default: boolean('isConfirmVisible', true),
     },
     isOpen: {
       default: boolean('isOpen', true),
@@ -21,25 +27,8 @@ export default () => ({
     isOpenInNewWindowVisible: {
       default: boolean('isOpenInNewWindowVisible', true),
     },
-    isSaveVisible: {
-      default: boolean('isSaveVisible', true),
-    },
-    saveText: {
-      default: text('saveText', 'Save'),
-    },
     openInNewWindowText: {
       default: text('openInNewWindowText', 'Open in new window'),
-    },
-  },
-  computed: {
-    listeners() {
-      return {
-        ...(this.isCancelVisible ? { cancel: this.cancel } : {}),
-        ...(this.isOpenInNewWindowVisible
-          ? { openInNewWindow: this.openInNewWindow }
-          : {}),
-        ...(this.isSaveVisible ? { save: this.save } : {}),
-      }
     },
   },
   template: `
@@ -48,12 +37,12 @@ export default () => ({
         :isOpen="isOpen"
         :backText="backText"
         :cancelText="cancelText"
+        :confirmText="confirmText"
         :openInNewWindowText="openInNewWindowText"
-        :saveText="saveText"
         :onCancel="isCancelVisible && onCancel"
+        :onConfirm="isConfirmVisible && onConfirm"
         :onIsOpenChange="onIsOpenChange"
-        :onOpenInNewWindow="isOpenInNewWindowVisible && onOpenInNewWindow"
-        :onSave="isSaveVisible && onSave">
+        :onOpenInNewWindow="isOpenInNewWindowVisible && onOpenInNewWindow">
         <div class="flex-1 overflow-y-auto">
           <div style="background: linear-gradient(to bottom right, #36d, #fff); height: 4000px;">
             Some Scrolling Content
@@ -64,8 +53,8 @@ export default () => ({
   `,
   methods: {
     onCancel: action('onCancel'),
+    onConfirm: action('onConfirm'),
     onIsOpenChange: action('onIsOpenChange'),
     onOpenInNewWindow: action('onOpenInNewWindow'),
-    onSave: action('onSave'),
   },
 })

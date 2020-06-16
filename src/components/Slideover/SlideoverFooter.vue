@@ -1,5 +1,5 @@
 <template>
-  <footer v-if="onCancel || onSave" class="slideover-footer">
+  <footer v-if="onCancel || onConfirm" class="slideover-footer">
     <Stack class="px-6" direction="row" space="6">
       <Button
         v-if="onCancel"
@@ -7,7 +7,7 @@
         :text="cancelText"
         @click.native="onCancel"
       />
-      <Button v-if="onSave" :text="saveText" @click.native="onSave" />
+      <Button v-if="onConfirm" :text="confirmText" @click.native="onConfirm" />
     </Stack>
   </footer>
 </template>
@@ -26,17 +26,17 @@ export default {
       default: 'Cancel',
       type: String,
     },
+    confirmText: {
+      default: 'Confirm',
+      type: String,
+    },
     onCancel: {
       default: undefined,
       type: Function,
     },
-    onSave: {
+    onConfirm: {
       default: undefined,
       type: Function,
-    },
-    saveText: {
-      default: 'Save',
-      type: String,
     },
   },
 }

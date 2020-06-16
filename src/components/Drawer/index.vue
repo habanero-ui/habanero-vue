@@ -18,7 +18,7 @@ export default {
       type: Boolean,
     },
     onIsOpenChange: {
-      default: undefined,
+      default: () => {},
       type: Function,
     },
   },

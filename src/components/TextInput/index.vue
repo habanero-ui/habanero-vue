@@ -19,11 +19,6 @@ export default {
       default: 0,
       type: Number,
     },
-    type: {
-      default: 'text',
-      type: String,
-      validator: getIsTypeValid,
-    },
     name: {
       default: '',
       type: String,
@@ -31,6 +26,11 @@ export default {
     placeholder: {
       default: '',
       type: String,
+    },
+    type: {
+      default: 'text',
+      type: String,
+      validator: getIsTypeValid,
     },
   },
   computed: {

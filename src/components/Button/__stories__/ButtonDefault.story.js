@@ -62,6 +62,6 @@ export default () => ({
     </div>
   `,
   methods: {
-    action: action('Click'),
+    action: action('click'),
   },
 })

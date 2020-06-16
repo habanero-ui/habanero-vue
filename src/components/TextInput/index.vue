@@ -17,10 +17,7 @@ export default {
   },
   methods: {
     update({ target }) {
-      clearTimeout(this.timeout)
-      this.timeout = setTimeout(() => {
-        this.$emit('input', target.value)
-      }, this.delay)
+      this.$emit('input', target.value)
     },
   },
 }

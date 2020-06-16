@@ -13,7 +13,7 @@ export default {
     },
     space: {
       default: 2,
-      type: Number,
+      type: [Number, String],
     },
   },
   computed: {
@@ -60,9 +60,11 @@ export default {
       {
         class: this.classes,
       },
-      this.$slots.default.map((vnode, index) =>
-        this.mapSlotNode(vnode, h, index),
-      ),
+      this.$slots.default
+        ? this.$slots.default.map((vnode, index) =>
+            this.mapSlotNode(vnode, h, index),
+          )
+        : null,
     )
   },
 }

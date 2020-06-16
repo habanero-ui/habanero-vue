@@ -1,5 +1,7 @@
 <template>
-  <div class="slideover-header-button" tabIndex="0"><slot /></div>
+  <button class="slideover-header-button" type="button">
+    <slot />
+  </button>
 </template>
 
 <style scoped>

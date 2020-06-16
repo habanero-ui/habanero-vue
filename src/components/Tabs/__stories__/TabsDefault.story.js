@@ -6,7 +6,7 @@ export default () => ({
   components: { Tab, Tabs },
   template: `
     <div class="p-6">
-      <Tabs selectedName="About" @selectedNameChange="handleSelectedNameChange">
+      <Tabs selectedName="About" :onSelectedNameChange="onSelectedNameChange">
         <Tab name="Home" />
         <Tab name="About" />
         <Tab disabled name="Contact" />
@@ -15,6 +15,6 @@ export default () => ({
     </div>
   `,
   methods: {
-    handleSelectedNameChange: action('selectedNameChange'),
+    onSelectedNameChange: action('onSelectedNameChange'),
   },
 })

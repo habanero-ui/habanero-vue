@@ -5,9 +5,7 @@
     @click.self="handleBackgroundClick"
   >
     <div class="drawer__panel">
-      <div class="drawer__content">
-        <slot />
-      </div>
+      <slot />
     </div>
   </div>
 </template>
@@ -19,10 +17,14 @@ export default {
       default: false,
       type: Boolean,
     },
+    onIsOpenChange: {
+      default: () => {},
+      type: Function,
+    },
   },
   methods: {
     handleBackgroundClick() {
-      this.$emit('isOpenChange', false)
+      this.onIsOpenChange(false)
     },
   },
 }
@@ -30,19 +32,14 @@ export default {
 
 <style scoped>
 .drawer {
-  @apply absolute inset-0 z-50 min-h-screen w-full bg-black-half overflow-hidden pointer-events-none opacity-0;
-  top: 0;
-  transition: opacity 300ms ease-in-out;
-  will-change: transform;
+  @apply fixed flex justify-end inset-0 z-50 bg-black-half overflow-hidden pointer-events-none opacity-0;
+  transition: opacity 250ms ease;
 }
 .drawer__panel {
-  @apply absolute right-0 flex flex-col max-w-xl w-full h-screen;
+  @apply bg-white flex flex-col w-full;
+  max-width: 60rem;
   transform: translateX(100%);
-  transition: transform 300ms ease-in-out;
-  will-change: transform;
-}
-.drawer__content {
-  @apply bg-white flex flex-col flex-1;
+  transition: transform 250ms ease;
 }
 .drawer--is-open {
   @apply pointer-events-auto opacity-100;

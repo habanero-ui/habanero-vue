@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions'
 import { boolean, text } from '@storybook/addon-knobs'
 import Tab from '../index'
 
@@ -23,8 +24,12 @@ export default () => ({
         :disabled="disabled"
         :isSelected="isSelected"
         :name="text"
+        :onSelect="onSelect"
         :text="text"
       />
     </div>
   `,
+  methods: {
+    onSelect: action('onSelect'),
+  },
 })

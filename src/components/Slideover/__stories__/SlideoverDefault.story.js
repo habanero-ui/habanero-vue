@@ -12,50 +12,62 @@ export default () => ({
     cancelText: {
       default: text('cancelText', 'Cancel'),
     },
+    confirmText: {
+      default: text('confirmText', 'Confirm'),
+    },
+    destroyText: {
+      default: text('destroyText', 'Destroy'),
+    },
     isCancelVisible: {
       default: boolean('isCancelVisible', true),
     },
+    isConfirmLoading: {
+      default: boolean('isConfirmLoading', false),
+    },
+    isConfirmVisible: {
+      default: boolean('isConfirmVisible', true),
+    },
+    isDestroyVisible: {
+      default: boolean('isDestroyVisible', true),
+    },
+    isOpen: {
+      default: boolean('isOpen', true),
+    },
     isOpenInNewWindowVisible: {
       default: boolean('isOpenInNewWindowVisible', true),
-    },
-    isSaveVisible: {
-      default: boolean('isSaveVisible', true),
-    },
-    saveText: {
-      default: text('saveText', 'Save'),
     },
     openInNewWindowText: {
       default: text('openInNewWindowText', 'Open in new window'),
     },
   },
-  computed: {
-    listeners() {
-      return {
-        ...(this.isCancelVisible ? { cancel: this.cancel } : {}),
-        ...(this.isOpenInNewWindowVisible
-          ? { openInNewWindow: this.openInNewWindow }
-          : {}),
-        ...(this.isSaveVisible ? { save: this.save } : {}),
-      }
-    },
-  },
   template: `
     <div class="absolute inset-0">
       <Slideover
-        v-on="listeners"
-        :isOpen="true"
+        :isConfirmLoading="isConfirmLoading"
+        :isOpen="isOpen"
         :backText="backText"
         :cancelText="cancelText"
+        :confirmText="confirmText"
+        :destroyText="destroyText"
         :openInNewWindowText="openInNewWindowText"
-        :saveText="saveText"
-        @isOpenChange="isOpenChange">
+        :onCancel="isCancelVisible ? onCancel : undefined"
+        :onConfirm="isConfirmVisible ? onConfirm : undefined"
+        :onDestroy="isDestroyVisible ? onDestroy : undefined"
+        :onIsOpenChange="onIsOpenChange"
+        :onOpenInNewWindow="isOpenInNewWindowVisible ? onOpenInNewWindow : undefined">
+        <div class="flex-1 overflow-y-auto">
+          <div style="background: linear-gradient(to bottom right, #36d, #fff); height: 4000px;">
+            Some Scrolling Content
+          </div>
+        </div>
       </Slideover>
     </div>
   `,
   methods: {
-    cancel: action('cancel'),
-    isOpenChange: action('handleIsOpenChange'),
-    openInNewWindow: action('openInNewWindow'),
-    save: action('save'),
+    onCancel: action('onCancel'),
+    onConfirm: action('onConfirm'),
+    onDestroy: action('onDestroy'),
+    onIsOpenChange: action('onIsOpenChange'),
+    onOpenInNewWindow: action('onOpenInNewWindow'),
   },
 })

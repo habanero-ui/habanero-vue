@@ -1,52 +1,67 @@
 <template>
-  <footer v-if="hasCancelListener || hasSaveListener" class="slideover-footer">
-    <Button
-      v-if="hasCancelListener"
-      class="slideover-footer__button"
-      variant="secondary"
-      :text="cancelText"
-      @click.native="handleCancelClick"
-    />
-    <Button
-      v-if="hasSaveListener"
-      class="slideover-footer__button"
-      :text="saveText"
-      @click.native="handleSaveClick"
-    />
+  <footer v-if="onCancel || onConfirm || onDestroy" class="slideover-footer">
+    <div class="pl-6">
+      <Button
+        v-if="onDestroy"
+        color="error"
+        :text="destroyText"
+        @click.native="onDestroy"
+      />
+    </div>
+    <Stack class="px-6" direction="row" space="6">
+      <Button
+        v-if="onCancel"
+        variant="secondary"
+        :text="cancelText"
+        @click.native="onCancel"
+      />
+      <Button
+        v-if="onConfirm"
+        :isLoading="isConfirmLoading"
+        :text="confirmText"
+        @click.native="onConfirm"
+      />
+    </Stack>
   </footer>
 </template>
 
 <script>
 import Button from '../Button/index'
+import Stack from '../Stack/index'
 
 export default {
   components: {
     Button,
+    Stack,
   },
   props: {
     cancelText: {
       default: 'Cancel',
       type: String,
     },
-    saveText: {
-      default: 'Save',
+    confirmText: {
+      default: 'Confirm',
       type: String,
     },
-  },
-  computed: {
-    hasCancelListener() {
-      return this.$listeners && this.$listeners.cancel
+    destroyText: {
+      default: 'Destroy',
+      type: String,
     },
-    hasSaveListener() {
-      return this.$listeners && this.$listeners.save
+    isConfirmLoading: {
+      default: false,
+      type: Boolean,
     },
-  },
-  methods: {
-    handleCancelClick(e) {
-      this.$emit('cancel', e)
+    onCancel: {
+      default: undefined,
+      type: Function,
     },
-    handleSaveClick(e) {
-      this.$emit('save', e)
+    onConfirm: {
+      default: undefined,
+      type: Function,
+    },
+    onDestroy: {
+      default: undefined,
+      type: Function,
     },
   },
 }
@@ -54,9 +69,7 @@ export default {
 
 <style scoped>
 .slideover-footer {
-  @apply h-20 flex items-center justify-end bg-grey-100;
-}
-.slideover-footer__button {
-  @apply mr-6;
+  @apply flex flex-none mt-auto items-center justify-between bg-grey-100;
+  height: 5.5rem;
 }
 </style>

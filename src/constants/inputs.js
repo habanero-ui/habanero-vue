@@ -1,1 +1,1 @@
-export default ['email', 'number', 'password', 'text', 'tel']
+export default ['email', 'number', 'password', 'search', 'text', 'tel', 'url']

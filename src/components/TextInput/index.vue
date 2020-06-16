@@ -1,36 +1,18 @@
 <template>
   <input
     :class="classes"
-    :placeholder="placeholder"
     :type="type"
     @blur="update($event)"
-    @keyup.enter="handleEnter($event)"
     @input="update($event)"
   />
 </template>
 
 <script>
-import includes from 'lodash/includes'
-import inputs from '../../constants/inputs'
-
 export default {
   props: {
     delay: {
       default: 0,
       type: Number,
-    },
-    name: {
-      default: '',
-      type: String,
-    },
-    placeholder: {
-      default: '',
-      type: String,
-    },
-    type: {
-      default: 'text',
-      type: String,
-      validator: getIsTypeValid,
     },
   },
   computed: {
@@ -45,24 +27,7 @@ export default {
         this.$emit('input', target.value)
       }, this.delay)
     },
-    handleEnter({ target }) {
-      this.$emit('enter', target.value)
-    },
   },
-}
-
-function getIsTypeValid(value) {
-  const isValid = includes(inputs, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Button: The "type" prop must be one of the following:',
-      String(inputs),
-    )
-  }
-
-  return isValid
 }
 </script>
 

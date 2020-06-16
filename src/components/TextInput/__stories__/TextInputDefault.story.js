@@ -7,7 +7,7 @@ export default () => ({
   components: { TextInput },
   props: {
     placeholder: {
-      default: text('text', 'Email address'),
+      default: text('placeholder', 'Email address'),
     },
     type: {
       default: select('type', inputs, 'email'),

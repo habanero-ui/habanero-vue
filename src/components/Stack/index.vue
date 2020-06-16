@@ -13,7 +13,7 @@ export default {
     },
     space: {
       default: 2,
-      type: Number,
+      type: [Number, String],
     },
   },
   computed: {

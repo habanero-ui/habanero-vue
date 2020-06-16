@@ -1,5 +1,5 @@
 <template>
-  <Drawer class="slideover" :isOpen="isOpen" onIsOpenChange="onIsOpenChange">
+  <Drawer class="slideover" :isOpen="isOpen" :onIsOpenChange="onIsOpenChange">
     <SlideoverHeader
       class="slideover__header"
       :backText="backText"

@@ -11,12 +11,14 @@
     <Stack class="px-6" direction="row" space="6">
       <Button
         v-if="onCancel"
-        variant="secondary"
+        :disabled="isCancelDisabled"
         :text="cancelText"
+        variant="secondary"
         @click.native="onCancel"
       />
       <Button
         v-if="onConfirm"
+        :disabled="isConfirmDisabled"
         :isLoading="isConfirmLoading"
         :text="confirmText"
         @click.native="onConfirm"
@@ -46,6 +48,14 @@ export default {
     destroyText: {
       default: 'Destroy',
       type: String,
+    },
+    isCancelDisabled: {
+      default: false,
+      type: Boolean,
+    },
+    isConfirmDisabled: {
+      default: false,
+      type: Boolean,
     },
     isConfirmLoading: {
       default: false,

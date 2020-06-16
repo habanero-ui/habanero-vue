@@ -21,6 +21,12 @@ export default () => ({
     isCancelVisible: {
       default: boolean('isCancelVisible', true),
     },
+    isCancelDisabled: {
+      default: boolean('isCancelDisabled', false),
+    },
+    isConfirmDisabled: {
+      default: boolean('isConfirmDisabled', false),
+    },
     isConfirmLoading: {
       default: boolean('isConfirmLoading', false),
     },
@@ -43,6 +49,8 @@ export default () => ({
   template: `
     <div class="absolute inset-0">
       <Slideover
+        :isCancelDisabled="isCancelDisabled"
+        :isConfirmDisabled="isConfirmDisabled"
         :isConfirmLoading="isConfirmLoading"
         :isOpen="isOpen"
         :backText="backText"

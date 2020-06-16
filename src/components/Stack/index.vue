@@ -60,9 +60,11 @@ export default {
       {
         class: this.classes,
       },
-      this.$slots.default.map((vnode, index) =>
-        this.mapSlotNode(vnode, h, index),
-      ),
+      this.$slots.default
+        ? this.$slots.default.map((vnode, index) =>
+            this.mapSlotNode(vnode, h, index),
+          )
+        : null,
     )
   },
 }

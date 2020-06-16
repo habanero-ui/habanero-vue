@@ -11,6 +11,7 @@
       :cancelText="cancelText"
       :confirmText="confirmText"
       :destroyText="destroyText"
+      :isConfirmLoading="isConfirmLoading"
       :onCancel="onCancel"
       :onConfirm="onConfirm"
       :onDestroy="onDestroy"
@@ -45,6 +46,10 @@ export default {
     destroyText: {
       default: 'Destroy',
       type: String,
+    },
+    isConfirmLoading: {
+      default: false,
+      type: Boolean,
     },
     isOpen: {
       default: false,

@@ -15,7 +15,12 @@
         :text="cancelText"
         @click.native="onCancel"
       />
-      <Button v-if="onConfirm" :text="confirmText" @click.native="onConfirm" />
+      <Button
+        v-if="onConfirm"
+        :isLoading="isConfirmLoading"
+        :text="confirmText"
+        @click.native="onConfirm"
+      />
     </Stack>
   </footer>
 </template>
@@ -41,6 +46,10 @@ export default {
     destroyText: {
       default: 'Destroy',
       type: String,
+    },
+    isConfirmLoading: {
+      default: false,
+      type: Boolean,
     },
     onCancel: {
       default: undefined,

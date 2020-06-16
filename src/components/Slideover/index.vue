@@ -1,15 +1,11 @@
 <template>
-  <Drawer
-    class="slideover"
-    :isOpen="isOpen"
-    @isOpenChange="handleBackgroundClick"
-  >
+  <Drawer class="slideover" :isOpen="isOpen" onIsOpenChange="onIsOpenChange">
     <SlideoverHeader
       class="slideover__header"
       :backText="backText"
       :openInNewWindowText="openInNewWindowText"
-      @back="handleBackClick"
-      v-on="headerListeners"
+      :onBack="onIsOpenChange"
+      :onOpenInNewWindow="onOpenInNewWindow"
     />
     <div class="slideover__content">
       <slot />
@@ -18,7 +14,8 @@
       class="slideover__footer"
       :cancelText="cancelText"
       :saveText="saveText"
-      v-on="footerListeners"
+      :onCancel="onCancel"
+      :onSave="onSave"
     />
   </Drawer>
 </template>
@@ -47,6 +44,22 @@ export default {
       default: false,
       type: Boolean,
     },
+    onCancel: {
+      default: undefined,
+      type: Function,
+    },
+    onIsOpenChange: {
+      default: undefined,
+      type: Function,
+    },
+    onOpenInNewWindow: {
+      default: undefined,
+      type: Function,
+    },
+    onSave: {
+      default: undefined,
+      type: Function,
+    },
     openInNewWindowText: {
       default: 'Open in new window',
       type: String,
@@ -56,55 +69,6 @@ export default {
       type: String,
     },
   },
-  computed: {
-    footerListeners() {
-      if (!this.$listeners) {
-        return {}
-      }
-
-      return {
-        ...(this.$listeners.cancel ? { cancel: this.handleCancelClick } : {}),
-        ...(this.$listeners.save ? { save: this.handleSaveClick } : {}),
-      }
-    },
-    hasCancelListener() {
-      return this.$listeners && this.$listeners.cancel
-    },
-    hasOpenInNewWindowListener() {
-      return this.$listeners && this.$listeners.openInNewWindow
-    },
-    hasSaveListener() {
-      return this.$listeners && this.$listeners.save
-    },
-    headerListeners() {
-      if (!this.$listeners) {
-        return {}
-      }
-
-      return {
-        ...(this.$listeners.openInNewWindow
-          ? { openInNewWindow: this.handleOpenInNewWindowClick }
-          : {}),
-      }
-    },
-  },
-  methods: {
-    handleBackClick() {
-      this.$emit('isOpenChange', false)
-    },
-    handleBackgroundClick() {
-      this.$emit('isOpenChange', false)
-    },
-    handleCancelClick(e) {
-      this.$emit('cancel', e)
-    },
-    handleOpenInNewWindowClick(e) {
-      this.$emit('openInNewWindow', e)
-    },
-    handleSaveClick(e) {
-      this.$emit('save', e)
-    },
-  },
 }
 </script>
 
@@ -112,11 +76,7 @@ export default {
 .slideover {
   @apply flex;
 }
-.slideover__header {
-}
 .slideover__content {
   @apply flex-grow;
-}
-.slideover__footer {
 }
 </style>

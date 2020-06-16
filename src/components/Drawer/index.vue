@@ -19,10 +19,14 @@ export default {
       default: false,
       type: Boolean,
     },
+    onIsOpenChange: {
+      default: undefined,
+      type: Function,
+    },
   },
   methods: {
     handleBackgroundClick() {
-      this.$emit('isOpenChange', false)
+      this.onIsOpenChange(false)
     },
   },
 }

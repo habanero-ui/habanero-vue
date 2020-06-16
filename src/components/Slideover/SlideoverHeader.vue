@@ -1,6 +1,6 @@
 <template>
   <header class="slideover-header">
-    <SlideoverHeaderButton @click.native="handleBackClick">
+    <SlideoverHeaderButton @click.native="onBack">
       <Icon
         :colorIsBackground="true"
         class="slideover-header__back-icon"
@@ -12,8 +12,8 @@
       </Typography>
     </SlideoverHeaderButton>
     <SlideoverHeaderButton
-      v-if="hasOpenInNewWindowListener"
-      @click.native="handleOpenInNewWindowClick"
+      v-if="onOpenInNewWindow"
+      @click.native="onOpenInNewWindow"
     >
       <Typography :colorIsBackground="true">
         {{ openInNewWindowText }}
@@ -44,22 +44,17 @@ export default {
       default: 'Back',
       type: String,
     },
+    onBack: {
+      default: undefined,
+      type: Function,
+    },
+    onOpenInNewWindow: {
+      default: undefined,
+      type: Function,
+    },
     openInNewWindowText: {
       default: 'Open in new window',
       type: String,
-    },
-  },
-  computed: {
-    hasOpenInNewWindowListener() {
-      return this.$listeners && this.$listeners.openInNewWindow
-    },
-  },
-  methods: {
-    handleBackClick(e) {
-      this.$emit('back', e)
-    },
-    handleOpenInNewWindowClick(e) {
-      this.$emit('openInNewWindow', e)
     },
   },
 }

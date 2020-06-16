@@ -7,11 +7,11 @@ export default () => ({
     <div class="absolute inset-0">
       <Drawer
         :isOpen="true"
-        @isOpenChange="isOpenChange">
+        :onIsOpenChange="onIsOpenChange">
       </Drawer>
     </div>
   `,
   methods: {
-    isOpenChange: action('handleIsOpenChange'),
+    onIsOpenChange: action('onIsOpenChange'),
   },
 })

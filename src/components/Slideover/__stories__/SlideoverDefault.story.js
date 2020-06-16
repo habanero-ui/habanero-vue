@@ -42,20 +42,23 @@ export default () => ({
   template: `
     <div class="absolute inset-0">
       <Slideover
-        v-on="listeners"
         :isOpen="true"
         :backText="backText"
         :cancelText="cancelText"
         :openInNewWindowText="openInNewWindowText"
         :saveText="saveText"
-        @isOpenChange="isOpenChange">
+        :onCancel="isCancelVisible && onCancel"
+        :onIsOpenChange="onIsOpenChange"
+        :onOpenInNewWindow="isOpenInNewWindowVisible && onOpenInNewWindow"
+        :onSave="isSaveVisible && onSave"
+        >
       </Slideover>
     </div>
   `,
   methods: {
-    cancel: action('cancel'),
-    isOpenChange: action('handleIsOpenChange'),
-    openInNewWindow: action('openInNewWindow'),
-    save: action('save'),
+    onCancel: action('onCancel'),
+    onIsOpenChange: action('onIsOpenChange'),
+    onOpenInNewWindow: action('onOpenInNewWindow'),
+    onSave: action('onSave'),
   },
 })

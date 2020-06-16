@@ -111,7 +111,7 @@ export default {
 }
 .list-item--actionable::after {
   @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;
-  background-color: #000;
+  background-color: black;
   content: '';
 }
 .list-item--actionable:hover::after {

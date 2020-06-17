@@ -25,30 +25,24 @@ export default {
       ]
     },
 
-    itemWrappingPaddingClass() {
+    itemWrappingStyle() {
+      const spacing = (parseFloat(this.space) * 4) / 16
+
       return {
-        column: `pt-${this.space}`,
-        'column-reverse': `pb-${this.space}`,
-        row: `pl-${this.space}`,
-        'row-reverse': `pr-${this.space}`,
+        column: `padding-top: ${spacing}rem;`,
+        'column-reverse': `padding-bottom: ${spacing}rem;`,
+        row: `padding-left: ${spacing}rem;`,
+        'row-reverse': `padding-right: ${spacing}rem;`,
       }[this.direction]
     },
   },
   methods: {
     mapSlotNode(vnode, h, index) {
-      const { tag } = vnode
-
-      if (!tag) {
-        return vnode
-      }
-
       return h(
         'div',
         {
-          class: [
-            'stack__item',
-            { [this.itemWrappingPaddingClass]: index > 0 },
-          ],
+          class: 'stack__item',
+          style: index > 0 ? this.itemWrappingStyle : '',
         },
         [vnode],
       )
@@ -61,9 +55,9 @@ export default {
         class: this.classes,
       },
       this.$slots.default
-        ? this.$slots.default.map((vnode, index) =>
-            this.mapSlotNode(vnode, h, index),
-          )
+        ? this.$slots.default
+            .filter((vnode) => vnode.tag)
+            .map((vnode, index) => this.mapSlotNode(vnode, h, index))
         : null,
     )
   },

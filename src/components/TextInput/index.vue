@@ -71,7 +71,7 @@ export default {
     },
 
     inputId() {
-      return this.id || this.label.replace(/ /g, '')
+      return this.id || this.label.replace(/ /g, '') || undefined
     },
   },
 }

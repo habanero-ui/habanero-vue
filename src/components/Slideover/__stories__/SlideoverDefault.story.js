@@ -63,10 +63,8 @@ export default () => ({
         :onDestroy="isDestroyVisible ? onDestroy : undefined"
         :onIsOpenChange="onIsOpenChange"
         :onOpenInNewWindow="isOpenInNewWindowVisible ? onOpenInNewWindow : undefined">
-        <div class="flex-1 overflow-y-auto">
-          <div style="background: linear-gradient(to bottom right, #36d, #fff); height: 4000px;">
-            Some Scrolling Content
-          </div>
+        <div class="flex-none" style="background: linear-gradient(to bottom right, #36d, #fff); height: 4000px;">
+          Some Scrolling Content
         </div>
       </Slideover>
     </div>

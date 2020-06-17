@@ -36,12 +36,6 @@ export default {
   },
   methods: {
     mapSlotNode(vnode, h, index) {
-      const { tag } = vnode
-
-      if (!tag) {
-        return vnode
-      }
-
       return h(
         'div',
         {
@@ -61,9 +55,9 @@ export default {
         class: this.classes,
       },
       this.$slots.default
-        ? this.$slots.default.map((vnode, index) =>
-            this.mapSlotNode(vnode, h, index),
-          )
+        ? this.$slots.default
+            .filter((vnode) => vnode.tag)
+            .map((vnode, index) => this.mapSlotNode(vnode, h, index))
         : null,
     )
   },

@@ -25,12 +25,14 @@ export default {
       ]
     },
 
-    itemWrappingPaddingClass() {
+    itemWrappingStyle() {
+      const spacing = (parseFloat(this.space) * 4) / 16
+
       return {
-        column: `pt-${this.space}`,
-        'column-reverse': `pb-${this.space}`,
-        row: `pl-${this.space}`,
-        'row-reverse': `pr-${this.space}`,
+        column: `padding-top: ${spacing}rem;`,
+        'column-reverse': `padding-bottom: ${spacing}rem;`,
+        row: `padding-left: ${spacing}rem;`,
+        'row-reverse': `padding-right: ${spacing}rem;`,
       }[this.direction]
     },
   },
@@ -39,10 +41,8 @@ export default {
       return h(
         'div',
         {
-          class: [
-            'stack__item',
-            { [this.itemWrappingPaddingClass]: index > 0 },
-          ],
+          class: 'stack__item',
+          style: index > 0 ? this.itemWrappingStyle : '',
         },
         [vnode],
       )

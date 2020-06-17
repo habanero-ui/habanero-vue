@@ -120,4 +120,15 @@ function getIsDirectionValid(value) {
 .stack--direction-row-reverse {
   flex-direction: row-reverse;
 }
+.stack__item {
+  display: flex;
+}
+.stack--direction-column .stack__item,
+.stack--direction-column-reverse .stack__item {
+  flex-direction: column;
+}
+.stack--direction-row .stack__item,
+.stack--direction-row-reverse .stack__item {
+  flex-direction: row;
+}
 </style>

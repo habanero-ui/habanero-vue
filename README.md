@@ -8,9 +8,10 @@ Spur's Design System and Component Library
 
 - [ ] Update README with useful info + branding
 - [ ] Add more to .npmignore to reduce installed size
-- [ ] Stack component (https://seek-oss.github.io/braid-design-system/components/Stack/)
 - [ ] Input components: Text, Textarea, Radio, Checkbox, Select
-- [ ] Progress bar component
+- [ ] EmptyState component
+- [ ] ProgressBar component
+- [ ] StepList component
 - [ ] Fill out Roadmap
 
 # Discussion Points

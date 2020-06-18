@@ -1,12 +1,9 @@
 <template>
   <footer v-if="helperText || titleText" class="modal-header">
-    <Stack direction="column" space="2">
-      <Typography
-        v-if="helperText"
-        variant="body-small"
-        class="text-grey-500"
-        >{{ helperText }}</Typography
-      >
+    <Stack space="2">
+      <Typography v-if="helperText" color="subtle" variant="body-small">{{
+        helperText
+      }}</Typography>
       <Typography v-if="titleText" variant="h5">{{ titleText }}</Typography>
     </Stack>
     <ModalHeaderButton @click.native="onCloseModal">

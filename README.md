@@ -13,6 +13,7 @@ Spur's Design System and Component Library
 - [ ] ProgressBar component
 - [ ] StepList component
 - [ ] Fill out Roadmap
+- [ ] Update select component to be custom, not native
 
 # Discussion Points
 

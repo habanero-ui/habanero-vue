@@ -9,15 +9,22 @@
       >
       <Typography v-if="titleText" variant="h5">{{ titleText }}</Typography>
     </Stack>
+    <ModalHeaderButton @click.native="onCloseModal">
+      <Icon class="modal-header__close-icon" name="close" size="large" />
+    </ModalHeaderButton>
   </footer>
 </template>
 
 <script>
+import Icon from '../Icon/index'
+import ModalHeaderButton from './ModalHeaderButton'
 import Stack from '../Stack/index'
 import Typography from '../Typography/index'
 
 export default {
   components: {
+    Icon,
+    ModalHeaderButton,
     Stack,
     Typography,
   },
@@ -25,6 +32,10 @@ export default {
     helperText: {
       default: 'Optional Label',
       type: String,
+    },
+    onCloseModal: {
+      default: undefined,
+      type: Function,
     },
     titleText: {
       default: 'Modal Title',
@@ -36,6 +47,6 @@ export default {
 
 <style scoped>
 .modal-header {
-  @apply mb-4;
+  @apply flex justify-between items-start mb-4;
 }
 </style>

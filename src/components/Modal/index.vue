@@ -5,7 +5,11 @@
     @click.self="handleBackgroundClick"
   >
     <div class="modal__window">
-      <ModalHeader :helperText="helperText" :titleText="titleText" />
+      <ModalHeader
+        :helperText="helperText"
+        :onCloseModal="onIsOpenChange"
+        :titleText="titleText"
+      />
       <div class="modal__content">
         <slot />
       </div>
@@ -91,7 +95,7 @@ export default {
   transition: opacity 250ms ease;
 }
 .modal__window {
-  @apply p-4 rounded bg-white flex flex-col w-11/12 mx-auto shadow-lg z-50 overflow-y-auto;
+  @apply p-6 rounded bg-white flex flex-col w-11/12 mx-auto shadow-lg z-50 overflow-y-auto;
 }
 .modal--is-open {
   @apply pointer-events-auto opacity-100;

@@ -62,14 +62,12 @@ export default {
     classes() {
       return ['text-input', { 'text-input--disabled': this.disabled }]
     },
-
     inputClasses() {
       return [
         'text-input__input',
         { 'text-input__input--has-error': this.error },
       ]
     },
-
     inputId() {
       return this.id || this.label.replace(/ /g, '') || undefined
     },

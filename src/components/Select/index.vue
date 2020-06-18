@@ -1,5 +1,5 @@
 <template>
-  <div :class="containerClasses">
+  <div :class="classes">
     <Stack space="2">
       <Typography v-if="label" component="label" variant="label-large">
         {{ label }}
@@ -48,8 +48,8 @@ export default {
     },
   },
   computed: {
-    containerClasses() {
-      return ['container', { 'container--disabled': this.isDisabled }]
+    classes() {
+      return ['select', { 'select--disabled': this.isDisabled }]
     },
 
     isDisabled() {
@@ -62,46 +62,40 @@ export default {
     },
 
     selectClasses() {
-      return ['select', { 'select--has-error': this.error }]
+      return ['select__input', { 'select__input--has-error': this.error }]
     },
   },
 }
 </script>
 
 <style scoped>
-.container--disabled {
+.select--disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-
-.container--disabled * {
+.select--disabled * {
   cursor: not-allowed;
 }
-
-.select {
-  @apply relative px-4 h-10 w-full border border-black rounded-md text-black cursor-pointer transition-colors duration-300 ease-in-out flex items-center;
+.select__input {
+  @apply relative px-4 w-full border border-black rounded-md text-black cursor-pointer transition-colors duration-300 ease-in-out flex items-center;
+  height: 2.75rem;
 }
-
-.select {
+.select__input {
   -webkit-appearance: none;
   -moz-appearance: none;
   text-indent: 1px;
   text-overflow: '';
 }
-
-.select::-ms-expand {
+.select__input::-ms-expand {
   display: none;
 }
-
-.select:focus {
+.select__input:focus {
   @apply border-info outline-none;
 }
-
-.select > .selected {
+.select__input > .selected {
   @apply flex-1;
 }
-
-.select--has-error {
+.select__input--has-error {
   @apply border-error;
 }
 </style>

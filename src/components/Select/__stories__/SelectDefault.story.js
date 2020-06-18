@@ -1,4 +1,4 @@
-// import { action } from '@storybook/addon-actions'
+import { action } from '@storybook/addon-actions'
 // import { boolean } from '@storybook/addon-knobs'
 import Select from '../index'
 
@@ -14,11 +14,17 @@ export default () => ({
     },
   },
   template: `
-    <div class="absolute inset-0">
-      <Select :options="options"/>
+    <div class="absolute inset-0 p-4">
+      <div class="pb-4">
+        <Select :options="options" @onSelectChange="onSelectChange"/>
+      </div>
+
+      <div>
+        <Select :options="options" disabled/>
+      </div>
     </div>
   `,
   methods: {
-    // onIsOpenChange: action('onIsOpenChange'),
+    onSelectChange: action('onSelectChange'),
   },
 })

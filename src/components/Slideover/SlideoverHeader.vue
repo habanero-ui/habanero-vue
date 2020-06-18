@@ -11,7 +11,6 @@
           </Typography>
         </Column>
       </Columns>
-      <Stack align="center" direction="row" space="4"> </Stack>
     </SlideoverHeaderButton>
     <SlideoverHeaderButton
       v-if="onOpenInNewWindow"

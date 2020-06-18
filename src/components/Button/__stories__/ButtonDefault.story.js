@@ -45,20 +45,21 @@ export default () => ({
     },
   },
   template: `
-    <div class="p-6">
-      <Button
-        class="mr-6"
-        :color="color"
-        :disabled="disabled"
-        :iconName="iconName"
-        :iconSide="iconSide"
-        :iconSize="iconSize"
-        :isLoading="isLoading"
-        :size="size"
-        :text="text"
-        :variant="variant"
-        @click.native="action"
-      />
+    <div class="flex justify-start p-6">
+      <div>
+        <Button
+          :color="color"
+          :disabled="disabled"
+          :iconName="iconName"
+          :iconSide="iconSide"
+          :iconSize="iconSize"
+          :isLoading="isLoading"
+          :size="size"
+          :text="text"
+          :variant="variant"
+          @click.native="action"
+        />
+      </div>
     </div>
   `,
   methods: {

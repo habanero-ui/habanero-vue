@@ -6,7 +6,7 @@
       :onBack="onIsOpenChange"
       :onOpenInNewWindow="onOpenInNewWindow"
     />
-    <div class="slideover__panel">
+    <div class="slideover__content">
       <slot />
     </div>
     <SlideoverFooter
@@ -96,7 +96,7 @@ export default {
 </script>
 
 <style scoped>
-.slideover__panel {
+.slideover__content {
   @apply flex flex-col flex-1 overflow-y-auto;
 }
 </style>

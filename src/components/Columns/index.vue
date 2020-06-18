@@ -1,47 +1,142 @@
 <script>
-import set from 'lodash/set'
+import includes from 'lodash/includes'
 
 export default {
   props: {
-    onSelectedNameChange: {
-      default: undefined,
-      type: Function,
+    alignY: {
+      default: 'top',
+      type: String,
+      validator: getIsAlignYValid,
     },
-    selectedName: {
-      default: undefined,
+    isReversed: {
+      default: false,
+      type: Boolean,
+    },
+    space: {
+      default: 0,
       type: [Number, String],
     },
   },
+  computed: {
+    classes() {
+      return [
+        'columns',
+        { 'columns--is-reversed': this.isReversed },
+        `columns--align-y-${this.alignY}`,
+      ]
+    },
+
+    columnStyle() {
+      const paddingSide = this.isReversed ? 'right' : 'left'
+
+      return `padding-${paddingSide}: ${(parseFloat(this.space) * 4) / 16}rem;`
+    },
+  },
   methods: {
-    mapSlotNode(vnode) {
+    mapSlotNode(vnode, h, index) {
       const { width } = vnode.componentOptions.propsData
 
-      return {
-        ...set(
-          vnode,
-          'componentOptions.propsData.class',
-          {
-            content: 'column--width-content',
-            fluid: 'column--width-fluid',
-          }[width],
-        ),
-      }
+      return h(
+        'div',
+        {
+          class: ['columns__column', `columns__column--width-${width}`],
+        },
+        [h('div', { style: index > 0 ? this.columnStyle : '' }, [vnode])],
+      )
     },
   },
   render(h) {
     return h(
       'div',
       {
-        class: 'columns',
+        class: this.classes,
       },
-      this.$slots.default.filter((vnode) => vnode.tag).map(this.mapSlotNode),
+      this.$slots.default
+        ? this.$slots.default
+            .filter((vnode) => vnode.tag)
+            .map((vnode, index) => this.mapSlotNode(vnode, h, index))
+        : null,
     )
   },
+}
+
+function getIsAlignYValid(value) {
+  const isValid = includes(['bottom', 'center', 'top'], value)
+
+  if (!isValid) {
+    // eslint-disable-next-line no-console
+    console.error(
+      'Column: The "width" prop must be one of the following:',
+      String(['bottom', 'center', 'top']),
+    )
+  }
+
+  return isValid
 }
 </script>
 
 <style scoped>
 .columns {
   @apply flex;
+}
+
+.columns.columns--is-reversed {
+  @apply flex-row-reverse;
+}
+
+.columns.columns--align-y-bottom {
+  @apply items-end;
+}
+
+.columns.columns--align-y-center {
+  @apply items-center;
+}
+
+.columns.columns--align-y-top {
+  @apply items-start;
+}
+
+.columns__column--width-fluid {
+  @apply w-full;
+}
+
+.columns__column--width-content {
+  @apply flex-shrink-0;
+}
+
+.columns__column--width-1\/2 {
+  flex: 0 0 50%;
+}
+
+.columns__column--width-1\/3 {
+  flex: 0 0 33%;
+}
+
+.columns__column--width-2\/3 {
+  flex: 0 0 67%;
+}
+
+.columns__column--width-1\/4 {
+  flex: 0 0 25%;
+}
+
+.columns__column--width-3\/4 {
+  flex: 0 0 75%;
+}
+
+.columns__column--width-1\/5 {
+  flex: 0 0 20%;
+}
+
+.columns__column--width-2\/5 {
+  flex: 0 0 40%;
+}
+
+.columns__column--width-3\/5 {
+  flex: 0 0 60%;
+}
+
+.columns__column--width-4\/5 {
+  flex: 0 0 80%;
 }
 </style>

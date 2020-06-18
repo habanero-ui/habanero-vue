@@ -1,19 +1,32 @@
-import { select } from '@storybook/addon-knobs'
+import { boolean, number, select } from '@storybook/addon-knobs'
 import columnWidths from '../../../constants/columnWidths'
+import Column from '../../Column/index'
+import Stack from '../../Stack/index'
 import Columns from '../index'
 
 export default () => ({
-  components: { Columns },
+  components: { Column, Columns, Stack },
   props: {
-    width: {
-      default: select('width', columnWidths, 'fluid'),
+    alignY: {
+      default: select('alignY', ['bottom', 'center', 'top'], 'top'),
+    },
+    firstColumnWidth: {
+      default: select('firstColumnWidth', columnWidths, 'content'),
+    },
+    isReversed: {
+      default: boolean('isReversed', false),
+    },
+    space: {
+      default: number('space', 6),
     },
   },
+  data: () => ({
+    widths: columnWidths,
+  }),
   template: `
-    <div class="p-6"> 
-      <Columns :width="width">
-        Columns Content
-      </Columns>
-    </div>
+    <Columns :alignY="alignY" :isReversed="isReversed" :space="space">
+      <Column :width="firstColumnWidth"><div class="bg-subtle p-2">{{ firstColumnWidth }}</div></Column>
+      <Column width="fluid"><div class="bg-subtle p-4">fluid</div></Column>
+    </Columns>
   `,
 })

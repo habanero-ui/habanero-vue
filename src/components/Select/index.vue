@@ -1,10 +1,9 @@
 <template>
-  <div :class="containerClasses">
+  <div :class="classes">
     <Stack space="2">
       <Typography v-if="label" component="label" variant="label-large">
         {{ label }}
       </Typography>
-
       <div class="flex">
         <select
           :class="selectClasses"
@@ -15,12 +14,10 @@
         >
           <slot />
         </select>
-
-        <div class="flex items-center h-10 z-10 -ml-8">
+        <div class="z-10 flex items-center h-10 -ml-8">
           <Icon name="chevron-down" />
         </div>
       </div>
-
       <Typography v-if="error" color="error" variant="body-small">
         {{ error }}
       </Typography>
@@ -56,8 +53,8 @@ export default {
   },
 
   computed: {
-    containerClasses() {
-      return ['container', { 'container--disabled': this.isDisabled }]
+    classes() {
+      return ['select', { 'select--disabled': this.isDisabled }]
     },
     isDisabled() {
       return this.$attrs.disabled
@@ -67,46 +64,39 @@ export default {
       return listeners
     },
     selectClasses() {
-      return ['select', { 'select--has-error': this.error }]
+      return ['select__input', { 'select__input--has-error': this.error }]
     },
   },
 }
 </script>
 
 <style scoped>
-.container--disabled {
+.select--disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-
-.container--disabled * {
+.select--disabled * {
   cursor: not-allowed;
 }
-
-.select {
+.select__input {
   @apply relative px-4 h-10 w-full border border-black rounded-md text-black cursor-pointer transition-colors duration-300 ease-in-out flex items-center;
 }
-
-.select {
+.select__input {
   -webkit-appearance: none;
   -moz-appearance: none;
   text-indent: 1px;
   text-overflow: '';
 }
-
-.select::-ms-expand {
+.select__input::-ms-expand {
   display: none;
 }
-
-.select:focus {
+.select__input:focus {
   @apply border-info outline-none;
 }
-
-.select > .selected {
+.select__input > .selected {
   @apply flex-1;
 }
-
-.select--has-error {
+.select__input--has-error {
   @apply border-error;
 }
 </style>

@@ -1,12 +1,12 @@
 <template>
-  <Drawer :isOpen="isOpen" :onIsOpenChange="onIsOpenChange">
+  <Drawer :isOpen="isOpen" :onIsOpenChange="onIsOpenChange" class="slideover">
     <SlideoverHeader
       :backText="backText"
       :openInNewWindowText="openInNewWindowText"
       :onBack="onIsOpenChange"
       :onOpenInNewWindow="onOpenInNewWindow"
     />
-    <div class="flex flex-col flex-1 overflow-y-auto">
+    <div class="slideover__content">
       <slot />
     </div>
     <SlideoverFooter
@@ -94,3 +94,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.slideover__content {
+  @apply flex flex-col flex-1 overflow-y-auto;
+}
+</style>

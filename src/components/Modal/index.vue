@@ -5,6 +5,7 @@
     @click.self="handleBackgroundClick"
   >
     <div class="modal__window">
+      <ModalHeader :helperText="helperText" :titleText="titleText" />
       <div class="modal__content">
         <slot />
       </div>
@@ -23,10 +24,12 @@
 
 <script>
 import ModalFooter from './ModalFooter'
+import ModalHeader from './ModalHeader'
 
 export default {
   components: {
     ModalFooter,
+    ModalHeader,
   },
   props: {
     cancelText: {
@@ -35,6 +38,10 @@ export default {
     },
     confirmText: {
       default: 'Confirm',
+      type: String,
+    },
+    helperText: {
+      default: 'Optional Label',
       type: String,
     },
     isCancelDisabled: {
@@ -65,6 +72,10 @@ export default {
       default: () => {},
       type: Function,
     },
+    titleText: {
+      default: 'Modal Title',
+      type: String,
+    },
   },
   methods: {
     handleBackgroundClick() {
@@ -81,9 +92,6 @@ export default {
 }
 .modal__window {
   @apply p-4 rounded bg-white flex flex-col w-11/12 mx-auto shadow-lg z-50 overflow-y-auto;
-}
-.modal__content {
-  @apply mb-6;
 }
 .modal--is-open {
   @apply pointer-events-auto opacity-100;

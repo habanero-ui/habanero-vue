@@ -11,6 +11,9 @@ export default () => ({
     confirmText: {
       default: text('confirmText', 'Confirm'),
     },
+    helperText: {
+      default: text('helperText', 'Optional Label'),
+    },
     isCancelVisible: {
       default: boolean('isCancelVisible', true),
     },
@@ -29,6 +32,9 @@ export default () => ({
     isOpen: {
       default: boolean('isOpen', true),
     },
+    titleText: {
+      default: text('titleText', 'Modal Title'),
+    },
   },
   template: `
     <div class="absolute inset-0">
@@ -38,11 +44,13 @@ export default () => ({
         :isConfirmLoading="isConfirmLoading"
         :cancelText="cancelText"
         :confirmText="confirmText"
+        :helperText="helperText"
         :isOpen="isOpen"
         :onCancel="isCancelVisible ? onCancel : undefined"
         :onConfirm="isConfirmVisible ? onConfirm : undefined"
-        :onIsOpenChange="onIsOpenChange">
-        Some Content for the Modal
+        :onIsOpenChange="onIsOpenChange"
+        :titleText="titleText">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
       </Modal>
     </div>
   `,

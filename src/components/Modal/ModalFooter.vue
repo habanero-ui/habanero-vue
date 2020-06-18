@@ -20,7 +20,6 @@
 </template>
 
 <script>
-/* make button take up max width... if you could add class `w-full` to stack item it would work */
 import Button from '../Button/index'
 import Stack from '../Stack/index'
 
@@ -61,3 +60,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.modal-footer {
+  @apply mt-6;
+}
+</style>

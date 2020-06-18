@@ -4,7 +4,6 @@
       <Typography v-if="label" component="label" variant="label-large">
         {{ label }}
       </Typography>
-
       <div class="flex">
         <select
           :class="selectClasses"
@@ -15,12 +14,10 @@
         >
           <slot />
         </select>
-
-        <div class="flex items-center h-10 z-10 -ml-8">
+        <div class="z-10 flex items-center h-10 -ml-8">
           <Icon name="chevron-down" />
         </div>
       </div>
-
       <Typography v-if="error" color="error" variant="body-small">
         {{ error }}
       </Typography>
@@ -36,7 +33,6 @@ import Typography from '../Typography'
 export default {
   components: { Icon, Stack, Typography },
   inheritAttrs: false,
-
   props: {
     error: {
       default: '',
@@ -46,26 +42,25 @@ export default {
       default: '',
       type: String,
     },
-    name: {
-      default: '',
-      type: String,
-    },
     value: {
       default: '',
+      type: [Number, String],
     },
   },
-
   computed: {
     containerClasses() {
       return ['container', { 'container--disabled': this.isDisabled }]
     },
+
     isDisabled() {
       return this.$attrs.disabled
     },
+
     listeners() {
       const { input, ...listeners } = this.$listeners
       return listeners
     },
+
     selectClasses() {
       return ['select', { 'select--has-error': this.error }]
     },

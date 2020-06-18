@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions'
-// import { boolean } from '@storybook/addon-knobs'
+import { boolean, text } from '@storybook/addon-knobs'
 import Select from '../index'
 
 export default () => ({
@@ -12,15 +12,28 @@ export default () => ({
         { label: 'Select 3', value: 3 },
       ],
     },
+    error: {
+      default: text('error', ''),
+    },
+    label: {
+      default: text('label', 'This is a label'),
+    },
+    disabled: {
+      default: boolean('disabled', true),
+    },
   },
   template: `
     <div class="absolute inset-0 p-4">
       <div class="pb-4">
-        <Select :options="options" @onSelectChange="onSelectChange"/>
+        <Select 
+          :options="options" 
+          :error="error" 
+          :label="label"
+          @onSelectChange="onSelectChange"/>
       </div>
 
       <div>
-        <Select :options="options" disabled/>
+        <Select :options="options" :disabled="disabled"/>
       </div>
     </div>
   `,

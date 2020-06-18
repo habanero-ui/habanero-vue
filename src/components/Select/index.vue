@@ -79,7 +79,8 @@ export default {
   cursor: not-allowed;
 }
 .select__input {
-  @apply relative px-4 h-10 w-full border border-black rounded-md text-black cursor-pointer transition-colors duration-300 ease-in-out flex items-center;
+  @apply relative px-4 w-full border border-black rounded-md text-black cursor-pointer transition-colors duration-300 ease-in-out flex items-center;
+  height: 2.75rem;
 }
 .select__input {
   -webkit-appearance: none;

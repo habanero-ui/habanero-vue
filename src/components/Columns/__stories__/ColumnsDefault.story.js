@@ -1,11 +1,10 @@
 import { boolean, number, select } from '@storybook/addon-knobs'
 import columnWidths from '../../../constants/columnWidths'
 import Column from '../../Column/index'
-import Stack from '../../Stack/index'
 import Columns from '../index'
 
 export default () => ({
-  components: { Column, Columns, Stack },
+  components: { Column, Columns },
   props: {
     alignY: {
       default: select('alignY', ['bottom', 'center', 'top'], 'top'),

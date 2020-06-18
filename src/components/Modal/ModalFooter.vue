@@ -67,6 +67,6 @@ export default {
 
 <style scoped>
 .modal-footer {
-  @apply mt-6;
+  @apply pt-6;
 }
 </style>

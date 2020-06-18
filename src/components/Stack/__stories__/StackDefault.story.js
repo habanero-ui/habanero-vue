@@ -1,9 +1,10 @@
 import { number, select } from '@storybook/addon-knobs'
 import Button from '../../Button/index'
+import TextInput from '../../TextInput/index'
 import Stack from '../index'
 
 export default () => ({
-  components: { Button, Stack },
+  components: { Button, Stack, TextInput },
   props: {
     align: {
       default: select(
@@ -30,7 +31,7 @@ export default () => ({
         <div class="bg-purple">Colored DIV!</div>
         <Button text="Button 2" />
         <span>Normal SPAN.</span>
-        <Button text="Button 3" />
+        <TextInput value="TextInput" />
       </Stack>
     </div>
   `,

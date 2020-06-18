@@ -1,43 +1,54 @@
 <template>
   <header class="slideover-header">
     <SlideoverHeaderButton @click.native="onBack">
-      <Stack align="center" direction="row" space="4">
-        <Icon :colorIsBackground="true" name="arrow-left" size="small" />
-        <Typography :colorIsBackground="true">
-          {{ backText }}
-        </Typography>
-      </Stack>
+      <Columns alignY="center" space="4">
+        <Column width="content">
+          <Icon :colorIsBackground="true" name="arrow-left" size="small" />
+        </Column>
+        <Column>
+          <Typography :colorIsBackground="true">
+            {{ backText }}
+          </Typography>
+        </Column>
+      </Columns>
+      <Stack align="center" direction="row" space="4"> </Stack>
     </SlideoverHeaderButton>
     <SlideoverHeaderButton
       v-if="onOpenInNewWindow"
       @click.native="onOpenInNewWindow"
     >
-      <Stack align="center" direction="row" space="4">
-        <Typography :colorIsBackground="true">
-          {{ openInNewWindowText }}
-        </Typography>
-        <Icon
-          :colorIsBackground="true"
-          class="slideover-header__new-window-icon"
-          name="new-window"
-          size="small"
-        />
-      </Stack>
+      <Columns alignY="center" space="4">
+        <Column>
+          <Typography :colorIsBackground="true">
+            {{ openInNewWindowText }}
+          </Typography>
+        </Column>
+        <Column width="content">
+          <Icon
+            :colorIsBackground="true"
+            class="slideover-header__new-window-icon"
+            name="new-window"
+            size="small"
+          />
+        </Column>
+      </Columns>
     </SlideoverHeaderButton>
   </header>
 </template>
 
 <script>
 import Icon from '../Icon/index'
-import SlideoverHeaderButton from './SlideoverHeaderButton'
-import Stack from '../Stack/index'
+import Column from '../Column/index'
+import Columns from '../Columns/index'
 import Typography from '../Typography/index'
+import SlideoverHeaderButton from './SlideoverHeaderButton'
 
 export default {
   components: {
+    Column,
+    Columns,
     Icon,
     SlideoverHeaderButton,
-    Stack,
     Typography,
   },
   props: {

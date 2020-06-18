@@ -2,7 +2,7 @@
   <div
     class="drawer"
     :class="{ 'drawer--is-open': isOpen }"
-    @click.self="onBackgroundClick"
+    @click.self="handleBackgroundClick"
   >
     <div class="drawer__panel">
       <slot />
@@ -23,7 +23,7 @@ export default {
     },
   },
   methods: {
-    onBackgroundClick() {
+    handleBackgroundClick() {
       this.onIsOpenChange(false)
     },
   },

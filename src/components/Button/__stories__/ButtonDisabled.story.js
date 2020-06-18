@@ -4,13 +4,14 @@ import Button from '../index'
 export default () => ({
   components: { Button },
   template: `
-    <div class="p-6">
-      <Button
-        class="mr-6"
-        disabled
-        text="Text"
-        @click.native="action"
-      />
+    <div class="flex justify-start p-6">
+      <div>
+        <Button
+          disabled
+          text="Text"
+          @click.native="action"
+        />
+      </div>
     </div>
   `,
   methods: {

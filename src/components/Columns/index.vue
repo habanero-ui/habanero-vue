@@ -39,7 +39,10 @@ export default {
       return h(
         'div',
         {
-          class: ['columns__column', `columns__column--width-${width}`],
+          class: [
+            'columns__column',
+            `columns__column--width-${width || 'fluid'}`,
+          ],
         },
         [h('div', { style: index > 0 ? this.columnStyle : '' }, [vnode])],
       )
@@ -53,7 +56,7 @@ export default {
       },
       this.$slots.default
         ? this.$slots.default
-            .filter((vnode) => vnode.tag)
+            .filter((vnode) => vnode.tag && vnode.componentOptions)
             .map((vnode, index) => this.mapSlotNode(vnode, h, index))
         : null,
     )

@@ -10,8 +10,8 @@ export default () => ({
     },
   },
   template: `
-    <div class="p-6">
-      <Button :isLoading="isLoading" text="Text" @click.native="action" />
+    <div class="flex justify-start p-6">
+      <div><Button :isLoading="isLoading" text="Text" @click.native="action" /></div>
     </div>
   `,
   methods: {

@@ -159,7 +159,7 @@ function getIsVariantValid(value) {
 
 <style scoped>
 .button {
-  @apply relative flex-none flex justify-center items-center rounded-lg border border-transparent outline-none;
+  @apply relative flex-none flex justify-center items-center rounded-lg border border-transparent outline-none w-full;
 }
 .button[disabled] {
   cursor: not-allowed;

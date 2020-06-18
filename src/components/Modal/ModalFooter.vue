@@ -1,32 +1,36 @@
 <template>
   <footer v-if="onCancel || onConfirm" class="modal-footer">
-    <Stack direction="row" space="6">
-      <Button
-        v-if="onCancel"
-        :disabled="isCancelDisabled"
-        :text="cancelText"
-        variant="secondary"
-        @click.native="onCancel"
-      />
-      <Button
-        v-if="onConfirm"
-        :disabled="isConfirmDisabled"
-        :isLoading="isConfirmLoading"
-        :text="confirmText"
-        @click.native="onConfirm"
-      />
-    </Stack>
+    <Columns space="6">
+      <Column v-if="onCancel">
+        <Button
+          :disabled="isCancelDisabled"
+          :text="cancelText"
+          variant="secondary"
+          @click.native="onCancel"
+        />
+      </Column>
+      <Column v-if="onConfirm">
+        <Button
+          :disabled="isConfirmDisabled"
+          :isLoading="isConfirmLoading"
+          :text="confirmText"
+          @click.native="onConfirm"
+        />
+      </Column>
+    </Columns>
   </footer>
 </template>
 
 <script>
 import Button from '../Button/index'
-import Stack from '../Stack/index'
+import Column from '../Column/index'
+import Columns from '../Columns/index'
 
 export default {
   components: {
     Button,
-    Stack,
+    Column,
+    Columns,
   },
   props: {
     cancelText: {

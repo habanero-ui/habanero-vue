@@ -1,5 +1,5 @@
 <template>
-  <footer v-if="helperText || titleText" class="modal-header">
+  <header v-if="helperText || titleText" class="modal-header">
     <Stack space="2">
       <Typography v-if="helperText" color="subtle" variant="body-small">{{
         helperText
@@ -9,7 +9,7 @@
     <ModalHeaderButton @click.native="onCloseModal">
       <Icon class="modal-header__close-icon" name="close" size="large" />
     </ModalHeaderButton>
-  </footer>
+  </header>
 </template>
 
 <script>

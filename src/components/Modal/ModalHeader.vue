@@ -3,9 +3,9 @@
     <Columns space="6">
       <Column>
         <Stack space="2">
-          <Typography v-if="helperText" color="subtle" variant="body-small">{{
-            helperText
-          }}</Typography>
+          <Typography v-if="helperText" color="subtle" variant="body-small">
+            {{ helperText }}
+          </Typography>
           <Typography v-if="titleText" variant="h5">{{ titleText }}</Typography>
         </Stack>
       </Column>

@@ -27,7 +27,7 @@ export default {
   },
   props: {
     helperText: {
-      default: 'Optional Label',
+      default: '',
       type: String,
     },
     onCloseModal: {
@@ -35,7 +35,7 @@ export default {
       type: Function,
     },
     titleText: {
-      default: 'Modal Title',
+      default: '',
       type: String,
     },
   },

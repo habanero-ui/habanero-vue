@@ -45,7 +45,7 @@ export default {
       type: String,
     },
     helperText: {
-      default: 'Optional Label',
+      default: '',
       type: String,
     },
     isCancelDisabled: {
@@ -77,7 +77,7 @@ export default {
       type: Function,
     },
     titleText: {
-      default: 'Modal Title',
+      default: '',
       type: String,
     },
   },

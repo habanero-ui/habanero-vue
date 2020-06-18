@@ -2,7 +2,7 @@
   <div
     class="modal"
     :class="{ 'modal--is-open': isOpen }"
-    @click.self="handleBackgroundClick"
+    @click.self="onBackgroundClick"
   >
     <div class="modal__window">
       <ModalHeader
@@ -82,7 +82,7 @@ export default {
     },
   },
   methods: {
-    handleBackgroundClick() {
+    onBackgroundClick() {
       this.onIsOpenChange(false)
     },
   },

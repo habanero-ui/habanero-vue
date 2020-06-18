@@ -12,13 +12,16 @@ export default () => ({
       default: text('error', ''),
     },
     helperText: {
-      default: text('helperText', ''),
+      default: text(
+        'helperText',
+        'Enter your name as it appears on your birth certificate',
+      ),
     },
     label: {
-      default: text('label', ''),
+      default: text('label', 'Legal Name'),
     },
     placeholder: {
-      default: text('placeholder', 'Email address'),
+      default: text('placeholder', 'John Michael Doe'),
     },
     type: {
       default: select(

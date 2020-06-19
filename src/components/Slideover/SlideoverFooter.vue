@@ -1,40 +1,40 @@
 <template>
   <footer v-if="onCancel || onConfirm || onDestroy" class="slideover-footer">
-    <div class="pl-6">
-      <Button
-        v-if="onDestroy"
-        color="error"
-        :text="destroyText"
-        @click.native="onDestroy"
-      />
-    </div>
-    <Stack class="px-6" direction="row" space="6">
-      <Button
-        v-if="onCancel"
-        :disabled="isCancelDisabled"
-        :text="cancelText"
-        variant="secondary"
-        @click.native="onCancel"
-      />
-      <Button
-        v-if="onConfirm"
-        :disabled="isConfirmDisabled"
-        :isLoading="isConfirmLoading"
-        :text="confirmText"
-        @click.native="onConfirm"
-      />
-    </Stack>
+    <Columns space="6">
+      <Column v-if="onDestroy" width="content">
+        <Button color="error" :text="destroyText" @click.native="onDestroy" />
+      </Column>
+      <Column />
+      <Column v-if="onCancel" width="content">
+        <Button
+          :disabled="isCancelDisabled"
+          :text="cancelText"
+          variant="secondary"
+          @click.native="onCancel"
+        />
+      </Column>
+      <Column v-if="onConfirm" width="content">
+        <Button
+          :disabled="isConfirmDisabled"
+          :isLoading="isConfirmLoading"
+          :text="confirmText"
+          @click.native="onConfirm"
+        />
+      </Column>
+    </Columns>
   </footer>
 </template>
 
 <script>
 import Button from '../Button/index'
-import Stack from '../Stack/index'
+import Column from '../Column/index'
+import Columns from '../Columns/index'
 
 export default {
   components: {
     Button,
-    Stack,
+    Column,
+    Columns,
   },
   props: {
     cancelText: {
@@ -79,7 +79,6 @@ export default {
 
 <style scoped>
 .slideover-footer {
-  @apply flex flex-none mt-auto items-center justify-between bg-grey-100;
-  height: 5.5rem;
+  @apply flex flex-col flex-none p-6 mt-auto bg-grey-100;
 }
 </style>

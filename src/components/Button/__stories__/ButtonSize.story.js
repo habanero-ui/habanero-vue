@@ -1,11 +1,12 @@
+import Stack from '../../Stack/index'
 import Button from '../index'
 
 export default () => ({
-  components: { Button },
+  components: { Button, Stack },
   template: `
-    <div class="p-6">
-      <Button class="mb-4" size="small" text="Text" />
+    <Stack align="start" class="p-6" space="6">
+      <Button size="small" text="Text" />
       <Button text="Text" />
-    </div>
+    </Stack>
   `,
 })

@@ -91,8 +91,7 @@ export default {
 
 <style scoped>
 .modal {
-  @apply absolute inset-0 top-0 flex items-center justify-center w-full min-h-screen overflow-hidden opacity-0 pointer-events-none bg-black-half;
-  transition: opacity 250ms ease;
+  @apply absolute inset-0 top-0 flex items-center justify-center w-full min-h-screen transition-opacity duration-300 ease-in-out overflow-hidden opacity-0 pointer-events-none bg-black-half;
 }
 .modal__window {
   @apply p-6 rounded bg-white flex flex-col w-11/12 mx-auto shadow-lg z-50 overflow-y-auto;

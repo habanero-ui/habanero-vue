@@ -1,25 +1,35 @@
 <template>
   <header v-if="helperText || titleText" class="modal-header">
-    <Stack space="2">
-      <Typography v-if="helperText" color="subtle" variant="body-small">{{
-        helperText
-      }}</Typography>
-      <Typography v-if="titleText" variant="h5">{{ titleText }}</Typography>
-    </Stack>
-    <ModalHeaderButton @click.native="onCloseModal">
-      <Icon class="modal-header__close-icon" name="close" size="large" />
-    </ModalHeaderButton>
+    <Columns space="6">
+      <Column>
+        <Stack space="2">
+          <Typography v-if="helperText" color="subtle" variant="body-small">
+            {{ helperText }}
+          </Typography>
+          <Typography v-if="titleText" variant="h5">{{ titleText }}</Typography>
+        </Stack>
+      </Column>
+      <Column width="content">
+        <ModalHeaderButton @click.native="onCloseModal">
+          <Icon class="modal-header__close-icon" name="close" size="large" />
+        </ModalHeaderButton>
+      </Column>
+    </Columns>
   </header>
 </template>
 
 <script>
+import Column from '../Column/index'
+import Columns from '../Columns/index'
 import Icon from '../Icon/index'
-import ModalHeaderButton from './ModalHeaderButton'
 import Stack from '../Stack/index'
 import Typography from '../Typography/index'
+import ModalHeaderButton from './ModalHeaderButton'
 
 export default {
   components: {
+    Column,
+    Columns,
     Icon,
     ModalHeaderButton,
     Stack,
@@ -44,6 +54,6 @@ export default {
 
 <style scoped>
 .modal-header {
-  @apply flex justify-between items-start mb-4;
+  @apply flex flex-col pb-4;
 }
 </style>

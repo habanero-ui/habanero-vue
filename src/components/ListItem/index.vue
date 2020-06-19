@@ -118,9 +118,10 @@ export default {
   opacity: 0.1;
 }
 .list-item--actionable:active::after {
-  opacity: 0.25;
+  @apply opacity-25;
 }
 .list-item--lines-single {
+  /* TODO: Use padding instead of heights */
   height: 2.75rem;
 }
 .list-item--lines-double {

@@ -71,7 +71,6 @@ function getIsSizeValid(value) {
   @apply relative pointer-events-none transition-opacity duration-300;
   animation-delay: 0.2s;
   animation: rotateButtonSpinner 1.5s linear infinite;
-  /* border-top-color: theme('colors.grey-500'); */
 }
 
 .spinner::before {

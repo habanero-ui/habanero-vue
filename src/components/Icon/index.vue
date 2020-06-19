@@ -74,8 +74,7 @@ function getIsSizeValid(value) {
   @apply flex-none fill-current overflow-hidden;
 }
 .icon > svg {
-  height: 100%;
-  width: 100%;
+  @apply h-full w-full;
 }
 .icon--color-none.icon--color-is-background {
   @apply text-white;

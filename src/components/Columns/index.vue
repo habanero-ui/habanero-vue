@@ -1,5 +1,7 @@
 <script>
 import includes from 'lodash/includes'
+import Box from '../Box/index'
+import spacingAliases from '../../constants/spacingAliases'
 
 export default {
   props: {
@@ -13,8 +15,9 @@ export default {
       type: Boolean,
     },
     space: {
-      default: 0,
+      default: '',
       type: [Number, String],
+      validator: getIsSpaceValid,
     },
   },
   computed: {
@@ -44,7 +47,18 @@ export default {
             `columns__column--width-${width || 'fluid'}`,
           ],
         },
-        [h('div', { style: index > 0 ? this.columnStyle : '' }, [vnode])],
+        [
+          h(
+            Box,
+            {
+              props: {
+                [`padding${this.isReversed ? 'Right' : 'Left'}`]:
+                  index > 0 ? this.space : '',
+              },
+            },
+            [vnode],
+          ),
+        ],
       )
     },
   },
@@ -71,6 +85,21 @@ function getIsAlignYValid(value) {
     console.error(
       'Column: The "width" prop must be one of the following:',
       String(['bottom', 'center', 'top']),
+    )
+  }
+
+  return isValid
+}
+
+function getIsSpaceValid(value) {
+  const isValid =
+    includes(['', ...spacingAliases], value) || !isNaN(parseFloat(value))
+
+  if (!isValid) {
+    // eslint-disable-next-line no-console
+    console.error(
+      `Columns: The "space" prop must be a number to be multiplied by 4, or one of the following aliases:`,
+      String(spacingAliases),
     )
   }
 

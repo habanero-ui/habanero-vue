@@ -1,7 +1,7 @@
 <script>
 import includes from 'lodash/includes'
 import Box from '../Box/index'
-import { spacingAliases } from '../../constants/spacing'
+import spacingAliases from '../../constants/spacingAliases'
 
 export default {
   props: {
@@ -70,7 +70,7 @@ function getIsSpaceValid(value) {
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
-      `Box: The "space" prop must be a number to be multiplied by 4, or one of the following aliases:`,
+      `Stack: The "space" prop must be a number to be multiplied by 4, or one of the following aliases:`,
       String(spacingAliases),
     )
   }

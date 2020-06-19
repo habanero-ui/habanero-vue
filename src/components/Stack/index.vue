@@ -1,5 +1,7 @@
 <script>
 import includes from 'lodash/includes'
+import Box from '../Box/index'
+import spacingAliases from '../../constants/spacingAliases'
 
 export default {
   props: {
@@ -8,26 +10,25 @@ export default {
       validator: getIsAlignValid,
     },
     space: {
-      default: 0,
+      default: '',
       type: [Number, String],
+      validator: getIsSpaceValid,
     },
   },
   computed: {
     classes() {
       return ['stack', `stack--align-${this.align}`]
     },
-
-    itemStyle() {
-      return `padding-top: ${(parseFloat(this.space) * 4) / 16}rem;`
-    },
   },
   methods: {
     mapSlotNode(vnode, h, index) {
       return h(
-        'div',
+        Box,
         {
           class: 'stack__item',
-          style: index > 0 ? this.itemStyle : '',
+          props: {
+            paddingTop: index > 0 ? this.space : '',
+          },
         },
         [vnode],
       )
@@ -56,6 +57,21 @@ function getIsAlignValid(value) {
     console.error(
       'Stack: The "align" prop must be one of the following when defined:',
       String(['center', 'left', 'right', 'stretch']),
+    )
+  }
+
+  return isValid
+}
+
+function getIsSpaceValid(value) {
+  const isValid =
+    includes(['', ...spacingAliases], value) || !isNaN(parseFloat(value))
+
+  if (!isValid) {
+    // eslint-disable-next-line no-console
+    console.error(
+      `Stack: The "space" prop must be a number to be multiplied by 4, or one of the following aliases:`,
+      String(spacingAliases),
     )
   }
 

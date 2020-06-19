@@ -1,4 +1,4 @@
-import { number, select } from '@storybook/addon-knobs'
+import { text, select } from '@storybook/addon-knobs'
 import Button from '../../Button/index'
 import TextInput from '../../TextInput/index'
 import Stack from '../index'
@@ -14,7 +14,7 @@ export default () => ({
       ),
     },
     space: {
-      default: number('space', 0),
+      default: text('space', '4'),
     },
   },
   template: `

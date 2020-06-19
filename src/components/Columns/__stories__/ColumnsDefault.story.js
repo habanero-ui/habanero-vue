@@ -1,10 +1,11 @@
-import { boolean, number, select } from '@storybook/addon-knobs'
+import { boolean, select, text } from '@storybook/addon-knobs'
 import columnWidths from '../../../constants/columnWidths'
+import Box from '../../Box/index'
 import Column from '../../Column/index'
 import Columns from '../index'
 
 export default () => ({
-  components: { Column, Columns },
+  components: { Box, Column, Columns },
   props: {
     alignY: {
       default: select('alignY', ['bottom', 'center', 'top'], 'top'),
@@ -16,7 +17,7 @@ export default () => ({
       default: boolean('isReversed', false),
     },
     space: {
-      default: number('space', 6),
+      default: text('space', ''),
     },
   },
   data: () => ({
@@ -24,8 +25,16 @@ export default () => ({
   }),
   template: `
     <Columns :alignY="alignY" :isReversed="isReversed" :space="space">
-      <Column :width="firstColumnWidth"><div class="bg-subtle p-2">{{ firstColumnWidth }}</div></Column>
-      <Column width="fluid"><div class="bg-subtle p-4">fluid</div></Column>
+      <Column :width="firstColumnWidth">
+        <Box class="bg-subtle" padding="small">
+          {{ firstColumnWidth }}
+        </Box>
+      </Column>
+      <Column width="fluid">
+        <Box class="bg-subtle" padding="gutter">
+          fluid
+        </Box>
+      </Column>
     </Columns>
   `,
 })

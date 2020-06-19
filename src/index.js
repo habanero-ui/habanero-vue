@@ -1,4 +1,7 @@
+export { default as Box } from './components/Box/index.vue'
 export { default as Button } from './components/Button/index.vue'
+export { default as Column } from './components/Column/index.vue'
+export { default as Columns } from './components/Columns/index.vue'
 export { default as Drawer } from './components/Drawer/index.vue'
 export { default as Icon } from './components/Icon/index.vue'
 export { default as ListItem } from './components/ListItem/index.vue'

@@ -52,7 +52,7 @@ function getIsSpacingPropValid(propName) {
     if (!isValid) {
       // eslint-disable-next-line no-console
       console.error(
-        `Box: The "${propName}" prop must be a number to be multiplied by 4, or one of the following spacingAliases:`,
+        `Box: The "${propName}" prop must be a number to be multiplied by 4, or one of the following aliases:`,
         String(spacingAliases),
       )
     }

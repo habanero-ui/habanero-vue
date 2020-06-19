@@ -1,30 +1,30 @@
 import { action } from '@storybook/addon-actions'
-import { number } from '@storybook/addon-knobs'
+import { text } from '@storybook/addon-knobs'
 import Box from '../index'
 
 export default () => ({
   components: { Box },
   props: {
     padding: {
-      default: number('padding'),
+      default: text('padding', ''),
     },
     paddingBottom: {
-      default: number('paddingBottom'),
+      default: text('paddingBottom', ''),
     },
     paddingLeft: {
-      default: number('paddingLeft'),
+      default: text('paddingLeft', ''),
     },
     paddingRight: {
-      default: number('paddingRight'),
+      default: text('paddingRight', ''),
     },
     paddingTop: {
-      default: number('paddingTop'),
+      default: text('paddingTop', ''),
     },
     paddingX: {
-      default: number('paddingX'),
+      default: text('paddingX', ''),
     },
     paddingY: {
-      default: number('paddingY'),
+      default: text('paddingY', ''),
     },
   },
   template: `

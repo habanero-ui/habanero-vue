@@ -82,63 +82,48 @@ function getIsAlignYValid(value) {
 .columns {
   @apply flex;
 }
-
 .columns.columns--is-reversed {
   @apply flex-row-reverse;
 }
-
 .columns.columns--align-y-bottom {
   @apply items-end;
 }
-
 .columns.columns--align-y-center {
   @apply items-center;
 }
-
 .columns.columns--align-y-top {
   @apply items-start;
 }
-
 .columns__column--width-fluid {
   @apply w-full;
 }
-
 .columns__column--width-content {
   @apply flex-shrink-0;
 }
-
 .columns__column--width-1\/2 {
   flex: 0 0 50%;
 }
-
 .columns__column--width-1\/3 {
   flex: 0 0 33%;
 }
-
 .columns__column--width-2\/3 {
   flex: 0 0 67%;
 }
-
 .columns__column--width-1\/4 {
   flex: 0 0 25%;
 }
-
 .columns__column--width-3\/4 {
   flex: 0 0 75%;
 }
-
 .columns__column--width-1\/5 {
   flex: 0 0 20%;
 }
-
 .columns__column--width-2\/5 {
   flex: 0 0 40%;
 }
-
 .columns__column--width-3\/5 {
   flex: 0 0 60%;
 }
-
 .columns__column--width-4\/5 {
   flex: 0 0 80%;
 }

@@ -65,19 +65,18 @@ function getIsAlignValid(value) {
 
 <style scoped>
 .stack__item {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
 }
 .stack--align-center .stack__item {
-  align-items: center;
+  @apply items-center;
 }
 .stack--align-left .stack__item {
-  align-items: flex-start;
+  @apply items-start;
 }
 .stack--align-right .stack__item {
-  align-items: flex-end;
+  @apply items-end;
 }
 .stack--align-stretch .stack__item {
-  align-items: stretch;
+  @apply items-stretch;
 }
 </style>

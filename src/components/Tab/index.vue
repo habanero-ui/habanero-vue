@@ -96,8 +96,7 @@ export default {
   content: '';
 }
 .tab[disabled] {
-  cursor: not-allowed;
-  opacity: 0.5;
+  @apply cursor-not-allowed opacity-50;
 }
 .tab--is-selected {
   @apply border-info;
@@ -109,9 +108,9 @@ export default {
   opacity: 0.1;
 }
 .tab:active:not([disabled])::after {
-  opacity: 0.25;
+  @apply opacity-25;
 }
 .tab--is-key-down::after {
-  opacity: 0.25;
+  @apply opacity-25;
 }
 </style>

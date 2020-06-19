@@ -16,7 +16,7 @@
   opacity: 0.1;
 }
 .slideover-header-button:active::after {
-  opacity: 0.25;
+  @apply opacity-25;
 }
 .slideover-header-button:focus {
   box-shadow: 0 0 0 2px white inset;

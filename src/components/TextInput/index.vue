@@ -84,11 +84,9 @@ export default {
   cursor: not-allowed;
 }
 .text-input__input {
-  @apply border border-black transition-colors duration-300 ease-in-out outline-none;
+  @apply border border-black px-4 transition-colors duration-300 ease-in-out outline-none;
   border-radius: 0.3125rem;
   height: 2.75rem;
-  padding-left: 16px;
-  padding-right: 16px;
 }
 .text-input__input:not([disabled]):hover {
   @apply border-2;

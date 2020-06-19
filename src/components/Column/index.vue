@@ -1,3 +1,7 @@
+<template>
+  <div class="column"><slot /></div>
+</template>
+
 <script>
 import includes from 'lodash/includes'
 import columnWidths from '../../constants/columnWidths'
@@ -9,9 +13,6 @@ export default {
       type: String,
       validator: getIsWidthValid,
     },
-  },
-  render(h) {
-    return this.$slots.default
   },
 }
 

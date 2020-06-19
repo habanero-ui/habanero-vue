@@ -1,7 +1,7 @@
 <template>
-  <div class="box" :style="styles">
+  <component :is="component" class="box" :style="styles">
     <slot />
-  </div>
+  </component>
 </template>
 
 <script>
@@ -14,6 +14,10 @@ import spacingAliases from '../../constants/spacingAliases'
 
 export default {
   props: {
+    component: {
+      default: 'div',
+      type: String,
+    },
     padding: getSpacingPropType('padding'),
     paddingBottom: getSpacingPropType('paddingBottom'),
     paddingLeft: getSpacingPropType('paddingLeft'),

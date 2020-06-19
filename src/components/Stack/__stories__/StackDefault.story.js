@@ -9,24 +9,17 @@ export default () => ({
     align: {
       default: select(
         'align',
-        [undefined, 'center', 'end', 'start'],
-        undefined,
-      ),
-    },
-    direction: {
-      default: select(
-        'direction',
-        ['column', 'column-reverse', 'row', 'row-reverse'],
-        'column',
+        ['center', 'left', 'right', 'stretch'],
+        'stretch',
       ),
     },
     space: {
-      default: number('space', 6),
+      default: number('space', 0),
     },
   },
   template: `
     <div>
-      <Stack :align="align" class="bg-green" :direction="direction" :space="space">
+      <Stack :align="align" class="bg-green" :space="space">
         <Button text="Button 1" />
         <div class="bg-purple">Colored DIV!</div>
         <Button text="Button 2" />

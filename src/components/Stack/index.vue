@@ -83,16 +83,16 @@ function getIsSpaceValid(value) {
 .stack__item {
   @apply flex flex-col;
 }
-.stack--align-center .stack__item {
+.stack--align-center > .stack__item {
   @apply items-center;
 }
-.stack--align-left .stack__item {
+.stack--align-left > .stack__item {
   @apply items-start;
 }
-.stack--align-right .stack__item {
+.stack--align-right > .stack__item {
   @apply items-end;
 }
-.stack--align-stretch .stack__item {
+.stack--align-stretch > .stack__item {
   @apply items-stretch;
 }
 </style>

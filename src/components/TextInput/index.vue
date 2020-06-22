@@ -77,11 +77,10 @@ export default {
 
 <style scoped>
 .text-input--disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
+  @apply cursor-not-allowed select-none opacity-50;
 }
 .text-input--disabled * {
-  cursor: not-allowed;
+  @apply cursor-not-allowed select-none;
 }
 .text-input__input {
   @apply border border-black px-4 transition-colors duration-300 ease-in-out outline-none;

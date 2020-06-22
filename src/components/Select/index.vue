@@ -1,9 +1,14 @@
 <template>
   <div :class="classes">
     <Stack space="2">
-      <Typography v-if="label" component="label" variant="label-large">
-        {{ label }}
-      </Typography>
+      <Stack v-if="label || helperText" space="0.5">
+        <Typography v-if="label" component="label" variant="label-large">
+          {{ label }}
+        </Typography>
+        <Typography v-if="helperText" color="subtle" variant="label-small">
+          {{ helperText }}
+        </Typography>
+      </Stack>
       <div class="flex">
         <select
           :class="selectClasses"
@@ -14,7 +19,7 @@
         >
           <slot />
         </select>
-        <div class="z-10 flex items-center h-10 -ml-8">
+        <div class="z-10 flex items-center -ml-8">
           <Icon name="chevron-down" />
         </div>
       </div>
@@ -38,6 +43,10 @@ export default {
       default: '',
       type: String,
     },
+    helperText: {
+      default: '',
+      type: String,
+    },
     label: {
       default: '',
       type: String,
@@ -51,16 +60,13 @@ export default {
     classes() {
       return ['select', { 'select--disabled': this.isDisabled }]
     },
-
     isDisabled() {
       return this.$attrs.disabled
     },
-
     listeners() {
       const { input, ...listeners } = this.$listeners
       return listeners
     },
-
     selectClasses() {
       return ['select__input', { 'select__input--has-error': this.error }]
     },
@@ -70,27 +76,34 @@ export default {
 
 <style scoped>
 .select--disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+  @apply cursor-not-allowed select-none opacity-50;
 }
 .select--disabled * {
-  cursor: not-allowed;
+  @apply cursor-not-allowed select-none;
+}
+.select--disabled .select__input {
+  @apply cursor-not-allowed;
 }
 .select__input {
   @apply relative px-4 w-full border border-black rounded-md text-black cursor-pointer transition-colors duration-300 ease-in-out flex items-center;
   height: 2.75rem;
-}
-.select__input {
   -webkit-appearance: none;
   -moz-appearance: none;
   text-indent: 1px;
   text-overflow: '';
 }
+.select__input:not([disabled]):hover {
+  @apply border-2;
+  padding-left: 15px;
+  padding-right: 15px;
+}
 .select__input::-ms-expand {
   display: none;
 }
 .select__input:focus {
-  @apply border-info outline-none;
+  @apply border-2 border-info outline-none;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .select__input > .selected {
   @apply flex-1;

@@ -1,38 +1,42 @@
 import { action } from '@storybook/addon-actions'
 import { boolean, text } from '@storybook/addon-knobs'
 import Select from '../index'
+import Typography from '../../Typography/index'
 
 export default () => ({
-  components: { Select },
+  components: { Select, Typography },
   props: {
-    error: {
-      default: text('error', ''),
-    },
-    label: {
-      default: text('label', 'This is a label'),
-    },
     disabled: {
       default: boolean('disabled', false),
     },
+    error: {
+      default: text('error', ''),
+    },
+    helperText: {
+      default: text('helperText', 'Select a color from the list below'),
+    },
+    label: {
+      default: text('label', 'Colors'),
+    },
   },
   data: () => ({
-    selected: 1,
+    selected: 'orange',
   }),
   template: `
-    <div class="absolute inset-0 p-4">
-      <div class="pb-4">
-        <Select 
-          :error="error" 
-          :label="label"
-          :disabled="disabled"
-          v-model="selected">
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-          </Select>
-
-          Current Selected: {{ selected }}
-      </div>
+    <div class="flex flex-col p-6">
+      <Select 
+        :disabled="disabled"
+        :error="error"
+        :helperText="helperText"
+        :label="label"
+        v-model="selected">
+          <option value="blue">blue</option>
+          <option value="green">green</option>
+          <option value="orange">orange</option>
+          <option value="pink">pink</option>
+          <option value="purple">purple</option>
+        </Select>
+        <Typography class="mt-2">Current Selected: <span :class="['text-' + selected]">{{ selected }}</span></Typography>
     </div>
   `,
   methods: {

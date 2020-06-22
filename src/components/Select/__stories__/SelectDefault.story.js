@@ -5,34 +5,35 @@ import Select from '../index'
 export default () => ({
   components: { Select },
   props: {
+    disabled: {
+      default: boolean('disabled', false),
+    },
     error: {
       default: text('error', ''),
     },
-    label: {
-      default: text('label', 'This is a label'),
+    helperText: {
+      default: text('helperText', 'Select a color from the list below'),
     },
-    disabled: {
-      default: boolean('disabled', false),
+    label: {
+      default: text('label', 'Colors'),
     },
   },
   data: () => ({
     selected: 1,
   }),
   template: `
-    <div class="absolute inset-0 p-4">
-      <div class="pb-4">
-        <Select 
-          :error="error" 
-          :label="label"
-          :disabled="disabled"
-          v-model="selected">
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-          </Select>
-
-          Current Selected: {{ selected }}
-      </div>
+    <div class="flex flex-col p-6">
+      <Select 
+        :disabled="disabled"
+        :error="error"
+        :helperText="helperText"
+        :label="label"
+        v-model="selected">
+          <option value="1">Red</option>
+          <option value="2">Green</option>
+          <option value="3">Blue</option>
+        </Select>
+        Current Selected: {{ selected }}
     </div>
   `,
   methods: {

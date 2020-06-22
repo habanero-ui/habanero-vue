@@ -1,9 +1,14 @@
 <template>
   <div :class="classes">
     <Stack space="2">
-      <Typography v-if="label" component="label" variant="label-large">
-        {{ label }}
-      </Typography>
+      <Stack v-if="label || helperText" space="0.5">
+        <Typography v-if="label" component="label" variant="label-large">
+          {{ label }}
+        </Typography>
+        <Typography v-if="helperText" color="subtle" variant="label-small">
+          {{ helperText }}
+        </Typography>
+      </Stack>
       <div class="flex">
         <select
           :class="selectClasses"
@@ -38,6 +43,10 @@ export default {
       default: '',
       type: String,
     },
+    helperText: {
+      default: '',
+      type: String,
+    },
     label: {
       default: '',
       type: String,
@@ -51,16 +60,13 @@ export default {
     classes() {
       return ['select', { 'select--disabled': this.isDisabled }]
     },
-
     isDisabled() {
       return this.$attrs.disabled
     },
-
     listeners() {
       const { input, ...listeners } = this.$listeners
       return listeners
     },
-
     selectClasses() {
       return ['select__input', { 'select__input--has-error': this.error }]
     },
@@ -74,6 +80,9 @@ export default {
   cursor: not-allowed;
 }
 .select--disabled * {
+  cursor: not-allowed;
+}
+.select--disabled .select__input {
   cursor: not-allowed;
 }
 .select__input {

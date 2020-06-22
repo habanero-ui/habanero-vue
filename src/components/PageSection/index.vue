@@ -1,14 +1,12 @@
 <template>
-  <div class="flex mb-10">
-    <div class="flex-1 max-w-lg">
-      <PageSectionHeader
-        :actionText="actionText"
-        :onActionClick="onActionClick"
-        :titleText="titleText"
-      />
-      <div class="border-2 border-grey-300">
-        <slot />
-      </div>
+  <div class="page-section">
+    <PageSectionHeader
+      :actionText="actionText"
+      :onActionClick="onActionClick"
+      :titleText="titleText"
+    />
+    <div class="border-2 border-grey-300">
+      <slot />
     </div>
   </div>
 </template>
@@ -34,3 +32,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.page-section {
+  @apply w-full;
+}
+</style>

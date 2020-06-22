@@ -76,14 +76,13 @@ export default {
 
 <style scoped>
 .select--disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+  @apply cursor-not-allowed select-none opacity-50;
 }
 .select--disabled * {
-  cursor: not-allowed;
+  @apply cursor-not-allowed select-none;
 }
 .select--disabled .select__input {
-  cursor: not-allowed;
+  @apply cursor-not-allowed;
 }
 .select__input {
   @apply relative px-4 w-full border border-black rounded-md text-black cursor-pointer transition-colors duration-300 ease-in-out flex items-center;

@@ -1,15 +1,25 @@
 <template>
-  <header v-if="actionText || titleText" class="page-section-header">
+  <header
+    v-if="(onActionClick && actionText) || titleText"
+    class="page-section-header"
+  >
     <Columns>
       <Column>
-        <Typography v-if="titleText">
+        <Typography v-if="titleText" variant="label-large">
           {{ titleText }}
         </Typography>
       </Column>
-      <Column>
-        <Typography v-if="actionText">
-          {{ actionText }}
-        </Typography>
+      <Column v-if="onActionClick && actionText" width="content">
+        <slot name="action">
+          <Typography
+            class="page-section-header__action-text"
+            color="info"
+            variant="button"
+            @click.native="onActionClick"
+          >
+            {{ actionText }}
+          </Typography>
+        </slot>
       </Column>
     </Columns>
   </header>
@@ -31,13 +41,13 @@ export default {
       default: '',
       type: String,
     },
-    titleText: {
-      default: '',
-      type: String,
-    },
     onActionClick: {
       default: undefined,
       type: Function,
+    },
+    titleText: {
+      default: '',
+      type: String,
     },
   },
 }
@@ -45,6 +55,10 @@ export default {
 
 <style scoped>
 .page-section-header {
-  @apply flex flex-col pb-4;
+  @apply flex flex-col;
+}
+
+.page-section-header__action-text {
+  @apply cursor-pointer;
 }
 </style>

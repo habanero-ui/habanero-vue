@@ -1,23 +1,28 @@
 <template>
-  <div class="flex mb-10">
-    <div class="flex-1 max-w-lg">
+  <div class="page-section">
+    <Stack class="page-section__main" space="medium">
       <PageSectionHeader
         :actionText="actionText"
         :onActionClick="onActionClick"
         :titleText="titleText"
-      />
-      <div class="border-2 border-grey-300">
+      >
+        <template slot="action">
+          <slot name="action" />
+        </template>
+      </PageSectionHeader>
+      <div class="page-section__content">
         <slot />
       </div>
-    </div>
+    </Stack>
   </div>
 </template>
 
 <script>
+import Stack from '../Stack/index'
 import PageSectionHeader from './PageSectionHeader'
 
 export default {
-  components: { PageSectionHeader },
+  components: { PageSectionHeader, Stack },
   props: {
     actionText: {
       default: '',
@@ -34,3 +39,18 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.page-section {
+  @apply flex;
+}
+
+.page-section__main {
+  @apply flex-1;
+  max-width: 50rem;
+}
+
+.page-section__content {
+  @apply border-2 border-grey-300;
+}
+</style>

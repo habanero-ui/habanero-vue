@@ -14,7 +14,7 @@
         >
           <slot />
         </select>
-        <div class="z-10 flex items-center h-10 -ml-8">
+        <div class="z-10 flex items-center -ml-8">
           <Icon name="chevron-down" />
         </div>
       </div>
@@ -79,18 +79,23 @@ export default {
 .select__input {
   @apply relative px-4 w-full border border-black rounded-md text-black cursor-pointer transition-colors duration-300 ease-in-out flex items-center;
   height: 2.75rem;
-}
-.select__input {
   -webkit-appearance: none;
   -moz-appearance: none;
   text-indent: 1px;
   text-overflow: '';
 }
+.select__input:not([disabled]):hover {
+  @apply border-2;
+  padding-left: 15px;
+  padding-right: 15px;
+}
 .select__input::-ms-expand {
   display: none;
 }
 .select__input:focus {
-  @apply border-info outline-none;
+  @apply border-2 border-info outline-none;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .select__input > .selected {
   @apply flex-1;

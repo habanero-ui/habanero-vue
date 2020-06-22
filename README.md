@@ -8,10 +8,12 @@ Spur's Design System and Component Library
 
 - [ ] Update README with useful info + branding
 - [ ] Add more to .npmignore to reduce installed size
-- [ ] Input components: Text, Textarea, Radio, Checkbox, Select
+- [ ] Input components: Textarea, Radio, Checkbox, Toggle
 - [ ] EmptyState component
 - [ ] ProgressBar component
 - [ ] StepList component
+- [ ] Badge component
+- [ ] Toast component
 - [ ] Fill out Roadmap
 - [ ] Update select component to be custom, not native
 

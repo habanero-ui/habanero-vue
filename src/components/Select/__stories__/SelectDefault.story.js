@@ -1,9 +1,10 @@
 import { action } from '@storybook/addon-actions'
 import { boolean, text } from '@storybook/addon-knobs'
 import Select from '../index'
+import Typography from '../../Typography/index'
 
 export default () => ({
-  components: { Select },
+  components: { Select, Typography },
   props: {
     disabled: {
       default: boolean('disabled', false),
@@ -19,7 +20,7 @@ export default () => ({
     },
   },
   data: () => ({
-    selected: 1,
+    selected: 'orange',
   }),
   template: `
     <div class="flex flex-col p-6">
@@ -29,11 +30,13 @@ export default () => ({
         :helperText="helperText"
         :label="label"
         v-model="selected">
-          <option value="1">Red</option>
-          <option value="2">Green</option>
-          <option value="3">Blue</option>
+          <option value="blue">blue</option>
+          <option value="green">green</option>
+          <option value="orange">orange</option>
+          <option value="pink">pink</option>
+          <option value="purple">purple</option>
         </Select>
-        Current Selected: {{ selected }}
+        <Typography class="mt-2">Current Selected: <span :class="['text-' + selected]">{{ selected }}</span></Typography>
     </div>
   `,
   methods: {

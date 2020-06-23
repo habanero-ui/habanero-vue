@@ -1,5 +1,6 @@
 export { default as Box } from './components/Box/index.vue'
 export { default as Button } from './components/Button/index.vue'
+export { default as Checkbox } from './components/Checkbox/index.vue'
 export { default as Column } from './components/Column/index.vue'
 export { default as Columns } from './components/Columns/index.vue'
 export { default as Drawer } from './components/Drawer/index.vue'

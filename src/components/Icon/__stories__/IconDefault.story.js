@@ -17,43 +17,33 @@ export default () => ({
       'sort',
       'sort-ascending',
       'sort-descending',
-      'plus',
-      'minus',
-      'close',
-      'new-window',
     ],
     objects: [
       'apartment',
       'award',
       'badge',
       'bell',
-      'boat',
-      'bus',
       'calendar-time',
-      'certificate',
-      'child',
       'currency',
-      'eye',
       'file-download',
       'file-upload',
-      'fire',
       'flag',
-      'furniture',
-      'heartbeat',
       'hotel',
-      'info',
       'map-pin',
       'options',
-      'parking',
-      'ring',
       'settings',
       'speaker',
-      'stethoscope',
+    ],
+    operations: ['close', 'minus', 'plus', 'new-window'],
+    perks: [
+      'boat',
+      'certificate',
+      'furniture',
+      'heartbeat',
+      'ring',
       'tablet-mobile',
       'theater',
-      'tooth',
       'umbrella',
-      'walking-aid',
     ],
     persons: [
       'group-chat',
@@ -63,17 +53,40 @@ export default () => ({
       'user-star',
       'user-time',
     ],
+    savings: [
+      'bus',
+      'child',
+      'eye',
+      'fire',
+      'parking',
+      'stethoscope',
+      'tooth',
+      'walking-aid',
+    ],
+    toasts: ['checkmark', 'error', 'info', 'warning'],
   }),
   template: `
     <div class="p-6">
+      <div class="flex items-center mb-6">
+        <Icon v-for="toast in toasts" :key="toast" :name="toast" class="mr-4" />
+      </div>
+      <div class="flex items-center mb-6">
+        <Icon v-for="operation in operations" :key="operation" :name="operation" class="mr-4" />
+      </div>
+      <div class="flex items-center mb-6">
+        <Icon v-for="person in persons" :key="person" :name="person" class="mr-4" />
+      </div>
+      <div class="flex items-center mb-6">
+        <Icon v-for="perk in perks" :key="perk" :name="perk" class="mr-4" />
+      </div>
+      <div class="flex items-center mb-6">
+        <Icon v-for="saving in savings" :key="saving" :name="saving" class="mr-4" />
+      </div>
       <div class="flex items-center mb-6">
         <Icon v-for="movement in movements" :key="movement" :name="movement" class="mr-4" />
       </div>
       <div class="flex items-center mb-6">
         <Icon v-for="object in objects" :key="object" :name="object" class="mr-4" />
-      </div>
-      <div class="flex items-center mb-6">
-        <Icon v-for="person in persons" :key="person" :name="person" class="mr-4" />
       </div>
     </div>
   `,

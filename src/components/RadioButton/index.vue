@@ -91,7 +91,7 @@ export default {
 
 <style scoped>
 .radio-button {
-  @apply relative flex cursor-pointer outline-none;
+  @apply relative flex cursor-pointer outline-none -my-2;
 }
 
 .radio-button--disabled {

@@ -27,6 +27,13 @@ export default () => ({
         :text="text"
         :value="value"
       />
+      <RadioButton
+        :disabled="disabled"
+        :isChecked="isChecked"
+        :onIsCheckedChange="onIsCheckedChange"
+        :text="text"
+        :value="value"
+      />
     </div>
   `,
   methods: {

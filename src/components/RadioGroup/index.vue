@@ -65,14 +65,12 @@ export default {
               [this.label],
             )
           : null,
-        h('div', { class: 'radio-group__buttons' }, [
-          this.$slots.default
-            ? map(
-                filter(this.$slots.default, (vnode) => vnode.tag),
-                this.mapSlotNode,
-              )
-            : null,
-        ]),
+        ...(this.$slots.default
+          ? map(
+              filter(this.$slots.default, (vnode) => vnode.tag),
+              this.mapSlotNode,
+            )
+          : []),
       ],
     )
   },

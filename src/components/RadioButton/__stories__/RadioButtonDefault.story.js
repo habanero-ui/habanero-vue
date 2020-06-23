@@ -30,7 +30,6 @@ export default () => ({
     </div>
   `,
   methods: {
-    change: action('change'),
     onIsCheckedChange: action('onIsCheckedChange'),
   },
 })

@@ -14,7 +14,7 @@ Spur's Design System and Component Library
 - [ ] StepList component
 - [ ] Badge component
 - [ ] Toast component
-- [ ] Fill out Roadmap
+- [ ] Think about updating both Checkbox and Toggle checked to be either both black or both blue
 - [ ] Update select component to be custom, not native
 
 # Discussion Points

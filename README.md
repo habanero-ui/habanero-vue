@@ -11,7 +11,7 @@ Spur's Design System and Component Library
 - [ ] Avatar component
 - [ ] Badge component
 - [ ] Breadcrumbs component
-- [ ] DateInput component
+- [ ] DatePicker component
 - [ ] EmptyState component
 - [ ] FileUpload component
 - [ ] Profile component

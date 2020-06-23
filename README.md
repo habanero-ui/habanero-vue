@@ -6,23 +6,30 @@ Spur's Design System and Component Library
 
 # Roadmap
 
-- [ ] Update README with useful info + branding
-- [ ] Add more to .npmignore to reduce installed size
-- [ ] Input components: Textarea, Radio, Checkbox, Toggle
+## New Components
+
+- [ ] Badge component
+- [ ] DateInput component
 - [ ] EmptyState component
 - [ ] ProgressBar component
 - [ ] StepList component
-- [ ] Badge component
+- [ ] Textarea component
+- [ ] TextLink component
 - [ ] Toast component
+
+## Considerations
+
 - [ ] Think about updating both Checkbox and Toggle checked to be either both black or both blue
-- [ ] Update select component to be custom, not native
+- [ ] Update Select component to be custom, not native
+
+## Misc
+
+- [ ] Add more to .npmignore to reduce installed size
+- [ ] Build a landing page for Habanero
+- [ ] Make stories more interactive: Checkbox, Drawer, RadioButton, RadioGroup, Slideover, Tabs, and Toggle
+- [ ] Update `README.md` with useful info + branding
 
 # Discussion Points
-
-## Buttons
-
-- How do we want to handle hover/active states?
-  - Right now, we are using `opacity` to handle hover/active states instead of separate colors.
 
 ## Global Styles
 

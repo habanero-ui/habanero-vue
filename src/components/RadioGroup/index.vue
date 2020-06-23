@@ -52,7 +52,7 @@ export default {
       Stack,
       {
         class: 'radio-group',
-        props: { space: 'xsmall' },
+        props: { space: 'medium' },
       },
       [
         this.label

@@ -5,19 +5,9 @@ export default () => ({
     Icon,
   },
   data: () => ({
-    movements: [
-      'arrow-up',
-      'arrow-down',
-      'arrow-left',
-      'arrow-right',
-      'chevron-up',
-      'chevron-down',
-      'chevron-left',
-      'chevron-right',
-      'sort',
-      'sort-ascending',
-      'sort-descending',
-    ],
+    actions: ['check', 'close', 'minus', 'plus', 'swap'],
+    arrows: ['arrow-up', 'arrow-down', 'arrow-left', 'arrow-right'],
+    chevrons: ['chevron-up', 'chevron-down', 'chevron-left', 'chevron-right'],
     objects: [
       'apartment',
       'award',
@@ -30,11 +20,11 @@ export default () => ({
       'flag',
       'hotel',
       'map-pin',
+      'new-window',
       'options',
       'settings',
       'speaker',
     ],
-    operations: ['check', 'close', 'minus', 'plus', 'new-window'],
     perks: [
       'boat',
       'certificate',
@@ -63,15 +53,25 @@ export default () => ({
       'tooth',
       'walking-aid',
     ],
+    sorts: ['sort', 'sort-ascending', 'sort-descending'],
     toasts: ['checkmark', 'error', 'info', 'warning'],
   }),
   template: `
     <div class="p-6">
       <div class="flex items-center mb-6">
+        <Icon v-for="sort in sorts" :key="sort" :name="sort" class="mr-4" />
+      </div>
+      <div class="flex items-center mb-6">
+        <Icon v-for="chevron in chevrons" :key="chevron" :name="chevron" class="mr-4" />
+      </div>
+      <div class="flex items-center mb-6">
+        <Icon v-for="arrow in arrows" :key="arrow" :name="arrow" class="mr-4" />
+      </div>
+      <div class="flex items-center mb-6">
         <Icon v-for="toast in toasts" :key="toast" :name="toast" class="mr-4" />
       </div>
       <div class="flex items-center mb-6">
-        <Icon v-for="operation in operations" :key="operation" :name="operation" class="mr-4" />
+        <Icon v-for="action in actions" :key="action" :name="action" class="mr-4" />
       </div>
       <div class="flex items-center mb-6">
         <Icon v-for="person in persons" :key="person" :name="person" class="mr-4" />
@@ -81,9 +81,6 @@ export default () => ({
       </div>
       <div class="flex items-center mb-6">
         <Icon v-for="saving in savings" :key="saving" :name="saving" class="mr-4" />
-      </div>
-      <div class="flex items-center mb-6">
-        <Icon v-for="movement in movements" :key="movement" :name="movement" class="mr-4" />
       </div>
       <div class="flex items-center mb-6">
         <Icon v-for="object in objects" :key="object" :name="object" class="mr-4" />

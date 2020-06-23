@@ -45,6 +45,7 @@ export default [
   'sort-descending',
   'speaker',
   'stethoscope',
+  'swap',
   'tablet-mobile',
   'theater',
   'tooth',

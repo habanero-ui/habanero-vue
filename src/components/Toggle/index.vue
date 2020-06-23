@@ -2,16 +2,26 @@
   <div class="toggle" :class="classes">
     <label class="toggle__label">
       <input
-        :id="inputId"
+        :checked="active"
+        :class="inputClasses"
         :disabled="disabled"
         type="checkbox"
-        :checked="active"
-        class="toggle__input"
-        @change="toggle"
       />
-      <div class="toggle__control">
+      <!-- <input
+        :id="inputId"
+        :checked="active"
+        :class="inputClasses"
+        :disabled="disabled"
+        type="checkbox"
+        @change="toggle"
+      /> -->
+      <div :class="controlClasses">
         Toggle
-        <Icon name="check" class="toggle__check" />
+        <Icon
+          class="toggle__check"
+          name="check"
+          :size="size === 'small' ? 'small' : 'medium'"
+        />
       </div>
       <slot />
     </label>
@@ -19,6 +29,7 @@
 </template>
 
 <script>
+import includes from 'lodash/includes'
 import Icon from '../Icon'
 
 export default {
@@ -34,16 +45,37 @@ export default {
       default: false,
       type: Boolean,
     },
-    id: {
-      default: '',
+    size: {
+      default: 'large',
       type: String,
+      validator: getIsSizeValid,
     },
   },
   computed: {
+    controlClasses() {
+      return ['toggle__control', `toggle__control--size-${this.size}`]
+    },
     classes() {
-      return ['toggle', { 'toggle__-disabled': this.disabled }]
+      return ['toggle', { 'toggle-disabled': this.disabled }]
+    },
+    inputClasses() {
+      return ['toggle__input']
     },
   },
+}
+
+function getIsSizeValid(value) {
+  const isValid = includes(['small', 'large'], value)
+
+  if (!isValid) {
+    // eslint-disable-next-line no-console
+    console.error(
+      'Toggle: The "size" prop must be one of the following:',
+      String(['small', 'large']),
+    )
+  }
+
+  return isValid
 }
 </script>
 
@@ -57,11 +89,17 @@ export default {
 }
 .toggle__control {
   @apply relative z-10 mr-3 flex-shrink-0 bg-grey-500 rounded-full cursor-pointer;
-  height: 1.75rem;
-  width: 3.5rem;
   text-indent: -999em;
   transition: background-color 300ms ease-in-out;
 }
+.toggle__control--size-small {
+  @apply h-5 w-10;
+}
+.toggle__control--size-large {
+  height: 1.75rem;
+  width: 3.5rem;
+}
+
 .toggle__control::after,
 .toggle__check {
   @apply absolute;
@@ -73,17 +111,26 @@ export default {
 }
 .toggle__control::after {
   @apply bg-white rounded-full transition-transform duration-150 ease-in-out;
-  width: 1.375rem;
-  height: 1.375rem;
-  left: 0;
   right: auto;
   margin: 0.1875rem;
 }
-.toggle__check {
-  @apply absolute top-0 right-0 z-10 w-4 h-4 opacity-0 transition-opacity duration-150 text-info;
-  /* delay-0 */
-  margin: 0.375rem;
+.toggle__control.toggle__control--size-small::after {
+  width: 0.875rem;
+  height: 0.875rem;
+  left: -8px;
 }
+.toggle__control.toggle__control--size-large::after {
+  width: 1.375rem;
+  height: 1.375rem;
+  left: 0;
+}
+.toggle__check {
+  @apply absolute top-0 z-10 opacity-0 transition-opacity duration-150 text-info;
+  /* delay-0 */
+  margin: 0.1875rem;
+  right: -1px;
+}
+
 .toggle__label {
   @apply flex items-center;
 }

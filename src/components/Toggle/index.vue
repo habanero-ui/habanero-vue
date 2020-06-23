@@ -49,13 +49,16 @@ export default {
 
 <style scoped>
 .toggle {
-  @apply relative h-6;
+  @apply relative;
+  height: 1.75rem;
 }
 .toggle__input {
   @apply absolute block opacity-0;
 }
 .toggle__control {
-  @apply relative z-10 mr-3 flex-shrink-0 w-12 h-6 bg-grey-500 rounded-full cursor-pointer;
+  @apply relative z-10 mr-3 flex-shrink-0 bg-grey-500 rounded-full cursor-pointer;
+  height: 1.75rem;
+  width: 3.5rem;
   text-indent: -999em;
   transition: background-color 300ms ease-in-out;
 }

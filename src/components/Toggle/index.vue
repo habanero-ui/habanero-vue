@@ -90,6 +90,7 @@ function getIsSizeValid(value) {
 .toggle--disabled .toggle__control {
   @apply cursor-not-allowed;
 }
+
 .toggle__input {
   @apply absolute block opacity-0;
 }
@@ -136,7 +137,6 @@ function getIsSizeValid(value) {
   margin: 0.1875rem;
   right: -1px;
 }
-
 .toggle__label {
   @apply flex items-center;
 }
@@ -145,11 +145,9 @@ function getIsSizeValid(value) {
 .toggle__input:checked + .toggle__control {
   @apply bg-info;
 }
-
 .toggle__input:checked + .toggle__control::after {
   transform: translateX(1.75rem);
 }
-
 .toggle__input:checked + .toggle__control > .toggle__check {
   @apply opacity-100 delay-150;
 }
@@ -158,7 +156,6 @@ function getIsSizeValid(value) {
 .toggle__input:focus + .toggle__control::before {
   @apply border-grey-500;
 }
-
 .toggle__input:checked:focus + .toggle__control::before {
   @apply border-info;
 }

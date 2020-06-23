@@ -99,7 +99,7 @@ export default {
   @apply relative flex cursor-pointer outline-none -my-2;
 }
 .checkbox--disabled {
-  @apply opacity-50 cursor-not-allowed;
+  @apply opacity-50 cursor-not-allowed select-none;
 }
 .checkbox__input {
   @apply absolute;

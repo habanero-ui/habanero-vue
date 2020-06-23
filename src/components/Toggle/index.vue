@@ -132,7 +132,7 @@ function getIsSizeValid(value) {
   @apply relative flex cursor-pointer outline-none -my-2;
 }
 .toggle--disabled {
-  @apply opacity-50 cursor-not-allowed;
+  @apply opacity-50 cursor-not-allowed select-none;
 }
 .toggle__input {
   @apply absolute;

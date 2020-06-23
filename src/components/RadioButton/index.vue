@@ -94,7 +94,7 @@ export default {
   @apply relative flex cursor-pointer outline-none -my-2;
 }
 .radio-button--disabled {
-  @apply opacity-50 cursor-not-allowed;
+  @apply opacity-50 cursor-not-allowed select-none;
 }
 .radio-button__input {
   @apply absolute;

@@ -34,7 +34,7 @@ export default () => ({
       'settings',
       'speaker',
     ],
-    operations: ['close', 'minus', 'plus', 'new-window'],
+    operations: ['check', 'close', 'minus', 'plus', 'new-window'],
     perks: [
       'boat',
       'certificate',

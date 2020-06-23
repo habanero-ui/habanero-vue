@@ -15,7 +15,15 @@
     />
     <Columns>
       <Column width="content">
-        <div class="checkbox__box"><div class="checkbox__check" /></div>
+        <div class="checkbox__box">
+          <div class="checkbox__check">
+            <Icon
+              class="checkbox__check-icon"
+              :colorIsBackground="true"
+              name="check"
+            />
+          </div>
+        </div>
       </Column>
       <Column v-if="text">
         <Box paddingLeft="small" paddingRight="gutter" paddingTop="0.25">
@@ -32,10 +40,11 @@
 import Box from '../Box/index'
 import Column from '../Column/index'
 import Columns from '../Columns/index'
+import Icon from '../Icon/index'
 import Typography from '../Typography/index'
 
 export default {
-  components: { Box, Column, Columns, Typography },
+  components: { Box, Column, Columns, Icon, Typography },
   props: {
     disabled: {
       default: false,
@@ -90,7 +99,7 @@ export default {
   @apply relative flex cursor-pointer outline-none -my-2;
 }
 .checkbox--disabled {
-  @apply opacity-50 cursor-not-allowed;
+  @apply opacity-50 cursor-not-allowed select-none;
 }
 .checkbox__input {
   @apply absolute;
@@ -106,23 +115,16 @@ export default {
   width: 1.5rem;
 }
 .checkbox__check {
-  @apply relative h-5 w-5 bg-black;
+  @apply relative h-5 w-5 bg-black rounded-sm;
   transform: scale(0);
   transition: transform 150ms ease-in-out;
 }
-.checkbox__check::after {
-  @apply absolute;
-  border-bottom: 0.125rem solid theme('colors.white');
-  border-left: 0.125rem solid theme('colors.white');
-  border-right: none;
-  border-top: none;
-  content: '';
-  height: 6px;
-  transform: translate(2px, 6px) rotate(-45deg);
-  width: 12px;
-}
 .checkbox--is-checked .checkbox__check {
   transform: scale(1);
+}
+.checkbox__check-icon {
+  @apply -mt-px;
+  margin-left: -0.125rem;
 }
 .checkbox__text {
   @apply cursor-pointer;

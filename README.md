@@ -16,6 +16,7 @@ Spur's Design System and Component Library
 - [ ] Textarea component
 - [ ] TextLink component
 - [ ] Toast component
+- [ ] Tooltip component
 
 ## Considerations
 

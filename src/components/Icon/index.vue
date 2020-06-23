@@ -55,13 +55,13 @@ function getIsColorValid(value) {
 }
 
 function getIsSizeValid(value) {
-  const isValid = includes(['small', 'medium', 'large'], value)
+  const isValid = includes(['auto', 'small', 'medium', 'large'], value)
 
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
       'Icon: The "size" prop must be one of the following:',
-      String(['small', 'medium', 'large']),
+      String(['auto', 'small', 'medium', 'large']),
     )
   }
 
@@ -144,6 +144,9 @@ function getIsSizeValid(value) {
 }
 .icon--color-warning.icon--color-is-background {
   @apply text-black;
+}
+.icon--size-auto {
+  @apply w-full h-full;
 }
 .icon--size-large {
   @apply w-8 h-8;

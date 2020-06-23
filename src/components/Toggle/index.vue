@@ -1,77 +1,120 @@
 <template>
-  <div class="toggle" :class="classes">
-    <label class="toggle__label">
-      <input
-        :checked="active"
-        :class="inputClasses"
-        :disabled="disabled"
-        type="checkbox"
-      />
-      <!-- <input
-        :id="inputId"
-        :checked="active"
-        :class="inputClasses"
-        :disabled="disabled"
-        type="checkbox"
-        @change="toggle"
-      /> -->
-      <div :class="controlClasses">
-        Toggle
-        <Icon
-          class="toggle__check"
-          name="check"
-          :size="size === 'small' ? 'small' : 'medium'"
-        />
-      </div>
-      <slot />
-    </label>
-  </div>
+  <Box
+    :class="classes"
+    paddingY="xsmall"
+    :tabIndex="tabIndex"
+    @click.native="handleClick"
+    @keyup.native.enter.space="handleKeyUp"
+  >
+    <input
+      class="toggle__input"
+      :checked="isChecked"
+      :disabled="disabled"
+      tabIndex="-1"
+      type="radio"
+    />
+    <Columns>
+      <Column width="content">
+        <div class="toggle__track">
+          <div class="toggle__thumb">
+            <Icon class="toggle__check" color="info" name="check" size="auto" />
+          </div>
+        </div>
+      </Column>
+      <Column v-if="text">
+        <Box
+          paddingLeft="small"
+          paddingRight="gutter"
+          :paddingTop="labelPaddingTop"
+        >
+          <Typography class="toggle__text" component="label">
+            {{ text }}
+          </Typography>
+        </Box>
+      </Column>
+    </Columns>
+  </Box>
 </template>
 
 <script>
 import includes from 'lodash/includes'
-import Icon from '../Icon'
+import Box from '../Box/index'
+import Column from '../Column/index'
+import Columns from '../Columns/index'
+import Icon from '../Icon/index'
+import Typography from '../Typography/index'
 
 export default {
-  components: {
-    Icon,
-  },
+  components: { Box, Column, Columns, Icon, Typography },
   props: {
-    active: {
-      default: true,
-      type: Boolean,
-    },
     disabled: {
       default: false,
       type: Boolean,
     },
+    isChecked: {
+      default: false,
+      type: Boolean,
+    },
+    onIsCheckedChange: {
+      default: () => {},
+      type: Function,
+    },
     size: {
-      default: 'large',
+      default: 'medium',
       type: String,
       validator: getIsSizeValid,
     },
+    text: {
+      default: '',
+      type: String,
+    },
   },
   computed: {
-    controlClasses() {
-      return ['toggle__control', `toggle__control--size-${this.size}`]
-    },
     classes() {
-      return ['toggle', { 'toggle--disabled': this.disabled }]
+      return [
+        'toggle',
+        {
+          'toggle--disabled': this.disabled,
+          'toggle--is-checked': this.isChecked,
+        },
+        `toggle--size-${this.size}`,
+      ]
     },
-    inputClasses() {
-      return ['toggle__input']
+
+    labelPaddingTop() {
+      return {
+        medium: 'xxsmall',
+        small: 0.25,
+      }[this.size]
+    },
+
+    tabIndex() {
+      return this.disabled ? -1 : 0
+    },
+  },
+  methods: {
+    handleClick(e) {
+      if (this.disabled) return
+
+      this.onIsCheckedChange(!this.isChecked)
+    },
+
+    handleKeyUp() {
+      if (this.disabled) return
+
+      this.onIsCheckedChange(!this.isChecked)
     },
   },
 }
 
 function getIsSizeValid(value) {
-  const isValid = includes(['small', 'large'], value)
+  const isValid = includes(['small', 'medium'], value)
 
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
       'Toggle: The "size" prop must be one of the following:',
-      String(['small', 'large']),
+      String(['small', 'medium']),
     )
   }
 
@@ -81,82 +124,70 @@ function getIsSizeValid(value) {
 
 <style scoped>
 .toggle {
-  @apply relative;
-  height: 1.75rem;
+  @apply relative flex cursor-pointer outline-none -my-2;
 }
-.toggle--disabled * {
-  @apply cursor-not-allowed select-none opacity-50;
+.toggle--disabled {
+  @apply opacity-50 cursor-not-allowed;
 }
-.toggle--disabled .toggle__control {
-  @apply cursor-not-allowed;
-}
-
 .toggle__input {
-  @apply absolute block opacity-0;
+  @apply absolute;
+  left: -9999px;
 }
-.toggle__control {
-  @apply relative z-10 mr-3 flex-shrink-0 bg-grey-500 rounded-full cursor-pointer;
-  text-indent: -999em;
-  transition: background-color 300ms ease-in-out;
-}
-.toggle__control--size-small {
-  @apply h-5 w-10;
-}
-.toggle__control--size-large {
+.toggle__track {
+  @apply relative bg-subtle flex rounded-full p-1 transition-colors duration-150 ease-in-out;
   height: 1.75rem;
   width: 3.5rem;
 }
-
-.toggle__control::after,
-.toggle__check {
-  @apply absolute;
+.toggle__track::after {
+  @apply absolute inset-0 pointer-events-none transition-colors duration-300 ease-in-out border border-transparent rounded-full;
+  margin: -3px;
   content: '';
 }
-.toggle__control::before {
-  @apply absolute inset-0 -m-1 border border-transparent rounded-full transition-colors duration-300 ease-in-out;
-  content: '';
-}
-.toggle__control::after {
-  @apply bg-white rounded-full transition-transform duration-150 ease-in-out;
-  right: auto;
-  margin: 0.1875rem;
-}
-.toggle__control.toggle__control--size-small::after {
-  width: 0.875rem;
-  height: 0.875rem;
-  left: -8px;
-}
-.toggle__control.toggle__control--size-large::after {
-  width: 1.375rem;
-  height: 1.375rem;
-  left: 0;
-}
-.toggle__check {
-  @apply absolute top-0 z-10 opacity-0 transition-opacity duration-150 text-info;
-  /* delay-0 */
-  margin: 0.1875rem;
-  right: -1px;
-}
-.toggle__label {
-  @apply flex items-center;
-}
-
-/* Active state */
-.toggle__input:checked + .toggle__control {
+.toggle--is-checked .toggle__track {
   @apply bg-info;
 }
-.toggle__input:checked + .toggle__control::after {
+.toggle--size-medium .toggle__track {
+  height: 1.75rem;
+  width: 3.5rem;
+}
+.toggle--size-small .toggle__track {
+  height: 1.25rem;
+  width: 2.5rem;
+}
+.toggle__thumb {
+  @apply flex items-center justify-center bg-white rounded-full;
+  padding-top: 0.0625rem;
+  transform: translateX(0);
+  transition: transform 150ms ease-in-out;
+}
+.toggle--size-medium .toggle__thumb {
+  @apply h-5 w-5;
+}
+.toggle--size-small .toggle__thumb {
+  @apply h-3 w-3;
+}
+.toggle--size-medium.toggle--is-checked .toggle__thumb {
   transform: translateX(1.75rem);
 }
-.toggle__input:checked + .toggle__control > .toggle__check {
-  @apply opacity-100 delay-150;
+.toggle--size-small.toggle--is-checked .toggle__thumb {
+  transform: translateX(1.25rem);
 }
-
-/* Focus state */
-.toggle__input:focus + .toggle__control::before {
-  @apply border-grey-500;
+.toggle__check {
+  @apply opacity-0 transition-opacity duration-150 ease-in-out;
 }
-.toggle__input:checked:focus + .toggle__control::before {
+.toggle--is-checked .toggle__check {
+  @apply opacity-100;
+}
+.toggle__text {
+  @apply cursor-pointer;
+}
+.toggle:hover .toggle__track::after {
+  @apply border-grey-300;
+}
+.toggle:focus:not(.toggle--disabled) .toggle__track::after {
   @apply border-info;
+}
+.toggle--disabled .toggle__text {
+  @apply cursor-not-allowed;
 }
 </style>

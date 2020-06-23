@@ -1,9 +1,16 @@
 <template>
-  <div :class="classes" @click="handleClick">
+  <Box
+    :class="classes"
+    paddingY="xsmall"
+    :tabIndex="tabIndex"
+    @click.native="handleClick"
+    @keyup.native.enter.space="handleKeyUp"
+  >
     <input
       class="radio-button__input"
       :checked="isChecked"
       :disabled="disabled"
+      tabIndex="-1"
       type="radio"
     />
     <Columns>
@@ -18,7 +25,7 @@
         </Box>
       </Column>
     </Columns>
-  </div>
+  </Box>
 </template>
 
 <script>
@@ -61,9 +68,19 @@ export default {
         },
       ]
     },
+
+    tabIndex() {
+      return this.disabled ? -1 : 0
+    },
   },
   methods: {
     handleClick(e) {
+      if (this.disabled || this.isChecked) return
+
+      this.onIsCheckedChange(this.value)
+    },
+
+    handleKeyUp() {
       if (this.disabled || this.isChecked) return
 
       this.onIsCheckedChange(this.value)
@@ -74,7 +91,7 @@ export default {
 
 <style scoped>
 .radio-button {
-  @apply relative flex cursor-pointer;
+  @apply relative flex cursor-pointer outline-none;
 }
 
 .radio-button--disabled {
@@ -87,7 +104,14 @@ export default {
 }
 
 .radio-button__ring {
-  @apply flex items-center justify-center h-5 w-5 border-2 border-black rounded-full;
+  @apply relative flex items-center justify-center h-5 w-5 border-2 border-black rounded-full;
+}
+
+.radio-button__ring::after {
+  @apply absolute border-2 border-transparent rounded-full transition-colors duration-150 ease-in-out;
+  content: '';
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
 .radio-button__dot {
@@ -102,6 +126,14 @@ export default {
 
 .radio-button__text {
   @apply cursor-pointer;
+}
+
+.radio-button:hover .radio-button__ring::after {
+  @apply border-grey-300;
+}
+
+.radio-button:focus .radio-button__ring::after {
+  @apply border-info;
 }
 
 .radio-button--disabled .radio-button__text {

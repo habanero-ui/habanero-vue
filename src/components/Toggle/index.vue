@@ -56,7 +56,7 @@ export default {
       return ['toggle__control', `toggle__control--size-${this.size}`]
     },
     classes() {
-      return ['toggle', { 'toggle-disabled': this.disabled }]
+      return ['toggle', { 'toggle--disabled': this.disabled }]
     },
     inputClasses() {
       return ['toggle__input']
@@ -83,6 +83,12 @@ function getIsSizeValid(value) {
 .toggle {
   @apply relative;
   height: 1.75rem;
+}
+.toggle--disabled * {
+  @apply cursor-not-allowed select-none opacity-50;
+}
+.toggle--disabled .toggle__control {
+  @apply cursor-not-allowed;
 }
 .toggle__input {
   @apply absolute block opacity-0;
@@ -155,23 +161,5 @@ function getIsSizeValid(value) {
 
 .toggle__input:checked:focus + .toggle__control::before {
   @apply border-info;
-}
-
-.toggle__input:disabled:focus + .toggle__control::before,
-.toggle__input:disabled:checked:focus + .toggle__control::before {
-  @apply border-grey-200;
-}
-
-/* Disabled state */
-.toggle.is-disabled .toggle__control {
-  @apply bg-grey-200;
-}
-
-.toggle.is-disabled .toggle__control::after {
-  @apply bg-grey-300;
-}
-
-.toggle.is-disabled .toggle__check {
-  @apply text-white;
 }
 </style>

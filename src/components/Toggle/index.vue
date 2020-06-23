@@ -11,7 +11,7 @@
       />
       <div class="toggle__control">
         Toggle
-        <check class="toggle__check" />
+        <Icon name="check" class="toggle__check" />
       </div>
       <slot />
     </label>
@@ -19,7 +19,12 @@
 </template>
 
 <script>
+import Icon from '../Icon'
+
 export default {
+  components: {
+    Icon,
+  },
   props: {
     active: {
       default: true,

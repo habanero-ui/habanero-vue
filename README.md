@@ -8,27 +8,32 @@ Spur's Design System and Component Library
 
 ## New Components
 
+- [ ] Avatar component
 - [ ] Badge component
+- [ ] Breadcrumbs component
 - [ ] DateInput component
 - [ ] EmptyState component
+- [ ] FileUpload component
+- [ ] Profile component
 - [ ] ProgressBar component
+- [ ] Search component
 - [ ] StepList component
+- [ ] Table component
 - [ ] Textarea component
 - [ ] TextLink component
 - [ ] Toast component
 - [ ] Tooltip component
 
-## Considerations
-
-- [ ] Think about updating both Checkbox and Toggle checked to be either both black or both blue
-- [ ] Update Select component to be custom, not native
-
 ## Misc
 
+- [ ] Add "With Image" for ListItem component
+- [ ] Add count bubble for Tab component
 - [ ] Add more to .npmignore to reduce installed size
 - [ ] Build a landing page for Habanero
 - [ ] Make stories more interactive: Checkbox, Drawer, RadioButton, RadioGroup, Slideover, Tabs, and Toggle
+- [ ] Think about updating both Checkbox and Toggle checked to be either both black or both blue
 - [ ] Update `README.md` with useful info + branding
+- [ ] Update Select component to be custom, not native
 
 # Discussion Points
 

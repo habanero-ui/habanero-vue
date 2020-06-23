@@ -1,4 +1,5 @@
 import { text } from '@storybook/addon-knobs'
+import variants from '../../../constants/variants'
 import Typography from '../index'
 
 export default () => ({
@@ -8,20 +9,17 @@ export default () => ({
       default: text('Text', 'Some Text'),
     },
   },
+  data: () => ({
+    variants,
+  }),
   template: `
     <div class="p-6">
-      <Typography variant="h1">h1: {{ text }}</Typography>
-      <Typography variant="h2">h2: {{ text }}</Typography>
-      <Typography variant="h3">h3: {{ text }}</Typography>
-      <Typography variant="h4">h4: {{ text }}</Typography>
-      <Typography variant="h5">h5: {{ text }}</Typography>
-      <Typography variant="h6">h6: {{ text }}</Typography>
-      <Typography>body-large: {{ text }}</Typography>
-      <Typography variant="body-small">body-small: {{ text }}</Typography>
-      <Typography variant="body-extra-small">body-extra-small: {{ text }}</Typography>
-      <Typography variant="label-large">label-large: {{ text }}</Typography>
-      <Typography variant="label-small">label-small: {{ text }}</Typography>
-      <Typography variant="button">button: {{ text }}</Typography>
+      <div v-for="(variant, index) in variants" class="mb-4" :key="variant">
+        <Typography :variant="variant">
+          <span class="capitalize">{{ variant.replace('-', ' ') }}</span> / {{ text }}
+        </Typography>
+        <hr class="mt-1" />
+      </div>
     </div>
   `,
 })

@@ -7,6 +7,7 @@
 <script>
 import includes from 'lodash/includes'
 import colors from '../../constants/colors'
+import variants from '../../constants/variants'
 
 export default {
   props: {
@@ -56,42 +57,13 @@ function getIsColorValid(value) {
 }
 
 function getIsVariantValid(value) {
-  const isValid = includes(
-    [
-      'body-extra-small',
-      'body-large',
-      'body-small',
-      'button',
-      'h1',
-      'h2',
-      'h3',
-      'h4',
-      'h5',
-      'h6',
-      'label-large',
-      'label-small',
-    ],
-    value,
-  )
+  const isValid = includes(variants, value)
 
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
       'Typography: The "variant" prop must be one of the following:',
-      String([
-        'body-extra-small',
-        'body-large',
-        'body-small',
-        'button',
-        'h1',
-        'h2',
-        'h3',
-        'h4',
-        'h5',
-        'h6',
-        'label-large',
-        'label-small',
-      ]),
+      String(variants),
     )
   }
 
@@ -175,22 +147,19 @@ function getIsVariantValid(value) {
 }
 .typography--variant-body-extra-small {
   font-size: 0.75rem;
-  font-weight: 400;
   line-height: 0.875rem;
 }
 .typography--variant-body-large {
   font-size: 1rem;
-  font-weight: 400;
   line-height: 1.188rem;
 }
 .typography--variant-body-small {
   font-size: 0.875rem;
-  font-weight: 400;
   line-height: 1.06rem;
 }
 .typography--variant-button {
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.188rem;
 }
 .typography--variant-button:hover {
@@ -198,42 +167,41 @@ function getIsVariantValid(value) {
 }
 .typography--variant-h1 {
   font-size: 6.875rem;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 8.25rem;
 }
 .typography--variant-h2 {
   font-size: 3.5rem;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 4.19rem;
 }
 .typography--variant-h3 {
   font-size: 3rem;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 3.625rem;
 }
 .typography--variant-h4 {
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 2.375rem;
 }
 .typography--variant-h5 {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.625rem;
 }
 .typography--variant-h6 {
   font-size: 1.25rem;
-  font-weight: 400;
   line-height: 1.5rem;
 }
 .typography--variant-label-large {
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1rem;
 }
 .typography--variant-label-small {
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 0.875rem;
 }
 </style>

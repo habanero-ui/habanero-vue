@@ -1,7 +1,7 @@
 <template>
   <div :class="classes">
     <Stack space="2">
-      <Stack v-if="label || helperText" space="0.5">
+      <Stack v-if="label || helperText" space="1">
         <Typography v-if="label" component="label" variant="label-large">
           {{ label }}
         </Typography>

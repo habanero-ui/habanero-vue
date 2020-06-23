@@ -17,11 +17,6 @@ export default () => ({
       'sort',
       'sort-ascending',
       'sort-descending',
-      'plus',
-      'minus',
-      'close',
-      'new-window',
-      'check',
     ],
     objects: [
       'apartment',
@@ -39,7 +34,7 @@ export default () => ({
       'settings',
       'speaker',
     ],
-    operations: ['close', 'minus', 'plus', 'new-window'],
+    operations: ['close', 'minus', 'plus', 'new-window', 'check'],
     perks: [
       'boat',
       'certificate',

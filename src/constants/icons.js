@@ -12,6 +12,7 @@ export default [
   'calendar-time',
   'certificate',
   'check',
+  'checkmark',
   'chevron-down',
   'chevron-left',
   'chevron-right',

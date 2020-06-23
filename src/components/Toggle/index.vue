@@ -25,9 +25,13 @@
         <Box
           paddingLeft="small"
           paddingRight="gutter"
-          :paddingTop="labelPaddingTop"
+          :paddingTop="textPaddingTop"
         >
-          <Typography class="toggle__text" component="label">
+          <Typography
+            class="toggle__text"
+            component="label"
+            :variant="textVariant"
+          >
             {{ text }}
           </Typography>
         </Box>
@@ -81,15 +85,16 @@ export default {
       ]
     },
 
-    labelPaddingTop() {
-      return {
-        medium: 'xxsmall',
-        small: 0.25,
-      }[this.size]
-    },
-
     tabIndex() {
       return this.disabled ? -1 : 0
+    },
+
+    textPaddingTop() {
+      return this.size === 'small' ? '0.1875rem' : 'xxsmall'
+    },
+
+    textVariant() {
+      return this.size === 'small' ? 'body-extra-small' : 'body-large'
     },
   },
   methods: {

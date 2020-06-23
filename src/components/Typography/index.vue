@@ -7,6 +7,7 @@
 <script>
 import includes from 'lodash/includes'
 import colors from '../../constants/colors'
+import variants from '../../constants/variants'
 
 export default {
   props: {
@@ -56,42 +57,13 @@ function getIsColorValid(value) {
 }
 
 function getIsVariantValid(value) {
-  const isValid = includes(
-    [
-      'body-extra-small',
-      'body-large',
-      'body-small',
-      'button',
-      'h1',
-      'h2',
-      'h3',
-      'h4',
-      'h5',
-      'h6',
-      'label-large',
-      'label-small',
-    ],
-    value,
-  )
+  const isValid = includes(variants, value)
 
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
       'Typography: The "variant" prop must be one of the following:',
-      String([
-        'body-extra-small',
-        'body-large',
-        'body-small',
-        'button',
-        'h1',
-        'h2',
-        'h3',
-        'h4',
-        'h5',
-        'h6',
-        'label-large',
-        'label-small',
-      ]),
+      String(variants),
     )
   }
 

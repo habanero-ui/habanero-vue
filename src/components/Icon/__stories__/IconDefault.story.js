@@ -21,6 +21,7 @@ export default () => ({
       'minus',
       'close',
       'new-window',
+      'check',
     ],
     objects: [
       'apartment',

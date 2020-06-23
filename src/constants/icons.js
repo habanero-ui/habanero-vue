@@ -11,6 +11,7 @@ export default [
   'bus',
   'calendar-time',
   'certificate',
+  'check',
   'chevron-down',
   'chevron-left',
   'chevron-right',

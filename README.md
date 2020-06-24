@@ -41,3 +41,4 @@ Spur's Design System and Component Library
 
 - How do we want to handle global styles like using #3b3e3b as the font color for icons, text, etc.?
   - For example, right now the default color of icons is #000, but really all the Spur app should use #3b3e3b as the default color. If we don't setup global styles, then we would be required to pass `text-black` on every icon just to make sure it is the default color.
+- What kind of things should we do to facilitate Valid HTML when the components are used?

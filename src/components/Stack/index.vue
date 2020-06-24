@@ -1,6 +1,10 @@
 <script>
+import filter from 'lodash/filter'
+import flatten from 'lodash/flatten'
 import includes from 'lodash/includes'
+import map from 'lodash/map'
 import Box from '../Box/index'
+import Divider from '../Divider/index'
 import spacingAliases from '../../constants/spacingAliases'
 
 export default {
@@ -8,6 +12,10 @@ export default {
     align: {
       default: 'stretch',
       validator: getIsAlignValid,
+    },
+    showDividers: {
+      default: false,
+      type: Boolean,
     },
     space: {
       default: '',
@@ -41,9 +49,22 @@ export default {
         class: this.classes,
       },
       this.$slots.default
-        ? this.$slots.default
-            .filter((vnode) => vnode.tag)
-            .map((vnode, index) => this.mapSlotNode(vnode, h, index))
+        ? flatten(
+            map(
+              filter(this.$slots.default, (vnode) => vnode.tag),
+              (vnode, index) =>
+                this.showDividers && index > 0
+                  ? [
+                      this.mapSlotNode(
+                        h(Divider, { props: { thickness: 'thin' } }),
+                        h,
+                        index,
+                      ),
+                      this.mapSlotNode(vnode, h, index),
+                    ]
+                  : [this.mapSlotNode(vnode, h, index)],
+            ),
+          )
         : null,
     )
   },

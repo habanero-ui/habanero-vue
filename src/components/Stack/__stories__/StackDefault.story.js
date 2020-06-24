@@ -1,4 +1,4 @@
-import { text, select } from '@storybook/addon-knobs'
+import { boolean, text, select } from '@storybook/addon-knobs'
 import Button from '../../Button/index'
 import TextInput from '../../TextInput/index'
 import Stack from '../index'
@@ -13,13 +13,16 @@ export default () => ({
         'stretch',
       ),
     },
+    showDividers: {
+      default: boolean('showDividers', false),
+    },
     space: {
-      default: text('space', '4'),
+      default: text('space', 'gutter'),
     },
   },
   template: `
     <div>
-      <Stack :align="align" class="bg-green" :space="space">
+      <Stack :align="align" :showDividers="showDividers" :space="space">
         <Button text="Button 1" />
         <div class="bg-purple">Colored DIV!</div>
         <Button text="Button 2" />

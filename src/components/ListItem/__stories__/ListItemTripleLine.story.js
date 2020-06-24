@@ -1,12 +1,13 @@
+import Stack from '../../Stack/index'
 import ListItem from '../index'
 
 export default () => ({
-  components: { ListItem },
+  components: { ListItem, Stack },
   data: () => ({
     items: ['Alpha', 'Bravo', 'Charlie'],
   }),
   template: `
-    <div>
+    <Stack :showDividers="true">
       <ListItem
         v-for="item in items"
         :key="item"
@@ -14,6 +15,6 @@ export default () => ({
         secondaryText="Description"
         tertiaryText="Details"
       />
-    </div>
+    </Stack>
   `,
 })

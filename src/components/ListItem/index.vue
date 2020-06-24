@@ -104,7 +104,7 @@ export default {
 
 <style scoped>
 .list-item {
-  @apply outline-none relative flex flex-none items-center px-6 border-b border-gray-300;
+  @apply outline-none relative flex flex-none items-center px-6;
 }
 .list-item--actionable {
   @apply cursor-pointer;

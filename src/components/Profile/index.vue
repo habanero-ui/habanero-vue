@@ -2,7 +2,7 @@
   <Box>
     <Columns alignY="center">
       <Column width="content">
-        <Avatar />
+        <Avatar :firstName="firstName" :image="image" :lastName="lastName" />
       </Column>
       <Column>
         <Box paddingLeft="small" paddingRight="gutter">

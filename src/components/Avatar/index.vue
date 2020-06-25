@@ -1,15 +1,19 @@
 <template>
-  <Box>
-    <img :alt="alt" :class="classes" :src="image" />
+  <Box v-if="image && (firstName || lastName)">
+    <img
+      v-if="loaded"
+      :alt="alt"
+      :class="classes"
+      :src="image"
+      @error="imageLoadError"
+    />
+    <div v-if="!loaded" :class="classes">
+      {{ initials }}
+    </div>
   </Box>
 </template>
 
 <script>
-/* TODO - figure out alt */
-/* TODO - figure out passing in image as a prop */
-/* TODO - add validators for image and alt, component shouldn't work without both */
-/* TODO - if image is broken, show first and last name inside circle */
-
 import Box from '../Box'
 
 export default {
@@ -22,7 +26,7 @@ export default {
       type: String,
     },
     image: {
-      default: 'http://placekitten.com/256/256',
+      default: '',
       type: String,
     },
     lastName: {
@@ -30,12 +34,29 @@ export default {
       type: String,
     },
   },
+  data: () => ({
+    loaded: true,
+  }),
   computed: {
     alt() {
-      return `this should be working hmm`
+      return `${this.firstName} ${this.lastName}`
     },
     classes() {
       return ['avatar']
+    },
+    initials() {
+      /* eslint-disable */
+      return `
+        ${this.firstName ? this.firstName[0] : ''}${
+        this.lastName ? this.lastName[0] : ''
+      }
+      `
+      /* eslint-enable */
+    },
+  },
+  methods: {
+    imageLoadError() {
+      this.loaded = false
     },
   },
 }
@@ -43,6 +64,6 @@ export default {
 
 <style scoped>
 .avatar {
-  @apply rounded-full h-10 w-10;
+  @apply flex items-center justify-center w-10 h-10 bg-gray-300 rounded-full;
 }
 </style>

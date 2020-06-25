@@ -1,8 +1,8 @@
 import { text } from '@storybook/addon-knobs'
-import Profile from '../index'
+import Avatar from '../index'
 
 export default () => ({
-  components: { Profile },
+  components: { Avatar },
   props: {
     firstName: {
       default: text('firstName', 'Patches'),
@@ -10,13 +10,10 @@ export default () => ({
     lastName: {
       default: text('lastName', 'O Houlihan'),
     },
-    subtitle: {
-      default: text('subtitle', 'the Cat'),
-    },
   },
   template: `
     <div class="flex flex-start p-6"> 
-      <Profile :firstName="firstName" :lastName="lastName" :subtitle="subtitle" image="http://placekitten.com/256/256" />
+      <Avatar :firstName="firstName" :lastName="lastName" image="http://placekitten.com/broken-link" />
     </div>
   `,
 })

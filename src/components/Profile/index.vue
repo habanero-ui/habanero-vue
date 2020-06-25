@@ -8,7 +8,7 @@
         <Box paddingLeft="small" paddingRight="gutter">
           <Stack space="1">
             <Typography class="profile__name" variant="label-large">
-              {{ name }}
+              {{ firstName }} {{ lastName }}
             </Typography>
             <Typography v-if="subtitle" color="subtle" variant="label-small">
               {{ subtitle }}
@@ -31,13 +31,29 @@ import Typography from '../Typography'
 export default {
   components: { Avatar, Box, Column, Columns, Stack, Typography },
   props: {
-    name: {
-      default: 'John Doe',
+    firstName: {
+      default: '',
+      type: String,
+    },
+    image: {
+      default: '',
+      type: String,
+    },
+    lastName: {
+      default: '',
       type: String,
     },
     subtitle: {
       default: '',
       type: String,
+    },
+  },
+  computed: {
+    firstInitial() {
+      return this.firstName ? this.firstName[0] : ''
+    },
+    lastInitial() {
+      return this.lastName ? this.lastName[0] : ''
     },
   },
 }

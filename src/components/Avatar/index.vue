@@ -5,6 +5,11 @@
 </template>
 
 <script>
+/* TODO - figure out alt */
+/* TODO - figure out passing in image as a prop */
+/* TODO - add validators for image and alt, component shouldn't work without both */
+/* TODO - if image is broken, show first and last name inside circle */
+
 import Box from '../Box'
 
 export default {
@@ -12,16 +17,23 @@ export default {
     Box,
   },
   props: {
-    alt: {
-      default: 'Fuzzy kitten',
+    firstName: {
+      default: '',
       type: String,
     },
     image: {
       default: 'http://placekitten.com/256/256',
       type: String,
     },
+    lastName: {
+      default: '',
+      type: String,
+    },
   },
   computed: {
+    alt() {
+      return `this should be working hmm`
+    },
     classes() {
       return ['avatar']
     },

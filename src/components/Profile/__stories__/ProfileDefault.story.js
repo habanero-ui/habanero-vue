@@ -4,8 +4,11 @@ import Profile from '../index'
 export default () => ({
   components: { Profile },
   props: {
-    name: {
-      default: text('name', `Patches`),
+    firstName: {
+      default: text('firstName', 'Patches'),
+    },
+    lastName: {
+      default: text('lastName', 'O Houlihan'),
     },
     subtitle: {
       default: text('subtitle', 'the Cat'),
@@ -13,7 +16,7 @@ export default () => ({
   },
   template: `
     <div class="flex flex-start p-6"> 
-      <Profile :name="name" :subtitle="subtitle" />
+      <Profile :firstName="firstName" :lastName="lastName" :subtitle="subtitle" />
     </div>
   `,
 })

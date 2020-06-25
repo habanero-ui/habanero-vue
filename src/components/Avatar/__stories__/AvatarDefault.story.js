@@ -16,7 +16,10 @@ export default () => ({
   },
   template: `
     <div class="flex flex-start p-6"> 
-      <Avatar :firstName="firstName" :image="image" :lastName="lastName" />
+      <Avatar
+        :firstName="firstName"
+        :image="image"
+        :lastName="lastName" />
     </div>
   `,
 })

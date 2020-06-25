@@ -7,6 +7,9 @@ export default () => ({
     firstName: {
       default: text('firstName', 'Patches'),
     },
+    image: {
+      default: text('image', 'http://placekitten.com/256/256'),
+    },
     lastName: {
       default: text('lastName', 'O Houlihan'),
     },
@@ -16,7 +19,11 @@ export default () => ({
   },
   template: `
     <div class="flex flex-start p-6"> 
-      <Profile :firstName="firstName" :lastName="lastName" :subtitle="subtitle" image="http://placekitten.com/256/256" />
+      <Profile
+        :firstName="firstName"
+        :image="image"
+        :lastName="lastName"
+        :subtitle="subtitle" />
     </div>
   `,
 })

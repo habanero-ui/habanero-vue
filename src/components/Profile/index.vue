@@ -1,5 +1,5 @@
 <template>
-  <Box>
+  <Box v-if="image && (firstName || lastName)">
     <Columns alignY="center">
       <Column width="content">
         <Avatar :firstName="firstName" :image="image" :lastName="lastName" />

@@ -1,13 +1,13 @@
 <template>
   <Box v-if="image && (firstName || lastName)">
     <img
-      v-if="loaded"
+      v-if="isLoaded"
       :alt="alt"
       :class="classes"
       :src="image"
       @error="imageLoadError"
     />
-    <div v-if="!loaded" :class="classes">
+    <div v-if="!isLoaded" :class="classes">
       {{ initials }}
     </div>
   </Box>
@@ -35,7 +35,7 @@ export default {
     },
   },
   data: () => ({
-    loaded: true,
+    isLoaded: true,
   }),
   computed: {
     alt() {
@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     imageLoadError() {
-      this.loaded = false
+      this.isLoaded = false
     },
   },
 }

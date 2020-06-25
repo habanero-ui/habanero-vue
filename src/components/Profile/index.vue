@@ -5,7 +5,7 @@
         <Avatar :firstName="firstName" :image="image" :lastName="lastName" />
       </Column>
       <Column>
-        <Box paddingLeft="small" paddingRight="gutter">
+        <Box paddingLeft="small">
           <Stack space="1">
             <Typography class="profile__name" variant="label-large">
               {{ firstName }} {{ lastName }}

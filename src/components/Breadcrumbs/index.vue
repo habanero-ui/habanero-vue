@@ -12,7 +12,7 @@ export default {
   },
   render(h) {
     return h(
-      'div',
+      'ul',
       {
         class: 'breadcrumbs',
       },
@@ -24,6 +24,9 @@ export default {
 
 <style scoped>
 .breadcrumbs {
-  @apply flex;
+  @apply flex truncate;
+}
+.breadcrumbs .breadcrumb:last-child::after {
+  @apply hidden;
 }
 </style>

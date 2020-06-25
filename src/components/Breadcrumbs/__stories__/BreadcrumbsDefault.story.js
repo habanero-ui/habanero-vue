@@ -6,10 +6,10 @@ export default () => ({
   template: `
     <div class="flex flex-start p-6"> 
       <Breadcrumbs>
-        <Breadcrumb />
-        <Breadcrumb />
-        <Breadcrumb />
-        <Breadcrumb />
+        <Breadcrumb crumb="Link" />
+        <Breadcrumb crumb="Link" />
+        <Breadcrumb crumb="Link" />
+        <Breadcrumb crumb="Link" />
       </Breadcrumbs>
     </div>
   `,

@@ -1,11 +1,31 @@
 <template>
-  <div>
-    I'm a crumb
+  <div :class="classes">
+    <Typography variant="label-large">{{ crumb }}</Typography>
   </div>
 </template>
 
 <script>
-export default {}
+import Typography from '../Typography'
+
+export default {
+  components: {
+    Typography,
+  },
+  props: {
+    crumb: {
+      default: '',
+      type: String,
+    },
+  },
+  computed: {
+    classes() {
+      return ['breadcrumb']
+    },
+  },
+}
 </script>
 
-<style scoped></style>
+<style scoped>
+.breadcrumb {
+}
+</style>

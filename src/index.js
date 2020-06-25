@@ -1,6 +1,8 @@
 export { default as Avatar } from './components/Avatar/index.vue'
 export { default as Box } from './components/Box/index.vue'
 export { default as Button } from './components/Button/index.vue'
+export { default as Breadcrumb } from './components/Breadcrumb/index.vue'
+export { default as Breadcrumbs } from './components/Breadcrumbs/index.vue'
 export { default as Checkbox } from './components/Checkbox/index.vue'
 export { default as Column } from './components/Column/index.vue'
 export { default as Columns } from './components/Columns/index.vue'

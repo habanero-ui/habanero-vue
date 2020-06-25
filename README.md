@@ -9,7 +9,6 @@ Spur's Design System and Component Library
 ## New Components
 
 - [ ] Badge component
-- [ ] Breadcrumbs component
 - [ ] DatePicker component
 - [ ] EmptyState component
 - [ ] FileUpload component

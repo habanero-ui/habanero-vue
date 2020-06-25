@@ -1,11 +1,16 @@
 <template>
-  <div>
+  <Box>
     <img :alt="alt" :class="classes" :src="image" />
-  </div>
+  </Box>
 </template>
 
 <script>
+import Box from '../Box'
+
 export default {
+  components: {
+    Box,
+  },
   props: {
     alt: {
       default: 'Fuzzy kitten',

@@ -8,13 +8,11 @@ Spur's Design System and Component Library
 
 ## New Components
 
-- [ ] Avatar component
 - [ ] Badge component
 - [ ] Breadcrumbs component
 - [ ] DatePicker component
 - [ ] EmptyState component
 - [ ] FileUpload component
-- [ ] Profile component
 - [ ] ProgressBar component
 - [ ] Search component
 - [ ] StepList component

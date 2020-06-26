@@ -10,7 +10,7 @@ export default {
   components: { Column, Columns },
   methods: {
     mapSlotNode(vnode) {
-      if (vnode.componentOptions.tag !== 'Link') {
+      if (vnode.componentOptions.tag !== 'TextLink') {
         return vnode
       }
 

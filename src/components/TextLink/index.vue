@@ -1,6 +1,6 @@
 <template>
   <Typography
-    class="link"
+    class="text-link"
     :color="color"
     :component="component"
     variant="label-large"
@@ -30,22 +30,22 @@ export default {
 </script>
 
 <style scoped>
-.link {
+.text-link {
   @apply relative cursor-pointer p-2 -m-2;
 }
-.link::after {
+.text-link::after {
   @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;
   background-color: black;
   border-radius: 0.5rem;
   content: '';
 }
-.link:hover {
+.text-link:hover {
   @apply underline;
 }
-.link:active::after {
+.text-link:active::after {
   opacity: 0.25;
 }
-.link:focus {
+.text-link:focus {
   @apply underline;
 }
 </style>

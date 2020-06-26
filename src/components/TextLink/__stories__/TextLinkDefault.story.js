@@ -1,8 +1,8 @@
 import { text } from '@storybook/addon-knobs'
-import Link from '../index'
+import TextLink from '../index'
 
 export default () => ({
-  components: { Link },
+  components: { TextLink },
   props: {
     href: {
       default: text('href', 'https://www.google.com'),
@@ -13,7 +13,7 @@ export default () => ({
   },
   template: `
     <div class="flex flex-start p-6"> 
-      <Link :href="href" target="_blank">{{ text }}</Link>
+      <TextLink :href="href" target="_blank">{{ text }}</TextLink>
     </div>
   `,
 })

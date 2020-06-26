@@ -1,15 +1,15 @@
-import Link from '../../Link/index'
+import TextLink from '../../TextLink/index'
 import Breadcrumbs from '../index'
 
 export default () => ({
-  components: { Breadcrumbs, Link },
+  components: { Breadcrumbs, TextLink },
   template: `
     <div class="flex flex-start p-6"> 
       <Breadcrumbs>
-        <Link>Alpha</Link>
-        <Link>Bravo</Link>
-        <Link>Charlie</Link>
-        <Link>Delta</Link>
+        <TextLink>Alpha</TextLink>
+        <TextLink>Bravo</TextLink>
+        <TextLink>Charlie</TextLink>
+        <TextLink>Delta</TextLink>
       </Breadcrumbs>
     </div>
   `,

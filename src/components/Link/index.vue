@@ -42,10 +42,10 @@ export default {
 .link:hover {
   @apply underline;
 }
-.link:hover::after {
-  opacity: 0.1;
-}
 .link:active::after {
   opacity: 0.25;
+}
+.link:focus {
+  @apply underline;
 }
 </style>

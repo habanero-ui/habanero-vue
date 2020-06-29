@@ -121,18 +121,16 @@ export default {
   @apply cursor-not-allowed;
 }
 .select__input {
-  @apply relative px-4 w-full border border-black rounded-md text-black cursor-pointer flex items-center;
+  @apply pl-4 pr-10 w-full border border-black rounded-md text-black cursor-pointer;
   height: 2.75rem;
   -webkit-appearance: none;
   -moz-appearance: none;
-  text-indent: 1px;
-  text-overflow: '';
   transition: border-color 300ms ease-in-out;
 }
 .select__input:not([disabled]):hover {
   @apply border-2;
   padding-left: 15px;
-  padding-right: 15px;
+  padding-right: 39px;
 }
 .select__input::-ms-expand {
   display: none;
@@ -140,7 +138,7 @@ export default {
 .select__input:focus {
   @apply border-2 border-info outline-none;
   padding-left: 15px;
-  padding-right: 15px;
+  padding-right: 39px;
 }
 .select__input > .selected {
   @apply flex-1;

@@ -5,7 +5,7 @@
     :component="component"
     variant="label-large"
   >
-    <slot />
+    <span class="text-link__text"><slot /></span>
   </Typography>
 </template>
 
@@ -31,21 +31,24 @@ export default {
 
 <style scoped>
 .text-link {
-  @apply relative cursor-pointer p-2 -m-2;
+  @apply cursor-pointer;
 }
-.text-link::after {
+.text-link__text {
+  @apply relative block p-2 -m-2;
+}
+.text-link__text::after {
   @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;
   background-color: black;
   border-radius: 0.5rem;
   content: '';
 }
-.text-link:hover {
+.text-link__text:hover {
   @apply underline;
 }
-.text-link:active::after {
+.text-link__text:active::after {
   opacity: 0.25;
 }
-.text-link:focus {
+.text-link__text:focus {
   @apply underline;
 }
 </style>

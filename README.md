@@ -8,18 +8,17 @@ Spur's Design System and Component Library
 
 ## New Components
 
-- [ ] Badge component
-- [ ] DatePicker component
-- [ ] EmptyState component
-- [ ] FileUpload component
-- [ ] ProgressBar component
-- [ ] Search component
-- [ ] StepList component
-- [ ] Table component
-- [ ] Textarea component
-- [ ] TextLink component
-- [ ] Toast component
-- [ ] Tooltip component
+- [ ] Badge
+- [ ] DatePicker
+- [ ] EmptyState
+- [ ] FileUpload
+- [ ] ProgressBar
+- [ ] Search
+- [ ] Table
+- [ ] Tag
+- [ ] Textarea
+- [ ] Toast
+- [ ] Tooltip
 
 ## Misc
 

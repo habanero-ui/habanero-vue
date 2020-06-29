@@ -1,10 +1,12 @@
 export default [
   'blue',
+  'border',
   'error',
   'gold',
   'green',
   'info',
   'none',
+  'offwhite',
   'orange',
   'pink',
   'purple',

@@ -85,6 +85,12 @@ function getIsSizeValid(value) {
 .icon--color-blue.icon--color-is-background {
   @apply text-black;
 }
+.icon--color-border {
+  @apply text-border;
+}
+.icon--color-border.icon--color-is-background {
+  @apply text-black;
+}
 .icon--color-error {
   @apply text-error;
 }
@@ -125,6 +131,12 @@ function getIsSizeValid(value) {
   @apply text-purple;
 }
 .icon--color-purple.icon--color-is-background {
+  @apply text-black;
+}
+.icon--color-offwhite {
+  @apply text-offwhite;
+}
+.icon--color-offwhite.icon--color-is-background {
   @apply text-black;
 }
 .icon--color-subtle {

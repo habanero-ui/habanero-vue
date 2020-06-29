@@ -95,6 +95,18 @@ function getIsSizeValid(value) {
 .spinner--color-blue.spinner--color-is-background::after {
   border-top-color: theme('colors.black');
 }
+.spinner--color-border::before {
+  @apply border-border;
+}
+.spinner--color-border::after {
+  border-top-color: theme('colors.border');
+}
+.spinner--color-border.spinner--color-is-background::before {
+  @apply border-black;
+}
+.spinner--color-border.spinner--color-is-background::after {
+  border-top-color: theme('colors.black');
+}
 .spinner--color-error::before {
   @apply border-error;
 }
@@ -154,6 +166,18 @@ function getIsSizeValid(value) {
 }
 .spinner--color-none.spinner--color-is-background::after {
   border-top-color: theme('colors.white');
+}
+.spinner--color-offwhite::before {
+  @apply border-offwhite;
+}
+.spinner--color-offwhite::after {
+  border-top-color: theme('colors.offwhite');
+}
+.spinner--color-offwhite.spinner--color-is-background::before {
+  @apply border-black;
+}
+.spinner--color-offwhite.spinner--color-is-background::after {
+  border-top-color: theme('colors.black');
 }
 .spinner--color-orange::before {
   @apply border-orange;

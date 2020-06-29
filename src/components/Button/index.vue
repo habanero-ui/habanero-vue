@@ -210,6 +210,12 @@ function getIsVariantValid(value) {
 .button--variant-primary.button--color-blue:focus::before {
   @apply border-blue;
 }
+.button--variant-primary.button--color-border {
+  @apply bg-border border-border;
+}
+.button--variant-primary.button--color-border:focus::before {
+  @apply border-border;
+}
 .button--variant-primary.button--color-green {
   @apply bg-green border-green;
 }
@@ -245,6 +251,12 @@ function getIsVariantValid(value) {
 }
 .button--variant-primary.button--color-info:focus::before {
   @apply border-info;
+}
+.button--variant-primary.button--color-offwhite {
+  @apply bg-offwhite border-offwhite;
+}
+.button--variant-primary.button--color-offwhite:focus::before {
+  @apply border-offwhite;
 }
 .button--variant-primary.button--color-subtle {
   @apply bg-subtle border-subtle;
@@ -286,6 +298,12 @@ function getIsVariantValid(value) {
 .button--variant-secondary.button--color-blue:focus::before {
   @apply border-blue;
 }
+.button--variant-secondary.button--color-border {
+  @apply border-border;
+}
+.button--variant-secondary.button--color-border:focus::before {
+  @apply border-border;
+}
 .button--variant-secondary.button--color-green {
   @apply border-green;
 }
@@ -322,6 +340,12 @@ function getIsVariantValid(value) {
 .button--variant-secondary.button--color-info:focus::before {
   @apply border-info;
 }
+.button--variant-secondary.button--color-offwhite {
+  @apply border-offwhite;
+}
+.button--variant-secondary.button--color-offwhite:focus::before {
+  @apply border-offwhite;
+}
 .button--variant-secondary.button--color-subtle {
   @apply border-subtle;
 }
@@ -353,6 +377,9 @@ function getIsVariantValid(value) {
 .button--variant-text.button--color-blue:focus::before {
   @apply border-blue;
 }
+.button--variant-text.button--color-border:focus::before {
+  @apply border-border;
+}
 .button--variant-text.button--color-green:focus::before {
   @apply border-green;
 }
@@ -370,6 +397,9 @@ function getIsVariantValid(value) {
 }
 .button--variant-text.button--color-info:focus::before {
   @apply border-info;
+}
+.button--variant-text.button--color-offwhite:focus::before {
+  @apply border-offwhite;
 }
 .button--variant-text.button--color-subtle:focus::before {
   @apply border-subtle;

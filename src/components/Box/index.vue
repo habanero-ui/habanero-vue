@@ -1,5 +1,5 @@
 <template>
-  <component :is="component" class="box" :style="styles">
+  <component :is="component" :class="classes" :style="styles">
     <slot />
   </component>
 </template>
@@ -10,10 +10,16 @@ import isNil from 'lodash/isNil'
 import isNaN from 'lodash/isNaN'
 import isNumber from 'lodash/isNumber'
 import omitBy from 'lodash/omitBy'
+import colors from '../../constants/colors'
 import spacingAliases from '../../constants/spacingAliases'
 
 export default {
   props: {
+    backgroundColor: {
+      default: 'none',
+      type: String,
+      validator: getIsBackgroundColorValid,
+    },
     component: {
       default: 'div',
       type: String,
@@ -30,6 +36,9 @@ export default {
     isKeyDown: false,
   }),
   computed: {
+    classes() {
+      return ['box', `box--background-color-${this.backgroundColor}`]
+    },
     styles() {
       return omitBy(
         {
@@ -43,6 +52,20 @@ export default {
       )
     },
   },
+}
+
+function getIsBackgroundColorValid(value) {
+  const isValid = includes(colors, value)
+
+  if (!isValid) {
+    // eslint-disable-next-line no-console
+    console.error(
+      'Box: The "backgroundColor" prop must be one of the following:',
+      String(colors),
+    )
+  }
+
+  return isValid
 }
 
 function getIsSpacingPropValid(propName) {
@@ -90,3 +113,45 @@ function getSpacingPropType(name) {
   }
 }
 </script>
+
+<style scoped>
+.box--background-color-blue {
+  @apply bg-blue;
+}
+.box--background-color-border {
+  @apply bg-border;
+}
+.box--background-color-error {
+  @apply bg-error;
+}
+.box--background-color-gold {
+  @apply bg-gold;
+}
+.box--background-color-green {
+  @apply bg-green;
+}
+.box--background-color-info {
+  @apply bg-info;
+}
+.box--background-color-offwhite {
+  @apply bg-offwhite;
+}
+.box--background-color-orange {
+  @apply bg-orange;
+}
+.box--background-color-pink {
+  @apply bg-pink;
+}
+.box--background-color-purple {
+  @apply bg-purple;
+}
+.box--background-color-subtle {
+  @apply bg-subtle;
+}
+.box--background-color-success {
+  @apply bg-success;
+}
+.box--background-color-warning {
+  @apply bg-warning;
+}
+</style>

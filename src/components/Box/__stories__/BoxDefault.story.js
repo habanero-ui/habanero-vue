@@ -1,10 +1,14 @@
 import { action } from '@storybook/addon-actions'
-import { text } from '@storybook/addon-knobs'
+import { select, text } from '@storybook/addon-knobs'
+import colors from '../../../constants/colors'
 import Box from '../index'
 
 export default () => ({
   components: { Box },
   props: {
+    backgroundColor: {
+      default: select('backgroundColor', colors, 'none'),
+    },
     padding: {
       default: text('padding', ''),
     },
@@ -30,7 +34,7 @@ export default () => ({
   template: `
     <div class="flex flex-start p-6"> 
       <Box
-        class="bg-green"
+        :backgroundColor="backgroundColor"
         :padding="padding"
         :paddingBottom="paddingBottom"
         :paddingLeft="paddingLeft"
@@ -38,7 +42,7 @@ export default () => ({
         :paddingTop="paddingTop"
         :paddingX="paddingX"
         :paddingY="paddingY">
-        <div class="bg-error">Content</div>
+        Content
       </Box>
     </div>
   `,

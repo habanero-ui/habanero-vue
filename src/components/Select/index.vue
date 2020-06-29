@@ -9,19 +9,18 @@
           {{ helperText }}
         </Typography>
       </Stack>
-      <div class="flex">
+      <div class="flex items-center">
         <select
-          :class="selectClasses"
+          class="select__input"
+          :disabled="disabled"
           :value="value"
           v-bind="$attrs"
-          v-on="listeners"
-          @input="$emit('input', $event.target.value)"
+          @change="handleInputChange"
+          v-on="$listeners"
         >
           <slot />
         </select>
-        <div class="z-10 flex items-center -ml-8">
-          <Icon name="chevron-down" />
-        </div>
+        <Icon class="z-10 select__chevron" name="chevron-down" />
       </div>
       <Typography v-if="error" color="error" variant="body-small">
         {{ error }}
@@ -31,6 +30,8 @@
 </template>
 
 <script>
+import filter from 'lodash/filter'
+import get from 'lodash/get'
 import Icon from '../Icon'
 import Stack from '../Stack'
 import Typography from '../Typography'
@@ -39,6 +40,10 @@ export default {
   components: { Icon, Stack, Typography },
   inheritAttrs: false,
   props: {
+    disabled: {
+      default: false,
+      type: Boolean,
+    },
     error: {
       default: '',
       type: String,
@@ -51,6 +56,10 @@ export default {
       default: '',
       type: String,
     },
+    onValueChange: {
+      default: undefined,
+      type: Function,
+    },
     value: {
       default: '',
       type: [Number, String],
@@ -58,17 +67,35 @@ export default {
   },
   computed: {
     classes() {
-      return ['select', { 'select--disabled': this.isDisabled }]
+      return [
+        'select',
+        {
+          'select--disabled': this.disabled,
+          'select--error': this.error,
+        },
+      ]
     },
-    isDisabled() {
-      return this.$attrs.disabled
+  },
+  methods: {
+    getOptionValueByIndex(index) {
+      const optionElements = filter(
+        this.$slots.default,
+        (vnode) => vnode.tag === 'option',
+      )
+      return (
+        get(optionElements, `[${index}].data.domProps.value`) ||
+        get(optionElements, `[${index}].data.attrs.value`)
+      )
     },
-    listeners() {
-      const { input, ...listeners } = this.$listeners
-      return listeners
-    },
-    selectClasses() {
-      return ['select__input', { 'select__input--has-error': this.error }]
+
+    handleInputChange({ target }) {
+      if (!this.onValueChange) return
+
+      const optionValue = this.getOptionValueByIndex(target.selectedIndex)
+
+      target.value = this.value
+
+      this.onValueChange(optionValue)
     },
   },
 }
@@ -108,7 +135,11 @@ export default {
 .select__input > .selected {
   @apply flex-1;
 }
-.select__input--has-error {
+.select--error .select__input {
   @apply border-error;
+}
+.select__chevron {
+  @apply pointer-events-none;
+  margin-left: -2.25rem;
 }
 </style>

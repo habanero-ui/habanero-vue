@@ -15,7 +15,7 @@
     </Stack>
     <input
       :id="inputId"
-      :class="inputClasses"
+      class="text-input__input"
       :disabled="disabled"
       v-bind="$attrs"
       v-on="$listeners"
@@ -60,14 +60,15 @@ export default {
   },
   computed: {
     classes() {
-      return ['text-input', { 'text-input--disabled': this.disabled }]
-    },
-    inputClasses() {
       return [
-        'text-input__input',
-        { 'text-input__input--has-error': this.error },
+        'text-input',
+        {
+          'text-input--disabled': this.disabled,
+          'text-input--error': this.error,
+        },
       ]
     },
+
     inputId() {
       return this.id || this.label.replace(/ /g, '') || undefined
     },
@@ -97,7 +98,7 @@ export default {
   padding-left: 15px;
   padding-right: 15px;
 }
-.text-input__input--has-error {
+.text-input--error .text-input__input {
   @apply border-error;
 }
 </style>

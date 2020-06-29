@@ -9,19 +9,21 @@
           {{ helperText }}
         </Typography>
       </Stack>
-      <div class="flex">
+      <div class="flex items-center">
         <select
-          :class="selectClasses"
+          class="select__input"
+          :disabled="disabled"
           :value="value"
           v-bind="$attrs"
-          v-on="listeners"
-          @input="$emit('input', $event.target.value)"
+          @change="handleInputChange"
+          v-on="$listeners"
         >
+          <option v-if="placeholder" disabled selected hidden value="">
+            {{ placeholder }}
+          </option>
           <slot />
         </select>
-        <div class="z-10 flex items-center -ml-8">
-          <Icon name="chevron-down" />
-        </div>
+        <Icon class="z-10 select__chevron" name="chevron-down" />
       </div>
       <Typography v-if="error" color="error" variant="body-small">
         {{ error }}
@@ -31,6 +33,8 @@
 </template>
 
 <script>
+import filter from 'lodash/filter'
+import get from 'lodash/get'
 import Icon from '../Icon'
 import Stack from '../Stack'
 import Typography from '../Typography'
@@ -39,6 +43,10 @@ export default {
   components: { Icon, Stack, Typography },
   inheritAttrs: false,
   props: {
+    disabled: {
+      default: false,
+      type: Boolean,
+    },
     error: {
       default: '',
       type: String,
@@ -51,6 +59,14 @@ export default {
       default: '',
       type: String,
     },
+    onValueChange: {
+      default: undefined,
+      type: Function,
+    },
+    placeholder: {
+      default: '',
+      type: String,
+    },
     value: {
       default: '',
       type: [Number, String],
@@ -58,17 +74,37 @@ export default {
   },
   computed: {
     classes() {
-      return ['select', { 'select--disabled': this.isDisabled }]
+      return [
+        'select',
+        {
+          'select--disabled': this.disabled,
+          'select--error': this.error,
+          'select--placeholder-visible':
+            this.placeholder && !this.value && this.value !== 0,
+        },
+      ]
     },
-    isDisabled() {
-      return this.$attrs.disabled
+  },
+  methods: {
+    getOptionValueByIndex(index) {
+      const optionElements = filter(
+        this.$slots.default,
+        (vnode) => vnode.tag === 'option',
+      )
+      return (
+        get(optionElements, `[${index}].data.domProps.value`) ||
+        get(optionElements, `[${index}].data.attrs.value`)
+      )
     },
-    listeners() {
-      const { input, ...listeners } = this.$listeners
-      return listeners
-    },
-    selectClasses() {
-      return ['select__input', { 'select__input--has-error': this.error }]
+
+    handleInputChange({ target }) {
+      if (!this.onValueChange) return
+
+      target.value = this.value || this.value === 0 ? this.value : ''
+
+      const optionValue = this.getOptionValueByIndex(target.selectedIndex)
+
+      this.onValueChange(optionValue)
     },
   },
 }
@@ -85,17 +121,16 @@ export default {
   @apply cursor-not-allowed;
 }
 .select__input {
-  @apply relative px-4 w-full border border-black rounded-md text-black cursor-pointer transition-colors duration-300 ease-in-out flex items-center;
+  @apply pl-4 pr-10 w-full border border-black rounded-md text-black cursor-pointer;
   height: 2.75rem;
   -webkit-appearance: none;
   -moz-appearance: none;
-  text-indent: 1px;
-  text-overflow: '';
+  transition: border-color 300ms ease-in-out;
 }
 .select__input:not([disabled]):hover {
   @apply border-2;
   padding-left: 15px;
-  padding-right: 15px;
+  padding-right: 39px;
 }
 .select__input::-ms-expand {
   display: none;
@@ -103,12 +138,19 @@ export default {
 .select__input:focus {
   @apply border-2 border-info outline-none;
   padding-left: 15px;
-  padding-right: 15px;
+  padding-right: 39px;
 }
 .select__input > .selected {
   @apply flex-1;
 }
-.select__input--has-error {
+.select--error .select__input {
   @apply border-error;
+}
+.select--placeholder-visible .select__input {
+  @apply text-subtle;
+}
+.select__chevron {
+  @apply pointer-events-none;
+  margin-left: -2.25rem;
 }
 </style>

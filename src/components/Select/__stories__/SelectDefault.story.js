@@ -1,10 +1,9 @@
 import { action } from '@storybook/addon-actions'
-import { boolean, text } from '@storybook/addon-knobs'
+import { boolean, select, text } from '@storybook/addon-knobs'
 import Select from '../index'
-import Typography from '../../Typography/index'
 
 export default () => ({
-  components: { Select, Typography },
+  components: { Select },
   props: {
     disabled: {
       default: boolean('disabled', false),
@@ -13,33 +12,44 @@ export default () => ({
       default: text('error', ''),
     },
     helperText: {
-      default: text('helperText', 'Select a color from the list below'),
+      default: text('helperText', 'Some Helper Text'),
     },
     label: {
-      default: text('label', 'Colors'),
+      default: text('label', 'Some Label Text'),
+    },
+    placeholder: {
+      default: text('placeholder', 'Some placeholder text'),
+    },
+    value: {
+      default: select('value', {
+        [undefined]: undefined,
+        1: 1,
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+      }),
     },
   },
-  data: () => ({
-    selected: 'orange',
-  }),
   template: `
-    <div class="flex flex-col p-6">
-      <Select 
+    <div class="flex flex-col max-w-sm p-6">
+      <Select
         :disabled="disabled"
         :error="error"
         :helperText="helperText"
         :label="label"
-        v-model="selected">
-          <option value="blue">blue</option>
-          <option value="green">green</option>
-          <option value="orange">orange</option>
-          <option value="pink">pink</option>
-          <option value="purple">purple</option>
-        </Select>
-        <Typography class="mt-2">Current Selected: <span :class="['text-' + selected]">{{ selected }}</span></Typography>
+        :onValueChange="onValueChange"
+        :placeholder="placeholder"
+        :value="value">
+        <option :value="1">Alpha</option>
+        <option :value="2">Bravo</option>
+        <option :value="3">Charlie</option>
+        <option :value="4">Delta</option>
+        <option :value="5">Echo</option>
+      </Select>
     </div>
   `,
   methods: {
-    onSelectChange: action('onSelectChange'),
+    onValueChange: action('onValueChange'),
   },
 })

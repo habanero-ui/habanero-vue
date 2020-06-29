@@ -91,6 +91,12 @@ function getIsVariantValid(value) {
 .typography--color-blue.typography--color-is-background {
   @apply text-black;
 }
+.typography--color-border {
+  @apply text-border;
+}
+.typography--color-border.typography--color-is-background {
+  @apply text-black;
+}
 .typography--color-green {
   @apply text-green;
 }
@@ -126,6 +132,12 @@ function getIsVariantValid(value) {
 }
 .typography--color-info.typography--color-is-background {
   @apply text-white;
+}
+.typography--color-offwhite {
+  @apply text-offwhite;
+}
+.typography--color-offwhite.typography--color-is-background {
+  @apply text-black;
 }
 .typography--color-subtle {
   @apply text-subtle;

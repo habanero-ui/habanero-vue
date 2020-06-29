@@ -25,8 +25,10 @@ module.exports = {
         pink: '#FAB5D3',
         purple: '#B6A4FF',
         // Supportive Colors
+        border: '#E5E5E5',
         error: '#DA1E28',
         info: '#3C6EEA',
+        offwhite: '#F8F9FA',
         subtle: '#7C7C86',
         success: '#3AA76D',
         warning: '#F1B34D',

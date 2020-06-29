@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions'
-import { boolean, number, text } from '@storybook/addon-knobs'
+import { boolean, select, text } from '@storybook/addon-knobs'
 import Select from '../index'
 
 export default () => ({
@@ -17,8 +17,18 @@ export default () => ({
     label: {
       default: text('label', 'Some Label Text'),
     },
+    placeholder: {
+      default: text('placeholder', 'Some placeholder text'),
+    },
     value: {
-      default: number('value', 3),
+      default: select('value', {
+        [undefined]: undefined,
+        1: 1,
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+      }),
     },
   },
   template: `
@@ -29,6 +39,7 @@ export default () => ({
         :helperText="helperText"
         :label="label"
         :onValueChange="onValueChange"
+        :placeholder="placeholder"
         :value="value">
         <option :value="1">Alpha</option>
         <option :value="2">Bravo</option>

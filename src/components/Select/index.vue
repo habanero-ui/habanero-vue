@@ -18,6 +18,9 @@
           @change="handleInputChange"
           v-on="$listeners"
         >
+          <option v-if="placeholder" disabled selected hidden value="">
+            {{ placeholder }}
+          </option>
           <slot />
         </select>
         <Icon class="z-10 select__chevron" name="chevron-down" />
@@ -60,6 +63,10 @@ export default {
       default: undefined,
       type: Function,
     },
+    placeholder: {
+      default: '',
+      type: String,
+    },
     value: {
       default: '',
       type: [Number, String],
@@ -72,6 +79,8 @@ export default {
         {
           'select--disabled': this.disabled,
           'select--error': this.error,
+          'select--placeholder-visible':
+            this.placeholder && !this.value && this.value !== 0,
         },
       ]
     },
@@ -91,9 +100,9 @@ export default {
     handleInputChange({ target }) {
       if (!this.onValueChange) return
 
-      const optionValue = this.getOptionValueByIndex(target.selectedIndex)
+      target.value = this.value || this.value === 0 ? this.value : ''
 
-      target.value = this.value
+      const optionValue = this.getOptionValueByIndex(target.selectedIndex)
 
       this.onValueChange(optionValue)
     },
@@ -112,12 +121,13 @@ export default {
   @apply cursor-not-allowed;
 }
 .select__input {
-  @apply relative px-4 w-full border border-black rounded-md text-black cursor-pointer transition-colors duration-300 ease-in-out flex items-center;
+  @apply relative px-4 w-full border border-black rounded-md text-black cursor-pointer flex items-center;
   height: 2.75rem;
   -webkit-appearance: none;
   -moz-appearance: none;
   text-indent: 1px;
   text-overflow: '';
+  transition: border-color 300ms ease-in-out;
 }
 .select__input:not([disabled]):hover {
   @apply border-2;
@@ -137,6 +147,9 @@ export default {
 }
 .select--error .select__input {
   @apply border-error;
+}
+.select--placeholder-visible .select__input {
+  @apply text-subtle;
 }
 .select__chevron {
   @apply pointer-events-none;

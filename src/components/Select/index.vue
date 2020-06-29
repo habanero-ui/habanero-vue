@@ -100,9 +100,11 @@ export default {
     handleInputChange({ target }) {
       if (!this.onValueChange) return
 
-      target.value = this.value || this.value === 0 ? this.value : ''
+      const optionValue = this.getOptionValueByIndex(
+        this.placeholder ? target.selectedIndex - 1 : target.selectedIndex,
+      )
 
-      const optionValue = this.getOptionValueByIndex(target.selectedIndex)
+      target.value = this.value || this.value === 0 ? this.value : ''
 
       this.onValueChange(optionValue)
     },

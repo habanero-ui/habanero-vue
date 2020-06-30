@@ -2,7 +2,7 @@
   <Box
     backgroundColor="border"
     :class="classes"
-    paddingX="xsmall"
+    paddingX="small"
     :paddingY="onDelete ? 'xxsmall' : 2.25"
   >
     <Columns alignY="center" space="xxsmall">

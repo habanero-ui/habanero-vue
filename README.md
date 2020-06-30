@@ -15,7 +15,6 @@ Spur's Design System and Component Library
 - [ ] ProgressBar
 - [ ] Search
 - [ ] Table
-- [ ] Tag
 - [ ] Textarea
 - [ ] Toast
 - [ ] Tooltip

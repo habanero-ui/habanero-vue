@@ -24,6 +24,13 @@ export default {
       default: 'div',
       type: String,
     },
+    margin: getSpacingPropType('margin'),
+    marginBottom: getSpacingPropType('marginBottom'),
+    marginLeft: getSpacingPropType('marginLeft'),
+    marginRight: getSpacingPropType('marginRight'),
+    marginTop: getSpacingPropType('marginTop'),
+    marginX: getSpacingPropType('marginX'),
+    marginY: getSpacingPropType('marginY'),
     padding: getSpacingPropType('padding'),
     paddingBottom: getSpacingPropType('paddingBottom'),
     paddingLeft: getSpacingPropType('paddingLeft'),
@@ -42,6 +49,11 @@ export default {
     styles() {
       return omitBy(
         {
+          margin: getRemFromSpacing(this.margin),
+          marginBottom: getRemFromSpacing(this.marginBottom || this.marginY),
+          marginLeft: getRemFromSpacing(this.marginLeft || this.marginX),
+          marginRight: getRemFromSpacing(this.marginRight || this.marginX),
+          marginTop: getRemFromSpacing(this.marginTop || this.marginY),
           padding: getRemFromSpacing(this.padding),
           paddingBottom: getRemFromSpacing(this.paddingBottom || this.paddingY),
           paddingLeft: getRemFromSpacing(this.paddingLeft || this.paddingX),
@@ -102,6 +114,14 @@ function getRemFromSpacing(spacing) {
     large: `${pxToRem(32)}rem`,
     xlarge: `${pxToRem(64)}rem`,
     xxlarge: `${pxToRem(128)}rem`,
+    '-gutter': `-${pxToRem(24)}rem`,
+    '-xxsmall': `-${pxToRem(4)}rem`,
+    '-xsmall': `-${pxToRem(8)}rem`,
+    '-small': `-${pxToRem(12)}rem`,
+    '-medium': `-${pxToRem(16)}rem`,
+    '-large': `-${pxToRem(32)}rem`,
+    '-xlarge': `-${pxToRem(64)}rem`,
+    '-xxlarge': `-${pxToRem(128)}rem`,
   }[spacing]
 }
 

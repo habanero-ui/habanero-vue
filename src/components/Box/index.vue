@@ -104,7 +104,7 @@ function getIsSpacingPropValid(propName) {
   }
 }
 
-function getRemFromSpacing(spacing) {
+export function getRemFromSpacing(spacing) {
   if (isNumber(spacing) || !isNaN(parseFloat(spacing))) {
     return `${(spacing * 4) / 16}rem`
   }

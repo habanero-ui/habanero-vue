@@ -1,58 +1,81 @@
 <template>
-  <div class="expander-border">
-    <div class="expander">
-      <ExpanderHeader
-        :text="titleText"
-        :onIsOpenChange="onIsOpenChange"
-        :isOpen="isOpen"
-      />
-      <div v-if="isOpen">
-        <slot />
-      </div>
+  <div class="expander">
+    <Box
+      class="expander__header"
+      :paddingX="headerPaddingX"
+      paddingY="small"
+      @click.native="handleIsOpenChange"
+    >
+      <Columns alignY="center" space="medium">
+        <Column>
+          <Box>
+            <Typography>{{ text }}</Typography>
+          </Box>
+        </Column>
+        <Column width="content">
+          <Box marginRight="-1.5"><Icon :name="chevronIconName" /></Box>
+        </Column>
+      </Columns>
+    </Box>
+    <div v-if="isOpen">
+      <slot />
     </div>
   </div>
 </template>
+
 <script>
-import ExpanderHeader from './ExpanderHeader'
+import Box from '../Box/index'
+import Column from '../Column/index'
+import Columns from '../Columns/index'
+import Icon from '../Icon/index'
+import Typography from '../Typography/index'
 
 export default {
-  components: {
-    ExpanderHeader,
-  },
+  components: { Box, Column, Columns, Icon, Typography },
   props: {
-    defaultExpansionState: {
+    headerPaddingX: {
+      default: '',
+      type: String,
+    },
+    isOpen: {
       default: false,
       type: Boolean,
     },
-    titleText: {
+    onIsOpenChange: {
+      default: () => {},
+      type: Function,
+    },
+    text: {
       default: '',
       type: String,
     },
   },
-  data: () => ({
-    isOpen: false,
-  }),
   computed: {
-    iconName() {
+    chevronIconName() {
       return this.isOpen ? 'chevron-up' : 'chevron-down'
     },
   },
-  created() {
-    this.isOpen = this.defaultExpansionState
-  },
   methods: {
-    onIsOpenChange() {
-      this.isOpen = !this.isOpen
+    handleIsOpenChange() {
+      this.onIsOpenChange(!this.isOpen)
     },
   },
 }
 </script>
-<style scoped>
-.expander-border {
-  @apply w-full border-2 border-grey-300;
-}
 
-.expander {
-  margin: 8px;
+<style scoped>
+.expander__header {
+  @apply cursor-pointer relative;
+}
+.expander__header::after {
+  @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;
+  background-color: black;
+  content: '';
+}
+.expander__header:hover::after {
+  opacity: 0.1;
+}
+.expander__header:active::after {
+  opacity: 0.25;
 }
 </style>

@@ -34,6 +34,9 @@ export default () => ({
         'email',
       ),
     },
+    value: {
+      default: text('value', ''),
+    },
   },
   template: `
     <div class="flex flex-col p-6">
@@ -43,15 +46,14 @@ export default () => ({
         :helperText="helperText"
         :iconName="iconName"
         :label="label"
+        :onValueChange="onValueChange"
         :placeholder="placeholder"
         :type="type"
-        @click="click"
-        @input="input"
+        :value="value"
       />
     </div>
   `,
   methods: {
-    click: action('click'),
-    input: action('input'),
+    onValueChange: action('onValueChange'),
   },
 })

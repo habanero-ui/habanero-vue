@@ -17,7 +17,9 @@
         :id="inputId"
         class="text-input__input"
         :disabled="disabled"
+        :value="value"
         v-bind="$attrs"
+        @input="handleInputInput"
         v-on="$listeners"
       />
     </div>
@@ -65,6 +67,14 @@ export default {
       default: '',
       type: String,
     },
+    onValueChange: {
+      default: undefined,
+      type: Function,
+    },
+    value: {
+      default: '',
+      type: String,
+    },
   },
   computed: {
     classes() {
@@ -80,6 +90,17 @@ export default {
 
     inputId() {
       return this.id || this.label.replace(/ /g, '') || undefined
+    },
+  },
+  methods: {
+    handleInputInput({ target }) {
+      if (!this.onValueChange) return
+
+      const newValue = target.value
+
+      target.value = this.value ? this.value : ''
+
+      this.onValueChange(newValue)
     },
   },
 }

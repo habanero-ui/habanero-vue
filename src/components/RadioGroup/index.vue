@@ -2,11 +2,19 @@
 import filter from 'lodash/filter'
 import map from 'lodash/map'
 import set from 'lodash/set'
+import FormLabel from '../FormLabel/index'
 import Stack from '../Stack/index'
-import Typography from '../Typography/index'
 
 export default {
   props: {
+    error: {
+      default: '',
+      type: String,
+    },
+    helperText: {
+      default: '',
+      type: String,
+    },
     label: {
       default: '',
       type: String,
@@ -49,28 +57,26 @@ export default {
   },
   render(h) {
     return h(
-      Stack,
+      FormLabel,
       {
         class: 'radio-group',
-        props: { space: 'medium' },
+        props: {
+          error: this.error,
+          helperText: this.helperText,
+          label: this.label,
+        },
       },
       [
-        this.label
-          ? h(
-              Typography,
-              {
-                class: 'radio-group__label',
-                props: { variant: 'label-large' },
-              },
-              [this.label],
-            )
-          : null,
-        ...(this.$slots.default
-          ? map(
-              filter(this.$slots.default, (vnode) => vnode.tag),
-              this.mapSlotNode,
-            )
-          : []),
+        h(
+          Stack,
+          {
+            props: { space: 'medium' },
+          },
+          map(
+            filter(this.$slots.default, (vnode) => vnode.tag),
+            this.mapSlotNode,
+          ),
+        ),
       ],
     )
   },

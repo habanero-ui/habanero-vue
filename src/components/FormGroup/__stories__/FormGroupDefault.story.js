@@ -1,9 +1,9 @@
 import { text } from '@storybook/addon-knobs'
 import Checkbox from '../../Checkbox/index'
-import FormLabel from '../index'
+import FormGroup from '../index'
 
 export default () => ({
-  components: { Checkbox, FormLabel },
+  components: { Checkbox, FormGroup },
   props: {
     error: {
       default: text('error', ''),
@@ -20,9 +20,9 @@ export default () => ({
   },
   template: `
     <div class="p-6">
-      <FormLabel :error="error" :helperText="helperText" :label="label" :space="space">
+      <FormGroup :error="error" :helperText="helperText" :label="label" :space="space">
         <Checkbox text="Alpha" />
-      </FormLabel>
+      </FormGroup>
     </div>
   `,
 })

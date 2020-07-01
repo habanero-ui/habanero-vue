@@ -1,5 +1,5 @@
 <template>
-  <FormLabel
+  <FormGroup
     :class="classes"
     component="div"
     :error="error"
@@ -16,15 +16,15 @@
       v-bind="$attrs"
       v-on="$listeners"
     />
-  </FormLabel>
+  </FormGroup>
 </template>
 
 <script>
-import FormLabel from '../FormLabel/index'
+import FormGroup from '../FormGroup/index'
 
 export default {
   components: {
-    FormLabel,
+    FormGroup,
   },
   inheritAttrs: false,
   props: {

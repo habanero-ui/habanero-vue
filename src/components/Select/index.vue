@@ -1,5 +1,5 @@
 <template>
-  <FormLabel
+  <FormGroup
     :class="classes"
     component="div"
     :error="error"
@@ -24,17 +24,17 @@
       </select>
       <Icon class="z-10 select__chevron" name="chevron-down" />
     </div>
-  </FormLabel>
+  </FormGroup>
 </template>
 
 <script>
 import filter from 'lodash/filter'
 import get from 'lodash/get'
-import FormLabel from '../FormLabel'
+import FormGroup from '../FormGroup'
 import Icon from '../Icon'
 
 export default {
-  components: { FormLabel, Icon },
+  components: { FormGroup, Icon },
   inheritAttrs: false,
   props: {
     disabled: {

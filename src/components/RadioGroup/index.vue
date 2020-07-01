@@ -2,7 +2,7 @@
 import filter from 'lodash/filter'
 import map from 'lodash/map'
 import set from 'lodash/set'
-import FormLabel from '../FormLabel/index'
+import FormGroup from '../FormGroup/index'
 import Stack from '../Stack/index'
 
 export default {
@@ -57,7 +57,7 @@ export default {
   },
   render(h) {
     return h(
-      FormLabel,
+      FormGroup,
       {
         class: 'radio-group',
         props: {

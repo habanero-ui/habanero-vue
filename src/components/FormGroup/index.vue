@@ -1,5 +1,5 @@
 <template>
-  <Stack class="form-label" :component="component" :space="space">
+  <Stack class="form-group" :component="component" :space="space">
     <Stack v-if="label || helperText" space="1">
       <Typography
         v-if="label"
@@ -68,7 +68,7 @@ function getIsSpaceValid(value) {
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
-      `FormLabel: The "space" prop must be a number to be multiplied by 4, or one of the following aliases:`,
+      `FormGroup: The "space" prop must be a number to be multiplied by 4, or one of the following aliases:`,
       String(spacingAliases),
     )
   }

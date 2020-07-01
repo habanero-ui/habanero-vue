@@ -9,7 +9,9 @@ import includes from 'lodash/includes'
 import isNil from 'lodash/isNil'
 import isNaN from 'lodash/isNaN'
 import isNumber from 'lodash/isNumber'
+import map from 'lodash/map'
 import omitBy from 'lodash/omitBy'
+import without from 'lodash/without'
 import colors from '../../constants/colors'
 import spacingAliases from '../../constants/spacingAliases'
 
@@ -82,14 +84,19 @@ function getIsBackgroundColorValid(value) {
 
 function getIsSpacingPropValid(propName) {
   return (value) => {
+    const negativeSpacingAliases = map(
+      without(spacingAliases, 'none'),
+      (alias) => `-${alias}`,
+    )
     const isValid =
-      includes(['', ...spacingAliases], value) || !isNaN(parseFloat(value))
+      includes(['', ...spacingAliases, ...negativeSpacingAliases], value) ||
+      !isNaN(parseFloat(value))
 
     if (!isValid) {
       // eslint-disable-next-line no-console
       console.error(
         `Box: The "${propName}" prop must be a number to be multiplied by 4, or one of the following aliases:`,
-        String(spacingAliases),
+        String([...spacingAliases, ...negativeSpacingAliases]),
       )
     }
 

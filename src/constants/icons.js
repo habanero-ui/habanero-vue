@@ -39,6 +39,7 @@ export default [
   'parking',
   'plus',
   'ring',
+  'search',
   'settings',
   'sort',
   'sort-ascending',

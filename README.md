@@ -13,7 +13,6 @@ Spur's Design System and Component Library
 - [ ] EmptyState
 - [ ] FileUpload
 - [ ] ProgressBar
-- [ ] Search
 - [ ] Table
 - [ ] Textarea
 - [ ] Toast

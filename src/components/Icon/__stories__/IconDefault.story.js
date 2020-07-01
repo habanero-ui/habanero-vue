@@ -5,7 +5,7 @@ export default () => ({
     Icon,
   },
   data: () => ({
-    actions: ['check', 'close', 'minus', 'plus', 'swap'],
+    actions: ['check', 'close', 'minus', 'plus', 'swap', 'search'],
     arrows: ['arrow-up', 'arrow-down', 'arrow-left', 'arrow-right'],
     chevrons: ['chevron-up', 'chevron-down', 'chevron-left', 'chevron-right'],
     objects: [

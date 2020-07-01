@@ -1,11 +1,13 @@
 import { action } from '@storybook/addon-actions'
-import { boolean, select, text } from '@storybook/addon-knobs'
-import icons from '../../../constants/icons'
-import TextInput from '../index'
+import { boolean, number, select, text } from '@storybook/addon-knobs'
+import SearchInput from '../index'
 
 export default () => ({
-  components: { TextInput },
+  components: { SearchInput },
   props: {
+    delay: {
+      default: number('delay', 500),
+    },
     disabled: {
       default: boolean('disabled', false),
     },
@@ -17,9 +19,6 @@ export default () => ({
         'helperText',
         'Enter your name as it appears on your birth certificate',
       ),
-    },
-    iconName: {
-      default: select('iconName', [undefined, ...icons]),
     },
     label: {
       default: text('label', 'Legal Name'),
@@ -35,18 +34,19 @@ export default () => ({
       ),
     },
     value: {
-      default: text('value', ''),
+      default: text('value', 'Query Value'),
     },
   },
   template: `
     <div class="flex flex-col p-6">
-      <TextInput
+      <SearchInput
+        :delay="delay"
         :disabled="disabled"
         :error="error"
         :helperText="helperText"
-        :iconName="iconName"
         :label="label"
         :onValueChange="onValueChange"
+        :onSearch="onSearch"
         :placeholder="placeholder"
         :type="type"
         :value="value"
@@ -54,6 +54,7 @@ export default () => ({
     </div>
   `,
   methods: {
+    onSearch: action('onSearch'),
     onValueChange: action('onValueChange'),
   },
 })

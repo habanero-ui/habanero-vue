@@ -6,6 +6,12 @@ import RadioGroup from '../index'
 export default () => ({
   components: { RadioButton, RadioGroup },
   props: {
+    error: {
+      default: text('error', ''),
+    },
+    helperText: {
+      default: text('helperText', ''),
+    },
     label: {
       default: text('label', 'Label Text'),
     },
@@ -15,7 +21,13 @@ export default () => ({
   },
   template: `
     <div class="flex flex-col items-start p-6">
-      <RadioGroup :label="label" :onValueChange="onValueChange" :value="value">
+      <RadioGroup
+        :error="error"
+        :helperText="helperText"
+        :label="label"
+        :onValueChange="onValueChange"
+        :value="value"
+      >
         <RadioButton text="Alpha" value="a" />
         <RadioButton text="Bravo" value="b" />
         <RadioButton text="Charlie" value="c" />

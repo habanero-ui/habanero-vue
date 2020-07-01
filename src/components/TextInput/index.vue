@@ -1,18 +1,14 @@
 <template>
-  <Stack :class="classes" space="2">
-    <Stack v-if="label || helperText" space="1">
-      <Typography
-        v-if="label"
-        component="label"
-        :for="inputId"
-        variant="label-large"
-      >
-        {{ label }}
-      </Typography>
-      <Typography v-if="helperText" color="subtle" variant="label-small">
-        {{ helperText }}
-      </Typography>
-    </Stack>
+  <FormGroup
+    :class="classes"
+    component="div"
+    :error="error"
+    :helperText="helperText"
+    :label="label"
+    labelComponent="label"
+    :labelFor="inputId"
+    space="xsmall"
+  >
     <input
       :id="inputId"
       class="text-input__input"
@@ -20,20 +16,15 @@
       v-bind="$attrs"
       v-on="$listeners"
     />
-    <Typography v-if="error" color="error" variant="body-small">
-      {{ error }}
-    </Typography>
-  </Stack>
+  </FormGroup>
 </template>
 
 <script>
-import Stack from '../Stack'
-import Typography from '../Typography'
+import FormGroup from '../FormGroup/index'
 
 export default {
   components: {
-    Stack,
-    Typography,
+    FormGroup,
   },
   inheritAttrs: false,
   props: {

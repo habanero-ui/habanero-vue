@@ -32,7 +32,7 @@ export default () => ({
     },
   },
   template: `
-    <div class="flex flex-col max-w-sm p-6">
+    <div class="p-6">
       <Select
         :disabled="disabled"
         :error="error"

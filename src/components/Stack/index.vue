@@ -13,6 +13,10 @@ export default {
       default: 'stretch',
       validator: getIsAlignValid,
     },
+    component: {
+      default: 'div',
+      type: String,
+    },
     showDividers: {
       default: false,
       type: Boolean,
@@ -44,7 +48,7 @@ export default {
   },
   render(h) {
     return h(
-      'div',
+      this.component,
       {
         class: this.classes,
       },

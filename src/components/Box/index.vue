@@ -104,7 +104,7 @@ function getIsSpacingPropValid(propName) {
   }
 }
 
-function getRemFromSpacing(spacing) {
+export function getRemFromSpacing(spacing) {
   if (isNumber(spacing) || !isNaN(parseFloat(spacing))) {
     return `${(spacing * 4) / 16}rem`
   }
@@ -118,7 +118,7 @@ function getRemFromSpacing(spacing) {
     xsmall: `${pxToRem(8)}rem`,
     small: `${pxToRem(12)}rem`,
     medium: `${pxToRem(16)}rem`,
-    large: `${pxToRem(32)}rem`,
+    large: `${pxToRem(40)}rem`,
     xlarge: `${pxToRem(64)}rem`,
     xxlarge: `${pxToRem(128)}rem`,
     '-gutter': `-${pxToRem(24)}rem`,
@@ -126,7 +126,7 @@ function getRemFromSpacing(spacing) {
     '-xsmall': `-${pxToRem(8)}rem`,
     '-small': `-${pxToRem(12)}rem`,
     '-medium': `-${pxToRem(16)}rem`,
-    '-large': `-${pxToRem(32)}rem`,
+    '-large': `-${pxToRem(40)}rem`,
     '-xlarge': `-${pxToRem(64)}rem`,
     '-xxlarge': `-${pxToRem(128)}rem`,
   }[spacing]

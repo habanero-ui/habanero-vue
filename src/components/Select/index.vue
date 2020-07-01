@@ -1,46 +1,40 @@
 <template>
-  <div :class="classes">
-    <Stack space="2">
-      <Stack v-if="label || helperText" space="1">
-        <Typography v-if="label" component="label" variant="label-large">
-          {{ label }}
-        </Typography>
-        <Typography v-if="helperText" color="subtle" variant="label-small">
-          {{ helperText }}
-        </Typography>
-      </Stack>
-      <div class="flex items-center">
-        <select
-          class="select__input"
-          :disabled="disabled"
-          :value="value"
-          v-bind="$attrs"
-          @change="handleInputChange"
-          v-on="$listeners"
-        >
-          <option v-if="placeholder" disabled selected hidden value="">
-            {{ placeholder }}
-          </option>
-          <slot />
-        </select>
-        <Icon class="z-10 select__chevron" name="chevron-down" />
-      </div>
-      <Typography v-if="error" color="error" variant="body-small">
-        {{ error }}
-      </Typography>
-    </Stack>
-  </div>
+  <FormGroup
+    :class="classes"
+    component="div"
+    :error="error"
+    :helperText="helperText"
+    :label="label"
+    labelComponent="label"
+    space="xsmall"
+  >
+    <div class="flex items-center w-full">
+      <select
+        class="select__input"
+        :disabled="disabled"
+        :value="value"
+        v-bind="$attrs"
+        @change="handleInputChange"
+        v-on="$listeners"
+      >
+        <option v-if="placeholder" disabled selected hidden value="">
+          {{ placeholder }}
+        </option>
+        <slot />
+      </select>
+      <Icon class="z-10 select__chevron" name="chevron-down" />
+    </div>
+  </FormGroup>
 </template>
 
 <script>
 import filter from 'lodash/filter'
 import get from 'lodash/get'
+import FormGroup from '../FormGroup'
 import Icon from '../Icon'
-import Stack from '../Stack'
-import Typography from '../Typography'
 
 export default {
-  components: { Icon, Stack, Typography },
+  components: { FormGroup, Icon },
   inheritAttrs: false,
   props: {
     disabled: {

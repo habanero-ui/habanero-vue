@@ -23,7 +23,6 @@ Spur's Design System and Component Library
 
 - [ ] Add "With Image" for ListItem component
 - [ ] Add count bubble for Tab component
-- [ ] Add more to .npmignore to reduce installed size
 - [ ] Build a landing page for Habanero
 - [ ] Make stories more interactive: Checkbox, Drawer, RadioButton, RadioGroup, Slideover, Tabs, and Toggle
 - [ ] Think about updating both Checkbox and Toggle checked to be either both black or both blue

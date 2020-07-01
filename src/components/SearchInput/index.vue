@@ -8,7 +8,7 @@
 
 <script>
 import debounce from 'lodash/debounce'
-import reduce from 'lodash/reduce'
+import pick from 'lodash/pick'
 import TextInput from '../TextInput/index'
 
 export default {
@@ -33,11 +33,7 @@ export default {
     },
 
     TextInputProps() {
-      return reduce(
-        Object.keys(TextInput.props),
-        (acc, cur) => ({ ...acc, [cur]: this.$props[cur] }),
-        {},
-      )
+      return pick(this.$props, Object.keys(TextInput.props))
     },
   },
   watch: {

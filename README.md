@@ -10,7 +10,6 @@ Spur's Design System and Component Library
 
 - [ ] Badge
 - [ ] DatePicker
-- [ ] EmptyState
 - [ ] FileUpload
 - [ ] ProgressBar
 - [ ] Table

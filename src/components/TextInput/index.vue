@@ -9,22 +9,31 @@
     :labelFor="inputId"
     space="xsmall"
   >
-    <input
-      :id="inputId"
-      class="text-input__input"
-      :disabled="disabled"
-      v-bind="$attrs"
-      v-on="$listeners"
-    />
+    <div class="relative flex items-center w-full">
+      <Box class="absolute" marginLeft="4.25">
+        <Icon v-if="iconName" :name="iconName" :size="iconSize" />
+      </Box>
+      <input
+        :id="inputId"
+        class="text-input__input"
+        :disabled="disabled"
+        v-bind="$attrs"
+        v-on="$listeners"
+      />
+    </div>
   </FormGroup>
 </template>
 
 <script>
+import Box from '../Box/index'
 import FormGroup from '../FormGroup/index'
+import Icon from '../Icon/index'
 
 export default {
   components: {
+    Box,
     FormGroup,
+    Icon,
   },
   inheritAttrs: false,
   props: {
@@ -38,6 +47,14 @@ export default {
     },
     helperText: {
       default: '',
+      type: String,
+    },
+    iconName: {
+      default: undefined,
+      type: String,
+    },
+    iconSize: {
+      default: 'small',
       type: String,
     },
     id: {
@@ -56,6 +73,7 @@ export default {
         {
           'text-input--disabled': this.disabled,
           'text-input--error': this.error,
+          'text-input--has-icon': this.iconName,
         },
       ]
     },
@@ -75,7 +93,7 @@ export default {
   @apply cursor-not-allowed select-none;
 }
 .text-input__input {
-  @apply border border-black px-4 transition-colors duration-300 ease-in-out outline-none;
+  @apply border border-black px-4 transition-colors duration-300 ease-in-out outline-none w-full;
   border-radius: 0.3125rem;
   height: 2.75rem;
 }
@@ -91,5 +109,14 @@ export default {
 }
 .text-input--error .text-input__input {
   @apply border-error;
+}
+.text-input--has-icon .text-input__input {
+  padding-left: 3rem;
+}
+.text-input--has-icon .text-input__input:not([disabled]):hover {
+  padding-left: 2.9375rem;
+}
+.text-input--has-icon .text-input__input:focus {
+  padding-left: 2.9375rem;
 }
 </style>

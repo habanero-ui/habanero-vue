@@ -3,6 +3,7 @@
     v-bind="TextInputProps"
     iconName="search"
     :onValueChange="handleValueChange"
+    type="text"
     :value="valueState || value"
   />
 </template>

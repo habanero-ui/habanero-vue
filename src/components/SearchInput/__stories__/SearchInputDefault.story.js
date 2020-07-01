@@ -1,6 +1,5 @@
 import { action } from '@storybook/addon-actions'
 import { boolean, number, select, text } from '@storybook/addon-knobs'
-import icons from '../../../constants/icons'
 import SearchInput from '../index'
 
 export default () => ({
@@ -20,9 +19,6 @@ export default () => ({
         'helperText',
         'Enter your name as it appears on your birth certificate',
       ),
-    },
-    iconName: {
-      default: select('iconName', [undefined, ...icons]),
     },
     label: {
       default: text('label', 'Legal Name'),
@@ -48,7 +44,6 @@ export default () => ({
         :disabled="disabled"
         :error="error"
         :helperText="helperText"
-        :iconName="iconName"
         :label="label"
         :onValueChange="onValueChange"
         :onSearch="onSearch"

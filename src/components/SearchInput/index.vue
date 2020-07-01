@@ -1,6 +1,7 @@
 <template>
   <TextInput
     v-bind="TextInputProps"
+    iconName="search"
     :onValueChange="handleValueChange"
     :value="valueState || value"
   />

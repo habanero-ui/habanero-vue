@@ -11,7 +11,7 @@
   >
     <div class="relative flex items-center w-full">
       <Box class="absolute" marginLeft="4.25">
-        <Icon v-if="iconName" :name="iconName" :size="iconSize" />
+        <Icon v-if="iconName" :name="iconName" />
       </Box>
       <input
         :id="inputId"
@@ -53,10 +53,6 @@ export default {
     },
     iconName: {
       default: undefined,
-      type: String,
-    },
-    iconSize: {
-      default: 'small',
       type: String,
     },
     id: {
@@ -132,12 +128,12 @@ export default {
   @apply border-error;
 }
 .text-input--has-icon .text-input__input {
-  padding-left: 3rem;
+  padding-left: 3.25rem;
 }
 .text-input--has-icon .text-input__input:not([disabled]):hover {
-  padding-left: 2.9375rem;
+  padding-left: 3.1875rem;
 }
 .text-input--has-icon .text-input__input:focus {
-  padding-left: 2.9375rem;
+  padding-left: 3.1875rem;
 }
 </style>

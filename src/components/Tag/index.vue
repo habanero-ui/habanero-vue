@@ -49,7 +49,7 @@ export default {
     },
     value: {
       default: '',
-      type: [Number, String],
+      type: [String, Number, Boolean, Array, Object, Date, Function, Symbol],
     },
   },
   computed: {

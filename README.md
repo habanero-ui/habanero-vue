@@ -22,7 +22,7 @@ Spur's Design System and Component Library
 - [ ] Add "With Image" for ListItem component
 - [ ] Add count bubble for Tab component
 - [ ] Build a landing page for Habanero
-- [ ] Make stories more interactive: Checkbox, Drawer, RadioButton, RadioGroup, Slideover, Tabs, and Toggle
+- [ ] Add dynamic stories, separate from `*Default` stories: Checkbox, Drawer, RadioButton, RadioGroup, Slideover, Tabs, and Toggle
 - [ ] Think about updating both Checkbox and Toggle checked to be either both black or both blue
 - [ ] Update `README.md` with useful info + branding
 - [ ] Update Select component to be custom, not native

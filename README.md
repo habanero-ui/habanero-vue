@@ -8,7 +8,6 @@ Spur's Design System and Component Library
 
 ## New Components
 
-- [ ] Badge
 - [ ] DatePicker
 - [ ] FileUpload
 - [ ] ProgressBar

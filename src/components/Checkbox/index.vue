@@ -133,7 +133,7 @@ export default {
   @apply rounded-none;
 }
 .checkbox:hover .checkbox__box::after {
-  @apply border-grey-300;
+  @apply border-border;
 }
 .checkbox:focus:not(.checkbox--disabled) .checkbox__box::after {
   @apply border-info;

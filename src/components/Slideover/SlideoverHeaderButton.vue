@@ -1,12 +1,25 @@
 <template>
-  <button class="slideover-header-button" type="button">
+  <Box
+    class="slideover-header-button"
+    component="button"
+    padding="gutter"
+    type="button"
+  >
     <slot />
-  </button>
+  </Box>
 </template>
+
+<script>
+import Box from '../Box/index'
+
+export default {
+  components: { Box },
+}
+</script>
 
 <style scoped>
 .slideover-header-button {
-  @apply relative flex items-center cursor-pointer outline-none select-none px-6;
+  @apply relative flex items-center cursor-pointer outline-none select-none;
 }
 .slideover-header-button::after {
   @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out bg-white;

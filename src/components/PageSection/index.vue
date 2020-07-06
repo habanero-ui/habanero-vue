@@ -51,6 +51,6 @@ export default {
 }
 
 .page-section__content {
-  @apply border-2 border-grey-300;
+  @apply border-2 border-border;
 }
 </style>

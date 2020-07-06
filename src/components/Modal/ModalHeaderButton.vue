@@ -9,7 +9,8 @@
   @apply relative flex items-center cursor-pointer outline-none select-none;
 }
 .modal-header-button::after {
-  @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out bg-black;
+  @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;
+  background-color: black;
   content: '';
 }
 .modal-header-button:hover::after {

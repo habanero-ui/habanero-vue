@@ -121,7 +121,7 @@ export default {
   @apply cursor-pointer;
 }
 .radio-button:hover .radio-button__ring::after {
-  @apply border-grey-300;
+  @apply border-border;
 }
 .radio-button:focus .radio-button__ring::after {
   @apply border-info;

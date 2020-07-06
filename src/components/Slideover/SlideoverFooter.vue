@@ -1,5 +1,10 @@
 <template>
-  <footer v-if="onCancel || onConfirm || onDestroy" class="slideover-footer">
+  <Box
+    v-if="onCancel || onConfirm || onDestroy"
+    backgroundColor="offwhite"
+    component="footer"
+    padding="gutter"
+  >
     <Columns space="6">
       <Column v-if="onDestroy" width="content">
         <Button color="error" :text="destroyText" @click.native="onDestroy" />
@@ -22,16 +27,18 @@
         />
       </Column>
     </Columns>
-  </footer>
+  </Box>
 </template>
 
 <script>
+import Box from '../Box/index'
 import Button from '../Button/index'
 import Column from '../Column/index'
 import Columns from '../Columns/index'
 
 export default {
   components: {
+    Box,
     Button,
     Column,
     Columns,
@@ -76,9 +83,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.slideover-footer {
-  @apply flex flex-col flex-none p-6 mt-auto bg-grey-100;
-}
-</style>

@@ -64,6 +64,6 @@ export default {
 
 <style scoped>
 .avatar {
-  @apply flex items-center justify-center w-10 h-10 bg-gray-300 rounded-full;
+  @apply flex items-center justify-center w-10 h-10 bg-border rounded-full;
 }
 </style>

@@ -7,11 +7,6 @@ module.exports = {
       colors: {
         // Surface
         black: '#3E3B3E',
-        'grey-100': '#F8F9FA',
-        'grey-200': '#F2F4F6',
-        'grey-300': '#E5E5E5',
-        'grey-400': '#B2B2B2',
-        'grey-500': '#7C7C86',
         'heavy-black': '#242324',
         white: '#FFFFFF',
         // Primary Colors

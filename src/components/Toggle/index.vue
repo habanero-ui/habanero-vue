@@ -187,7 +187,7 @@ function getIsSizeValid(value) {
   @apply cursor-pointer;
 }
 .toggle:hover .toggle__track::after {
-  @apply border-grey-300;
+  @apply border-border;
 }
 .toggle:focus:not(.toggle--disabled) .toggle__track::after {
   @apply border-info;

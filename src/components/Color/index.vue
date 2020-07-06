@@ -92,21 +92,6 @@ export default {
 .swatch--color-black {
   @apply bg-black text-white;
 }
-.swatch--color-grey-500 {
-  @apply bg-grey-500 text-white;
-}
-.swatch--color-grey-400 {
-  @apply bg-grey-400 text-black;
-}
-.swatch--color-grey-300 {
-  @apply bg-grey-300 text-black;
-}
-.swatch--color-grey-200 {
-  @apply bg-grey-200 text-black;
-}
-.swatch--color-grey-100 {
-  @apply bg-grey-100 text-black;
-}
 
 /**
   Color - Secondary ---------- 
@@ -130,11 +115,17 @@ export default {
 /**
   Color - Supportive ---------- 
  */
+.swatch--color-border {
+  @apply bg-border text-black;
+}
 .swatch--color-error {
   @apply bg-error text-white;
 }
 .swatch--color-info {
   @apply bg-info text-white;
+}
+.swatch--color-offwhite {
+  @apply bg-offwhite text-black;
 }
 .swatch--color-subtle {
   @apply bg-subtle text-white;

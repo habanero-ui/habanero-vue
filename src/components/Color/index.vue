@@ -115,11 +115,17 @@ export default {
 /**
   Color - Supportive ---------- 
  */
+.swatch--color-border {
+  @apply bg-border text-black;
+}
 .swatch--color-error {
   @apply bg-error text-white;
 }
 .swatch--color-info {
   @apply bg-info text-white;
+}
+.swatch--color-offwhite {
+  @apply bg-offwhite text-black;
 }
 .swatch--color-subtle {
   @apply bg-subtle text-white;

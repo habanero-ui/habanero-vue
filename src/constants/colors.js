@@ -1,4 +1,5 @@
 export default [
+  'black',
   'blue',
   'border',
   'error',

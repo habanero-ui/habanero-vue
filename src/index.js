@@ -1,4 +1,5 @@
 export { default as Avatar } from './components/Avatar/index.vue'
+export { default as Badge } from './components/Badge/index.vue'
 export { default as Box } from './components/Box/index.vue'
 export { default as Button } from './components/Button/index.vue'
 export { default as Breadcrumbs } from './components/Breadcrumbs/index.vue'

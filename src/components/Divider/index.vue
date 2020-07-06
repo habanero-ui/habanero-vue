@@ -37,7 +37,7 @@ function getIsThicknessValid(value) {
 
 <style scoped>
 .divider {
-  @apply bg-gray-300 border-none;
+  @apply bg-border border-none;
 }
 
 .divider--thickness-regular {

@@ -8,7 +8,7 @@ export default () => ({
   components: { Button },
   props: {
     color: {
-      default: select('color', colors, 'none'),
+      default: select('color', colors, 'black'),
     },
     disabled: {
       default: boolean('disabled', false),

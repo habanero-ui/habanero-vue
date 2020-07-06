@@ -142,6 +142,9 @@ function getSpacingPropType(name) {
 </script>
 
 <style scoped>
+.box--background-color-black {
+  @apply bg-black;
+}
 .box--background-color-blue {
   @apply bg-blue;
 }

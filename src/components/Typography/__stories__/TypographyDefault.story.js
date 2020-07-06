@@ -1,12 +1,19 @@
-import { text } from '@storybook/addon-knobs'
+import { select, text } from '@storybook/addon-knobs'
+import colors from '../../../constants/colors'
 import variants from '../../../constants/variants'
 import Typography from '../index'
 
 export default () => ({
   components: { Typography },
   props: {
+    color: {
+      default: select('color', colors, 'black'),
+    },
     text: {
-      default: text('Text', 'Some Text'),
+      default: text('text', 'The quick brown fox jumps over the lazy dog'),
+    },
+    variant: {
+      default: select('variant', variants, 'body-large'),
     },
   },
   data: () => ({
@@ -14,12 +21,7 @@ export default () => ({
   }),
   template: `
     <div class="p-6">
-      <div v-for="(variant, index) in variants" class="mb-4" :key="variant">
-        <Typography :variant="variant">
-          <span class="capitalize">{{ variant.replace('-', ' ') }}</span> / {{ text }}
-        </Typography>
-        <hr class="mt-1" />
-      </div>
+      <Typography :color="color" :variant="variant">{{ text }}</Typography>
     </div>
   `,
 })

@@ -8,10 +8,21 @@ export default () => ({
     color: {
       default: select('color', colors, 'black'),
     },
+    size: {
+      default: select(
+        'size',
+        {
+          small: 'small',
+          medium: 'medium',
+          large: 'large',
+        },
+        'medium',
+      ),
+    },
   },
   template: `
     <div class="p-6">
-      <Icon :color="color" name="badge" />
+      <Icon :color="color" :size="size" name="badge" />
     </div>
   `,
 })

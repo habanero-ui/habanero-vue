@@ -1,6 +1,6 @@
 import Button from '../index'
-export { default as ColorsAndVariants } from './ButtonColorsAndVariants.story'
 export { default as Default } from './ButtonDefault.story'
+export { default as ColorsAndVariants } from './ButtonColorsAndVariants.story'
 export { default as Disabled } from './ButtonDisabled.story'
 export { default as Icon } from './ButtonIcon.story'
 export { default as IconAndText } from './ButtonIconAndText.story'

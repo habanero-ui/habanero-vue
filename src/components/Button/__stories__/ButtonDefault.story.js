@@ -23,12 +23,11 @@ export default () => ({
       default: select(
         'iconSize',
         {
-          undefined: undefined,
           small: 'small',
           medium: 'medium',
           large: 'large',
         },
-        '',
+        'medium',
       ),
     },
     isLoading: {

@@ -83,6 +83,18 @@ function getIsSizeValid(value) {
   content: '';
   opacity: 0.7;
 }
+.spinner--color-black::before {
+  @apply border-black;
+}
+.spinner--color-black::after {
+  border-top-color: theme('colors.black');
+}
+.spinner--color-black.spinner--color-is-background::before {
+  @apply border-white;
+}
+.spinner--color-black.spinner--color-is-background::after {
+  border-top-color: theme('colors.white');
+}
 .spinner--color-blue::before {
   @apply border-blue;
 }

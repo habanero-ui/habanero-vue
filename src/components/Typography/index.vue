@@ -85,6 +85,12 @@ function getIsVariantValid(value) {
 .typography--color-gold.typography--color-is-background {
   @apply text-white;
 }
+.typography--color-black {
+  @apply text-black;
+}
+.typography--color-black.typography--color-is-background {
+  @apply text-white;
+}
 .typography--color-blue {
   @apply text-blue;
 }

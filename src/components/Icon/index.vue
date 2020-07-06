@@ -79,6 +79,12 @@ function getIsSizeValid(value) {
 .icon--color-none.icon--color-is-background {
   @apply text-white;
 }
+.icon--color-black {
+  @apply text-black;
+}
+.icon--color-black.icon--color-is-background {
+  @apply text-white;
+}
 .icon--color-blue {
   @apply text-blue;
 }

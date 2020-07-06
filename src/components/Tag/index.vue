@@ -8,8 +8,8 @@
     <Columns alignY="center" space="xxsmall">
       <Column>
         <Typography
-          :colorIsBackground="true"
           color="border"
+          :colorIsBackground="true"
           variant="label-small"
         >
           {{ truncatedText }}

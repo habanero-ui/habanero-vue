@@ -19,6 +19,7 @@
           <div class="checkbox__check">
             <Icon
               class="checkbox__check-icon"
+              color="black"
               :colorIsBackground="true"
               name="check"
             />

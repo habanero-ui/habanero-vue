@@ -9,7 +9,7 @@ import colors from '../../constants/colors'
 export default {
   props: {
     color: {
-      default: 'none',
+      default: 'black',
       type: String,
       validator: getIsColorValid,
     },
@@ -72,7 +72,6 @@ function getIsSizeValid(value) {
   animation-delay: 0.2s;
   animation: rotateButtonSpinner 1.5s linear infinite;
 }
-
 .spinner::before {
   @apply absolute inset-0 border-4 border-transparent rounded-full;
   content: '';
@@ -82,6 +81,18 @@ function getIsSizeValid(value) {
   @apply absolute inset-0 border-4 border-transparent rounded-full z-10;
   content: '';
   opacity: 0.7;
+}
+.spinner--color-none::before {
+  @apply border-black;
+}
+.spinner--color-none::after {
+  border-top-color: theme('colors.black');
+}
+.spinner--color-none.spinner--color-is-background::before {
+  @apply border-black;
+}
+.spinner--color-none.spinner--color-is-background::after {
+  border-top-color: theme('colors.black');
 }
 .spinner--color-black::before {
   @apply border-black;
@@ -165,18 +176,6 @@ function getIsSizeValid(value) {
   @apply border-white;
 }
 .spinner--color-info.spinner--color-is-background::after {
-  border-top-color: theme('colors.white');
-}
-.spinner--color-none::before {
-  @apply border-black;
-}
-.spinner--color-none::after {
-  border-top-color: theme('colors.black');
-}
-.spinner--color-none.spinner--color-is-background::before {
-  @apply border-white;
-}
-.spinner--color-none.spinner--color-is-background::after {
   border-top-color: theme('colors.white');
 }
 .spinner--color-offwhite::before {

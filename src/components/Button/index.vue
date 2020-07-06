@@ -44,7 +44,7 @@ export default {
   },
   props: {
     color: {
-      default: 'none',
+      default: 'black',
       type: String,
       validator: getIsColorValid,
     },
@@ -192,12 +192,6 @@ function getIsVariantValid(value) {
 .button:active:not([disabled])::after {
   opacity: 0.25;
 }
-.button--variant-primary.button--color-none {
-  @apply bg-black border-black;
-}
-.button--variant-primary.button--color-none:focus::before {
-  @apply border-black;
-}
 .button--variant-primary.button--color-gold {
   @apply bg-gold border-gold;
 }
@@ -286,12 +280,6 @@ function getIsVariantValid(value) {
 /**
   Variant - Secondary ---------- 
  */
-.button--variant-secondary.button--color-none {
-  @apply border-black;
-}
-.button--variant-secondary.button--color-none:focus::before {
-  @apply border-black;
-}
 .button--variant-secondary.button--color-gold {
   @apply border-gold;
 }
@@ -380,9 +368,6 @@ function getIsVariantValid(value) {
 /**
   Variant - Text ---------- 
  */
-.button--variant-text.button--color-none:focus::before {
-  @apply border-black;
-}
 .button--variant-text.button--color-gold:focus::before {
   @apply border-gold;
 }

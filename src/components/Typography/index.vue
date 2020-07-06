@@ -76,9 +76,6 @@ function getIsVariantValid(value) {
   display: block;
   font-family: inter, sans-serif;
 }
-.typography--color-none.typography--color-is-background {
-  @apply text-white;
-}
 .typography--color-gold {
   @apply text-gold;
 }

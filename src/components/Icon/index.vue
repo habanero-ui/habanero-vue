@@ -76,9 +76,6 @@ function getIsSizeValid(value) {
 .icon > svg {
   @apply h-full w-full;
 }
-.icon--color-none.icon--color-is-background {
-  @apply text-white;
-}
 .icon--color-black {
   @apply text-black;
 }

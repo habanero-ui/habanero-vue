@@ -13,7 +13,7 @@ export default () => ({
       <div v-for="color in colors" class="pb-4" :key="color">
         <Icon name="badge" :color="color" />
       </div>
-      <Icon class="text-purple mb-4" name="badge" />
+      <Icon class="mb-4" name="badge" style="color: #0f9;" />
     </div>
   `,
 })

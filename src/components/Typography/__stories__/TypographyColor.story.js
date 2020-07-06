@@ -20,7 +20,7 @@ export default () => ({
         :key="color">
         {{ color }}
       </Typography>
-      <Typography class="text-purple">custom</Typography>
+      <Typography style="color: #0f9;">custom</Typography>
     </div>
   `,
 })

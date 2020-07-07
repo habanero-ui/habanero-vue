@@ -20,7 +20,6 @@ export default () => ({
       <Inline space="small">
         <Tag
           v-for="tag in tags"
-          :maxChars="maxChars"
           :onDelete="onDelete"
           :text="tag.text"
           :value="tag.value"

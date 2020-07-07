@@ -2,7 +2,7 @@
   <div class="bg-black rounded">
     <Columns space="4">
       <Column width="content">
-        <Box :backgroundColor="variant" class="p-2 rounded">
+        <Box :backgroundColor="variant" class="px-3 py-2 rounded">
           <Icon :color="variant" :colorIsBackground="true" :name="icon" />
         </Box>
       </Column>

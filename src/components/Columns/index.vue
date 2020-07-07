@@ -1,7 +1,8 @@
 <script>
 import includes from 'lodash/includes'
-import Box from '../Box/index'
+import map from 'lodash/map'
 import spacingAliases from '../../constants/spacingAliases'
+import Box from '../Box/index'
 
 export default {
   props: {
@@ -42,10 +43,8 @@ export default {
       return h(
         'div',
         {
-          class: [
-            'columns__column',
-            `columns__column--width-${width || 'fluid'}`,
-          ],
+          class: 'columns__column',
+          style: getStylesFromWidth(width),
         },
         [
           h(
@@ -105,6 +104,20 @@ function getIsSpaceValid(value) {
 
   return isValid
 }
+
+function getStylesFromWidth(width) {
+  if (includes(width, '/')) {
+    const dividendAndDivisor = map(width.split('/'), parseFloat)
+    const percent = (dividendAndDivisor[0] / dividendAndDivisor[1]) * 100
+    return { flex: `0 0 ${percent}%` }
+  }
+
+  if (width === 'content') {
+    return { 'flex-shrink': 0 }
+  }
+
+  return { width: '100%' }
+}
 </script>
 
 <style scoped>
@@ -122,38 +135,5 @@ function getIsSpaceValid(value) {
 }
 .columns.columns--align-y-top {
   @apply items-start;
-}
-.columns__column--width-fluid {
-  @apply w-full;
-}
-.columns__column--width-content {
-  @apply flex-shrink-0;
-}
-.columns__column--width-1\/2 {
-  flex: 0 0 50%;
-}
-.columns__column--width-1\/3 {
-  flex: 0 0 33%;
-}
-.columns__column--width-2\/3 {
-  flex: 0 0 67%;
-}
-.columns__column--width-1\/4 {
-  flex: 0 0 25%;
-}
-.columns__column--width-3\/4 {
-  flex: 0 0 75%;
-}
-.columns__column--width-1\/5 {
-  flex: 0 0 20%;
-}
-.columns__column--width-2\/5 {
-  flex: 0 0 40%;
-}
-.columns__column--width-3\/5 {
-  flex: 0 0 60%;
-}
-.columns__column--width-4\/5 {
-  flex: 0 0 80%;
 }
 </style>

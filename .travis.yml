@@ -1,0 +1,14 @@
+language: node_js
+cache:
+  directories:
+    - node_modules
+notifications:
+  email: false
+node_js:
+  - '10'
+script:
+  - npm ci
+  - npm test
+  - npm run build
+after_success:
+  - npx semantic-release

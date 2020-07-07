@@ -83,7 +83,7 @@ function getIsAlignYValid(value) {
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
-      'Column: The "width" prop must be one of the following:',
+      'Column: The "alignY" prop must be one of the following:',
       String(['bottom', 'center', 'top']),
     )
   }

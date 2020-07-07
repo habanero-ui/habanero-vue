@@ -43,7 +43,6 @@
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
-    "semantic-release": "17.1.1",
     "tailwindcss": "^1.2.0",
     "vue-template-compiler": "2.5.22"
   },

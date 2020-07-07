@@ -13,7 +13,6 @@ Spur's Design System and Component Library
 - [ ] ProgressBar
 - [ ] Table
 - [ ] Textarea
-- [ ] Toast
 - [ ] Tooltip
 
 ## Misc

@@ -21,11 +21,11 @@ export default () => ({
       <Toast
         :label="label"
         :message="message"
-        :onCloseToast="onCloseToast"
+        :onClose="onClose"
         :variant="variant" />
     </div>
   `,
   methods: {
-    onCloseToast: action('onCloseToast'),
+    onClose: action('onClose'),
   },
 })

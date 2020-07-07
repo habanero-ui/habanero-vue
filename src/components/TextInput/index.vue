@@ -69,7 +69,7 @@ export default {
     },
     value: {
       default: '',
-      type: String,
+      type: [Number, String],
     },
   },
   computed: {

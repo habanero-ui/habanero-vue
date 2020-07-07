@@ -25,7 +25,7 @@
         </Stack>
       </Column>
       <Column width="content">
-        <ToastButton class="p-2">
+        <ToastButton class="p-2" @click.native="onCloseToast">
           <Icon color="black" :colorIsBackground="true" name="close" />
         </ToastButton>
       </Column>
@@ -62,6 +62,10 @@ export default {
     message: {
       default: '',
       type: String,
+    },
+    onCloseToast: {
+      default: undefined,
+      type: Function,
     },
     variant: {
       default: 'info',

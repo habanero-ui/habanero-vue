@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions'
 import { select, text } from '@storybook/addon-knobs'
 import variants from '../../../constants/statusVariants'
 import Toast from '../index'
@@ -17,7 +18,14 @@ export default () => ({
   },
   template: `
     <div class="flex justify-start p-6">
-      <Toast :label="label" :message="message" :variant="variant" />
+      <Toast
+        :label="label"
+        :message="message"
+        :onCloseToast="onCloseToast"
+        :variant="variant" />
     </div>
   `,
+  methods: {
+    onCloseToast: action('onCloseToast'),
+  },
 })

@@ -20,6 +20,6 @@
   @apply opacity-25;
 }
 .toast-button:focus {
-  box-shadow: 0 0 0 2px black inset;
+  box-shadow: 0 0 0 2px white inset;
 }
 </style>

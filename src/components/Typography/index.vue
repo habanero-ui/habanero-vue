@@ -7,7 +7,7 @@
 <script>
 import includes from 'lodash/includes'
 import colors from '../../constants/colors'
-import variants from '../../constants/variants'
+import variants from '../../constants/textVariants'
 
 export default {
   props: {

@@ -130,10 +130,7 @@ function getStylesFromWidth(width) {
   @apply flex;
 }
 .columns__column-content {
-  @apply flex;
-}
-.columns__column-content > .column {
-  @apply flex;
+  @apply flex flex-grow;
 }
 .columns.columns--is-reversed {
   @apply flex-row-reverse;

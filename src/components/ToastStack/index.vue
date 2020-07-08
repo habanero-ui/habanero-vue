@@ -1,5 +1,5 @@
 <template>
-  <transition-group name="toast-stack__toast" tag="div">
+  <transition-group :class="classes" name="toast-stack__toast" tag="div">
     <Box
       v-for="(toast, index) in orderedToasts"
       :key="toast.id"
@@ -86,6 +86,12 @@ function getIsDirectionValid(value) {
 .toast-stack__toast.toast-stack__toast-enter,
 .toast-stack__toast.toast-stack__toast-leave-active {
   transform: translateY(-1.25rem);
+}
+
+.toast-stack--direction-up > .toast-stack__toast.toast-stack__toast-enter,
+.toast-stack--direction-up
+  > .toast-stack__toast.toast-stack__toast-leave-active {
+  transform: translateY(1.25rem);
 }
 
 /* Transition */

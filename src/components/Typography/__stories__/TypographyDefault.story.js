@@ -1,6 +1,6 @@
 import { select, text } from '@storybook/addon-knobs'
 import colors from '../../../constants/colors'
-import variants from '../../../constants/variants'
+import variants from '../../../constants/textVariants'
 import Typography from '../index'
 
 export default () => ({

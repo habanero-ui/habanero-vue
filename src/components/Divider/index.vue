@@ -39,11 +39,9 @@ function getIsThicknessValid(value) {
 .divider {
   @apply bg-border border-none;
 }
-
 .divider--thickness-regular {
   height: 0.125rem;
 }
-
 .divider--thickness-thin {
   @apply h-px;
 }

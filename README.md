@@ -12,7 +12,6 @@ Spur's Design System and Component Library
 - [ ] FileUpload
 - [ ] Table
 - [ ] Textarea
-- [ ] Toast
 - [ ] Tooltip
 
 ## Misc

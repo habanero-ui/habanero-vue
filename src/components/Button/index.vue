@@ -31,6 +31,7 @@
 
 <script>
 import includes from 'lodash/includes'
+import buttonVariants from '../../constants/buttonVariants'
 import colors from '../../constants/colors'
 import Icon from '../Icon/index'
 import Spinner from '../Spinner/index'
@@ -143,13 +144,13 @@ function getIsSizeValid(value) {
 }
 
 function getIsVariantValid(value) {
-  const isValid = includes(['primary', 'secondary', 'text'], value)
+  const isValid = includes(buttonVariants, value)
 
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
       'Button: The "variant" prop must be one of the following:',
-      String(['primary', 'secondary', 'text']),
+      String(buttonVariants),
     )
   }
 

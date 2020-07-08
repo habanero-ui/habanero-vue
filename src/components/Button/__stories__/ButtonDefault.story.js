@@ -2,6 +2,7 @@ import { action } from '@storybook/addon-actions'
 import { boolean, select, text } from '@storybook/addon-knobs'
 import colors from '../../../constants/colors'
 import icons from '../../../constants/icons'
+import variants from '../../../constants/buttonVariants'
 import Button from '../index'
 
 export default () => ({
@@ -40,7 +41,7 @@ export default () => ({
       default: text('text', 'Text'),
     },
     variant: {
-      default: select('variant', ['primary', 'secondary', 'text'], 'primary'),
+      default: select('variant', variants, 'primary'),
     },
   },
   template: `

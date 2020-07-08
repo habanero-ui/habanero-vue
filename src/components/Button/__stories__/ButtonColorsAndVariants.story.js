@@ -1,6 +1,7 @@
 import { action } from '@storybook/addon-actions'
 import { text } from '@storybook/addon-knobs'
 import colors from '../../../constants/colors'
+import variants from '../../../constants/buttonVariants'
 import Column from '../../Column/index'
 import Columns from '../../Columns/index'
 import Stack from '../../Stack/index'
@@ -14,8 +15,8 @@ export default () => ({
     },
   },
   data: () => ({
-    variants: ['primary', 'secondary', 'text'],
     colors,
+    variants,
   }),
   template: `
     <Stack class="p-6" space="4">

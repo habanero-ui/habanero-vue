@@ -8,7 +8,7 @@ export default () => ({
   components: { Box, Column, Columns },
   props: {
     alignY: {
-      default: select('alignY', ['bottom', 'center', 'top'], 'top'),
+      default: select('alignY', ['bottom', 'center', 'stretch', 'top'], 'top'),
     },
     firstColumnWidth: {
       default: select('firstColumnWidth', columnWidths, 'content'),

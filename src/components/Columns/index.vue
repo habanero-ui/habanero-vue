@@ -50,12 +50,13 @@ export default {
           h(
             Box,
             {
+              class: 'columns__column-content',
               props: {
                 [`padding${this.isReversed ? 'Right' : 'Left'}`]:
                   index > 0 ? this.space : '',
               },
             },
-            [vnode],
+            [vnode.componentOptions.children],
           ),
         ],
       )
@@ -77,13 +78,13 @@ export default {
 }
 
 function getIsAlignYValid(value) {
-  const isValid = includes(['bottom', 'center', 'top'], value)
+  const isValid = includes(['bottom', 'center', 'stretch', 'top'], value)
 
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
       'Column: The "alignY" prop must be one of the following:',
-      String(['bottom', 'center', 'top']),
+      String(['bottom', 'center', 'stretch', 'top']),
     )
   }
 
@@ -124,6 +125,15 @@ function getStylesFromWidth(width) {
 .columns {
   @apply flex;
 }
+.columns__column {
+  @apply flex;
+}
+.columns__column-content {
+  @apply flex;
+}
+.columns__column-content > .column {
+  @apply flex;
+}
 .columns.columns--is-reversed {
   @apply flex-row-reverse;
 }
@@ -133,7 +143,60 @@ function getStylesFromWidth(width) {
 .columns.columns--align-y-center {
   @apply items-center;
 }
+.columns.columns--align-y-stretch {
+  @apply items-stretch;
+}
 .columns.columns--align-y-top {
+  @apply items-start;
+}
+.columns.columns--align-y-bottom > .columns__column {
+  @apply items-end;
+}
+.columns.columns--align-y-center > .columns__column {
+  @apply items-center;
+}
+.columns.columns--align-y-stretch > .columns__column {
+  @apply items-stretch;
+}
+.columns.columns--align-y-top > .columns__column {
+  @apply items-start;
+}
+.columns.columns--align-y-bottom > .columns__column > .columns__column-content {
+  @apply items-end;
+}
+.columns.columns--align-y-center > .columns__column > .columns__column-content {
+  @apply items-center;
+}
+.columns.columns--align-y-stretch
+  > .columns__column
+  > .columns__column-content {
+  @apply items-stretch;
+}
+.columns.columns--align-y-top > .columns__column > .columns__column-content {
+  @apply items-start;
+}
+.columns.columns--align-y-bottom
+  > .columns__column
+  > .columns__column-content
+  > .column {
+  @apply items-end;
+}
+.columns.columns--align-y-center
+  > .columns__column
+  > .columns__column-content
+  > .column {
+  @apply items-center;
+}
+.columns.columns--align-y-stretch
+  > .columns__column
+  > .columns__column-content
+  > .column {
+  @apply items-stretch;
+}
+.columns.columns--align-y-top
+  > .columns__column
+  > .columns__column-content
+  > .column {
   @apply items-start;
 }
 </style>

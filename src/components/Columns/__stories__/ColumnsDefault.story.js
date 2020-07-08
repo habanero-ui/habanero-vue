@@ -1,5 +1,6 @@
 import { boolean, select, text } from '@storybook/addon-knobs'
 import columnWidths from '../../../constants/columnWidths'
+import verticalAlignments from '../../../constants/verticalAlignments'
 import Box from '../../Box/index'
 import Column from '../../Column/index'
 import Columns from '../index'
@@ -8,7 +9,7 @@ export default () => ({
   components: { Box, Column, Columns },
   props: {
     alignY: {
-      default: select('alignY', ['bottom', 'center', 'stretch', 'top'], 'top'),
+      default: select('alignY', verticalAlignments, 'top'),
     },
     firstColumnWidth: {
       default: select('firstColumnWidth', columnWidths, 'content'),

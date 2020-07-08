@@ -39,6 +39,7 @@ export default () => ({
         },
       ]
     },
+
     handleToastsChange(toasts) {
       this.toasts = toasts
     },

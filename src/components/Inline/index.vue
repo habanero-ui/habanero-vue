@@ -3,6 +3,7 @@ import filter from 'lodash/filter'
 import includes from 'lodash/includes'
 import map from 'lodash/map'
 import spacingAliases from '../../constants/spacingAliases'
+import verticalAlignments from '../../constants/verticalAlignments'
 import Box from '../Box/index'
 
 export default {
@@ -88,13 +89,13 @@ function getIsAlignValid(value) {
 }
 
 function getIsAlignYValid(value) {
-  const isValid = includes(['bottom', 'center', 'stretch', 'top'], value)
+  const isValid = includes(verticalAlignments, value)
 
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
       'Inline: The "alignY" prop must be one of the following when defined:',
-      String(['bottom', 'center', 'stretch', 'top']),
+      String(verticalAlignments),
     )
   }
 

@@ -1,4 +1,5 @@
 import { select, text } from '@storybook/addon-knobs'
+import verticalAlignments from '../../../constants/verticalAlignments'
 import Box from '../../Box/index'
 import Inline from '../index'
 
@@ -9,11 +10,7 @@ export default () => ({
       default: select('align', ['left', 'center', 'right'], 'left'),
     },
     alignY: {
-      default: select(
-        'alignY',
-        ['bottom', 'center', 'stretch', 'top'],
-        'stretch',
-      ),
+      default: select('alignY', verticalAlignments, 'stretch'),
     },
     space: {
       default: text('space', 'gutter'),

@@ -37,7 +37,7 @@
           component="button"
           padding="small"
           type="button"
-          @click.native="onClose"
+          @click.native="handleCloseButtonClick"
         >
           <Icon color="black" :colorIsBackground="true" name="close" />
         </Box>
@@ -66,6 +66,10 @@ export default {
     Typography,
   },
   props: {
+    id: {
+      default: '',
+      type: [Number, String],
+    },
     label: {
       default: '',
       type: String,
@@ -87,6 +91,11 @@ export default {
   computed: {
     statusIconName() {
       return this.status === 'success' ? 'checkmark' : this.status
+    },
+  },
+  methods: {
+    handleCloseButtonClick() {
+      this.onClose(this.id)
     },
   },
 }

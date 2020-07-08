@@ -6,6 +6,9 @@ import Toast from '../index'
 export default () => ({
   components: { Toast },
   props: {
+    id: {
+      default: text('id', 'my-toast'),
+    },
     label: {
       default: text('label', 'Toast Label'),
     },
@@ -19,7 +22,7 @@ export default () => ({
   template: `
     <div class="flex justify-start p-6">
       <Toast
-        :label="label"
+        :id="id"
         :message="message"
         :onClose="onClose"
         :status="status"

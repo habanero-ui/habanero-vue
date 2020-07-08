@@ -12,6 +12,7 @@ import isNumber from 'lodash/isNumber'
 import map from 'lodash/map'
 import omitBy from 'lodash/omitBy'
 import without from 'lodash/without'
+import borderRadii from '../../constants/borderRadii'
 import colors from '../../constants/colors'
 import spacingAliases from '../../constants/spacingAliases'
 
@@ -21,6 +22,11 @@ export default {
       default: 'none',
       type: String,
       validator: getIsBackgroundColorValid,
+    },
+    borderRadius: {
+      default: 'none',
+      type: String,
+      validator: getIsBorderRadiusValid,
     },
     component: {
       default: 'div',
@@ -46,7 +52,11 @@ export default {
   }),
   computed: {
     classes() {
-      return ['box', `box--background-color-${this.backgroundColor}`]
+      return [
+        'box',
+        `box--background-color-${this.backgroundColor}`,
+        `box--border-radius-${this.borderRadius}`,
+      ]
     },
     styles() {
       return omitBy(
@@ -76,6 +86,20 @@ function getIsBackgroundColorValid(value) {
     console.error(
       'Box: The "backgroundColor" prop must be one of the following:',
       String(colors),
+    )
+  }
+
+  return isValid
+}
+
+function getIsBorderRadiusValid(value) {
+  const isValid = includes(borderRadii, value)
+
+  if (!isValid) {
+    // eslint-disable-next-line no-console
+    console.error(
+      'Box: The "borderRadius" prop must be one of the following:',
+      String(borderRadii),
     )
   }
 
@@ -183,5 +207,14 @@ function getSpacingPropType(name) {
 }
 .box--background-color-warning {
   @apply bg-warning;
+}
+.box--border-radius-small {
+  border-radius: 0.125rem; /* 2px */
+}
+.box--border-radius-medium {
+  border-radius: 0.3125rem; /* 5px */
+}
+.box--border-radius-full {
+  border-radius: 9999px;
 }
 </style>

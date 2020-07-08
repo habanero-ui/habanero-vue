@@ -1,6 +1,6 @@
 <template>
-  <Box backgroundColor="black" class="toast">
-    <Columns alignY="stretch" space="4">
+  <Box backgroundColor="black" borderRadius="medium" class="toast">
+    <Columns alignY="stretch" space="medium">
       <Column width="content">
         <Box :backgroundColor="status" padding="small">
           <Icon
@@ -10,7 +10,7 @@
           />
         </Box>
       </Column>
-      <Column width="fluid">
+      <Column>
         <Box paddingY="medium">
           <Stack space="0.5">
             <Typography
@@ -108,7 +108,7 @@ function getIsStatusValid(value) {
 
 <style scoped>
 .toast {
-  @apply overflow-hidden rounded;
+  @apply overflow-hidden;
 }
 .toast__close-button {
   @apply relative flex cursor-pointer outline-none select-none;

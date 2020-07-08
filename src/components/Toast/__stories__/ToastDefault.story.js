@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions'
 import { select, text } from '@storybook/addon-knobs'
-import variants from '../../../constants/statusVariants'
+import statuses from '../../../constants/statuses'
 import Toast from '../index'
 
 export default () => ({
@@ -12,8 +12,8 @@ export default () => ({
     message: {
       default: text('message', 'Message text goes here'),
     },
-    variant: {
-      default: select('variant', variants, 'info'),
+    status: {
+      default: select('status', statuses, 'info'),
     },
   },
   template: `
@@ -22,7 +22,8 @@ export default () => ({
         :label="label"
         :message="message"
         :onClose="onClose"
-        :variant="variant" />
+        :status="status"
+      />
     </div>
   `,
   methods: {

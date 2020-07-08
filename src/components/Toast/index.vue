@@ -1,47 +1,59 @@
 <template>
-  <div class="bg-black rounded">
-    <Columns space="4">
+  <Box backgroundColor="black" class="toast">
+    <Columns alignY="stretch" space="4">
       <Column width="content">
-        <Box :backgroundColor="variant" class="px-3 py-2 rounded">
-          <Icon :color="variant" :colorIsBackground="true" :name="icon" />
+        <Box :backgroundColor="status" padding="small">
+          <Icon
+            :color="status"
+            :colorIsBackground="true"
+            :name="statusIconName"
+          />
         </Box>
       </Column>
       <Column width="fluid">
-        <Stack class="py-4" space="0.5">
-          <Typography
-            color="black"
-            :colorIsBackground="true"
-            variant="label-small"
-          >
-            {{ label }}
-          </Typography>
-          <Typography
-            color="black"
-            :colorIsBackground="true"
-            variant="body-extra-small"
-          >
-            {{ message }}
-          </Typography>
-        </Stack>
+        <Box paddingY="medium">
+          <Stack space="0.5">
+            <Typography
+              color="black"
+              :colorIsBackground="true"
+              variant="label-small"
+            >
+              {{ label }}
+            </Typography>
+            <Typography
+              v-if="message"
+              color="black"
+              :colorIsBackground="true"
+              variant="body-extra-small"
+            >
+              {{ message }}
+            </Typography>
+          </Stack>
+        </Box>
       </Column>
       <Column width="content">
-        <ToastButton class="p-2" @click.native="onClose">
+        <Box
+          class="toast__close-button"
+          component="button"
+          padding="small"
+          type="button"
+          @click.native="onClose"
+        >
           <Icon color="black" :colorIsBackground="true" name="close" />
-        </ToastButton>
+        </Box>
       </Column>
     </Columns>
-  </div>
+  </Box>
 </template>
 
 <script>
 import includes from 'lodash/includes'
-import toastVariants from '../../constants/statusVariants'
+import statuses from '../../constants/statuses'
 import Box from '../Box/index'
 import Column from '../Column/index'
 import Columns from '../Columns/index'
 import Icon from '../Icon/index'
 import Stack from '../Stack/index'
-import ToastButton from './ToastButton'
 import Typography from '../Typography/index'
 
 export default {
@@ -51,7 +63,6 @@ export default {
     Columns,
     Icon,
     Stack,
-    ToastButton,
     Typography,
   },
   props: {
@@ -67,27 +78,27 @@ export default {
       default: undefined,
       type: Function,
     },
-    variant: {
+    status: {
       default: 'info',
       type: String,
-      validator: getIsVariantValid,
+      validator: getIsStatusValid,
     },
   },
   computed: {
-    icon() {
-      return this.variant === 'success' ? 'checkmark' : this.variant
+    statusIconName() {
+      return this.status === 'success' ? 'checkmark' : this.status
     },
   },
 }
 
-function getIsVariantValid(value) {
-  const isValid = includes(toastVariants, value)
+function getIsStatusValid(value) {
+  const isValid = includes(statuses, value)
 
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
-      'Button: The "variant" prop must be one of the following:',
-      String(toastVariants),
+      'Toast: The "status" prop must be one of the following:',
+      String(statuses),
     )
   }
 
@@ -97,6 +108,22 @@ function getIsVariantValid(value) {
 
 <style scoped>
 .toast {
-  @apply rounded;
+  @apply overflow-hidden rounded;
+}
+.toast__close-button {
+  @apply relative flex cursor-pointer outline-none select-none;
+}
+.toast__close-button::after {
+  @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out bg-white;
+  content: '';
+}
+.toast__close-button:hover::after {
+  opacity: 0.1;
+}
+.toast__close-button:active::after {
+  @apply opacity-25;
+}
+.toast__close-button:focus {
+  box-shadow: 0 0 0 2px white inset;
 }
 </style>

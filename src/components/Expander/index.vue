@@ -9,7 +9,9 @@
       <Columns alignY="center" space="medium">
         <Column>
           <Box>
-            <Typography>{{ text }}</Typography>
+            <Typography color="subtle" variant="label-large">
+              {{ text }}
+            </Typography>
           </Box>
         </Column>
         <Column width="content">

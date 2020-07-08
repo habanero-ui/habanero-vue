@@ -1,11 +1,10 @@
 import uniqueId from 'lodash/uniqueId'
 import Box from '../../Box/index'
 import Button from '../../Button/index'
-import Toast from '../../Toast/index'
 import ToastStack from '../index'
 
 export default () => ({
-  components: { Box, Button, Toast, ToastStack },
+  components: { Box, Button, ToastStack },
   data: () => ({
     toasts: [],
   }),
@@ -40,7 +39,6 @@ export default () => ({
         },
       ]
     },
-
     handleToastsChange(toasts) {
       this.toasts = toasts
     },

@@ -82,24 +82,23 @@ function getIsDirectionValid(value) {
 .toast-stack__toast {
   transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
 }
-
 .toast-stack__toast.toast-stack__toast-enter,
 .toast-stack__toast.toast-stack__toast-leave-active {
   transform: translateY(-1.25rem);
 }
-
 .toast-stack--direction-up > .toast-stack__toast.toast-stack__toast-enter,
 .toast-stack--direction-up
   > .toast-stack__toast.toast-stack__toast-leave-active {
   transform: translateY(1.25rem);
 }
 
-/* Transition */
+/**
+  Transition
+ */
 .toast-stack__toast-enter-active,
 .toast-stack__toast-leave {
   @apply opacity-100;
 }
-
 .toast-stack__toast-enter,
 .toast-stack__toast-leave-active {
   @apply opacity-0;

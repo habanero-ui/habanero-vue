@@ -1,11 +1,10 @@
 import { action } from '@storybook/addon-actions'
 import { select } from '@storybook/addon-knobs'
 import toastStackDirections from '../../../constants/toastStackDirections'
-import Toast from '../../Toast/index'
 import ToastStack from '../index'
 
 export default () => ({
-  components: { Toast, ToastStack },
+  components: { ToastStack },
   props: {
     direction: {
       default: select('direction', toastStackDirections, 'down'),

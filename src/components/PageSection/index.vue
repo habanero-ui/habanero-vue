@@ -44,12 +44,10 @@ export default {
 .page-section {
   @apply flex;
 }
-
 .page-section__main {
   @apply flex-1;
   max-width: 50rem;
 }
-
 .page-section__content {
   @apply border-2 border-border;
 }

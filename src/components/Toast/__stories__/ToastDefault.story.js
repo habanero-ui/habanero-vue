@@ -23,6 +23,7 @@ export default () => ({
     <div class="flex justify-start p-6">
       <Toast
         :id="id"
+        :label="label"
         :message="message"
         :onClose="onClose"
         :status="status"

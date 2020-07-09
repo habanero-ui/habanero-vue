@@ -1,6 +1,7 @@
+import { action } from '@storybook/addon-actions'
 import { object } from '@storybook/addon-knobs'
 import Table from '../index'
-import tableData from './TableData.json'
+import tableData from './tableData.js'
 
 export default () => ({
   components: { Table },
@@ -9,25 +10,23 @@ export default () => ({
       default: object('Columns', [
         {
           name: 'Rank',
-          key: 'id',
+          accessor: 'id',
         },
         {
           name: 'Movie',
-          key: 'movie.name',
+          accessor: 'movie.name',
         },
         {
           name: 'Director',
-          key: 'movie.director',
-          accessor: (value) => {
-            return `${value.firstName} ${value.lastName}`
+          accessor: ({ movie }) => {
+            return `${movie.director.firstName} ${movie.director.lastName}`
           },
         },
         {
           name: 'Budget',
-          key: 'movie.costCents',
-          accessor: (value) => {
-            return value
-              ? `$${(value / 100)
+          accessor: ({ movie }) => {
+            return movie.costCents
+              ? `$${(movie.costCents / 100)
                   .toFixed(2)
                   .toString()
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`
@@ -36,9 +35,12 @@ export default () => ({
         },
         {
           name: 'Release Year',
-          key: 'movie.year',
+          accessor: 'movie.year',
         },
-        { name: 'IMDB Rating', key: 'rating' },
+        {
+          name: 'IMDB Rating',
+          accessor: 'rating',
+        },
       ]),
     },
     tableData: {
@@ -46,8 +48,15 @@ export default () => ({
     },
   },
   template: `
-    <div class="flex flex-start p-6"> 
-      <Table :columns="columns" :tableData="tableData" />
+    <div class="p-6"> 
+      <Table
+        :columns="columns"
+        :onSelect="onSelect"
+        :tableData="tableData"
+      />
     </div>
   `,
+  methods: {
+    onSelect: action('onSelect'),
+  },
 })

@@ -1,28 +1,37 @@
 <template>
-  <div class="wrapper">
-    <table class="table">
+  <div :class="classes">
+    <table class="table__table">
       <thead>
         <tr class="table__row">
-          <th v-for="(column, cellIndex) in columns" :key="cellIndex">
+          <th
+            v-for="(column, cellIndex) in columns"
+            :key="cellIndex"
+            class="table__cell"
+          >
             <Box padding="medium">
-              <Typography variant="label-small" color="subtle">{{
-                column.name
-              }}</Typography>
+              <Typography variant="label-small" color="subtle">
+                {{ column.name }}
+              </Typography>
             </Box>
           </th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="table__body">
         <tr
           v-for="(row, rowIndex) in tableData"
           :key="rowIndex"
           class="table__row"
+          @click="() => handleRowClick(row)"
         >
-          <td v-for="(column, cellIndex) in columns" :key="cellIndex">
+          <td
+            v-for="(column, cellIndex) in columns"
+            :key="cellIndex"
+            class="table__cell"
+          >
             <Box padding="medium">
-              <Typography variant="body-extra-small">{{
-                getCellData(row, column)
-              }}</Typography>
+              <Typography variant="body-extra-small">
+                {{ getCellData(row, column) }}
+              </Typography>
             </Box>
           </td>
         </tr>
@@ -34,30 +43,48 @@
 <script>
 import forEach from 'lodash/forEach'
 import get from 'lodash/get'
+import isFunction from 'lodash/isFunction'
+import tableColumnKeys from '../../constants/tableColumnKeys'
 import Box from '../Box/index'
 import Typography from '../Typography/index'
-import tableColumnKeys from '../../constants/tableColumnKeys'
 
 export default {
   components: { Box, Typography },
   props: {
     columns: {
-      type: Array,
       default: () => [],
+      type: Array,
       validator: getIsColumnsValid,
     },
+    onSelect: {
+      default: undefined,
+      type: Function,
+    },
     tableData: {
-      type: Array,
       default: () => [],
+      type: Array,
+    },
+  },
+  computed: {
+    classes() {
+      return ['table', { 'table--selectable': this.isSelectable }]
+    },
+
+    isSelectable() {
+      return !!this.onSelect
     },
   },
   methods: {
     getCellData(row, column) {
-      if (column.accessor) {
-        return column.accessor(get(row, column.key))
-      } else {
-        return get(row, column.key)
-      }
+      return isFunction(column.accessor)
+        ? column.accessor(row)
+        : get(row, column.accessor)
+    },
+
+    handleRowClick(row) {
+      if (!this.onSelect) return
+
+      this.onSelect(row)
     },
   },
 }
@@ -84,13 +111,31 @@ function getIsColumnsValid(data) {
 </script>
 
 <style scoped>
-.wrapper {
+.table {
   @apply w-full overflow-x-auto;
 }
-.table {
+.table__table {
   @apply w-full text-left whitespace-no-wrap;
 }
 .table__row {
-  @apply border-b-2 border-border;
+  @apply relative border-b-2 border-border;
+  transform: scale(1);
+}
+.table__cell {
+  @apply p-0;
+}
+.table--selectable .table__row {
+  @apply cursor-pointer;
+}
+.table--selectable .table__row::after {
+  @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;
+  background-color: black;
+  content: '';
+}
+.table--selectable .table__row:hover::after {
+  opacity: 0.1;
+}
+.table--selectable .table__row:active::after {
+  opacity: 0.25;
 }
 </style>

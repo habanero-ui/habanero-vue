@@ -1,1 +1,1 @@
-export default ['key', 'name']
+export default ['accessor', 'name']

@@ -10,7 +10,6 @@ Spur's Design System and Component Library
 
 - [ ] DatePicker
 - [ ] FileUpload
-- [ ] Table
 - [ ] Textarea
 - [ ] Tooltip
 

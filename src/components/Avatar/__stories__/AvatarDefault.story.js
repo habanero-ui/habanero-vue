@@ -11,7 +11,7 @@ export default () => ({
       default: text('image', 'http://placekitten.com/256/256'),
     },
     lastName: {
-      default: text('lastName', 'O Houlihan'),
+      default: text('lastName', "O'Houlihan"),
     },
   },
   template: `

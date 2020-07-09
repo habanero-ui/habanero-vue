@@ -1,0 +1,1 @@
+export default ['accessor', 'name']

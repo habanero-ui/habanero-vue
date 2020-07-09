@@ -1,12 +1,12 @@
 <template>
   <div :class="classes">
-    <table class="table__table">
+    <table class="data-table__table">
       <thead>
-        <tr class="table__row">
+        <tr class="data-table__row">
           <th
             v-for="(column, cellIndex) in columns"
             :key="cellIndex"
-            class="table__cell"
+            class="data-table__cell"
           >
             <Box padding="medium">
               <Typography variant="label-small" color="subtle">
@@ -16,17 +16,17 @@
           </th>
         </tr>
       </thead>
-      <tbody class="table__body">
+      <tbody class="data-table__body">
         <tr
-          v-for="(row, rowIndex) in tableData"
+          v-for="(row, rowIndex) in rows"
           :key="rowIndex"
-          class="table__row"
+          class="data-table__row"
           @click="() => handleRowClick(row)"
         >
           <td
             v-for="(column, cellIndex) in columns"
             :key="cellIndex"
-            class="table__cell"
+            class="data-table__cell"
           >
             <Box padding="medium">
               <Typography variant="body-extra-small">
@@ -56,22 +56,22 @@ export default {
       type: Array,
       validator: getIsColumnsValid,
     },
-    onSelect: {
+    onRowSelect: {
       default: undefined,
       type: Function,
     },
-    tableData: {
+    rows: {
       default: () => [],
       type: Array,
     },
   },
   computed: {
     classes() {
-      return ['table', { 'table--selectable': this.isSelectable }]
+      return ['data-table', { 'data-table--selectable': this.isSelectable }]
     },
 
     isSelectable() {
-      return !!this.onSelect
+      return !!this.onRowSelect
     },
   },
   methods: {
@@ -82,9 +82,9 @@ export default {
     },
 
     handleRowClick(row) {
-      if (!this.onSelect) return
+      if (!this.onRowSelect) return
 
-      this.onSelect(row)
+      this.onRowSelect(row)
     },
   },
 }
@@ -101,7 +101,7 @@ function getIsColumnsValid(data) {
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
-      'Table: Each array item in the "columns" prop must contain the following:',
+      'DataTable: Each array item in the "columns" prop must contain the following:',
       String(tableColumnKeys),
     )
   }
@@ -111,31 +111,31 @@ function getIsColumnsValid(data) {
 </script>
 
 <style scoped>
-.table {
+.data-table {
   @apply w-full overflow-x-auto;
 }
-.table__table {
+.data-table__table {
   @apply w-full text-left whitespace-no-wrap;
 }
-.table__row {
+.data-table__row {
   @apply relative border-b-2 border-border;
   transform: scale(1);
 }
-.table__cell {
+.data-table__cell {
   @apply p-0;
 }
-.table--selectable .table__row {
+.data-table--selectable .data-table__row {
   @apply cursor-pointer;
 }
-.table--selectable .table__row::after {
+.data-table--selectable .data-table__row::after {
   @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;
   background-color: black;
   content: '';
 }
-.table--selectable .table__row:hover::after {
+.data-table--selectable .data-table__row:hover::after {
   opacity: 0.1;
 }
-.table--selectable .table__row:active::after {
+.data-table--selectable .data-table__row:active::after {
   opacity: 0.25;
 }
 </style>

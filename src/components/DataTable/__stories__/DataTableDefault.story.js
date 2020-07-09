@@ -1,13 +1,13 @@
 import { action } from '@storybook/addon-actions'
 import { object } from '@storybook/addon-knobs'
-import Table from '../index'
+import DataTable from '../index'
 import tableData from './tableData.js'
 
 export default () => ({
-  components: { Table },
+  components: { DataTable },
   props: {
     columns: {
-      default: object('Columns', [
+      default: object('columns', [
         {
           name: 'Rank',
           accessor: 'id',
@@ -43,20 +43,20 @@ export default () => ({
         },
       ]),
     },
-    tableData: {
-      default: object('Table Data', tableData),
+    rows: {
+      default: object('rows', tableData),
     },
   },
   template: `
     <div class="p-6"> 
-      <Table
+      <DataTable
         :columns="columns"
-        :onSelect="onSelect"
-        :tableData="tableData"
+        :onRowSelect="onRowSelect"
+        :rows="rows"
       />
     </div>
   `,
   methods: {
-    onSelect: action('onSelect'),
+    onRowSelect: action('onRowSelect'),
   },
 })

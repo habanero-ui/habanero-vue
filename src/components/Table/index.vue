@@ -5,7 +5,7 @@
         <tr class="table__row">
           <th v-for="(column, cellIndex) in columns" :key="cellIndex">
             <Box padding="medium">
-              <Typography variant="label-large" color="subtle">{{
+              <Typography variant="label-small" color="subtle">{{
                 column.name
               }}</Typography>
             </Box>
@@ -20,7 +20,9 @@
         >
           <td v-for="(column, cellIndex) in columns" :key="cellIndex">
             <Box padding="medium">
-              <Typography>{{ getCellData(row, column) }}</Typography>
+              <Typography variant="body-extra-small">{{
+                getCellData(row, column)
+              }}</Typography>
             </Box>
           </td>
         </tr>

@@ -127,18 +127,18 @@ function getIsColumnsValid(data) {
 .data-table__cell {
   @apply p-0 align-top;
 }
-.data-table--selectable .data-table__row {
+.data-table--selectable .data-table__body .data-table__row {
   @apply cursor-pointer;
 }
-.data-table--selectable .data-table__row::after {
+.data-table--selectable .data-table__body .data-table__row::after {
   @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;
   background-color: black;
   content: '';
 }
-.data-table--selectable .data-table__row:hover::after {
+.data-table--selectable .data-table__body .data-table__row:hover::after {
   opacity: 0.1;
 }
-.data-table--selectable .data-table__row:active::after {
+.data-table--selectable .data-table__body .data-table__row:active::after {
   opacity: 0.25;
 }
 </style>

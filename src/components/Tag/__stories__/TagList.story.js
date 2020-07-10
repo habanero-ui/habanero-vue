@@ -1,4 +1,5 @@
 import { action } from '@storybook/addon-actions'
+
 import Inline from '../../Inline/index'
 import Tag from '../index'
 

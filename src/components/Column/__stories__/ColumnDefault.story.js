@@ -1,4 +1,5 @@
 import { select } from '@storybook/addon-knobs'
+
 import columnWidths from '../../../constants/columnWidths'
 import Column from '../index'
 

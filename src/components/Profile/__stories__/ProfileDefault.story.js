@@ -1,4 +1,5 @@
 import { text } from '@storybook/addon-knobs'
+
 import Profile from '../index'
 
 export default () => ({

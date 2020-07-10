@@ -1,5 +1,6 @@
 import { action } from '@storybook/addon-actions'
 import { object } from '@storybook/addon-knobs'
+
 import DataTable from '../index'
 import tableData from './tableData.js'
 

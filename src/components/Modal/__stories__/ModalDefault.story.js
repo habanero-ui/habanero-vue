@@ -1,5 +1,6 @@
 import { action } from '@storybook/addon-actions'
 import { boolean, text } from '@storybook/addon-knobs'
+
 import Modal from '../index'
 
 export default () => ({

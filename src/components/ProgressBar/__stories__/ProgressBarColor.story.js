@@ -1,6 +1,6 @@
 import colors from '../../../constants/colors'
-import ProgressBar from '../index'
 import Stack from '../../Stack/index'
+import ProgressBar from '../index'
 
 export default () => ({
   components: {

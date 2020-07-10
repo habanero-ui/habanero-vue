@@ -1,4 +1,5 @@
 import { text } from '@storybook/addon-knobs'
+
 import Avatar from '../index'
 
 export default () => ({

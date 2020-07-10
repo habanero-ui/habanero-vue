@@ -1,8 +1,9 @@
 import { action } from '@storybook/addon-actions'
 import { text } from '@storybook/addon-knobs'
+
 import Box from '../../Box/index'
-import PageSection from '../index'
 import Typography from '../../Typography/index'
+import PageSection from '../index'
 
 export default () => ({
   components: { Box, PageSection, Typography },

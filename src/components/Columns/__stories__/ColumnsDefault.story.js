@@ -1,4 +1,5 @@
 import { boolean, select, text } from '@storybook/addon-knobs'
+
 import columnWidths from '../../../constants/columnWidths'
 import verticalAlignments from '../../../constants/verticalAlignments'
 import Box from '../../Box/index'

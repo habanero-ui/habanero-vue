@@ -1,4 +1,5 @@
 import { text } from '@storybook/addon-knobs'
+
 import TextLink from '../index'
 
 export default () => ({

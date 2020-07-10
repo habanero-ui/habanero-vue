@@ -1,5 +1,6 @@
 import { action } from '@storybook/addon-actions'
 import { select } from '@storybook/addon-knobs'
+
 import toastStackDirections from '../../../constants/toastStackDirections'
 import ToastStack from '../index'
 

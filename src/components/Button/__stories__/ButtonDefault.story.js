@@ -1,8 +1,9 @@
 import { action } from '@storybook/addon-actions'
 import { boolean, select, text } from '@storybook/addon-knobs'
+
+import variants from '../../../constants/buttonVariants'
 import colors from '../../../constants/colors'
 import icons from '../../../constants/icons'
-import variants from '../../../constants/buttonVariants'
 import Button from '../index'
 
 export default () => ({

@@ -56,6 +56,7 @@ export default {
     },
     iconSide: {
       default: 'right',
+      type: String,
       validator: getIsIconSideValid,
     },
     iconSize: {

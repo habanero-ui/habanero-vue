@@ -15,6 +15,7 @@
 
 <script>
 import includes from 'lodash/includes'
+
 import Icon from '../Icon/index'
 import Stack from '../Stack/index'
 import Typography from '../Typography/index'

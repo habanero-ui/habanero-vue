@@ -1,13 +1,13 @@
 <template>
-  <Box v-if="image && (firstName || lastName)">
+  <Box v-if="image && (firstName || lastName)" class="avatar">
     <img
       v-if="isLoaded"
       :alt="alt"
-      :class="classes"
+      class="avatar__image"
       :src="image"
       @error="imageLoadError"
     />
-    <div v-if="!isLoaded" :class="classes">
+    <div v-if="!isLoaded" class="avatar__image">
       {{ initials }}
     </div>
   </Box>
@@ -41,9 +41,6 @@ export default {
     alt() {
       return `${this.firstName} ${this.lastName}`
     },
-    classes() {
-      return ['avatar']
-    },
     initials() {
       /* eslint-disable */
       return `
@@ -64,6 +61,9 @@ export default {
 
 <style scoped>
 .avatar {
-  @apply flex items-center justify-center w-10 h-10 bg-border rounded-full;
+  @apply w-10 h-10;
+}
+.avatar__image {
+  @apply flex items-center justify-center w-full h-full bg-border rounded-full;
 }
 </style>

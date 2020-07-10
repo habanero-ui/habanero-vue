@@ -21,10 +21,11 @@
 </template>
 
 <script>
+import includes from 'lodash/includes'
+
+import spacingAliases from '../../constants/spacingAliases'
 import Stack from '../Stack/index'
 import Typography from '../Typography/index'
-import includes from 'lodash/includes'
-import spacingAliases from '../../constants/spacingAliases'
 
 export default {
   components: { Stack, Typography },

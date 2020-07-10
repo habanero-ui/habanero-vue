@@ -4,6 +4,7 @@
 
 <script>
 import includes from 'lodash/includes'
+
 import colors from '../../constants/colors'
 
 export default {

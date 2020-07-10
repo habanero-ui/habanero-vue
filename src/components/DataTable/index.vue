@@ -28,7 +28,13 @@
             :key="cellIndex"
             class="data-table__cell"
           >
-            <Box padding="medium">
+            <component
+              :is="column.cellComponent"
+              v-if="column.cellComponent"
+              :column="column"
+              :row="row"
+            />
+            <Box v-else padding="medium">
               <Typography variant="body-extra-small">
                 {{ getCellData(row, column) }}
               </Typography>
@@ -42,9 +48,9 @@
 
 <script>
 import forEach from 'lodash/forEach'
-import get from 'lodash/get'
-import isFunction from 'lodash/isFunction'
+
 import tableColumnKeys from '../../constants/tableColumnKeys'
+import getWithAccessor from '../../helpers/getWithAccessor'
 import Box from '../Box/index'
 import Typography from '../Typography/index'
 
@@ -76,9 +82,7 @@ export default {
   },
   methods: {
     getCellData(row, column) {
-      return isFunction(column.accessor)
-        ? column.accessor(row)
-        : get(row, column.accessor)
+      return getWithAccessor(row, column.accessor)
     },
 
     handleRowClick(row) {
@@ -122,7 +126,7 @@ function getIsColumnsValid(data) {
   transform: scale(1);
 }
 .data-table__cell {
-  @apply p-0;
+  @apply p-0 align-top;
 }
 .data-table--selectable .data-table__body .data-table__row {
   @apply cursor-pointer;

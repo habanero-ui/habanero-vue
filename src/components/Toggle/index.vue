@@ -42,6 +42,7 @@
 
 <script>
 import includes from 'lodash/includes'
+
 import Box from '../Box/index'
 import Column from '../Column/index'
 import Columns from '../Columns/index'

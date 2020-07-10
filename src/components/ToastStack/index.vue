@@ -20,6 +20,7 @@
 <script>
 import includes from 'lodash/includes'
 import reverse from 'lodash/reverse'
+
 import toastStackDirections from '../../constants/toastStackDirections'
 import Box from '../Box/index'
 import Toast from '../Toast/index'

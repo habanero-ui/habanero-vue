@@ -11,7 +11,7 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint',
   },
-  plugins: ['prettier', 'vue'],
+  plugins: ['prettier', 'simple-import-sort', 'vue'],
   env: {
     browser: true,
     node: true,
@@ -20,5 +20,6 @@ module.exports = {
     'no-console': 1,
     'vue/attribute-hyphenation': ['error', 'never'],
     'vue/no-v-html': 0,
+    'simple-import-sort/sort': 'error',
   },
 }

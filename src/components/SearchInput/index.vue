@@ -11,6 +11,7 @@
 <script>
 import debounce from 'lodash/debounce'
 import pick from 'lodash/pick'
+
 import TextInput from '../TextInput/index'
 
 export default {

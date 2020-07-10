@@ -18,6 +18,7 @@
 
 <script>
 import includes from 'lodash/includes'
+
 import colors from '../../constants/colors'
 import Box from '../Box/index'
 import Typography from '../Typography/index'

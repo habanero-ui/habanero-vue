@@ -64,6 +64,6 @@ export default {
   @apply w-10 h-10;
 }
 .avatar__image {
-  @apply flex items-center justify-center w-10 h-10 bg-border rounded-full;
+  @apply flex items-center justify-center w-full h-full bg-border rounded-full;
 }
 </style>

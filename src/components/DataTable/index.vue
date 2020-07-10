@@ -118,7 +118,7 @@ function getIsColumnsValid(data) {
   @apply w-full overflow-x-auto;
 }
 .data-table__table {
-  @apply text-left whitespace-no-wrap;
+  @apply w-full text-left whitespace-no-wrap;
 }
 .data-table__row {
   @apply relative border-b-2 border-border;

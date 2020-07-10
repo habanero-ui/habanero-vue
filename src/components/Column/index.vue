@@ -4,6 +4,7 @@
 
 <script>
 import includes from 'lodash/includes'
+
 import columnWidths from '../../constants/columnWidths'
 
 export default {

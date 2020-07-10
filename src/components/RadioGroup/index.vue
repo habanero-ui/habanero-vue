@@ -2,6 +2,7 @@
 import filter from 'lodash/filter'
 import map from 'lodash/map'
 import set from 'lodash/set'
+
 import FormGroup from '../FormGroup/index'
 import Stack from '../Stack/index'
 

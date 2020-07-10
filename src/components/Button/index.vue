@@ -31,6 +31,7 @@
 
 <script>
 import includes from 'lodash/includes'
+
 import buttonVariants from '../../constants/buttonVariants'
 import colors from '../../constants/colors'
 import Icon from '../Icon/index'

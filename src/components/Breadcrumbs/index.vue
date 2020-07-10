@@ -3,6 +3,7 @@ import filter from 'lodash/filter'
 import flatten from 'lodash/flatten'
 import map from 'lodash/map'
 import set from 'lodash/set'
+
 import Column from '../Column/index'
 import Columns from '../Columns/index'
 

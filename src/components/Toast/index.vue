@@ -48,6 +48,7 @@
 
 <script>
 import includes from 'lodash/includes'
+
 import statuses from '../../constants/statuses'
 import Box from '../Box/index'
 import Column from '../Column/index'

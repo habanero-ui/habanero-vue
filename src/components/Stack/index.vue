@@ -3,9 +3,10 @@ import filter from 'lodash/filter'
 import flatten from 'lodash/flatten'
 import includes from 'lodash/includes'
 import map from 'lodash/map'
+
+import spacingAliases from '../../constants/spacingAliases'
 import Box from '../Box/index'
 import Divider from '../Divider/index'
-import spacingAliases from '../../constants/spacingAliases'
 
 export default {
   props: {

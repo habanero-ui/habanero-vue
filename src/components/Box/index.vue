@@ -6,12 +6,13 @@
 
 <script>
 import includes from 'lodash/includes'
-import isNil from 'lodash/isNil'
 import isNaN from 'lodash/isNaN'
+import isNil from 'lodash/isNil'
 import isNumber from 'lodash/isNumber'
 import map from 'lodash/map'
 import omitBy from 'lodash/omitBy'
 import without from 'lodash/without'
+
 import borderRadii from '../../constants/borderRadii'
 import colors from '../../constants/colors'
 import spacingAliases from '../../constants/spacingAliases'

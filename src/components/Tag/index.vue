@@ -26,6 +26,7 @@
 
 <script>
 import truncate from 'lodash/truncate'
+
 import Box from '../Box/index'
 import Column from '../Column/index'
 import Columns from '../Columns/index'

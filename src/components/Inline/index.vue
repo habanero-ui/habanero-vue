@@ -2,6 +2,7 @@
 import filter from 'lodash/filter'
 import includes from 'lodash/includes'
 import map from 'lodash/map'
+
 import spacingAliases from '../../constants/spacingAliases'
 import verticalAlignments from '../../constants/verticalAlignments'
 import Box from '../Box/index'

@@ -30,6 +30,7 @@
 <script>
 import filter from 'lodash/filter'
 import get from 'lodash/get'
+
 import FormGroup from '../FormGroup'
 import Icon from '../Icon'
 

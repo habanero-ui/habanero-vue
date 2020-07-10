@@ -37,6 +37,7 @@
 
 <script>
 import isNil from 'lodash/isNil'
+
 import Icon from '../Icon/index'
 import Typography from '../Typography/index'
 

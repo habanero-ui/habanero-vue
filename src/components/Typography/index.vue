@@ -6,6 +6,7 @@
 
 <script>
 import includes from 'lodash/includes'
+
 import colors from '../../constants/colors'
 import variants from '../../constants/textVariants'
 

@@ -19,6 +19,7 @@
 
 <script>
 import random from 'lodash/random'
+
 import Box from '../../Box/index'
 import Column from '../../Column/index'
 import Columns from '../../Columns/index'

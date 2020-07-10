@@ -19,7 +19,6 @@
 
 <script>
 import random from 'lodash/random'
-import getWithAccessor from '../../../helpers/getWithAccessor'
 import Box from '../../Box/index'
 import Column from '../../Column/index'
 import Columns from '../../Columns/index'
@@ -46,9 +45,6 @@ export default {
         { source: 'Random', value: random(0.0, 10.0, true).toFixed(1) },
         { source: 'Metacritic', value: random(0.0, 10.0, true).toFixed(1) },
       ]
-    },
-    criticRating() {
-      return getWithAccessor(this.row, this.column.accessor)
     },
   },
 }

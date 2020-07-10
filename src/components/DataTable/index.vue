@@ -48,8 +48,8 @@
 
 <script>
 import forEach from 'lodash/forEach'
-import tableColumnKeys from '../../constants/tableColumnKeys'
 import getWithAccessor from '../../helpers/getWithAccessor'
+import tableColumnKeys from '../../constants/tableColumnKeys'
 import Box from '../Box/index'
 import Typography from '../Typography/index'
 

@@ -8,12 +8,12 @@ export default () => ({
     actions: ['check', 'close', 'minus', 'plus', 'swap', 'search'],
     arrows: ['arrow-up', 'arrow-down', 'arrow-left', 'arrow-right'],
     chevrons: ['chevron-up', 'chevron-down', 'chevron-left', 'chevron-right'],
+    datetimes: ['calendar-date', 'calendar-time', 'time-clock'],
     objects: [
       'apartment',
       'award',
       'badge',
       'bell',
-      'calendar-time',
       'currency',
       'file-download',
       'file-upload',
@@ -60,6 +60,9 @@ export default () => ({
     <div class="p-6">
       <div class="flex items-center mb-6">
         <Icon v-for="sort in sorts" :key="sort" :name="sort" class="mr-4" />
+      </div>
+      <div class="flex items-center mb-6">
+        <Icon v-for="datetime in datetimes" :key="datetime" :name="datetime" class="mr-4" />
       </div>
       <div class="flex items-center mb-6">
         <Icon v-for="chevron in chevrons" :key="chevron" :name="chevron" class="mr-4" />

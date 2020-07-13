@@ -34,6 +34,7 @@ import includes from 'lodash/includes'
 
 import buttonVariants from '../../constants/buttonVariants'
 import colors from '../../constants/colors'
+import iconSides from '../../constants/iconSides'
 import Icon from '../Icon/index'
 import Spinner from '../Spinner/index'
 import Typography from '../Typography/index'
@@ -118,13 +119,13 @@ function getIsColorValid(value) {
 }
 
 function getIsIconSideValid(value) {
-  const isValid = includes(['left', 'right'], value)
+  const isValid = includes(iconSides, value)
 
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
       'Button: The "iconSide" prop must be one of the following:',
-      String(['left', 'right']),
+      String(iconSides),
     )
   }
 

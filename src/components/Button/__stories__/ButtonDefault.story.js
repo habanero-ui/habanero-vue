@@ -4,6 +4,7 @@ import { boolean, select, text } from '@storybook/addon-knobs'
 import variants from '../../../constants/buttonVariants'
 import colors from '../../../constants/colors'
 import icons from '../../../constants/icons'
+import iconSides from '../../../constants/iconSides'
 import Button from '../index'
 
 export default () => ({
@@ -19,7 +20,7 @@ export default () => ({
       default: select('iconName', [undefined, ...icons]),
     },
     iconSide: {
-      default: select('iconSide', ['left', 'right'], 'right'),
+      default: select('iconSide', iconSides, 'right'),
     },
     iconSize: {
       default: select(

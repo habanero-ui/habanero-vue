@@ -1,6 +1,6 @@
 <template>
   <TextInput
-    :ref="'timePicker'"
+    ref="timePicker"
     :disabled="disabled"
     :error="error"
     :helperText="helperText"

@@ -1,7 +1,6 @@
 import { action } from '@storybook/addon-actions'
-import { boolean, select, text } from '@storybook/addon-knobs'
+import { boolean, text } from '@storybook/addon-knobs'
 
-import icons from '../../../constants/icons'
 import TimePicker from '../index'
 
 export default () => ({
@@ -15,9 +14,6 @@ export default () => ({
     },
     helperText: {
       default: text('helperText', 'Enter the time your shift started'),
-    },
-    iconName: {
-      default: select('iconName', [undefined, ...icons]),
     },
     label: {
       default: text('label', 'Start Time'),
@@ -42,7 +38,6 @@ export default () => ({
         :error="error"
         :helperText="helperText"
         :label="label"
-        :iconName="iconName"
         :onValueChange="onValueChange"
         :placeholder="placeholder"
         :value="value" />

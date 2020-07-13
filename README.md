@@ -8,7 +8,6 @@ Spur's Design System and Component Library
 
 ## New Components
 
-- [ ] DatePicker
 - [ ] FileUpload
 - [ ] Textarea
 - [ ] Tooltip

@@ -2,6 +2,7 @@ import { action } from '@storybook/addon-actions'
 import { boolean, select, text } from '@storybook/addon-knobs'
 
 import icons from '../../../constants/icons'
+import iconSides from '../../../constants/iconSides'
 import textInputTypes from '../../../constants/textInputTypes'
 import TextInput from '../index'
 
@@ -23,6 +24,9 @@ export default () => ({
     iconName: {
       default: select('iconName', [undefined, ...icons]),
     },
+    iconSide: {
+      default: select('iconSide', iconSides, 'left'),
+    },
     label: {
       default: text('label', 'Legal Name'),
     },
@@ -43,6 +47,7 @@ export default () => ({
         :error="error"
         :helperText="helperText"
         :iconName="iconName"
+        :iconSide="iconSide"
         :label="label"
         :onValueChange="onValueChange"
         :placeholder="placeholder"

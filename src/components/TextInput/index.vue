@@ -10,7 +10,12 @@
     space="xsmall"
   >
     <div class="relative flex items-center w-full">
-      <Box v-if="iconSide == 'left'" class="absolute" marginLeft="4.25">
+      <Box
+        class="absolute"
+        :class="{ 'right-0': iconSide === 'right' }"
+        :marginLeft="marginLeft"
+        :marginRight="marginRight"
+      >
         <Icon v-if="iconName" :name="iconName" />
       </Box>
       <input
@@ -24,13 +29,6 @@
         @input="handleInputInput"
         v-on="$listeners"
       />
-      <Box
-        v-if="iconSide == 'right'"
-        class="absolute right-0"
-        marginRight="4.25"
-      >
-        <Icon v-if="iconName" :name="iconName" />
-      </Box>
     </div>
   </FormGroup>
 </template>
@@ -110,6 +108,14 @@ export default {
 
     inputId() {
       return this.id || this.label.replace(/ /g, '') || undefined
+    },
+
+    marginLeft() {
+      return this.iconSide === 'left' ? 4.25 : 0
+    },
+
+    marginRight() {
+      return this.iconSide === 'right' ? 4.25 : 0
     },
   },
   methods: {

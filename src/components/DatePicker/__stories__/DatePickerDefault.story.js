@@ -5,6 +5,7 @@ import datePickerModes from '../../../constants/datePickerModes'
 import DatePicker from '../index'
 
 // TODO: Changing maxDate, minDate, and mode doesn't update the compoennt (because flatpickr needs to init itself)
+// TODO: If possible, only show date calendar and ignore time because irrelevant for this component
 
 export default () => ({
   components: { DatePicker },
@@ -53,6 +54,8 @@ export default () => ({
     </div>
   `,
   methods: {
-    onValueChange: action('onValueChange'),
+    onValueChange: () => {
+      action('onValueChange')
+    },
   },
 })

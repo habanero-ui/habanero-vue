@@ -46,11 +46,11 @@ export default {
     },
     maxDate: {
       default: null,
-      type: String,
+      type: [Number, String],
     },
     minDate: {
       default: null,
-      type: String,
+      type: [Number, String],
     },
     mode: {
       default: 'single',

@@ -5,7 +5,7 @@ export default () => ({
   components: { Button, Stack },
   template: `
     <div class="flex justify-start p-6">
-      <Stack align="start" space="4">
+      <Stack space="4">
         <Button size="small" text="Text" />
         <Button text="Text" />
       </Stack>

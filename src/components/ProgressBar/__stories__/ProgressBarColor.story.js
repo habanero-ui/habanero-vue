@@ -12,7 +12,7 @@ export default () => ({
   }),
   template: `
     <div class="p-6">
-      <Stack align="start" space="2">
+      <Stack space="2">
         <ProgressBar v-for="color in colors" :color="color" :key="color" :value="20" />
       </Stack>
     </div>

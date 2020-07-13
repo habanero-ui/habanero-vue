@@ -111,11 +111,11 @@ export default {
     },
 
     marginLeft() {
-      return this.iconSide === 'left' ? 4.25 : 0
+      return this.iconSide === 'left' ? 4.25 : undefined
     },
 
     marginRight() {
-      return this.iconSide === 'right' ? 4.25 : 0
+      return this.iconSide === 'right' ? 4.25 : undefined
     },
   },
   methods: {

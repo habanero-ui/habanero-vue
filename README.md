@@ -8,7 +8,7 @@ Spur's Design System and Component Library
 
 ## New Components
 
-- [ ] DatePicker
+- [ ] DateTimePicker
 - [ ] FileUpload
 - [ ] Textarea
 - [ ] Tooltip
@@ -22,6 +22,7 @@ Spur's Design System and Component Library
 - [ ] Think about updating both Checkbox and Toggle checked to be either both black or both blue
 - [ ] Update `README.md` with useful info + branding
 - [ ] Update Select component to be custom, not native
+- [ ] Add story for DatePickerRangeDate
 
 # Discussion Points
 

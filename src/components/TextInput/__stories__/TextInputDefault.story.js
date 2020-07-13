@@ -2,6 +2,7 @@ import { action } from '@storybook/addon-actions'
 import { boolean, select, text } from '@storybook/addon-knobs'
 
 import icons from '../../../constants/icons'
+import textInputTypes from '../../../constants/textInputTypes'
 import TextInput from '../index'
 
 export default () => ({
@@ -29,11 +30,7 @@ export default () => ({
       default: text('placeholder', 'John Michael Doe'),
     },
     type: {
-      default: select(
-        'type',
-        ['email', 'number', 'password', 'search', 'text', 'tel', 'url'],
-        'email',
-      ),
+      default: select('type', textInputTypes, 'email'),
     },
     value: {
       default: text('value', ''),

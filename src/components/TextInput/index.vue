@@ -17,6 +17,7 @@
         :id="inputId"
         class="text-input__input"
         :disabled="disabled"
+        :type="type"
         :value="value"
         v-bind="$attrs"
         @input="handleInputInput"
@@ -27,6 +28,9 @@
 </template>
 
 <script>
+import includes from 'lodash/includes'
+
+import textInputTypes from '../../constants/textInputTypes'
 import Box from '../Box/index'
 import FormGroup from '../FormGroup/index'
 import Icon from '../Icon/index'
@@ -67,6 +71,11 @@ export default {
       default: undefined,
       type: Function,
     },
+    type: {
+      default: 'text',
+      type: String,
+      validator: getIsTypeValid,
+    },
     value: {
       default: '',
       type: [Number, String],
@@ -99,6 +108,20 @@ export default {
       this.onValueChange(newValue)
     },
   },
+}
+
+function getIsTypeValid(value) {
+  const isValid = includes(textInputTypes, value)
+
+  if (!isValid) {
+    // eslint-disable-next-line no-console
+    console.error(
+      'TextInput: The "type" prop must be one of the following:',
+      String(textInputTypes),
+    )
+  }
+
+  return isValid
 }
 </script>
 

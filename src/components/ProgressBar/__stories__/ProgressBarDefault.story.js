@@ -1,4 +1,5 @@
 import { number, select } from '@storybook/addon-knobs'
+
 import colors from '../../../constants/colors'
 import ProgressBar from '../index'
 

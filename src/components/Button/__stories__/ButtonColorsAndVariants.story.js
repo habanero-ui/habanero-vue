@@ -1,7 +1,8 @@
 import { action } from '@storybook/addon-actions'
 import { text } from '@storybook/addon-knobs'
-import colors from '../../../constants/colors'
+
 import variants from '../../../constants/buttonVariants'
+import colors from '../../../constants/colors'
 import Column from '../../Column/index'
 import Columns from '../../Columns/index'
 import Stack from '../../Stack/index'

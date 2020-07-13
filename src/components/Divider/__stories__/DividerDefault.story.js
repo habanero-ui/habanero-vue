@@ -1,4 +1,5 @@
 import { select } from '@storybook/addon-knobs'
+
 import Divider from '../index'
 
 export default () => ({

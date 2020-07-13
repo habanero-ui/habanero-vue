@@ -1,4 +1,5 @@
-import { boolean, text, select } from '@storybook/addon-knobs'
+import { boolean, select, text } from '@storybook/addon-knobs'
+
 import Button from '../../Button/index'
 import TextInput from '../../TextInput/index'
 import Stack from '../index'

@@ -1,4 +1,5 @@
 import { select, text } from '@storybook/addon-knobs'
+
 import verticalAlignments from '../../../constants/verticalAlignments'
 import Box from '../../Box/index'
 import Inline from '../index'

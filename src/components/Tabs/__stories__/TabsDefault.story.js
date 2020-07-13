@@ -1,4 +1,5 @@
 import { action } from '@storybook/addon-actions'
+
 import Tab from '../../Tab/index'
 import Tabs from '../index'
 

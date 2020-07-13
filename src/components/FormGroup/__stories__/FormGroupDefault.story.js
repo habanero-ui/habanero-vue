@@ -1,4 +1,5 @@
 import { text } from '@storybook/addon-knobs'
+
 import Checkbox from '../../Checkbox/index'
 import FormGroup from '../index'
 

@@ -1,7 +1,7 @@
 import DataTable from '../index'
-import tableData from './tableData.js'
 import DataTableMultilineCell from './DataTableMultilineCell'
 import DataTableProfileCell from './DataTableProfileCell'
+import tableData from './tableData.js'
 
 export default () => ({
   components: { DataTable },

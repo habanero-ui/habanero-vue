@@ -2,7 +2,7 @@
   <li :class="classes">
     <Icon v-if="iconName" class="mr-4 -ml-2" :name="iconName" />
     <div class="list-item__text">
-      <Typography v-if="primaryText">
+      <Typography v-if="primaryText" variant="label-large">
         {{ primaryText }}
       </Typography>
       <Typography

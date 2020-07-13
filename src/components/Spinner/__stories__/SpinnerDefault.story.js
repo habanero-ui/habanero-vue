@@ -1,4 +1,5 @@
 import { select } from '@storybook/addon-knobs'
+
 import colors from '../../../constants/colors'
 import Spinner from '../index'
 

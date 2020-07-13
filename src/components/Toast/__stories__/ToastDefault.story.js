@@ -1,5 +1,6 @@
 import { action } from '@storybook/addon-actions'
 import { select, text } from '@storybook/addon-knobs'
+
 import statuses from '../../../constants/statuses'
 import Toast from '../index'
 

@@ -1,5 +1,6 @@
 import { action } from '@storybook/addon-actions'
 import { boolean, select, text } from '@storybook/addon-knobs'
+
 import Toggle from '../index'
 
 export default () => ({

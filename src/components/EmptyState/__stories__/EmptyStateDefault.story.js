@@ -1,4 +1,5 @@
 import { select, text } from '@storybook/addon-knobs'
+
 import icons from '../../../constants/icons'
 import Button from '../../Button/index'
 import EmptyState from '../index'

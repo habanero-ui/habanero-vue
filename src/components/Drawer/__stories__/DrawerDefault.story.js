@@ -1,5 +1,6 @@
 import { action } from '@storybook/addon-actions'
 import { boolean } from '@storybook/addon-knobs'
+
 import Drawer from '../index'
 
 export default () => ({

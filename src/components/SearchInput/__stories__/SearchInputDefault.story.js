@@ -1,5 +1,6 @@
 import { action } from '@storybook/addon-actions'
 import { boolean, number, text } from '@storybook/addon-knobs'
+
 import SearchInput from '../index'
 
 export default () => ({

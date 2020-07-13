@@ -1,4 +1,5 @@
 import { select, text } from '@storybook/addon-knobs'
+
 import colors from '../../../constants/colors'
 import Badge from '../index'
 

@@ -10,11 +10,12 @@
     space="xsmall"
   >
     <div class="relative flex items-center w-full">
-      <Box class="absolute" marginLeft="4.25">
+      <Box v-if="iconSide == 'left'" class="absolute" marginLeft="4.25">
         <Icon v-if="iconName" :name="iconName" />
       </Box>
       <input
         :id="inputId"
+        ref="input"
         class="text-input__input"
         :disabled="disabled"
         :type="type"
@@ -23,6 +24,13 @@
         @input="handleInputInput"
         v-on="$listeners"
       />
+      <Box
+        v-if="iconSide == 'right'"
+        class="absolute right-0"
+        marginRight="4.25"
+      >
+        <Icon v-if="iconName" :name="iconName" />
+      </Box>
     </div>
   </FormGroup>
 </template>
@@ -30,6 +38,7 @@
 <script>
 import includes from 'lodash/includes'
 
+import iconSide from '../../constants/iconSide'
 import textInputTypes from '../../constants/textInputTypes'
 import Box from '../Box/index'
 import FormGroup from '../FormGroup/index'
@@ -58,6 +67,11 @@ export default {
     iconName: {
       default: undefined,
       type: String,
+    },
+    iconSide: {
+      default: 'left',
+      type: String,
+      validator: getIsIconSideValid,
     },
     id: {
       default: '',
@@ -90,6 +104,7 @@ export default {
           'text-input--error': this.error,
           'text-input--has-icon': this.iconName,
         },
+        `text-input--icon-side-${this.iconSide}`,
       ]
     },
 
@@ -108,6 +123,20 @@ export default {
       this.onValueChange(newValue)
     },
   },
+}
+
+function getIsIconSideValid(value) {
+  const isValid = includes(iconSide, value)
+
+  if (!isValid) {
+    // eslint-disable-next-line no-console
+    console.error(
+      'TextInput: The "iconSide" prop must be one of the following:',
+      String(iconSide),
+    )
+  }
+
+  return isValid
 }
 
 function getIsTypeValid(value) {
@@ -150,13 +179,24 @@ function getIsTypeValid(value) {
 .text-input--error .text-input__input {
   @apply border-error;
 }
-.text-input--has-icon .text-input__input {
+.text-input--has-icon.text-input--icon-side-left .text-input__input {
   padding-left: 3.25rem;
 }
-.text-input--has-icon .text-input__input:not([disabled]):hover {
+.text-input--has-icon.text-input--icon-side-left
+  .text-input__input:not([disabled]):hover {
   padding-left: 3.1875rem;
 }
-.text-input--has-icon .text-input__input:focus {
+.text-input--has-icon.text-input--icon-side-left .text-input__input:focus {
   padding-left: 3.1875rem;
+}
+.text-input--has-icon.text-input--icon-side-right .text-input__input {
+  padding-right: 3.25rem;
+}
+.text-input--has-icon.text-input--icon-side-right
+  .text-input__input:not([disabled]):hover {
+  padding-right: 3.1875rem;
+}
+.text-input--has-icon.text-input--icon-side-right .text-input__input:focus {
+  padding-right: 3.1875rem;
 }
 </style>

@@ -36,7 +36,7 @@
 <script>
 import includes from 'lodash/includes'
 
-import iconSide from '../../constants/iconSide'
+import iconSides from '../../constants/iconSides'
 import textInputTypes from '../../constants/textInputTypes'
 import Box from '../Box/index'
 import FormGroup from '../FormGroup/index'
@@ -132,13 +132,13 @@ export default {
 }
 
 function getIsIconSideValid(value) {
-  const isValid = includes(iconSide, value)
+  const isValid = includes(iconSides, value)
 
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
       'TextInput: The "iconSide" prop must be one of the following:',
-      String(iconSide),
+      String(iconSides),
     )
   }
 

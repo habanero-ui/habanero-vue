@@ -1,11 +1,7 @@
 import { action } from '@storybook/addon-actions'
-import { boolean, date, select, text } from '@storybook/addon-knobs'
+import { boolean, text } from '@storybook/addon-knobs'
 
-import datePickerModes from '../../../constants/datePickerModes'
 import DatePicker from '../index'
-
-// TODO: Changing maxDate, minDate, and mode doesn't update the compoennt (because flatpickr needs to init itself)
-// TODO: If possible, only show date calendar and ignore time because irrelevant for this component
 
 export default () => ({
   components: { DatePicker },
@@ -17,25 +13,13 @@ export default () => ({
       default: text('error', ''),
     },
     helperText: {
-      default: text('helperText', 'Select your birthday'),
+      default: text('helperText', 'Some Helper Text'),
     },
     label: {
-      default: text('label', 'Birthday'),
+      default: text('label', 'Some Label Text'),
     },
     placeholder: {
-      default: text('placeholder', 'mm/dd/yyyy'),
-    },
-    maxDate: {
-      default: date('maxDate', new Date()),
-    },
-    minDate: {
-      default: date('minDate', new Date('1900-01-01')),
-    },
-    mode: {
-      default: select('mode', datePickerModes, 'single'),
-    },
-    value: {
-      default: text('value', ''),
+      default: text('placeholder', 'Some placeholder text'),
     },
   },
   template: `
@@ -46,16 +30,10 @@ export default () => ({
         :helperText="helperText"
         :label="label"
         :onValueChange="onValueChange"
-        :placeholder="placeholder"
-        :maxDate="maxDate"
-        :minDate="minDate"
-        :mode="mode"
-        :value="value" />
+        :placeholder="placeholder" />
     </div>
   `,
   methods: {
-    onValueChange: () => {
-      action('onValueChange')
-    },
+    onValueChange: action('onValueChange'),
   },
 })

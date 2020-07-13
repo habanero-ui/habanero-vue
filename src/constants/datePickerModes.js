@@ -1,1 +1,1 @@
-export default ['single', 'multiple']
+export default ['single', 'multiple', 'range']

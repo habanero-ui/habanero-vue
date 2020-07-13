@@ -10,7 +10,7 @@ export default () => ({
         helperText="Select the days you will be on vacation"
         label="Vacation Days"
         :onValueChange="onValueChange"
-        placeholder="Select days..."
+        placeholder="Select date range..."
         mode="range" />
     </div>
   `,

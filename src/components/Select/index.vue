@@ -108,6 +108,9 @@ export default {
 </script>
 
 <style scoped>
+.select {
+  @apply w-full;
+}
 .select--disabled {
   @apply cursor-not-allowed select-none opacity-50;
 }

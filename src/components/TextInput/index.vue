@@ -161,6 +161,9 @@ function getIsTypeValid(value) {
 </script>
 
 <style scoped>
+.text-input {
+  @apply w-full;
+}
 .text-input--disabled {
   @apply cursor-not-allowed select-none opacity-50;
 }

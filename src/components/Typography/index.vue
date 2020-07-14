@@ -74,7 +74,6 @@ function getIsVariantValid(value) {
 
 <style scoped>
 .typography {
-  display: block;
   font-family: inter, sans-serif;
 }
 .typography--color-gold {

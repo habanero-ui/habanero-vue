@@ -7,6 +7,7 @@
   >
     <Typography
       v-if="text"
+      class="badge__text"
       :colorIsBackground="true"
       :color="color"
       variant="body-extra-small"
@@ -56,5 +57,8 @@ function getIsColorValid(value) {
 <style scoped>
 .badge {
   @apply flex-none rounded-full;
+}
+.badge__text {
+  @apply block;
 }
 </style>

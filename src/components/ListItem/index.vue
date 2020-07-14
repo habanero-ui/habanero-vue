@@ -2,19 +2,19 @@
   <li :class="classes">
     <Icon v-if="iconName" class="mr-4 -ml-2" :name="iconName" />
     <div class="list-item__text">
-      <Typography v-if="primaryText" variant="label-large">
+      <Typography v-if="primaryText" class="block" variant="label-large">
         {{ primaryText }}
       </Typography>
       <Typography
         v-if="secondaryText"
-        class="list-item__text__line--secondary"
+        class="block list-item__text__line--secondary"
         variant="body-small"
       >
         {{ secondaryText }}
       </Typography>
       <Typography
         v-if="tertiaryText"
-        class="list-item__text__line--tertiary"
+        class="block list-item__text__line--tertiary"
         color="subtle"
         variant="body-small"
       >

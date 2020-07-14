@@ -27,7 +27,7 @@
         </div>
       </Column>
       <Column v-if="text">
-        <Box paddingLeft="small" paddingRight="gutter" paddingTop="0.25">
+        <Box paddingLeft="small" paddingTop="0.25">
           <Typography class="checkbox__text" component="label">
             {{ text }}
           </Typography>
@@ -128,7 +128,7 @@ export default {
   margin-left: -0.125rem;
 }
 .checkbox__text {
-  @apply cursor-pointer;
+  @apply block cursor-pointer;
 }
 .checkbox:hover .checkbox__box {
   @apply rounded-none;

@@ -18,7 +18,7 @@
         <div class="radio-button__ring"><div class="radio-button__dot" /></div>
       </Column>
       <Column v-if="text">
-        <Box paddingLeft="small" paddingRight="gutter" paddingTop="0.25">
+        <Box paddingLeft="small" paddingTop="0.25">
           <Typography class="radio-button__text" component="label">
             {{ text }}
           </Typography>
@@ -118,7 +118,7 @@ export default {
   transform: scale(1);
 }
 .radio-button__text {
-  @apply cursor-pointer;
+  @apply block cursor-pointer;
 }
 .radio-button:hover .radio-button__ring::after {
   @apply border-border;

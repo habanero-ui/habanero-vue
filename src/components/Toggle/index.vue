@@ -22,11 +22,7 @@
         </div>
       </Column>
       <Column v-if="text">
-        <Box
-          paddingLeft="small"
-          paddingRight="gutter"
-          :paddingTop="textPaddingTop"
-        >
+        <Box paddingLeft="small" :paddingTop="textPaddingTop">
           <Typography
             class="toggle__text"
             component="label"
@@ -185,7 +181,7 @@ function getIsSizeValid(value) {
   @apply opacity-100;
 }
 .toggle__text {
-  @apply cursor-pointer;
+  @apply block cursor-pointer;
 }
 .toggle:hover .toggle__track::after {
   @apply border-border;

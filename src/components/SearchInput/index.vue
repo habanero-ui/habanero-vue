@@ -36,7 +36,10 @@ export default {
     },
 
     TextInputProps() {
-      return pick(this.$props, Object.keys(TextInput.props))
+      return {
+        ...pick(this.$props, Object.keys(TextInput.props)),
+        ...this.$attrs,
+      }
     },
   },
   watch: {

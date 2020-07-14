@@ -4,7 +4,7 @@
     iconName="search"
     :onValueChange="handleValueChange"
     type="text"
-    :value="valueState || value"
+    :value="safeValue"
   />
 </template>
 
@@ -28,11 +28,17 @@ export default {
     },
   },
   data: () => ({
-    valueState: '',
+    valueState: undefined,
   }),
   computed: {
     classes() {
       return ['search-input', `search-input--color-${this.color}`]
+    },
+
+    safeValue() {
+      return typeof this.valueState !== 'undefined'
+        ? this.valueState
+        : this.value
     },
 
     TextInputProps() {
@@ -52,7 +58,7 @@ export default {
   },
   methods: {
     baseHandleSearch() {
-      this.onSearch(this.valueState || this.value)
+      this.onSearch(this.safeValue)
     },
 
     handleValueChange(value) {

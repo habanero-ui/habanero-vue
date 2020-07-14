@@ -135,7 +135,7 @@ function getIsColumnsValid(data) {
   @apply cursor-pointer;
 }
 .data-table--selectable .data-table__body .data-table__row::after {
-  @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;
+  @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out -mb-px;
   background-color: black;
   content: '';
 }

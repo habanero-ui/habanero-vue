@@ -5,7 +5,8 @@ cache:
   directories:
     - node_modules
 notifications:
-  email: false
+  email:
+    - nick.johnson@spurjobs.com
 script:
   - npm run build-storybook
 deploy:

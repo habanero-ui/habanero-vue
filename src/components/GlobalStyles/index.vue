@@ -1,7 +1,5 @@
 <template>
-  <div class="global-styles">
-    Global Styles
-  </div>
+  <div class="hidden global-styles" />
 </template>
 
 <style>

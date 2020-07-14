@@ -19,7 +19,9 @@ export default () => ({
       'file-upload',
       'flag',
       'hotel',
+      'luggage',
       'map-pin',
+      'medical',
       'new-window',
       'options',
       'settings',
@@ -38,6 +40,7 @@ export default () => ({
     persons: [
       'group-chat',
       'group-check',
+      'group-home',
       'user-delete',
       'user-security',
       'user-star',

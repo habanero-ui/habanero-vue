@@ -125,7 +125,7 @@ function getIsColumnsValid(data) {
   @apply relative border-b-2 border-border;
   transform: scale(1);
 }
-.data-table__row:last-child {
+.data-table__body .data-table__row:last-child {
   @apply border-0;
 }
 .data-table__cell {

@@ -5,7 +5,7 @@
     component="footer"
     padding="gutter"
   >
-    <Columns space="6">
+    <Columns space="4">
       <Column v-if="onDestroy" width="content">
         <Button color="error" :text="destroyText" @click.native="onDestroy" />
       </Column>

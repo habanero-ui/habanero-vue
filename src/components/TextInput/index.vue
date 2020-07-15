@@ -171,7 +171,7 @@ function getIsTypeValid(value) {
   @apply cursor-not-allowed select-none;
 }
 .text-input__input {
-  @apply border border-black px-4 transition-colors duration-300 ease-in-out outline-none w-full;
+  @apply bg-transparent border border-black px-4 transition-colors duration-300 ease-in-out outline-none w-full;
   border-radius: 0.3125rem;
   height: 2.75rem;
 }

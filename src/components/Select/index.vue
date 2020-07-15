@@ -121,7 +121,7 @@ export default {
   @apply cursor-not-allowed;
 }
 .select__input {
-  @apply pl-4 pr-10 w-full border border-black rounded-md text-black cursor-pointer;
+  @apply bg-transparent pl-4 pr-10 w-full border border-black rounded-md text-black cursor-pointer;
   height: 2.75rem;
   -webkit-appearance: none;
   -moz-appearance: none;

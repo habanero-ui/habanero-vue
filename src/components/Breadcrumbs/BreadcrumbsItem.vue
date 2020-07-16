@@ -2,7 +2,7 @@
   <Typography
     :class="classes"
     color="subtle"
-    component="a"
+    :component="isLast ? 'span' : 'a'"
     :href="item.href"
     variant="label-large"
     @click.native="handleClick"
@@ -42,6 +42,8 @@ export default {
   },
   methods: {
     handleClick() {
+      if (this.isLast) return
+
       this.onSelect(this.item)
     },
   },
@@ -51,8 +53,5 @@ export default {
 <style scoped>
 .breadcrumbs-item:not(.breadcrumbs-item--last) {
   @apply cursor-pointer;
-}
-.breadcrumbs-item--last:hover {
-  @apply no-underline;
 }
 </style>

@@ -7,10 +7,15 @@ export default () => ({
   components: { Breadcrumbs, Button },
   data: () => ({
     items: [
-      { text: 'Alpha' },
-      { text: 'Bravo' },
+      { href: 'https://google.com', text: 'Alpha' },
+      { href: '#', text: 'Bravo' },
       { text: 'Charlie' },
-      { text: 'Delta' },
+      {
+        text: 'Delta',
+        metadata: {
+          propertyA: 'Some Metadata Value',
+        },
+      },
     ],
   }),
   template: `

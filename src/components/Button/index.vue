@@ -183,9 +183,12 @@ function getIsVariantValid(value) {
 }
 .button__content::before {
   @apply absolute inset-0 pointer-events-none transition-colors duration-300 ease-in-out border border-transparent;
-  margin: -3px;
-  border-radius: 0.625rem;
+  border-radius: 0.5rem;
   content: '';
+}
+.button:not(.button--variant-text) > .button__content::before {
+  border-radius: 0.625rem;
+  margin: -3px;
 }
 .button > .button__content::after {
   @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;

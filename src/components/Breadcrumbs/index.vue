@@ -11,7 +11,7 @@ export default {
   components: { Column, Columns },
   methods: {
     mapSlotNode(vnode) {
-      if (vnode.componentOptions.tag !== 'TextLink') {
+      if (vnode.componentOptions.tag !== 'Button') {
         return vnode
       }
 

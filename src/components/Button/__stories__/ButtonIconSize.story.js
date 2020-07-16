@@ -7,7 +7,7 @@ export default () => ({
     <div class="flex justify-start p-6">
       <Stack space="4">
         <Button iconName="bell" iconSize="small" text="Text" />
-        <Button iconName="bell" text="Text" />
+        <Button iconName="bell" iconSize="medium" text="Text" />
       </Stack>
     </div>
   `,

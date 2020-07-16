@@ -26,6 +26,12 @@ export default {
       type: String,
     },
   },
+  created() {
+    // eslint-disable-next-line
+    console.warn(
+      'The TextLink component is deprecated and will be removed in version 2.0.0. Please use the Button with variant="text" instead. ',
+    )
+  },
 }
 </script>
 

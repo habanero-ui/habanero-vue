@@ -20,7 +20,6 @@
         :name="iconName"
         :size="iconSize || size"
       />
-      <slot />
       <Spinner
         v-if="isLoading"
         :color="color"
@@ -63,7 +62,7 @@ export default {
       validator: getIsIconSideValid,
     },
     iconSize: {
-      default: undefined,
+      default: 'small',
       type: String,
     },
     isLoading: {
@@ -94,11 +93,13 @@ export default {
       return [
         'button',
         {
+          'button--has-icon': !!this.iconName,
           'button--has-text': !!this.text,
           'button--icon-left': this.iconSide === 'left',
           'button--is-loading': !!this.isLoading,
         },
         `button--color-${this.color}`,
+        `button--icon-size-${this.iconSize}`,
         `button--size-${this.size}`,
         `button--variant-${this.variant}`,
       ]
@@ -436,28 +437,48 @@ function getIsVariantValid(value) {
 /**
   Size ---------------------- 
  */
-.button--size-medium > .button__content {
-  padding-bottom: 0.875rem;
-  padding-top: 0.875rem;
-  min-width: 2.75rem;
-}
 .button--size-small > .button__content {
-  @apply py-2;
+  padding-bottom: 0.4375rem;
+  padding-top: 0.4375rem;
   min-width: 2rem;
 }
-.button--size-medium.button--has-text > .button__content,
-.button--size-small.button--has-text > .button__content {
+.button--size-medium > .button__content {
+  min-width: 2.75rem;
+  padding-bottom: 0.8125rem;
+  padding-top: 0.8125rem;
+}
+.button--has-icon.button--size-small.button--icon-size-small
+  > .button__content {
+  padding-bottom: 0.4375rem;
+  padding-top: 0.4375rem;
+}
+.button--has-icon.button--size-small.button--icon-size-medium
+  > .button__content {
+  padding-bottom: 0.1875rem;
+  padding-top: 0.1875rem;
+}
+.button--has-icon.button--size-medium.button--icon-size-small
+  > .button__content {
+  padding-bottom: 0.8125rem;
+  padding-top: 0.8125rem;
+}
+.button--has-icon.button--size-medium.button--icon-size-medium
+  > .button__content {
+  padding-bottom: 0.5625rem;
+  padding-top: 0.5625rem;
+}
+.button--has-text > .button__content {
   @apply px-6;
   min-width: 8rem;
 }
-.button--variant-text.button--size-medium.button--has-text > .button__content {
-  padding: 0.875rem;
-  margin: -0.875rem;
-  min-width: 0;
-}
-.button--variant-text.button--size-small.button--has-text > .button__content {
+.button--variant-text.button--size-small > .button__content {
   @apply p-2 -m-2;
   min-width: 0;
+}
+.button--variant-text.button--size-medium > .button__content {
+  margin: -0.875rem;
+  min-width: 0;
+  padding: 0.875rem;
 }
 
 /**
@@ -469,13 +490,16 @@ function getIsVariantValid(value) {
 .button--variant-text > .button__text + .button__icon {
   @apply ml-3 -mr-1;
 }
-.button--icon-left {
+.button--icon-left > .button__content {
   @apply flex-row-reverse;
 }
-.button--icon-left > .button__text + .button__icon {
+.button--icon-left > .button__content > .button__text + .button__icon {
   @apply mr-4 -ml-2;
 }
-.button--icon-left.button--variant-text > .button__text + .button__icon {
+.button--icon-left.button--variant-text
+  > .button__content
+  > .button__text
+  + .button__icon {
   @apply mr-3 -ml-1;
 }
 </style>

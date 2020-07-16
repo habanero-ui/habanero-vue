@@ -19,7 +19,7 @@ export default () => ({
     ],
   }),
   template: `
-    <div class="flex flex-start p-6"> 
+    <div class="flex flex-col flex-start p-6"> 
       <Breadcrumbs
         :items="items"
         :onItemSelect="onItemSelect"

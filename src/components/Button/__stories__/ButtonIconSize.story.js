@@ -8,6 +8,7 @@ export default () => ({
       <Stack space="4">
         <Button iconName="bell" iconSize="small" text="Text" />
         <Button iconName="bell" iconSize="medium" text="Text" />
+        <Button iconName="bell" iconSize="large" text="Text" />
       </Stack>
     </div>
   `,

@@ -460,6 +460,11 @@ function getIsVariantValid(value) {
   padding-bottom: 0.1875rem;
   padding-top: 0.1875rem;
 }
+.button--has-icon.button--size-small.button--icon-size-large
+  > .button__content {
+  padding-bottom: 0;
+  padding-top: 0;
+}
 .button--has-icon.button--size-medium.button--icon-size-small
   > .button__content {
   padding-bottom: 0.8125rem;
@@ -469,6 +474,11 @@ function getIsVariantValid(value) {
   > .button__content {
   padding-bottom: 0.5625rem;
   padding-top: 0.5625rem;
+}
+.button--has-icon.button--size-medium.button--icon-size-large
+  > .button__content {
+  padding-bottom: 0.3125rem;
+  padding-top: 0.3125rem;
 }
 .button--has-text > .button__content {
   @apply px-6;

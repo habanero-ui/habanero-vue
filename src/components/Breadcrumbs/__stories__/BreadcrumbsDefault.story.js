@@ -1,16 +1,27 @@
+import { action } from '@storybook/addon-actions'
+
 import Button from '../../Button/index'
 import Breadcrumbs from '../index'
 
 export default () => ({
   components: { Breadcrumbs, Button },
+  data: () => ({
+    items: [
+      { text: 'Alpha' },
+      { text: 'Bravo' },
+      { text: 'Charlie' },
+      { text: 'Delta' },
+    ],
+  }),
   template: `
     <div class="flex flex-start p-6"> 
-      <Breadcrumbs>
-        <Button size="small" variant="text" text="Alpha" />
-        <Button size="small" variant="text" text="Bravo" />
-        <Button size="small" variant="text" text="Charlie" />
-        <Button size="small" variant="text" text="Delta" />
-      </Breadcrumbs>
+      <Breadcrumbs
+        :items="items"
+        :onItemSelect="onItemSelect"
+      />
     </div>
   `,
+  methods: {
+    onItemSelect: action('onItemSelect'),
+  },
 })

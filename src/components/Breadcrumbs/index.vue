@@ -1,56 +1,46 @@
+<template>
+  <Columns alignY="center" class="breadcrumbs" space="medium">
+    <Column v-for="(item, index) in itemsWithSeparators" :key="index">
+      <div v-if="item.IS_SEPARATOR" class="breadcrumbs__separator" />
+      <BreadcrumbItem
+        v-else
+        :isLast="index === itemsWithSeparators.length - 1"
+        :item="item"
+        :onSelect="onItemSelect"
+      />
+    </Column>
+  </Columns>
+</template>
+
 <script>
-import filter from 'lodash/filter'
 import flatten from 'lodash/flatten'
 import map from 'lodash/map'
-import set from 'lodash/set'
 
 import Column from '../Column/index'
 import Columns from '../Columns/index'
+import BreadcrumbItem from './BreadcrumbsItem'
 
 export default {
-  components: { Column, Columns },
-  methods: {
-    mapSlotNode(vnode) {
-      if (vnode.componentOptions.tag !== 'Button') {
-        return vnode
-      }
-
-      return {
-        ...set(vnode, 'componentOptions.propsData.color', 'subtle'),
-      }
+  components: { BreadcrumbItem, Column, Columns },
+  props: {
+    items: {
+      default: () => [],
+      type: Array,
+    },
+    onItemSelect: {
+      default: () => {},
+      type: Function,
     },
   },
-  render(h) {
-    return h(
-      Columns,
-      {
-        class: 'breadcrumbs',
-        props: { alignY: 'center', space: 'medium' },
-      },
-      flatten(
-        map(
-          filter(this.$slots.default, (vnode) => vnode.tag),
-          (vnode, index) => {
-            if (index === 0) {
-              return [
-                h(Column, { props: { width: 'content' } }, [
-                  this.mapSlotNode(vnode),
-                ]),
-              ]
-            }
-
-            return [
-              h(Column, { props: { width: 'content' } }, [
-                h('div', { class: 'breadcrumbs__separator' }),
-              ]),
-              h(Column, { props: { width: 'content' } }, [
-                this.mapSlotNode(vnode),
-              ]),
-            ]
-          },
-        ),
-      ),
-    )
+  computed: {
+    itemsWithSeparators() {
+      return flatten(
+        map(this.items, (item, index) => [
+          ...(index > 0 ? [{ IS_SEPARATOR: true }] : []),
+          item,
+        ]),
+      )
+    },
   },
 }
 </script>

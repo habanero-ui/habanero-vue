@@ -3,7 +3,7 @@
     :class="classes"
     color="subtle"
     :component="isLast ? 'span' : 'a'"
-    :href="item.href"
+    :href="isLast ? undefined : item.href"
     variant="label-large"
     @click.native="handleClick"
   >

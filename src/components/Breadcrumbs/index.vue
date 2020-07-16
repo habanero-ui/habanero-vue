@@ -14,6 +14,7 @@
 
 <script>
 import flatten from 'lodash/flatten'
+import forEach from 'lodash/forEach'
 import map from 'lodash/map'
 
 import Column from '../Column/index'
@@ -26,6 +27,7 @@ export default {
     items: {
       default: () => [],
       type: Array,
+      validator: getIsItemsValid,
     },
     onItemSelect: {
       default: () => {},
@@ -42,6 +44,25 @@ export default {
       )
     },
   },
+}
+
+function getIsItemsValid(data) {
+  let isValid = true
+
+  forEach(data, (item) => {
+    if (!item.text) {
+      isValid = false
+    }
+  })
+
+  if (!isValid) {
+    // eslint-disable-next-line no-console
+    console.error(
+      'Breadcrumbs: Each array item in the "items" prop must have a "text" key.',
+    )
+  }
+
+  return isValid
 }
 </script>
 

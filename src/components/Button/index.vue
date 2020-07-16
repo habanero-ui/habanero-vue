@@ -440,58 +440,60 @@ function getIsVariantValid(value) {
 /**
   Size ---------------------- 
  */
-.button--size-small > .button__content {
+:not(.button--variant-text).button--size-small > .button__content {
   padding-bottom: 0.4375rem;
   padding-top: 0.4375rem;
-  min-width: 2rem;
 }
-.button--size-medium > .button__content {
-  min-width: 2.75rem;
+:not(.button--variant-text).button--size-medium > .button__content {
   padding-bottom: 0.8125rem;
   padding-top: 0.8125rem;
 }
-.button--has-icon.button--size-small.button--icon-size-small
+:not(.button--variant-text).button--has-icon.button--has-text.button--size-small.button--icon-size-small
   > .button__content {
   padding-bottom: 0.4375rem;
   padding-top: 0.4375rem;
 }
-.button--has-icon.button--size-small.button--icon-size-medium
+:not(.button--variant-text).button--has-icon.button--has-text.button--size-small.button--icon-size-medium
   > .button__content {
   padding-bottom: 0.1875rem;
   padding-top: 0.1875rem;
 }
-.button--has-icon.button--size-small.button--icon-size-large
+:not(.button--variant-text).button--has-icon.button--has-text.button--size-small.button--icon-size-large
   > .button__content {
   padding-bottom: 0;
   padding-top: 0;
 }
-.button--has-icon.button--size-medium.button--icon-size-small
+:not(.button--variant-text).button--has-icon.button--has-text.button--size-medium.button--icon-size-small
   > .button__content {
   padding-bottom: 0.8125rem;
   padding-top: 0.8125rem;
 }
-.button--has-icon.button--size-medium.button--icon-size-medium
+:not(.button--variant-text).button--has-icon.button--size-medium.button--icon-size-medium
   > .button__content {
   padding-bottom: 0.5625rem;
   padding-top: 0.5625rem;
 }
-.button--has-icon.button--size-medium.button--icon-size-large
+:not(.button--variant-text).button--has-icon.button--has-text.button--size-medium.button--icon-size-large
   > .button__content {
   padding-bottom: 0.3125rem;
   padding-top: 0.3125rem;
 }
-.button--has-text > .button__content {
+:not(.button--variant-text).button--has-text > .button__content {
   @apply px-6;
   min-width: 8rem;
 }
-.button--variant-text.button--size-small > .button__content {
+.button--variant-text > .button__content {
   @apply p-2 -m-2;
   min-width: 0;
 }
-.button--variant-text.button--size-medium > .button__content {
-  margin: -0.875rem;
+.button--variant-text.button--has-icon.button--icon-size-medium
+  > .button__content {
+  @apply p-1 -m-1;
   min-width: 0;
-  padding: 0.875rem;
+}
+.button--variant-text.button--has-icon.button--icon-size-large
+  > .button__content {
+  @apply p-0 m-0;
 }
 
 /**
@@ -500,8 +502,8 @@ function getIsVariantValid(value) {
 .button__text + .button__icon {
   @apply ml-4 -mr-2;
 }
-.button--variant-text > .button__text + .button__icon {
-  @apply ml-3 -mr-1;
+.button--variant-text > .button__content > .button__text + .button__icon {
+  @apply ml-2 mr-0;
 }
 .button--icon-left > .button__content {
   @apply flex-row-reverse;
@@ -513,6 +515,6 @@ function getIsVariantValid(value) {
   > .button__content
   > .button__text
   + .button__icon {
-  @apply mr-3 -ml-1;
+  @apply mr-2 ml-0;
 }
 </style>

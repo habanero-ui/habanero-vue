@@ -21,7 +21,7 @@ export default () => ({
   }),
   template: `
     <Stack class="p-6" space="4">
-      <Columns v-for="color in colors" :key="color" space="4">
+      <Columns v-for="color in colors" alignY="center" :key="color" space="4">
         <Column v-for="variant in variants" :key="variant" width="content">
           <Button
             :color="color"

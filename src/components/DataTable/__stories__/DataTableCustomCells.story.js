@@ -20,7 +20,6 @@ export default () => ({
         },
         {
           name: 'Seen?',
-          accessor: 'seen',
           cellComponent: DataTableCheckboxCell,
           onRowChange: this.handleRowChange,
         },

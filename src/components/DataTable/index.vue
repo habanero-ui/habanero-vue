@@ -47,9 +47,8 @@
 </template>
 
 <script>
-import forEach from 'lodash/forEach'
+import some from 'lodash/some'
 
-import tableColumnKeys from '../../constants/tableColumnKeys'
 import getWithAccessor from '../../helpers/getWithAccessor'
 import Box from '../Box/index'
 import Typography from '../Typography/index'
@@ -93,20 +92,13 @@ export default {
   },
 }
 
-function getIsColumnsValid(data) {
-  let isValid = true
-
-  forEach(data, (item) => {
-    if (!tableColumnKeys.every((k) => k in item)) {
-      isValid = false
-    }
-  })
+function getIsColumnsValid(columns) {
+  const isValid = !some(columns, (column) => !column.name)
 
   if (!isValid) {
     // eslint-disable-next-line no-console
     console.error(
-      'DataTable: Each array item in the "columns" prop must contain the following:',
-      String(tableColumnKeys),
+      'DataTable: Each array item in the "columns" prop must have a "name" key.',
     )
   }
 

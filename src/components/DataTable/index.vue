@@ -32,16 +32,10 @@
             class="data-table__cell"
           >
             <component
-              :is="column.cellComponent"
-              v-if="column.cellComponent"
+              :is="column.cellComponent || DataTableCell"
               :column="column"
               :row="row"
             />
-            <Box v-else padding="medium">
-              <Typography variant="body-extra-small">
-                {{ getCellData(row, column) }}
-              </Typography>
-            </Box>
           </td>
         </tr>
       </tbody>
@@ -54,9 +48,9 @@ import includes from 'lodash/includes'
 import some from 'lodash/some'
 
 import sortDirections from '../../constants/sortDirections'
-import getWithAccessor from '../../helpers/getWithAccessor'
 import Box from '../Box/index'
 import Typography from '../Typography/index'
+import DataTableCell from './DataTableCell'
 import DataTableHeaderCell from './DataTableHeaderCell'
 
 export default {
@@ -94,6 +88,7 @@ export default {
     },
   },
   data: () => ({
+    DataTableCell,
     DataTableHeaderCell,
   }),
   computed: {
@@ -114,13 +109,6 @@ export default {
     }
   },
   methods: {
-    getCellData(row, column) {
-      return getWithAccessor(
-        row,
-        column.accessor || column.getValue || column.key,
-      )
-    },
-
     handleRowClick(row) {
       if (!this.onRowSelect) return
 

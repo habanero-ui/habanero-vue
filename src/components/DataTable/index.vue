@@ -8,11 +8,14 @@
             :key="cellIndex"
             class="data-table__cell"
           >
-            <Box padding="medium">
-              <Typography variant="label-small" color="subtle">
-                {{ column.name }}
-              </Typography>
-            </Box>
+            <component
+              :is="column.headerCellComponent || DataTableHeaderCell"
+              :column="column"
+              :onSortByChange="onSortByChange"
+              :onSortDirectionChange="onSortDirectionChange"
+              :sortBy="sortBy"
+              :sortDirection="sortDirection"
+            />
           </th>
         </tr>
       </thead>
@@ -47,11 +50,14 @@
 </template>
 
 <script>
+import includes from 'lodash/includes'
 import some from 'lodash/some'
 
+import sortDirections from '../../constants/sortDirections'
 import getWithAccessor from '../../helpers/getWithAccessor'
 import Box from '../Box/index'
 import Typography from '../Typography/index'
+import DataTableHeaderCell from './DataTableHeaderCell'
 
 export default {
   components: { Box, Typography },
@@ -65,11 +71,31 @@ export default {
       default: undefined,
       type: Function,
     },
+    onSortByChange: {
+      default: () => {},
+      type: Function,
+    },
+    onSortDirectionChange: {
+      default: () => {},
+      type: Function,
+    },
     rows: {
       default: () => [],
       type: Array,
     },
+    sortBy: {
+      default: '',
+      type: String,
+    },
+    sortDirection: {
+      default: 'asc',
+      type: String,
+      validator: getIsSortDirectionValid,
+    },
   },
+  data: () => ({
+    DataTableHeaderCell,
+  }),
   computed: {
     classes() {
       return ['data-table', { 'data-table--selectable': this.isSelectable }]
@@ -79,9 +105,20 @@ export default {
       return !!this.onRowSelect
     },
   },
+  created() {
+    if (some(this.columns, (column) => column.accessor)) {
+      // eslint-disable-next-line
+      console.warn(
+        'The accessor property on columns passed into the DataTable component is deprecated and will be removed in version 2.0.0. Please use the "key" property for string accessors, and the "getValue" property for function accessors.',
+      )
+    }
+  },
   methods: {
     getCellData(row, column) {
-      return getWithAccessor(row, column.accessor)
+      return getWithAccessor(
+        row,
+        column.accessor || column.getValue || column.key,
+      )
     },
 
     handleRowClick(row) {
@@ -99,6 +136,20 @@ function getIsColumnsValid(columns) {
     // eslint-disable-next-line no-console
     console.error(
       'DataTable: Each array item in the "columns" prop must have a "name" key.',
+    )
+  }
+
+  return isValid
+}
+
+function getIsSortDirectionValid(value) {
+  const isValid = includes(sortDirections, value)
+
+  if (!isValid) {
+    // eslint-disable-next-line no-console
+    console.error(
+      'DataTable: The "sortDirection" prop must be one of the following when defined:',
+      String(sortDirections),
     )
   }
 

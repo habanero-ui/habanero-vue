@@ -196,14 +196,14 @@ function getIsVariantValid(value) {
   border-radius: 0.5rem;
   content: '';
 }
-.button:hover:not([disabled]) .button__text {
-  @apply underline;
-}
 .button:hover:not([disabled]) > .button__content::after {
   opacity: 0.1;
 }
 .button:active:not([disabled]) > .button__content::after {
   opacity: 0.25;
+}
+.button:hover:not([disabled]) .button__text {
+  @apply underline;
 }
 .button--variant-primary.button--color-gold {
   @apply bg-gold border-gold;

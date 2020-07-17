@@ -1,5 +1,4 @@
-import { action } from '@storybook/addon-actions'
-import { select, text } from '@storybook/addon-knobs'
+import { boolean, select, text } from '@storybook/addon-knobs'
 
 import borderRadii from '../../../constants/borderRadii'
 import colors from '../../../constants/colors'
@@ -35,6 +34,9 @@ export default () => ({
     paddingY: {
       default: text('paddingY', ''),
     },
+    showInteractionOverlay: {
+      default: boolean('showInteractionOverlay', false),
+    },
   },
   template: `
     <div class="flex flex-start p-6"> 
@@ -47,12 +49,10 @@ export default () => ({
         :paddingRight="paddingRight"
         :paddingTop="paddingTop"
         :paddingX="paddingX"
+        :showInteractionOverlay="showInteractionOverlay"
         :paddingY="paddingY">
         Content
       </Box>
     </div>
   `,
-  methods: {
-    onSelect: action('onSelect'),
-  },
 })

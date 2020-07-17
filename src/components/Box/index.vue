@@ -47,6 +47,10 @@ export default {
     paddingTop: getSpacingPropType('paddingTop'),
     paddingX: getSpacingPropType('paddingX'),
     paddingY: getSpacingPropType('paddingY'),
+    showInteractionOverlay: {
+      default: false,
+      type: Boolean,
+    },
   },
   data: () => ({
     isKeyDown: false,
@@ -57,6 +61,9 @@ export default {
         'box',
         `box--background-color-${this.backgroundColor}`,
         `box--border-radius-${this.borderRadius}`,
+        {
+          'box--show-interaction-overlay': this.showInteractionOverlay,
+        },
       ]
     },
     styles() {
@@ -217,5 +224,19 @@ function getSpacingPropType(name) {
 }
 .box--border-radius-full {
   border-radius: 9999px;
+}
+.box--show-interaction-overlay {
+  @apply cursor-pointer relative overflow-hidden;
+}
+.box--show-interaction-overlay::after {
+  @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;
+  background-color: black;
+  content: '';
+}
+.box--show-interaction-overlay:hover::after {
+  opacity: 0.1;
+}
+.box--show-interaction-overlay:active::after {
+  opacity: 0.25;
 }
 </style>

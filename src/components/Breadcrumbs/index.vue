@@ -68,7 +68,7 @@ function getIsItemsValid(data) {
 
 <style scoped>
 .breadcrumbs {
-  @apply flex self-start;
+  @apply flex self-start whitespace-no-wrap;
 }
 .breadcrumbs__separator {
   @apply bg-subtle rounded-full;

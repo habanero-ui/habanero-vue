@@ -233,10 +233,61 @@ function getSpacingPropType(name) {
   background-color: black;
   content: '';
 }
-.box--show-interaction-overlay:hover::after {
+.box--background-color-black.box--show-interaction-overlay::after,
+.box--background-color-error.box--show-interaction-overlay::after,
+.box--background-color-gold.box--show-interaction-overlay::after,
+.box--background-color-info.box--show-interaction-overlay::after,
+.box--background-color-subtle.box--show-interaction-overlay::after,
+.box--background-color-success.box--show-interaction-overlay::after {
+  background-color: white;
+}
+.box--background-color-black.box--show-interaction-overlay:hover::after,
+.box--background-color-error.box--show-interaction-overlay:hover::after,
+.box--background-color-gold.box--show-interaction-overlay:hover::after,
+.box--background-color-info.box--show-interaction-overlay:hover::after,
+.box--background-color-subtle.box--show-interaction-overlay:hover::after,
+.box--background-color-success.box--show-interaction-overlay:hover::after {
+  opacity: 0.2;
+}
+.box--background-color-black.box--show-interaction-overlay:active::after,
+.box--background-color-error.box--show-interaction-overlay:active::after,
+.box--background-color-gold.box--show-interaction-overlay:active::after,
+.box--background-color-info.box--show-interaction-overlay:active::after,
+.box--background-color-subtle.box--show-interaction-overlay:active::after,
+.box--background-color-success.box--show-interaction-overlay:active::after {
+  opacity: 0.4;
+}
+.box--background-color-blue.box--show-interaction-overlay::after,
+.box--background-color-border.box--show-interaction-overlay::after,
+.box--background-color-green.box--show-interaction-overlay::after,
+.box--background-color-none.box--show-interaction-overlay::after,
+.box--background-color-offwhite.box--show-interaction-overlay::after,
+.box--background-color-orange.box--show-interaction-overlay::after,
+.box--background-color-pink.box--show-interaction-overlay::after,
+.box--background-color-purple.box--show-interaction-overlay::after,
+.box--background-color-warning.box--show-interaction-overlay::after {
+  background-color: black;
+}
+.box--background-color-blue.box--show-interaction-overlay:hover::after,
+.box--background-color-border.box--show-interaction-overlay:hover::after,
+.box--background-color-green.box--show-interaction-overlay:hover::after,
+.box--background-color-none.box--show-interaction-overlay:hover::after,
+.box--background-color-offwhite.box--show-interaction-overlay:hover::after,
+.box--background-color-orange.box--show-interaction-overlay:hover::after,
+.box--background-color-pink.box--show-interaction-overlay:hover::after,
+.box--background-color-purple.box--show-interaction-overlay:hover::after,
+.box--background-color-warning.box--show-interaction-overlay:hover::after {
   opacity: 0.1;
 }
-.box--show-interaction-overlay:active::after {
+.box--background-color-blue.box--show-interaction-overlay:active::after,
+.box--background-color-border.box--show-interaction-overlay:active::after,
+.box--background-color-green.box--show-interaction-overlay:active::after,
+.box--background-color-none.box--show-interaction-overlay:active::after,
+.box--background-color-offwhite.box--show-interaction-overlay:active::after,
+.box--background-color-orange.box--show-interaction-overlay:active::after,
+.box--background-color-pink.box--show-interaction-overlay:active::after,
+.box--background-color-purple.box--show-interaction-overlay:active::after,
+.box--background-color-warning.box--show-interaction-overlay:active::after {
   opacity: 0.25;
 }
 </style>

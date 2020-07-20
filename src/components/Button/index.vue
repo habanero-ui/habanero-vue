@@ -1,6 +1,10 @@
 <template>
-  <button :class="classes" :type="type">
-    <Box class="button__content" showInteractionOverlay>
+  <Box :class="classes" component="button" :type="type">
+    <Box
+      :backgroundColor="contentBackgroundColor"
+      class="button__content"
+      showInteractionOverlay
+    >
       <Typography
         v-if="text"
         class="button__text"
@@ -27,7 +31,7 @@
         style="position: absolute;"
       />
     </Box>
-  </button>
+  </Box>
 </template>
 
 <script>
@@ -106,6 +110,10 @@ export default {
         `button--variant-${this.variant}`,
       ]
     },
+
+    contentBackgroundColor() {
+      return this.variant === 'primary' ? this.color : undefined
+    },
   },
 }
 
@@ -182,6 +190,7 @@ function getIsVariantValid(value) {
 }
 .button__content {
   @apply relative flex flex-1 justify-center items-center;
+  border-radius: 0.3rem;
 }
 .button__content::before {
   @apply absolute inset-0 pointer-events-none transition-colors duration-300 ease-in-out border border-transparent;
@@ -199,87 +208,87 @@ function getIsVariantValid(value) {
   @apply underline;
 }
 .button--variant-primary.button--color-gold {
-  @apply bg-gold border-gold;
+  @apply border-gold;
 }
 .button--variant-primary.button--color-gold:focus > .button__content::before {
   @apply border-gold;
 }
 .button--variant-primary.button--color-black {
-  @apply bg-black border-black;
+  @apply border-black;
 }
 .button--variant-primary.button--color-black:focus > .button__content::before {
   @apply border-black;
 }
 .button--variant-primary.button--color-blue {
-  @apply bg-blue border-blue;
+  @apply border-blue;
 }
 .button--variant-primary.button--color-blue:focus > .button__content::before {
   @apply border-blue;
 }
 .button--variant-primary.button--color-border {
-  @apply bg-border border-border;
+  @apply border-border;
 }
 .button--variant-primary.button--color-border:focus > .button__content::before {
   @apply border-border;
 }
 .button--variant-primary.button--color-green {
-  @apply bg-green border-green;
+  @apply border-green;
 }
 .button--variant-primary.button--color-green:focus > .button__content::before {
   @apply border-green;
 }
 .button--variant-primary.button--color-orange {
-  @apply bg-orange border-orange;
+  @apply border-orange;
 }
 .button--variant-primary.button--color-orange:focus > .button__content::before {
   @apply border-orange;
 }
 .button--variant-primary.button--color-pink {
-  @apply bg-pink border-pink;
+  @apply border-pink;
 }
 .button--variant-primary.button--color-pink:focus > .button__content::before {
   @apply border-pink;
 }
 .button--variant-primary.button--color-purple {
-  @apply bg-purple border-purple;
+  @apply border-purple;
 }
 .button--variant-primary.button--color-purple:focus > .button__content::before {
   @apply border-purple;
 }
 .button--variant-primary.button--color-error {
-  @apply bg-error border-error;
+  @apply border-error;
 }
 .button--variant-primary.button--color-error:focus > .button__content::before {
   @apply border-error;
 }
 .button--variant-primary.button--color-info {
-  @apply bg-info border-info;
+  @apply border-info;
 }
 .button--variant-primary.button--color-info:focus > .button__content::before {
   @apply border-info;
 }
 .button--variant-primary.button--color-offwhite {
-  @apply bg-offwhite border-offwhite;
+  @apply border-offwhite;
 }
 .button--variant-primary.button--color-offwhite:focus
   > .button__content::before {
   @apply border-offwhite;
 }
 .button--variant-primary.button--color-subtle {
-  @apply bg-subtle border-subtle;
+  @apply border-subtle;
 }
 .button--variant-primary.button--color-subtle:focus > .button__content::before {
   @apply border-subtle;
 }
 .button--variant-primary.button--color-success {
-  @apply bg-success border-success;
+  @apply border-success;
 }
 .button--variant-primary.button--color-success:focus
   > .button__content::before {
   @apply border-success;
 }
 .button--variant-primary.button--color-warning {
-  @apply bg-warning border-warning;
+  @apply border-warning;
 }
 .button--variant-primary.button--color-warning:focus
   > .button__content::before {

@@ -1,9 +1,9 @@
 <template>
-  <Box :class="classes" component="button" :type="type">
+  <button :class="classes" :disabled="disabled" :type="type">
     <Box
       :backgroundColor="contentBackgroundColor"
       class="button__content"
-      showInteractionOverlay
+      :showInteractionOverlay="!disabled"
     >
       <Typography
         v-if="text"
@@ -31,7 +31,7 @@
         style="position: absolute;"
       />
     </Box>
-  </Box>
+  </button>
 </template>
 
 <script>
@@ -57,6 +57,10 @@ export default {
       default: 'black',
       type: String,
       validator: getIsColorValid,
+    },
+    disabled: {
+      default: false,
+      type: Boolean,
     },
     iconName: {
       default: undefined,

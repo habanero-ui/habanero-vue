@@ -57,12 +57,18 @@ export default () => ({
           key: 'rating',
           cellComponent: DataTableMultilineCell,
         },
-        {
-          name: '',
-          cellComponent: DataTableActionCell,
-          iconName: 'close',
-          onClick: this.handleRowDelete,
-        },
+        ...(this.rows.length > 1
+          ? [
+              {
+                name: '',
+                cellComponent: DataTableActionCell,
+                getIsVisible: (row) =>
+                  row.movie.name !== 'The Shawshank Redemption',
+                iconName: 'close',
+                onClick: this.handleRowDelete,
+              },
+            ]
+          : []),
       ]
     },
   },

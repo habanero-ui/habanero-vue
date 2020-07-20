@@ -11,21 +11,22 @@ export default () => ({
       default: object('columns', [
         {
           name: 'Rank',
-          accessor: 'id',
+          key: 'id',
         },
         {
           name: 'Movie',
-          accessor: 'movie.name',
+          key: 'movie.name',
         },
         {
           name: 'Director',
-          accessor: ({ movie }) => {
+          getValue: ({ movie }) => {
             return `${movie.director.firstName} ${movie.director.lastName}`
           },
+          key: 'movie.director.firstName',
         },
         {
           name: 'Budget',
-          accessor: ({ movie }) => {
+          getValue: ({ movie }) => {
             return movie.costCents
               ? `$${(movie.costCents / 100)
                   .toFixed(2)
@@ -33,14 +34,15 @@ export default () => ({
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`
               : 'N/A'
           },
+          key: 'movie.costCents',
         },
         {
           name: 'Release Year',
-          accessor: 'movie.year',
+          key: 'movie.year',
         },
         {
           name: 'IMDB Rating',
-          accessor: 'rating',
+          key: 'rating',
         },
       ]),
     },

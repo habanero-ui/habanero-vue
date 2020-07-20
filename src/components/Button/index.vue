@@ -1,6 +1,6 @@
 <template>
   <button :class="classes" :type="type">
-    <div class="button__content">
+    <Box class="button__content" showInteractionOverlay>
       <Typography
         v-if="text"
         class="button__text"
@@ -26,7 +26,7 @@
         :colorIsBackground="variant === 'primary'"
         style="position: absolute;"
       />
-    </div>
+    </Box>
   </button>
 </template>
 
@@ -36,12 +36,14 @@ import includes from 'lodash/includes'
 import buttonVariants from '../../constants/buttonVariants'
 import colors from '../../constants/colors'
 import iconSides from '../../constants/iconSides'
+import Box from '../Box/index'
 import Icon from '../Icon/index'
 import Spinner from '../Spinner/index'
 import Typography from '../Typography/index'
 
 export default {
   components: {
+    Box,
     Icon,
     Spinner,
     Typography,
@@ -191,16 +193,7 @@ function getIsVariantValid(value) {
   margin: -3px;
 }
 .button > .button__content::after {
-  @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;
-  background-color: black;
   border-radius: 0.5rem;
-  content: '';
-}
-.button:hover:not([disabled]) > .button__content::after {
-  opacity: 0.1;
-}
-.button:active:not([disabled]) > .button__content::after {
-  opacity: 0.25;
 }
 .button:hover:not([disabled]) .button__text {
   @apply underline;

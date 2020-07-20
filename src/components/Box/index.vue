@@ -226,7 +226,7 @@ function getSpacingPropType(name) {
   border-radius: 9999px;
 }
 .box--show-interaction-overlay {
-  @apply cursor-pointer relative overflow-hidden;
+  @apply cursor-pointer relative;
 }
 .box--show-interaction-overlay::after {
   @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;

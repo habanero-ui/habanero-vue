@@ -1,7 +1,7 @@
 import map from 'lodash/map'
 
+import DataTableCheckboxCell from '../../DataTableCheckboxCell/index'
 import DataTable from '../index'
-import DataTableCheckboxCell from './DataTableCheckboxCell'
 import DataTableMultilineCell from './DataTableMultilineCell'
 import DataTableProfileCell from './DataTableProfileCell'
 import tableData from './tableData.js'

@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import getWithAccessor from '../../../helpers/getWithAccessor'
-import Box from '../../Box/index'
-import Checkbox from '../../Checkbox/index'
+import getWithAccessor from '../../helpers/getWithAccessor'
+import Box from '../Box/index'
+import Checkbox from '../Checkbox/index'
 
 export default {
   components: { Box, Checkbox },

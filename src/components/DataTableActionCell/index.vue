@@ -1,5 +1,10 @@
 <template>
-  <Box class="data-table-action-cell" paddingX="medium" paddingY="small">
+  <Box
+    v-if="isVisible"
+    class="data-table-action-cell"
+    paddingX="medium"
+    paddingY="small"
+  >
     <div>
       <Button
         :iconName="column.iconName"
@@ -12,6 +17,8 @@
 </template>
 
 <script>
+import isFunction from 'lodash/isFunction'
+
 import Box from '../Box/index'
 import Button from '../Button/index'
 
@@ -25,6 +32,14 @@ export default {
     row: {
       default: () => ({}),
       type: Object,
+    },
+  },
+  computed: {
+    isVisible() {
+      return (
+        !isFunction(this.column.getIsVisible) ||
+        this.column.getIsVisible(this.row)
+      )
     },
   },
   methods: {

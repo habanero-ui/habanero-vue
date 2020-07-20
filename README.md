@@ -13,6 +13,7 @@ Spur's Design System and Component Library
 
 ## Misc
 
+- [ ] Prevent clicking in custom DataTable cell components like Checkbox + Action from triggering row selection
 - [ ] Add "With Image" for ListItem component
 - [ ] Add count bubble for Tab component
 - [ ] Build a landing page for Habanero

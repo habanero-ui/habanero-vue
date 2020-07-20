@@ -22,7 +22,7 @@
       <tbody class="data-table__body">
         <tr
           v-for="(row, rowIndex) in rows"
-          :key="rowIndex"
+          :key="getRowKey(row, rowIndex)"
           class="data-table__row"
           @click="() => handleRowClick(row)"
         >
@@ -50,9 +50,9 @@ import some from 'lodash/some'
 
 import sortDirections from '../../constants/sortDirections'
 import Box from '../Box/index'
+import DataTableCell from '../DataTableCell/index'
+import DataTableHeaderCell from '../DataTableHeaderCell/index'
 import Typography from '../Typography/index'
-import DataTableCell from './DataTableCell'
-import DataTableHeaderCell from './DataTableHeaderCell'
 
 export default {
   components: { Box, Typography },
@@ -61,6 +61,10 @@ export default {
       default: () => [],
       type: Array,
       validator: getIsColumnsValid,
+    },
+    getId: {
+      default: (row) => row.id,
+      type: Function,
     },
     onRowSelect: {
       default: undefined,
@@ -110,6 +114,10 @@ export default {
     }
   },
   methods: {
+    getRowKey(row, index) {
+      return !isNil(this.getId(row)) ? this.getId(row) : index
+    },
+
     handleRowClick(row) {
       if (!this.onRowSelect) return
 

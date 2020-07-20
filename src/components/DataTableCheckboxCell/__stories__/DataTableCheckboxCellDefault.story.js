@@ -8,7 +8,7 @@ export default () => ({
     row: { id: 0, text: 'Some Text' },
   }),
   template: `
-    <div class="w-40 p-6"> 
+    <div class="p-6"> 
       <DataTableCheckboxCell
         :column="{ onIsCheckedChange }"
         :row="row"

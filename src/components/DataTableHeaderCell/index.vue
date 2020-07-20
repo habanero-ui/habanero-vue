@@ -6,7 +6,11 @@
   >
     <Columns alignY="center" class="flex-none" space="small">
       <Column width="content">
-        <Typography class="block" variant="label-small" color="subtle">
+        <Typography
+          class="data-table-header-cell__text"
+          color="subtle"
+          variant="label-small"
+        >
           {{ column.name }}
         </Typography>
       </Column>
@@ -76,3 +80,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.data-table-header-cell__text {
+  @apply block select-none;
+}
+</style>

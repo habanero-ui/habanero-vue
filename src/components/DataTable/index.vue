@@ -45,6 +45,7 @@
 
 <script>
 import includes from 'lodash/includes'
+import isNil from 'lodash/isNil'
 import some from 'lodash/some'
 
 import sortDirections from '../../constants/sortDirections'
@@ -118,7 +119,7 @@ export default {
 }
 
 function getIsColumnsValid(columns) {
-  const isValid = !some(columns, (column) => !column.name)
+  const isValid = !some(columns, (column) => isNil(column.name))
 
   if (!isValid) {
     // eslint-disable-next-line no-console

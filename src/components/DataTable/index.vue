@@ -50,9 +50,9 @@ import some from 'lodash/some'
 
 import sortDirections from '../../constants/sortDirections'
 import Box from '../Box/index'
+import DataTableCell from '../DataTableCell/index'
+import DataTableHeaderCell from '../DataTableHeaderCell/index'
 import Typography from '../Typography/index'
-import DataTableCell from './DataTableCell'
-import DataTableHeaderCell from './DataTableHeaderCell'
 
 export default {
   components: { Box, Typography },

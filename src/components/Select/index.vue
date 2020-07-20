@@ -122,13 +122,14 @@ export default {
 }
 .select__input {
   @apply bg-transparent pl-4 pr-10 w-full border border-black rounded-md text-black cursor-pointer;
-  height: 2.75rem;
   -webkit-appearance: none;
   -moz-appearance: none;
+  padding-bottom: 0.5625rem;
+  padding-top: 0.5625rem;
   transition: border-color 300ms ease-in-out;
 }
 .select__input:not([disabled]):hover {
-  @apply border-2;
+  @apply border-2 py-2;
   padding-left: 15px;
   padding-right: 39px;
 }
@@ -136,7 +137,7 @@ export default {
   display: none;
 }
 .select__input:focus {
-  @apply border-2 border-info outline-none;
+  @apply border-2 py-2 border-info outline-none;
   padding-left: 15px;
   padding-right: 39px;
 }

@@ -9,7 +9,6 @@ Spur's Design System and Component Library
 ## New Components
 
 - [ ] FileUpload
-- [ ] Textarea
 - [ ] Tooltip
 
 ## Misc

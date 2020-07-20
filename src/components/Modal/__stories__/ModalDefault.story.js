@@ -1,6 +1,7 @@
 import { action } from '@storybook/addon-actions'
-import { boolean, text } from '@storybook/addon-knobs'
+import { boolean, select, text } from '@storybook/addon-knobs'
 
+import colors from '../../../constants/colors'
 import Modal from '../index'
 
 export default () => ({
@@ -8,6 +9,9 @@ export default () => ({
   props: {
     cancelText: {
       default: text('cancelText', 'Cancel'),
+    },
+    confirmColor: {
+      default: select('confirmColor', colors, 'black'),
     },
     confirmText: {
       default: text('confirmText', 'Confirm'),
@@ -40,6 +44,7 @@ export default () => ({
   template: `
     <div class="absolute inset-0">
       <Modal
+        :confirmColor="confirmColor"
         :isCancelDisabled="isCancelDisabled"
         :isConfirmDisabled="isConfirmDisabled"
         :isConfirmLoading="isConfirmLoading"

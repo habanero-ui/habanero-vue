@@ -11,6 +11,7 @@
       </Column>
       <Column v-if="onConfirm">
         <Button
+          :color="confirmColor"
           :disabled="isConfirmDisabled"
           :isLoading="isConfirmLoading"
           :text="confirmText"
@@ -35,6 +36,10 @@ export default {
   props: {
     cancelText: {
       default: 'Cancel',
+      type: String,
+    },
+    confirmColor: {
+      default: undefined,
       type: String,
     },
     confirmText: {

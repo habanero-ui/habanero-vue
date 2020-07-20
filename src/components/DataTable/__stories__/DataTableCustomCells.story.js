@@ -1,5 +1,7 @@
+import filter from 'lodash/filter'
 import map from 'lodash/map'
 
+import DataTableActionCell from '../../DataTableActionCell/index'
 import DataTableCheckboxCell from '../../DataTableCheckboxCell/index'
 import DataTable from '../index'
 import DataTableMultilineCell from './DataTableMultilineCell'
@@ -55,6 +57,12 @@ export default () => ({
           key: 'rating',
           cellComponent: DataTableMultilineCell,
         },
+        {
+          name: '',
+          cellComponent: DataTableActionCell,
+          iconName: 'close',
+          onClick: this.handleRowDelete,
+        },
       ]
     },
   },
@@ -71,6 +79,10 @@ export default () => ({
       this.rows = map(this.rows, (row) =>
         row.id === id ? { ...row, movie: { ...row.movie, seen } } : row,
       )
+    },
+
+    handleRowDelete(changedRow) {
+      this.rows = filter(this.rows, (row) => row.id !== changedRow.id)
     },
   },
 })

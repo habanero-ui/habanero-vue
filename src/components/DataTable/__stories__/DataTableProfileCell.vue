@@ -39,7 +39,7 @@ export default {
   },
   computed: {
     movieName() {
-      return getWithAccessor(this.row, this.column.accessor)
+      return getWithAccessor(this.row, this.column.key)
     },
   },
 }

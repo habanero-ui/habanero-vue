@@ -15,6 +15,7 @@
       </div>
       <ModalFooter
         :cancelText="cancelText"
+        :confirmColor="confirmColor"
         :confirmText="confirmText"
         :isCancelDisabled="isCancelDisabled"
         :isConfirmDisabled="isConfirmDisabled"
@@ -38,6 +39,10 @@ export default {
   props: {
     cancelText: {
       default: 'Cancel',
+      type: String,
+    },
+    confirmColor: {
+      default: undefined,
       type: String,
     },
     confirmText: {

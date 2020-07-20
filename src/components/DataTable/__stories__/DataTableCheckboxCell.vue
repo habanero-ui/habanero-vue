@@ -1,13 +1,14 @@
 <template>
   <Box padding="medium">
     <Checkbox
-      :isChecked="seen"
+      :isChecked="value"
       :onIsCheckedChange="handleCheckboxIsCheckedChange"
     />
   </Box>
 </template>
 
 <script>
+import getWithAccessor from '../../../helpers/getWithAccessor'
 import Box from '../../Box/index'
 import Checkbox from '../../Checkbox/index'
 
@@ -24,15 +25,15 @@ export default {
     },
   },
   computed: {
-    seen() {
-      return this.row.seen
+    value() {
+      return getWithAccessor(this.row, this.column.getValue || this.column.key)
     },
   },
   methods: {
     handleCheckboxIsCheckedChange(isChecked) {
-      if (!this.column.onRowChange) return
+      if (!this.column.onIsCheckedChange) return
 
-      this.column.onRowChange({ ...this.row, seen: isChecked })
+      this.column.onIsCheckedChange(this.row, isChecked)
     },
   },
 }

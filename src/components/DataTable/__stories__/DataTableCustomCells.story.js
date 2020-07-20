@@ -22,7 +22,7 @@ export default () => ({
           name: 'Seen?',
           key: 'movie.seen',
           cellComponent: DataTableCheckboxCell,
-          onRowChange: this.handleRowChange,
+          onIsCheckedChange: this.handleSeenChange,
         },
         {
           name: 'Movie',
@@ -34,7 +34,6 @@ export default () => ({
           getValue: ({ movie }) => {
             return `${movie.director.firstName} ${movie.director.lastName}`
           },
-          key: 'movie.director.firstName',
         },
         {
           name: 'Budget',
@@ -46,7 +45,6 @@ export default () => ({
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`
               : 'N/A'
           },
-          key: 'movie.costCents',
         },
         {
           name: 'Release Year',
@@ -69,9 +67,9 @@ export default () => ({
     </div>
   `,
   methods: {
-    handleRowChange(changedRow) {
+    handleSeenChange({ id }, seen) {
       this.rows = map(this.rows, (row) =>
-        row.id === changedRow.id ? changedRow : row,
+        row.id === id ? { ...row, movie: { ...row.movie, seen } } : row,
       )
     },
   },

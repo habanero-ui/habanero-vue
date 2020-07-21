@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes">
+  <div class="data-table">
     <table class="data-table__table">
       <thead>
         <tr class="data-table__row">
@@ -20,11 +20,13 @@
         </tr>
       </thead>
       <tbody class="data-table__body">
-        <tr
+        <Box
           v-for="(row, rowIndex) in rows"
           :key="getRowKey(row, rowIndex)"
           class="data-table__row"
-          @click="() => handleRowClick(row)"
+          component="tr"
+          :showInteractionOverlay="!!onRowSelect"
+          @click.native="() => handleRowClick(row)"
         >
           <td
             v-for="(column, cellIndex) in columns"
@@ -37,7 +39,7 @@
               :row="row"
             />
           </td>
-        </tr>
+        </Box>
       </tbody>
     </table>
   </div>
@@ -96,15 +98,6 @@ export default {
     DataTableCell,
     DataTableHeaderCell,
   }),
-  computed: {
-    classes() {
-      return ['data-table', { 'data-table--selectable': this.isSelectable }]
-    },
-
-    isSelectable() {
-      return !!this.onRowSelect
-    },
-  },
   created() {
     if (some(this.columns, (column) => column.accessor)) {
       // eslint-disable-next-line
@@ -162,7 +155,7 @@ function getIsSortDirectionValid(value) {
   @apply w-full text-left whitespace-no-wrap;
 }
 .data-table__row {
-  @apply relative border-b-2 border-border;
+  @apply border-b-2 border-border;
   transform: scale(1);
 }
 .data-table__body .data-table__row:last-child {
@@ -170,19 +163,5 @@ function getIsSortDirectionValid(value) {
 }
 .data-table__cell {
   @apply p-0 align-top;
-}
-.data-table--selectable .data-table__body .data-table__row {
-  @apply cursor-pointer;
-}
-.data-table--selectable .data-table__body .data-table__row::after {
-  @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out -mb-px;
-  background-color: black;
-  content: '';
-}
-.data-table--selectable .data-table__body .data-table__row:hover::after {
-  opacity: 0.1;
-}
-.data-table--selectable .data-table__body .data-table__row:active::after {
-  opacity: 0.25;
 }
 </style>

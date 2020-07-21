@@ -10,18 +10,21 @@
         </Stack>
       </Column>
       <Column width="content">
-        <Button
-          iconName="close"
-          iconSize="large"
-          variant="text"
-          @click.native="onCloseModal"
-        />
+        <Box marginRight="-xxsmall" marginTop="-xxsmall">
+          <Button
+            iconName="close"
+            iconSize="large"
+            variant="text"
+            @click.native="onCloseModal"
+          />
+        </Box>
       </Column>
     </Columns>
   </header>
 </template>
 
 <script>
+import Box from '../Box/index'
 import Button from '../Button/index'
 import Column from '../Column/index'
 import Columns from '../Columns/index'
@@ -30,6 +33,7 @@ import Typography from '../Typography/index'
 
 export default {
   components: {
+    Box,
     Button,
     Column,
     Columns,

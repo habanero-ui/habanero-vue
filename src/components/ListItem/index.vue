@@ -1,48 +1,48 @@
 <template>
-  <li :class="classes">
-    <Icon v-if="iconName" class="mr-4 -ml-2" :name="iconName" />
-    <div class="list-item__text">
-      <Typography v-if="primaryText" class="block" variant="label-large">
-        {{ primaryText }}
-      </Typography>
-      <Typography
-        v-if="secondaryText"
-        class="block list-item__text__line--secondary"
-        variant="body-small"
-      >
-        {{ secondaryText }}
-      </Typography>
-      <Typography
-        v-if="tertiaryText"
-        class="block list-item__text__line--tertiary"
-        color="subtle"
-        variant="body-small"
-      >
-        {{ tertiaryText }}
-      </Typography>
-    </div>
-    <div class="flex items-center ml-auto">
-      <Typography
-        v-if="primaryStatusText"
-        :class="isNavigation && 'mr-2'"
-        :color="primaryStatusTextColor"
-        variant="body-extra-small"
-      >
-        {{ primaryStatusText }}
-      </Typography>
-      <Icon v-if="isNavigation" class="-mr-2" name="chevron-right" />
-    </div>
-  </li>
+  <Box
+    class="list-item"
+    component="li"
+    paddingX="gutter"
+    paddingY="medium"
+    :showInteractionOverlay="isActionable"
+  >
+    <Columns class="flex-1" alignY="center" space="gutter">
+      <Column v-if="iconName" width="content"><Icon :name="iconName" /></Column>
+      <Column>
+        <Stack space="xxsmall">
+          <Typography v-if="primaryText" variant="label-large">
+            {{ primaryText }}
+          </Typography>
+          <Typography v-if="secondaryText" variant="body-small">
+            {{ secondaryText }}
+          </Typography>
+          <Typography v-if="tertiaryText" color="subtle" variant="body-small">
+            {{ tertiaryText }}
+          </Typography>
+        </Stack>
+      </Column>
+      <Column v-if="primaryStatusText" width="content">
+        <Typography :color="primaryStatusTextColor" variant="body-extra-small">
+          {{ primaryStatusText }}
+        </Typography>
+      </Column>
+      <Column v-if="isNavigation" width="content">
+        <Icon class="-mx-2 -my-1" name="chevron-right" />
+      </Column>
+    </Columns>
+  </Box>
 </template>
 
 <script>
-import isNil from 'lodash/isNil'
-
+import Box from '../Box/index'
+import Column from '../Column/index'
+import Columns from '../Columns/index'
 import Icon from '../Icon/index'
+import Stack from '../Stack/index'
 import Typography from '../Typography/index'
 
 export default {
-  components: { Icon, Typography },
+  components: { Box, Column, Columns, Icon, Stack, Typography },
   props: {
     iconName: {
       default: undefined,
@@ -77,64 +77,11 @@ export default {
       type: String,
     },
   },
-  computed: {
-    classes() {
-      return [
-        'list-item',
-        {
-          'list-item--actionable': this.isActionable,
-          'list-item--lines-single':
-            !isNil(this.primaryText) &&
-            isNil(this.secondaryText) &&
-            isNil(this.tertiaryText),
-          'list-item--lines-double':
-            !isNil(this.primaryText) &&
-            !isNil(this.secondaryText) &&
-            isNil(this.tertiaryText),
-          'list-item--lines-triple': !(
-            isNil(this.primaryText) ||
-            isNil(this.secondaryText) ||
-            isNil(this.tertiaryText)
-          ),
-        },
-      ]
-    },
-  },
 }
 </script>
 
 <style scoped>
 .list-item {
-  @apply outline-none relative flex flex-none items-center px-6;
-}
-.list-item--actionable {
-  @apply cursor-pointer;
-}
-.list-item--actionable::after {
-  @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;
-  background-color: black;
-  content: '';
-}
-.list-item--actionable:hover::after {
-  opacity: 0.1;
-}
-.list-item--actionable:active::after {
-  @apply opacity-25;
-}
-.list-item--lines-single {
-  /* TODO: Use padding instead of heights */
-  height: 2.75rem;
-}
-.list-item--lines-double {
-  height: 4rem;
-}
-.list-item--lines-triple {
-  height: 5.25rem;
-}
-.list-item__text__line--secondary {
-  @apply mt-1;
-}
-.list-item__text__line--tertiary {
-  @apply mt-1;
+  @apply flex flex-none;
 }
 </style>

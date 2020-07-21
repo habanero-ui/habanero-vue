@@ -82,8 +82,10 @@ export default {
 
 <style scoped>
 .tab {
-  @apply border-b-2 border-border cursor-pointer flex flex-none items-center h-10 px-6 relative outline-none;
+  @apply border-b-2 border-border cursor-pointer flex flex-none items-center px-6 relative outline-none;
   min-width: 8rem;
+  padding-bottom: 0.59375rem;
+  padding-top: 0.59375rem;
 }
 .tab::before {
   @apply absolute inset-0 pointer-events-none transition-colors duration-300 ease-in-out border-2 border-transparent;

@@ -28,12 +28,12 @@ export default () => ({
   template: `
     <Columns :alignY="alignY" :isReversed="isReversed" :space="space">
       <Column :width="firstColumnWidth">
-        <Box backgroundColor="subtle" padding="small">
+        <Box backgroundColor="subtle" class="flex-grow" padding="small">
           {{ firstColumnWidth }}
         </Box>
       </Column>
       <Column width="fluid">
-        <Box backgroundColor="subtle" padding="gutter">
+        <Box backgroundColor="subtle" class="flex-grow" padding="gutter">
           fluid
         </Box>
       </Column>

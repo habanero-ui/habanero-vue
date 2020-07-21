@@ -1,7 +1,7 @@
 <template>
   <Box
     backgroundColor="border"
-    :class="classes"
+    class="tag"
     paddingX="small"
     :paddingY="onDelete ? 'xxsmall' : 2.25"
   >
@@ -16,9 +16,13 @@
         </Typography>
       </Column>
       <Column v-if="onDelete" width="content">
-        <div class="tag__delete-button" @click="handleDeleteButtonClick">
+        <Box
+          class="tag__delete-button"
+          showInteractionOverlay
+          @click.native="handleDeleteButtonClick"
+        >
           <Icon name="close" />
-        </div>
+        </Box>
       </Column>
     </Columns>
   </Box>
@@ -54,10 +58,6 @@ export default {
     },
   },
   computed: {
-    classes() {
-      return ['tag']
-    },
-
     truncatedText() {
       return truncate(this.text || this.value, {
         length: this.maxChars,
@@ -80,17 +80,9 @@ export default {
   @apply inline-flex rounded-md;
 }
 .tag__delete-button {
-  @apply relative cursor-pointer -mr-1 rounded-full;
+  @apply -mr-1 rounded-full;
 }
 .tag__delete-button::after {
-  @apply absolute inset-0 pointer-events-none opacity-0 rounded-full transition-opacity duration-100 ease-in-out;
-  background-color: black;
-  content: '';
-}
-.tag__delete-button:hover::after {
-  opacity: 0.1;
-}
-.tag__delete-button:active::after {
-  opacity: 0.25;
+  @apply rounded-full;
 }
 </style>

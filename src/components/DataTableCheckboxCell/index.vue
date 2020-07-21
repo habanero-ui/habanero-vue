@@ -1,5 +1,5 @@
 <template>
-  <Box padding="medium">
+  <Box padding="medium" paddingY="3.25">
     <Checkbox
       :isChecked="value"
       :onIsCheckedChange="handleCheckboxIsCheckedChange"

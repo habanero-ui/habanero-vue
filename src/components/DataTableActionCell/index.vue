@@ -3,7 +3,7 @@
     v-if="isVisible"
     class="data-table-action-cell"
     paddingX="medium"
-    paddingY="small"
+    paddingY="2.5"
   >
     <div>
       <Button

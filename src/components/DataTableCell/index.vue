@@ -1,6 +1,6 @@
 <template>
   <Box padding="medium">
-    <Typography variant="body-extra-small">
+    <Typography class="block" variant="body-extra-small">
       {{ value }}
     </Typography>
   </Box>

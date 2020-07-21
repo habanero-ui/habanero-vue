@@ -33,9 +33,11 @@
       </Column>
       <Column width="content">
         <Box
+          backgroundColor="black"
           class="toast__close-button"
           component="button"
           padding="small"
+          showInteractionOverlay
           type="button"
           @click.native="handleCloseButtonClick"
         >
@@ -121,17 +123,7 @@ function getIsStatusValid(value) {
   @apply overflow-hidden;
 }
 .toast__close-button {
-  @apply relative flex cursor-pointer outline-none select-none;
-}
-.toast__close-button::after {
-  @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out bg-white;
-  content: '';
-}
-.toast__close-button:hover::after {
-  opacity: 0.1;
-}
-.toast__close-button:active::after {
-  @apply opacity-25;
+  @apply flex outline-none select-none;
 }
 .toast__close-button:focus {
   box-shadow: 0 0 0 2px white inset;

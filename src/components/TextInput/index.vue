@@ -173,15 +173,16 @@ function getIsTypeValid(value) {
 .text-input__input {
   @apply bg-transparent border border-black px-4 transition-colors duration-300 ease-in-out outline-none w-full;
   border-radius: 0.3125rem;
-  height: 2.75rem;
+  padding-bottom: 0.5625rem;
+  padding-top: 0.5625rem;
 }
 .text-input__input:not([disabled]):hover {
-  @apply border-2;
+  @apply border-2 py-2;
   padding-left: 15px;
   padding-right: 15px;
 }
 .text-input__input:focus {
-  @apply border-2 border-info;
+  @apply border-2 py-2 border-info;
   padding-left: 15px;
   padding-right: 15px;
 }

@@ -69,9 +69,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.modal-footer {
-  @apply pt-6;
-}
-</style>

@@ -1,25 +1,30 @@
 <template>
-  <div
+  <Box
     :class="classes"
     :disabled="disabled"
+    paddingX="gutter"
+    paddingY="2.375"
+    :showInteractionOverlay="!disabled"
     :tabIndex="disabled ? -1 : 0"
-    @click="handleClick"
-    @keydown.enter.space="handleKeyDown"
-    @keyup.enter.space="handleKeyUp"
+    @click.native="handleClick"
+    @keydown.enter.space.native="handleKeyDown"
+    @keyup.enter.space.native="handleKeyUp"
   >
     <slot>
       <Typography :variant="isSelected ? 'label-large' : 'body-large'">
         {{ text || name }}
       </Typography>
     </slot>
-  </div>
+  </Box>
 </template>
 
 <script>
+import Box from '../Box'
 import Typography from '../Typography'
 
 export default {
   components: {
+    Box,
     Typography,
   },
   props: {
@@ -64,11 +69,13 @@ export default {
 
       this.onSelect(this.name)
     },
+
     handleKeyDown() {
       if (this.disabled) return
 
       this.isKeyDown = true
     },
+
     handleKeyUp() {
       this.isKeyDown = false
 
@@ -82,17 +89,12 @@ export default {
 
 <style scoped>
 .tab {
-  @apply border-b-2 border-border cursor-pointer flex flex-none items-center h-10 px-6 relative outline-none;
+  @apply border-b-2 border-border flex flex-none items-center outline-none;
   min-width: 8rem;
 }
 .tab::before {
   @apply absolute inset-0 pointer-events-none transition-colors duration-300 ease-in-out border-2 border-transparent;
   margin-bottom: -2px;
-  content: '';
-}
-.tab::after {
-  @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;
-  background-color: black;
   content: '';
 }
 .tab[disabled] {
@@ -104,13 +106,7 @@ export default {
 .tab:focus:not([disabled])::before {
   @apply border-info;
 }
-.tab:hover:not([disabled])::after {
-  opacity: 0.1;
-}
-.tab:active:not([disabled])::after {
-  @apply opacity-25;
-}
-.tab--is-key-down::after {
+.tab--is-key-down:not([disabled])::after {
   @apply opacity-25;
 }
 </style>

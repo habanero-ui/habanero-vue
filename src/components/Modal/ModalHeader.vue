@@ -1,5 +1,5 @@
 <template>
-  <header v-if="helperText || titleText" class="modal-header">
+  <header v-if="helperText || titleText">
     <Columns space="6">
       <Column>
         <Stack space="2">
@@ -10,28 +10,33 @@
         </Stack>
       </Column>
       <Column width="content">
-        <ModalHeaderButton @click.native="onCloseModal">
-          <Icon class="modal-header__close-icon" name="close" size="large" />
-        </ModalHeaderButton>
+        <Box marginRight="-xxsmall" marginTop="-xxsmall">
+          <Button
+            iconName="close"
+            iconSize="large"
+            variant="text"
+            @click.native="onCloseModal"
+          />
+        </Box>
       </Column>
     </Columns>
   </header>
 </template>
 
 <script>
+import Box from '../Box/index'
+import Button from '../Button/index'
 import Column from '../Column/index'
 import Columns from '../Columns/index'
-import Icon from '../Icon/index'
 import Stack from '../Stack/index'
 import Typography from '../Typography/index'
-import ModalHeaderButton from './ModalHeaderButton'
 
 export default {
   components: {
+    Box,
+    Button,
     Column,
     Columns,
-    Icon,
-    ModalHeaderButton,
     Stack,
     Typography,
   },
@@ -51,9 +56,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.modal-header {
-  @apply flex flex-col pb-4;
-}
-</style>

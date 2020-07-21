@@ -4,37 +4,43 @@
     :class="{ 'modal--is-open': isOpen }"
     @click.self="handleBackgroundClick"
   >
-    <div class="modal__window">
-      <ModalHeader
-        :helperText="helperText"
-        :onCloseModal="onIsOpenChange"
-        :titleText="titleText"
-      />
-      <div class="modal__content">
-        <slot />
-      </div>
-      <ModalFooter
-        :cancelText="cancelText"
-        :confirmColor="confirmColor"
-        :confirmText="confirmText"
-        :isCancelDisabled="isCancelDisabled"
-        :isConfirmDisabled="isConfirmDisabled"
-        :isConfirmLoading="isConfirmLoading"
-        :onCancel="onCancel"
-        :onConfirm="onConfirm"
-      />
-    </div>
+    <Box class="modal__window" padding="gutter">
+      <Stack space="gutter">
+        <ModalHeader
+          :helperText="helperText"
+          :onCloseModal="onIsOpenChange"
+          :titleText="titleText"
+        />
+        <div>
+          <slot />
+        </div>
+        <ModalFooter
+          :cancelText="cancelText"
+          :confirmColor="confirmColor"
+          :confirmText="confirmText"
+          :isCancelDisabled="isCancelDisabled"
+          :isConfirmDisabled="isConfirmDisabled"
+          :isConfirmLoading="isConfirmLoading"
+          :onCancel="onCancel"
+          :onConfirm="onConfirm"
+        />
+      </Stack>
+    </Box>
   </div>
 </template>
 
 <script>
+import Box from '../Box/index'
+import Stack from '../Stack/index'
 import ModalFooter from './ModalFooter'
 import ModalHeader from './ModalHeader'
 
 export default {
   components: {
+    Box,
     ModalFooter,
     ModalHeader,
+    Stack,
   },
   props: {
     cancelText: {
@@ -99,7 +105,7 @@ export default {
   @apply fixed inset-0 top-0 flex items-center justify-center w-full min-h-screen transition-opacity duration-300 ease-in-out overflow-hidden opacity-0 pointer-events-none bg-black-half;
 }
 .modal__window {
-  @apply p-6 rounded bg-white flex flex-col w-11/12 max-w-3xl mx-auto shadow-lg z-50 overflow-y-auto;
+  @apply rounded bg-white flex flex-col w-11/12 max-w-3xl mx-auto shadow-lg z-50 overflow-y-auto;
 }
 .modal--is-open {
   @apply pointer-events-auto opacity-100;

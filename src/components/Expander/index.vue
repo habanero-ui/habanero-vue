@@ -1,9 +1,9 @@
 <template>
   <div class="expander">
     <Box
-      class="expander__header"
       :paddingX="headerPaddingX"
       paddingY="small"
+      showInteractionOverlay
       @click.native="handleIsOpenChange"
     >
       <Columns alignY="center" space="medium">
@@ -64,20 +64,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.expander__header {
-  @apply cursor-pointer relative;
-}
-.expander__header::after {
-  @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-100 ease-in-out;
-  background-color: black;
-  content: '';
-}
-.expander__header:hover::after {
-  opacity: 0.1;
-}
-.expander__header:active::after {
-  opacity: 0.25;
-}
-</style>

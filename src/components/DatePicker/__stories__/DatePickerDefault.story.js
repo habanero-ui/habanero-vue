@@ -1,10 +1,10 @@
 import { action } from '@storybook/addon-actions'
 import { boolean, date, text } from '@storybook/addon-knobs'
 
-import DateTimePicker from '../index'
+import DatePicker from '../index'
 
 export default () => ({
-  components: { DateTimePicker },
+  components: { DatePicker },
   props: {
     disabled: {
       default: boolean('disabled', false),
@@ -36,7 +36,7 @@ export default () => ({
   },
   template: `
     <div class="flex flex-col p-6">
-      <DateTimePicker
+      <DatePicker
         :disabled="disabled"
         :error="error"
         :format="format"

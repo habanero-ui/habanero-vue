@@ -1,75 +1,33 @@
 <template>
-  <TextInput
-    ref="timePicker"
-    :disabled="disabled"
-    :error="error"
-    :helperText="helperText"
-    iconName="time-clock"
-    iconSide="right"
-    :label="label"
-    :placeholder="placeholder"
-    :value="value"
+  <DateTimePicker
+    :isCalendarEnabled="false"
+    v-bind="DateTimePickerProps"
+    mode="single"
   />
 </template>
 
 <script>
-import flatpickr from 'flatpickr'
+import pick from 'lodash/pick'
 
-import TextInput from '../TextInput/index'
+import DateTimePicker from '../DateTimePicker/index'
 
 export default {
   components: {
-    TextInput,
+    DateTimePicker,
   },
   props: {
-    disabled: {
-      default: false,
-      type: Boolean,
-    },
-    error: {
-      default: '',
-      type: String,
-    },
-    helperText: {
-      default: '',
-      type: String,
-    },
-    label: {
-      default: '',
-      type: String,
-    },
-    onValueChange: {
-      default: undefined,
-      type: Function,
-    },
-    placeholder: {
-      default: '',
-      type: String,
-    },
-    value: {
-      default: '',
+    ...DateTimePicker.props,
+    format: {
+      default: 'h:i K',
       type: String,
     },
   },
-  data: () => ({
-    picker: null,
-  }),
-  beforeDestroy() {
-    if (this.picker) {
-      this.picker.destroy()
-    }
-  },
-  mounted() {
-    this.picker = flatpickr(this.$refs.timePicker.$refs.input, {
-      dateFormat: 'h:i K',
-      enableTime: true,
-      onChange: this.handleInputChange,
-      noCalendar: true,
-    })
-  },
-  methods: {
-    handleInputChange() {
-      this.onValueChange(this.$refs.timePicker.$refs.input.value)
+  computed: {
+    DateTimePickerProps() {
+      return {
+        ...pick(this.$props, Object.keys(DateTimePicker.props)),
+        ...this.$attrs,
+      }
     },
   },
 }

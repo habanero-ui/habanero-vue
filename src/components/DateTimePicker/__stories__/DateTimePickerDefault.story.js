@@ -42,11 +42,11 @@ export default () => ({
         :format="format"
         :helperText="helperText"
         :label="label"
-        :maxDate="maxDate ? new Date(maxDate) : null"
-        :minDate="minDate ? new Date(minDate) : null"
+        :maxDate="new Date(maxDate)"
+        :minDate="new Date(minDate)"
         :onSelectedDateChange="onSelectedDateChange"
         :placeholder="placeholder"
-        :selectedDate="new Date(selectedDate)"
+        :selectedDate="selectedDate"
       />
       <div class="mt-6">UTC: {{ new Date(selectedDate).toLocaleString("en-US", { timeZone: "UTC" }) }}</div>
     </div>

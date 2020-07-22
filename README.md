@@ -6,6 +6,10 @@ Spur's Design System and Component Library
 
 # Roadmap
 
+## Known Issues
+
+- Date/Time Picker inputs clear out when label/helper/error text changes.
+
 ## New Components
 
 - [ ] FileUpload

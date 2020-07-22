@@ -1,11 +1,12 @@
 <template>
   <TextInput
-    ref="datePicker"
+    ref="dateTimePicker"
     :disabled="disabled"
     :error="error"
     :helperText="helperText"
     iconName="calendar-date"
     iconSide="right"
+    iconSize="small"
     :label="label"
     :placeholder="placeholder"
     :value="value"
@@ -32,6 +33,10 @@ export default {
       default: '',
       type: String,
     },
+    format: {
+      default: 'm/d/Y',
+      type: String,
+    },
     helperText: {
       default: '',
       type: String,
@@ -40,17 +45,25 @@ export default {
       default: '',
       type: String,
     },
+    onSelectedDateChange: {
+      default: undefined,
+      type: Function,
+    },
+    onSelectedDatesChange: {
+      default: undefined,
+      type: Function,
+    },
     onValueChange: {
       default: undefined,
       type: Function,
     },
     maxDate: {
       default: null,
-      type: [Number, String],
+      type: [Date, String],
     },
     minDate: {
       default: null,
-      type: [Number, String],
+      type: [Date, String],
     },
     mode: {
       default: 'single',
@@ -61,6 +74,14 @@ export default {
       default: '',
       type: String,
     },
+    selectedDate: {
+      default: undefined,
+      type: Date,
+    },
+    selectedDates: {
+      default: undefined,
+      type: Array,
+    },
     value: {
       default: null,
       type: String,
@@ -69,24 +90,65 @@ export default {
   data: () => ({
     picker: null,
   }),
+  watch: {
+    format() {
+      this.updateFlatpickr()
+    },
+
+    maxDate() {
+      this.updateFlatpickr()
+    },
+
+    minDate() {
+      this.updateFlatpickr()
+    },
+
+    selectedDate() {
+      this.picker.setDate(this.selectedDate, false)
+    },
+
+    selectedDates() {
+      this.picker.setDate(this.selectedDates, false)
+    },
+  },
   beforeDestroy() {
     if (this.picker) {
       this.picker.destroy()
     }
   },
   mounted() {
-    this.picker = flatpickr(this.$refs.datePicker.$refs.input, {
-      dateFormat: 'm/d/Y',
-      enableTime: false,
-      maxDate: this.maxDate,
-      minDate: this.minDate,
-      mode: this.mode,
-      onChange: this.handleInputChange,
-    })
+    this.updateFlatpickr()
   },
   methods: {
-    handleInputChange() {
-      this.onValueChange(this.$refs.datePicker.$refs.input.value)
+    handleFlatpickrChange(selectedDates) {
+      if (this.onValueChange) {
+        this.onValueChange(this.$refs.dateTimePicker.$refs.input.value)
+      }
+
+      if (this.mode === 'single' && this.onSelectedDateChange) {
+        this.picker.setDate(this.selectedDate, false)
+        this.onSelectedDateChange(selectedDates[0])
+      }
+
+      if (
+        (this.mode === 'multiple' || this.mode === 'range') &&
+        this.onSelectedDatesChange
+      ) {
+        this.picker.setDate(this.selectedDates, false)
+        this.onSelectedDatesChange(selectedDates)
+      }
+    },
+
+    updateFlatpickr() {
+      this.picker = flatpickr(this.$refs.dateTimePicker.$refs.input, {
+        dateFormat: this.format,
+        defaultDate: this.selectedDate,
+        enableTime: false,
+        maxDate: this.maxDate,
+        minDate: this.minDate,
+        mode: this.mode,
+        onChange: this.handleFlatpickrChange,
+      })
     },
   },
 }

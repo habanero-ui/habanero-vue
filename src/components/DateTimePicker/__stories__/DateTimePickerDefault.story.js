@@ -22,10 +22,10 @@ export default () => ({
       default: text('label', 'Some Label Text'),
     },
     maxDate: {
-      default: date('maxDate', new Date('3000-01-01')),
+      default: date('maxDate', new Date('3000-01-01T00:00:00.000000Z')),
     },
     minDate: {
-      default: date('minDate', new Date('2000-01-01')),
+      default: date('minDate', new Date('2000-01-01T00:00:00.000000Z')),
     },
     placeholder: {
       default: text('placeholder', 'Some placeholder text'),

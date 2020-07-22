@@ -79,15 +79,15 @@ export default {
     format() {
       this.updateFlatpickr()
     },
+
     maxDate() {
       this.updateFlatpickr()
     },
+
     minDate() {
       this.updateFlatpickr()
     },
-    onValueChange() {
-      this.updateFlatpickr()
-    },
+
     selectedDate() {
       this.picker.setDate(this.selectedDate, false)
     },

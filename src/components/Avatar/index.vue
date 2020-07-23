@@ -1,13 +1,13 @@
 <template>
-  <Box v-if="image && (firstName || lastName)" class="avatar">
+  <Box class="avatar">
     <img
-      v-if="isLoaded"
+      v-if="image && isLoaded"
       :alt="alt"
       class="avatar__image"
       :src="image"
       @error="imageLoadError"
     />
-    <div v-if="!isLoaded" class="avatar__image">
+    <div v-if="!image || !isLoaded" class="avatar__image">
       {{ initials }}
     </div>
   </Box>
@@ -42,13 +42,11 @@ export default {
       return `${this.firstName} ${this.lastName}`
     },
     initials() {
-      /* eslint-disable */
       return `
         ${this.firstName ? this.firstName[0] : ''}${
         this.lastName ? this.lastName[0] : ''
       }
       `
-      /* eslint-enable */
     },
   },
   methods: {

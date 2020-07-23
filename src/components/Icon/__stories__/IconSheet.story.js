@@ -7,11 +7,13 @@ export default () => ({
   data: () => ({
     actions: ['check', 'close', 'minus', 'plus', 'swap', 'search'],
     arrows: ['arrow-up', 'arrow-down', 'arrow-left', 'arrow-right'],
+    calendars: ['calendar-date', 'calendar-time'],
     chevrons: ['chevron-up', 'chevron-down', 'chevron-left', 'chevron-right'],
-    datetimes: ['calendar-date', 'calendar-time', 'time-clock'],
+    clocks: ['time-clock', 'time-money', 'time-progress'],
     objects: [
       'apartment',
       'award',
+      'baby',
       'badge',
       'bell',
       'currency',
@@ -38,6 +40,7 @@ export default () => ({
       'umbrella',
     ],
     persons: [
+      'face-happy',
       'group-chat',
       'group-check',
       'group-home',
@@ -62,10 +65,13 @@ export default () => ({
   template: `
     <div class="p-6">
       <div class="flex items-center mb-6">
+        <Icon v-for="calendar in calendars" :key="calendar" :name="calendar" class="mr-4" />
+      </div>
+      <div class="flex items-center mb-6">
         <Icon v-for="sort in sorts" :key="sort" :name="sort" class="mr-4" />
       </div>
       <div class="flex items-center mb-6">
-        <Icon v-for="datetime in datetimes" :key="datetime" :name="datetime" class="mr-4" />
+        <Icon v-for="clock in clocks" :key="clock" :name="clock" class="mr-4" />
       </div>
       <div class="flex items-center mb-6">
         <Icon v-for="chevron in chevrons" :key="chevron" :name="chevron" class="mr-4" />

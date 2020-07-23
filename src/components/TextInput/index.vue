@@ -16,7 +16,7 @@
         :marginLeft="marginLeft"
         :marginRight="marginRight"
       >
-        <Icon v-if="iconName" :name="iconName" />
+        <Icon v-if="iconName" :name="iconName" :size="iconSize" />
       </Box>
       <input
         :id="inputId"
@@ -70,6 +70,10 @@ export default {
       default: 'left',
       type: String,
       validator: getIsIconSideValid,
+    },
+    iconSize: {
+      default: 'medium',
+      type: String,
     },
     id: {
       default: '',

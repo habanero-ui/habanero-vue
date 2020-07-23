@@ -39,7 +39,9 @@ export default {
   }),
   computed: {
     alt() {
-      return `${this.firstName} ${this.lastName}`
+      return this.firstName || this.lastName
+        ? `${this.firstName} ${this.lastName}`.trim()
+        : undefined
     },
     initials() {
       return `

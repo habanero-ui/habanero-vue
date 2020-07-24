@@ -44,11 +44,11 @@ export default () => ({
   template: `
     <div class="absolute inset-0">
       <Modal
-        :confirmColor="confirmColor"
         :isCancelDisabled="isCancelDisabled"
         :isConfirmDisabled="isConfirmDisabled"
         :isConfirmLoading="isConfirmLoading"
         :cancelText="cancelText"
+        :confirmColor="confirmColor"
         :confirmText="confirmText"
         :helperText="helperText"
         :isOpen="isOpen"

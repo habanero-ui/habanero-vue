@@ -23,7 +23,9 @@ export default () => ({
         :onConfirm="onConfirm"
         :onIsOpenChange="onIsOpenChange"
         titleText="Remove Blanket">
-        <div class="px-6">Are you sure you want to remove the blanket?</div>
+        <div class="px-6">
+          Are you sure you want to remove the blanket?
+        </div>
       </Modal>
     </div>
   `,

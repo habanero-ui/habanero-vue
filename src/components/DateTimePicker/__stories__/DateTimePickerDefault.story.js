@@ -46,7 +46,7 @@ export default () => ({
         :minDate="new Date(minDate)"
         :onSelectedDateChange="onSelectedDateChange"
         :placeholder="placeholder"
-        :selectedDate="selectedDate"
+        :selectedDate="new Date(selectedDate)"
       />
       <div class="mt-6">UTC: {{ new Date(selectedDate).toLocaleString("en-US", { timeZone: "UTC" }) }}</div>
     </div>

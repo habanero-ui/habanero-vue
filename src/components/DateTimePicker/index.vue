@@ -6,7 +6,7 @@
     :helperText="helperText"
     :label="label"
     :placeholder="placeholder"
-    :value="value || valueState"
+    :value="value"
   />
 </template>
 
@@ -104,7 +104,6 @@ export default {
   },
   data: () => ({
     picker: null,
-    valueState: undefined,
   }),
   watch: {
     format() {
@@ -178,8 +177,6 @@ export default {
 
       if (this.onValueChange) {
         this.onValueChange(this.$refs.textInput.$refs.input.value)
-      } else {
-        this.valueState = this.$refs.textInput.$refs.input.value
       }
     },
 

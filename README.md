@@ -24,6 +24,7 @@ Spur's Design System and Component Library
 - [ ] Think about updating both Checkbox and Toggle checked to be either both black or both blue
 - [ ] Update `README.md` with useful info + branding
 - [ ] Update Select component to be custom, not native
+- [ ] Establish z-index ordering for elements (so far `Modal`, `Select`, and `Spinner` leverage style)
 
 # Discussion Points
 

@@ -150,7 +150,8 @@ export default {
 
 <style scoped>
 .modal {
-  @apply fixed inset-0 top-0 flex items-center justify-center w-full min-h-screen transition-opacity duration-300 ease-in-out overflow-hidden opacity-0 pointer-events-none bg-black-half;
+  @apply fixed inset-0 top-0 flex items-center justify-center w-full min-h-screen overflow-hidden transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none bg-black-half;
+  z-index: 60;
 }
 .modal__window {
   @apply rounded bg-white flex flex-col w-11/12 max-w-3xl mx-auto shadow-lg z-50 overflow-y-auto;

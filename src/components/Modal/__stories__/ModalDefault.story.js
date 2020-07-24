@@ -56,7 +56,7 @@ export default () => ({
         :onConfirm="isConfirmVisible ? onConfirm : undefined"
         :onIsOpenChange="onIsOpenChange"
         :titleText="titleText">
-        <div class="px-6>
+        <div class="px-6">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
         </div>
       </Modal>

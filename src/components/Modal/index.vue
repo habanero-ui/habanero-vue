@@ -13,13 +13,28 @@
         />
         <div>
           <slot />
+          <Box
+            v-if="confirmations.length"
+            backgroundColor="offwhite"
+            class="modal__confirmations"
+          >
+            <Checkbox
+              v-for="(confirmation, index) of confirmations"
+              :key="index"
+              :isChecked="confirmation.isChecked"
+              :onIsCheckedChange="
+                ($event) => handleConfirmationChange(index, $event)
+              "
+              :text="confirmation.text"
+            />
+          </Box>
         </div>
         <ModalFooter
           :cancelText="cancelText"
           :confirmColor="confirmColor"
           :confirmText="confirmText"
           :isCancelDisabled="isCancelDisabled"
-          :isConfirmDisabled="isConfirmDisabled"
+          :isConfirmDisabled="!canConfirm || isConfirmDisabled"
           :isConfirmLoading="isConfirmLoading"
           :onCancel="onCancel"
           :onConfirm="onConfirm"
@@ -31,6 +46,7 @@
 
 <script>
 import Box from '../Box/index'
+import Checkbox from '../Checkbox/index'
 import Stack from '../Stack/index'
 import ModalFooter from './ModalFooter'
 import ModalHeader from './ModalHeader'
@@ -38,6 +54,7 @@ import ModalHeader from './ModalHeader'
 export default {
   components: {
     Box,
+    Checkbox,
     ModalFooter,
     ModalHeader,
     Stack,
@@ -46,6 +63,10 @@ export default {
     cancelText: {
       default: 'Cancel',
       type: String,
+    },
+    confirmations: {
+      default: () => [],
+      type: Array,
     },
     confirmColor: {
       default: undefined,
@@ -92,9 +113,20 @@ export default {
       type: String,
     },
   },
+  computed: {
+    canConfirm() {
+      return this.confirmations.every(
+        (confirmation) => confirmation.isChecked === true,
+      )
+    },
+  },
   methods: {
     handleBackgroundClick() {
       this.onIsOpenChange(false)
+    },
+
+    handleConfirmationChange(index, hasAgreed) {
+      this.confirmations[index].isChecked = hasAgreed
     },
   },
 }
@@ -106,6 +138,9 @@ export default {
 }
 .modal__window {
   @apply rounded bg-white flex flex-col w-11/12 max-w-3xl mx-auto shadow-lg z-50 overflow-y-auto;
+}
+.modal__confirmations {
+  @apply p-6 mt-4 -mx-6 border-t border-b border-border;
 }
 .modal--is-open {
   @apply pointer-events-auto opacity-100;

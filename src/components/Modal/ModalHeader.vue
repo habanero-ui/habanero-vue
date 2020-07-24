@@ -1,25 +1,29 @@
 <template>
   <header v-if="helperText || titleText">
-    <Columns space="6">
-      <Column>
-        <Stack space="2">
-          <Typography v-if="helperText" color="subtle" variant="body-small">
-            {{ helperText }}
-          </Typography>
-          <Typography v-if="titleText" variant="h5">{{ titleText }}</Typography>
-        </Stack>
-      </Column>
-      <Column width="content">
-        <Box marginRight="-xxsmall" marginTop="-xxsmall">
-          <Button
-            iconName="close"
-            iconSize="large"
-            variant="text"
-            @click.native="onCloseModal"
-          />
-        </Box>
-      </Column>
-    </Columns>
+    <Box paddingX="gutter">
+      <Columns space="6">
+        <Column>
+          <Stack space="2">
+            <Typography v-if="helperText" color="subtle" variant="body-small">
+              {{ helperText }}
+            </Typography>
+            <Typography v-if="titleText" variant="h5">{{
+              titleText
+            }}</Typography>
+          </Stack>
+        </Column>
+        <Column width="content">
+          <Box marginRight="-xxsmall" marginTop="-xxsmall">
+            <Button
+              iconName="close"
+              iconSize="large"
+              variant="text"
+              @click.native="onCloseModal"
+            />
+          </Box>
+        </Column>
+      </Columns>
+    </Box>
   </header>
 </template>
 

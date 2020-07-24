@@ -4,7 +4,7 @@
     :class="{ 'modal--is-open': isOpen }"
     @click.self="handleBackgroundClick"
   >
-    <Box class="modal__window" padding="gutter">
+    <Box class="modal__window" paddingY="gutter">
       <Stack space="gutter">
         <ModalHeader
           :helperText="helperText"
@@ -16,16 +16,18 @@
           <Box
             v-if="confirmations.length"
             backgroundColor="offwhite"
+            marginTop="gutter"
+            padding="gutter"
             class="modal__confirmations"
           >
             <Checkbox
               v-for="(confirmation, index) of confirmations"
               :key="index"
-              :isChecked="confirmation.isChecked"
+              :isChecked="isChecked(index)"
               :onIsCheckedChange="
                 ($event) => handleConfirmationChange(index, $event)
               "
-              :text="confirmation.text"
+              :text="confirmation"
             />
           </Box>
         </div>
@@ -113,20 +115,35 @@ export default {
       type: String,
     },
   },
+  data: () => ({
+    checked: [],
+  }),
   computed: {
     canConfirm() {
-      return this.confirmations.every(
-        (confirmation) => confirmation.isChecked === true,
-      )
+      return this.checked.length === this.confirmations.length
     },
   },
   methods: {
+    add(index) {
+      if (this.checked.indexOf(index) === -1) {
+        this.checked.push(index)
+      }
+    },
+
     handleBackgroundClick() {
       this.onIsOpenChange(false)
     },
 
-    handleConfirmationChange(index, hasAgreed) {
-      this.confirmations[index].isChecked = hasAgreed
+    handleConfirmationChange(index, add) {
+      return add ? this.add(index) : this.remove(index)
+    },
+
+    isChecked(index) {
+      return Boolean(this.checked.filter((c) => c === index).length)
+    },
+
+    remove(index) {
+      this.checked = this.checked.filter((c) => c !== index)
     },
   },
 }
@@ -140,7 +157,7 @@ export default {
   @apply rounded bg-white flex flex-col w-11/12 max-w-3xl mx-auto shadow-lg z-50 overflow-y-auto;
 }
 .modal__confirmations {
-  @apply p-6 mt-4 -mx-6 border-t border-b border-border;
+  @apply border-t border-b border-border;
 }
 .modal--is-open {
   @apply pointer-events-auto opacity-100;

@@ -6,9 +6,9 @@ export default () => ({
   components: { Modal },
   data: () => ({
     confirmations: [
-      { isChecked: false, text: 'You will be cold' },
-      { isChecked: false, text: 'You will have to get up' },
-      { isChecked: false, text: 'This action cannot be undone' },
+      'You will be cold',
+      'You will have to get up',
+      'This action cannot be undone',
     ],
   }),
   template: `
@@ -23,7 +23,7 @@ export default () => ({
         :onConfirm="onConfirm"
         :onIsOpenChange="onIsOpenChange"
         titleText="Remove Blanket">
-        Are you sure you want to remove the blanket?
+        <div class="px-6">Are you sure you want to remove the blanket?</div>
       </Modal>
     </div>
   `,

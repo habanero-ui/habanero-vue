@@ -6,6 +6,10 @@ Spur's Design System and Component Library
 
 # Roadmap
 
+## Known Issues
+
+- Date/Time Picker inputs clear out when label/helper/error text changes.
+
 ## New Components
 
 - [ ] FileUpload
@@ -14,13 +18,13 @@ Spur's Design System and Component Library
 ## Misc
 
 - [ ] Prevent clicking in custom DataTable cell components like Checkbox + Action from triggering row selection
-- [ ] Add "With Image" for ListItem component
 - [ ] Add count bubble for Tab component
 - [ ] Build a landing page for Habanero
 - [ ] Add dynamic stories, separate from `*Default` stories: Checkbox, Drawer, RadioButton, RadioGroup, Slideover, Tabs, and Toggle
 - [ ] Think about updating both Checkbox and Toggle checked to be either both black or both blue
 - [ ] Update `README.md` with useful info + branding
 - [ ] Update Select component to be custom, not native
+- [ ] Establish z-index ordering for elements (so far `Modal`, `Select`, and `Spinner` leverage style)
 
 # Discussion Points
 

@@ -1,34 +1,38 @@
 <template>
   <footer v-if="onCancel || onConfirm" class="modal-footer">
-    <Columns space="6">
-      <Column v-if="onCancel">
-        <Button
-          :disabled="isCancelDisabled"
-          :text="cancelText"
-          variant="secondary"
-          @click.native="onCancel"
-        />
-      </Column>
-      <Column v-if="onConfirm">
-        <Button
-          :color="confirmColor"
-          :disabled="isConfirmDisabled"
-          :isLoading="isConfirmLoading"
-          :text="confirmText"
-          @click.native="onConfirm"
-        />
-      </Column>
-    </Columns>
+    <Box paddingX="gutter">
+      <Columns space="6">
+        <Column v-if="onCancel">
+          <Button
+            :disabled="isCancelDisabled"
+            :text="cancelText"
+            variant="secondary"
+            @click.native="onCancel"
+          />
+        </Column>
+        <Column v-if="onConfirm">
+          <Button
+            :color="confirmColor"
+            :disabled="isConfirmDisabled"
+            :isLoading="isConfirmLoading"
+            :text="confirmText"
+            @click.native="onConfirm"
+          />
+        </Column>
+      </Columns>
+    </Box>
   </footer>
 </template>
 
 <script>
+import Box from '../Box/index'
 import Button from '../Button/index'
 import Column from '../Column/index'
 import Columns from '../Columns/index'
 
 export default {
   components: {
+    Box,
     Button,
     Column,
     Columns,

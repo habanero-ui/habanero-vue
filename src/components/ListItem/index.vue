@@ -7,6 +7,13 @@
     :showInteractionOverlay="isActionable"
   >
     <Columns class="flex-1" alignY="center" space="gutter">
+      <Column v-if="isAvatarVisible" width="content">
+        <Avatar
+          :firstName="avatarFirstName"
+          :image="avatarImage"
+          :lastName="avatarLastName"
+        />
+      </Column>
       <Column v-if="iconName" width="content"><Icon :name="iconName" /></Column>
       <Column>
         <Stack space="xxsmall">
@@ -34,6 +41,7 @@
 </template>
 
 <script>
+import Avatar from '../Avatar/index'
 import Box from '../Box/index'
 import Column from '../Column/index'
 import Columns from '../Columns/index'
@@ -42,8 +50,20 @@ import Stack from '../Stack/index'
 import Typography from '../Typography/index'
 
 export default {
-  components: { Box, Column, Columns, Icon, Stack, Typography },
+  components: { Avatar, Box, Column, Columns, Icon, Stack, Typography },
   props: {
+    avatarFirstName: {
+      default: '',
+      type: String,
+    },
+    avatarImage: {
+      default: '',
+      type: String,
+    },
+    avatarLastName: {
+      default: '',
+      type: String,
+    },
     iconName: {
       default: undefined,
       type: String,
@@ -75,6 +95,11 @@ export default {
     tertiaryText: {
       default: undefined,
       type: String,
+    },
+  },
+  computed: {
+    isAvatarVisible() {
+      return this.avatarFirstName || this.avatarImage || this.avatarLastName
     },
   },
 }

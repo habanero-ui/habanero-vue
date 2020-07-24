@@ -16,7 +16,7 @@
         :marginLeft="marginLeft"
         :marginRight="marginRight"
       >
-        <Icon v-if="iconName" :name="iconName" />
+        <Icon v-if="iconName" :name="iconName" :size="iconSize" />
       </Box>
       <input
         :id="inputId"
@@ -70,6 +70,10 @@ export default {
       default: 'left',
       type: String,
       validator: getIsIconSideValid,
+    },
+    iconSize: {
+      default: 'medium',
+      type: String,
     },
     id: {
       default: '',
@@ -173,18 +177,23 @@ function getIsTypeValid(value) {
 .text-input__input {
   @apply bg-transparent border border-black px-4 transition-colors duration-300 ease-in-out outline-none w-full;
   border-radius: 0.3125rem;
-  padding-bottom: 0.5625rem;
-  padding-top: 0.5625rem;
+  line-height: 1;
+  padding-bottom: 0.75rem;
+  padding-top: 0.75rem;
 }
 .text-input__input:not([disabled]):hover {
-  @apply border-2 py-2;
+  @apply border-2;
+  padding-bottom: 0.6875rem;
   padding-left: 15px;
   padding-right: 15px;
+  padding-top: 0.6875rem;
 }
 .text-input__input:focus {
-  @apply border-2 py-2 border-info;
+  @apply border-2 border-info;
+  padding-bottom: 0.6875rem;
   padding-left: 15px;
   padding-right: 15px;
+  padding-top: 0.6875rem;
 }
 .text-input--error .text-input__input {
   @apply border-error;

@@ -44,11 +44,11 @@ export default () => ({
   template: `
     <div class="absolute inset-0">
       <Modal
-        :confirmColor="confirmColor"
         :isCancelDisabled="isCancelDisabled"
         :isConfirmDisabled="isConfirmDisabled"
         :isConfirmLoading="isConfirmLoading"
         :cancelText="cancelText"
+        :confirmColor="confirmColor"
         :confirmText="confirmText"
         :helperText="helperText"
         :isOpen="isOpen"
@@ -56,7 +56,9 @@ export default () => ({
         :onConfirm="isConfirmVisible ? onConfirm : undefined"
         :onIsOpenChange="onIsOpenChange"
         :titleText="titleText">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        <div class="px-6">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        </div>
       </Modal>
     </div>
   `,

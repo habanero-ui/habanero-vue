@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions'
-import { boolean, text } from '@storybook/addon-knobs'
+import { boolean, date, text } from '@storybook/addon-knobs'
 
 import TimePicker from '../index'
 
@@ -12,23 +12,26 @@ export default () => ({
     error: {
       default: text('error', ''),
     },
+    format: {
+      default: text('format', 'h:i K'),
+    },
     helperText: {
-      default: text('helperText', 'Enter the time your shift started'),
+      default: text('helperText', 'Some Helper Text'),
     },
     label: {
-      default: text('label', 'Start Time'),
+      default: text('label', 'Some Label Text'),
+    },
+    maxTime: {
+      default: date('maxTime', new Date('2020-01-01T20:00:00.000000Z')),
+    },
+    minTime: {
+      default: date('minTime', new Date('2020-01-01T06:00:00.000000Z')),
     },
     placeholder: {
-      default: text('placeholder', 'Select time...'),
+      default: text('placeholder', 'Some placeholder text'),
     },
-    value: {
-      default: text(
-        'value',
-        new Date().toLocaleTimeString('en-US', {
-          hour: '2-digit',
-          minute: '2-digit',
-        }),
-      ),
+    selectedDate: {
+      default: date('selectedDate', new Date('2020-01-01T12:00:00.000000Z')),
     },
   },
   template: `
@@ -36,14 +39,19 @@ export default () => ({
       <TimePicker
         :disabled="disabled"
         :error="error"
+        :format="format"
         :helperText="helperText"
         :label="label"
-        :onValueChange="onValueChange"
+        :maxTime="new Date(maxTime)"
+        :minTime="new Date(minTime)"
+        :onSelectedDateChange="onSelectedDateChange"
         :placeholder="placeholder"
-        :value="value" />
+        :selectedDate="new Date(selectedDate)"
+      />
+      <div class="mt-6">UTC: {{ new Date(selectedDate).toLocaleString("en-US", { timeZone: "UTC" }) }}</div>
     </div>
   `,
   methods: {
-    onValueChange: action('onValueChange'),
+    onSelectedDateChange: action('onSelectedDateChange'),
   },
 })

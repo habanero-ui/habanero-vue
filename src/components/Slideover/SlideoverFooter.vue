@@ -5,9 +5,15 @@
     component="footer"
     padding="gutter"
   >
-    <Columns space="4">
+    <Columns alignY="center" space="4">
       <Column v-if="onDestroy" width="content">
-        <Button color="error" :text="destroyText" @click.native="onDestroy" />
+        <Button
+          class="ml-2"
+          color="error"
+          variant="text"
+          :text="destroyText"
+          @click.native="onDestroy"
+        />
       </Column>
       <Column />
       <Column v-if="onCancel" width="content">

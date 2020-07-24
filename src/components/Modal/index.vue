@@ -13,24 +13,23 @@
         />
         <div>
           <slot />
-          <Box
-            v-if="confirmations.length"
-            backgroundColor="offwhite"
-            marginTop="gutter"
-            padding="gutter"
-            class="modal__confirmations"
-          >
-            <Checkbox
-              v-for="(confirmation, index) of confirmations"
-              :key="index"
-              :isChecked="isChecked(index)"
-              :onIsCheckedChange="
-                ($event) => handleConfirmationChange(index, $event)
-              "
-              :text="confirmation"
-            />
-          </Box>
         </div>
+        <Box
+          v-if="confirmations.length"
+          backgroundColor="offwhite"
+          padding="gutter"
+          class="modal__confirmations"
+        >
+          <Checkbox
+            v-for="(confirmation, index) of confirmations"
+            :key="index"
+            :isChecked="isChecked(index)"
+            :onIsCheckedChange="
+              ($event) => handleConfirmationChange(index, $event)
+            "
+            :text="confirmation"
+          />
+        </Box>
         <ModalFooter
           :cancelText="cancelText"
           :confirmColor="confirmColor"

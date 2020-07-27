@@ -1,48 +1,51 @@
 <template>
-  <Columns alignY="center" class="pagination" space="gutter">
-    <Column width="content">
-      <Columns alignY="center" space="xsmall">
-        <Column width="content">
-          <Button
-            :disabled="isPreviousButtonDisabled"
-            iconName="chevron-left"
-            iconSize="large"
-            variant="text"
-            @click.native="handlePreviousButtonClick"
-          />
-        </Column>
-        <Column width="content">
-          <Typography>Page {{ selectedPage }} / {{ pageCount }}</Typography>
-        </Column>
-        <Column width="content">
-          <Button
-            :disabled="isNextButtonDisabled"
-            iconName="chevron-right"
-            iconSize="large"
-            variant="text"
-            @click.native="handleNextButtonClick"
-          />
-        </Column>
-      </Columns>
-    </Column>
-    <Column>
-      <Typography color="subtle">
-        Showing {{ pageStart }} - {{ pageEnd }} of {{ itemCount }} items
-      </Typography>
-    </Column>
-  </Columns>
+  <Box class="pagination" marginLeft="-small">
+    <Columns alignY="center" space="gutter">
+      <Column width="content">
+        <Columns alignY="center" space="xsmall">
+          <Column width="content">
+            <Button
+              :disabled="isPreviousButtonDisabled"
+              iconName="chevron-left"
+              iconSize="large"
+              variant="text"
+              @click.native="handlePreviousButtonClick"
+            />
+          </Column>
+          <Column width="content">
+            <Typography>Page {{ selectedPage }} / {{ pageCount }}</Typography>
+          </Column>
+          <Column width="content">
+            <Button
+              :disabled="isNextButtonDisabled"
+              iconName="chevron-right"
+              iconSize="large"
+              variant="text"
+              @click.native="handleNextButtonClick"
+            />
+          </Column>
+        </Columns>
+      </Column>
+      <Column>
+        <Typography color="subtle">
+          Showing {{ pageStart }} - {{ pageEnd }} of {{ itemCount }} items
+        </Typography>
+      </Column>
+    </Columns>
+  </Box>
 </template>
 
 <script>
 import clamp from 'lodash/clamp'
 
+import Box from '../Box/index'
 import Button from '../Button/index'
 import Column from '../Column/index'
 import Columns from '../Columns/index'
 import Typography from '../Typography/index'
 
 export default {
-  components: { Button, Column, Columns, Typography },
+  components: { Box, Button, Column, Columns, Typography },
   props: {
     itemCount: {
       default: 1,

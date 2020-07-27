@@ -8,9 +8,10 @@
         :accept="accept"
         class="hidden mr-4"
         type="file"
+        @change="handleChange"
       />
     </label>
-    <Tag :onDelete="handleFileDelete" :text="fileName" />
+    <Tag v-if="file" :onDelete="handleFileDelete" :text="fileName" />
   </div>
 </template>
 
@@ -30,18 +31,37 @@ export default {
       default: '',
       type: String,
     },
+    onChange: {
+      default: undefined,
+      type: Function,
+    },
     text: {
       default: undefined,
       type: String,
     },
   },
   data: () => ({
+    file: null,
     fileName: '',
   }),
   methods: {
+    handleChange(event) {
+      const files = event.target.files || event.dataTransfer.files
+      const path = event.target.value
+
+      if (!files.length) {
+        return
+      }
+
+      this.file = files[0]
+      this.fileName = path.match(/[^\\/]*$/)[0]
+
+      this.$emit('onChange', this.file)
+    },
+
     handleFileDelete() {
-      /* eslint-disable no-console */
-      console.log('delete me')
+      this.file = null
+      this.fileName = ''
     },
   },
 }

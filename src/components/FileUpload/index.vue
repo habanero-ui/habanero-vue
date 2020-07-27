@@ -1,25 +1,32 @@
 <template>
-  <div>
-    <label v-if="id && text" :for="id">
-      {{ text }}
+  <Columns alignY="center" space="small">
+    <Column width="content">
+      <Button :text="text" @click.native="handleSelectFile" />
       <input
-        :id="id"
-        :ref="id"
+        ref="fileUpload"
         :accept="accept"
         class="hidden mr-4"
         type="file"
         @change="handleChange"
       />
-    </label>
-    <Tag v-if="file" :onDelete="handleFileDelete" :text="fileName" />
-  </div>
+    </Column>
+    <Column width="fluid">
+      <Tag v-if="file" :onDelete="handleFileDelete" :text="fileName" />
+    </Column>
+  </Columns>
 </template>
 
 <script>
+import Button from '../Button/index'
+import Column from '../Column/index'
+import Columns from '../Columns/index'
 import Tag from '../Tag/index'
 
 export default {
   components: {
+    Button,
+    Column,
+    Columns,
     Tag,
   },
   props: {
@@ -27,16 +34,12 @@ export default {
       default: undefined,
       type: String,
     },
-    id: {
-      default: '',
-      type: String,
-    },
     onChange: {
       default: undefined,
       type: Function,
     },
     text: {
-      default: undefined,
+      default: 'Select File',
       type: String,
     },
   },
@@ -62,6 +65,10 @@ export default {
     handleFileDelete() {
       this.file = null
       this.fileName = ''
+    },
+
+    handleSelectFile() {
+      this.$refs.fileUpload.click()
     },
   },
 }

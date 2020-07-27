@@ -1,25 +1,29 @@
 <template>
-  <Columns alignY="center" class="pagination" space="medium">
+  <Columns alignY="center" class="pagination" space="gutter">
     <Column width="content">
-      <Button
-        :disabled="isPreviousButtonDisabled"
-        iconName="chevron-left"
-        iconSize="large"
-        variant="text"
-        @click.native="handlePreviousButtonClick"
-      />
-    </Column>
-    <Column width="content">
-      <Typography>Page {{ selectedPage }} / {{ pageCount }}</Typography>
-    </Column>
-    <Column width="content">
-      <Button
-        :disabled="isNextButtonDisabled"
-        iconName="chevron-right"
-        iconSize="large"
-        variant="text"
-        @click.native="handleNextButtonClick"
-      />
+      <Columns alignY="center" space="xsmall">
+        <Column width="content">
+          <Button
+            :disabled="isPreviousButtonDisabled"
+            iconName="chevron-left"
+            iconSize="large"
+            variant="text"
+            @click.native="handlePreviousButtonClick"
+          />
+        </Column>
+        <Column width="content">
+          <Typography>Page {{ selectedPage }} / {{ pageCount }}</Typography>
+        </Column>
+        <Column width="content">
+          <Button
+            :disabled="isNextButtonDisabled"
+            iconName="chevron-right"
+            iconSize="large"
+            variant="text"
+            @click.native="handleNextButtonClick"
+          />
+        </Column>
+      </Columns>
     </Column>
     <Column>
       <Typography color="subtle">

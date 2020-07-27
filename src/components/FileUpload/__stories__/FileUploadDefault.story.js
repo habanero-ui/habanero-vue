@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions'
 import { text } from '@storybook/addon-knobs'
 
 import FileUpload from '../index'
@@ -11,9 +12,6 @@ export default () => ({
         'image/x-png,application/pdf,image/jpeg,image/jpg',
       ),
     },
-    id: {
-      default: text('id', 'file'),
-    },
     text: {
       default: text('text', 'Select File'),
     },
@@ -22,10 +20,12 @@ export default () => ({
     <div class="flex justify-start p-6">
       <FileUpload
         :accept="accept"
-        :id="id"
+        :onChange="onChange"
         :text="text"
       />
     </div>
   `,
-  methods: {},
+  methods: {
+    onChange: action('onChange'),
+  },
 })

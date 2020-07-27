@@ -1,7 +1,7 @@
 <template>
   <Columns alignY="center" space="small">
     <Column width="content">
-      <Button :text="text" @click.native="handleSelectFile" />
+      <Button :text="text" @click.native="handleFileSelect" />
       <input
         ref="fileUpload"
         :accept="accept"
@@ -45,33 +45,33 @@ export default {
   },
   data: () => ({
     file: null,
-    fileName: '',
   }),
+  computed: {
+    fileName() {
+      return this.file.name
+    },
+  },
   methods: {
     handleChange(event) {
       const files = event.target.files || event.dataTransfer.files
-      const path = event.target.value
 
       if (!files.length) {
         return
       }
 
       this.file = files[0]
-      this.fileName = path.match(/[^\\/]*$/)[0]
 
-      this.$emit('onChange', this.file)
+      this.onChange(this.file)
     },
 
     handleFileDelete() {
       this.file = null
-      this.fileName = ''
+      this.$refs.fileUpload.value = null
     },
 
-    handleSelectFile() {
+    handleFileSelect() {
       this.$refs.fileUpload.click()
     },
   },
 }
 </script>
-
-<style scoped></style>

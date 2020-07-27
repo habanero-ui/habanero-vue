@@ -12,7 +12,6 @@ Spur's Design System and Component Library
 
 ## New Components
 
-- [ ] FileUpload
 - [ ] Tooltip
 
 ## Misc

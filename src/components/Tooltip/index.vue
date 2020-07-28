@@ -19,6 +19,9 @@
 </template>
 
 <script>
+/* TODO: get placement of tooltip right... weird */
+/* TODO: on tooltip story... pass HTML... maybe... idk */
+
 import { createPopper } from '@popperjs/core'
 import includes from 'lodash/includes'
 
@@ -89,7 +92,6 @@ function getIsPlacementValid(value) {
 .tooltip__target {
   @apply inline-block;
 }
-
 .tooltip__tip {
   background-color: #333;
   color: white;

@@ -1,18 +1,19 @@
 <template>
-  <div>
-    <button
-      ref="button"
+  <div class="tooltip">
+    <div ref="tooltip" class="tooltip__tip" role="tooltip">
+      <slot name="tooltip" />
+      <div class="tooltip__arrow" data-popper-arrow></div>
+    </div>
+    <div
+      ref="target"
       aria-describedby="tooltip"
+      class="tooltip__target"
       @blur="hide"
       @focus="show"
       @mouseenter="show"
       @mouseleave="hide"
     >
-      I'm a button
-    </button>
-    <div id="tooltip" ref="tooltip" class="tooltip" role="tooltip">
-      I'm a tooltip
-      <div id="arrow" data-popper-arrow></div>
+      <slot name="target" />
     </div>
   </div>
 </template>
@@ -54,7 +55,7 @@ export default {
     },
 
     updatePopper() {
-      this.popper = createPopper(this.$refs.button, this.$refs.tooltip, {
+      this.popper = createPopper(this.$refs.target, this.$refs.tooltip, {
         modifiers: [
           {
             name: 'offset',
@@ -85,7 +86,11 @@ function getIsPlacementValid(value) {
 </script>
 
 <style scoped>
-#tooltip {
+.tooltip__target {
+  @apply inline-block;
+}
+
+.tooltip__tip {
   background-color: #333;
   color: white;
   padding: 5px 10px;
@@ -93,34 +98,34 @@ function getIsPlacementValid(value) {
   font-size: 13px;
   display: none;
 }
-#tooltip[data-show] {
+.tooltip__tip[data-show] {
   display: block;
 }
-#arrow,
-#arrow::before {
+.tooltip__arrow,
+.tooltip__arrow::before {
   position: absolute;
   width: 8px;
   height: 8px;
   z-index: -1;
 }
-#arrow::before {
+.tooltip__arrow::before {
   content: '';
   transform: rotate(45deg);
   background: #333;
 }
-#tooltip[data-popper-placement^='top'] > #arrow {
+.tooltip__tip[data-popper-placement^='top'] > .tooltip__arrow {
   bottom: -4px;
 }
 
-#tooltip[data-popper-placement^='bottom'] > #arrow {
+.tooltip__tip[data-popper-placement^='bottom'] > .tooltip__arrow {
   top: -4px;
 }
 
-#tooltip[data-popper-placement^='left'] > #arrow {
+.tooltip__tip[data-popper-placement^='left'] > .tooltip__arrow {
   right: -4px;
 }
 
-#tooltip[data-popper-placement^='right'] > #arrow {
+.tooltip__tip[data-popper-placement^='right'] > .tooltip__arrow {
   left: -4px;
 }
 </style>

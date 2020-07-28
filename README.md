@@ -20,7 +20,6 @@ Spur's Design System and Component Library
 - [ ] Add count bubble for Tab component
 - [ ] Build a landing page for Habanero
 - [ ] Add dynamic stories, separate from `*Default` stories: Checkbox, Drawer, RadioButton, RadioGroup, Slideover, Tabs, and Toggle
-- [ ] Think about updating both Checkbox and Toggle checked to be either both black or both blue
 - [ ] Update `README.md` with useful info + branding
 - [ ] Update Select component to be custom, not native
 - [ ] Establish z-index ordering for elements (so far `Modal`, `Select`, and `Spinner` leverage style)

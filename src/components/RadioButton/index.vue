@@ -101,7 +101,7 @@ export default {
   left: -9999px;
 }
 .radio-button__ring {
-  @apply relative flex items-center justify-center h-5 w-5 border-2 border-black rounded-full;
+  @apply relative flex items-center justify-center h-5 w-5 border-2 border-subtle rounded-full;
 }
 .radio-button__ring::after {
   @apply absolute border-2 border-transparent rounded-full transition-colors duration-150 ease-in-out;
@@ -110,9 +110,12 @@ export default {
   width: 1.5rem;
 }
 .radio-button__dot {
-  @apply h-3 w-3 bg-black rounded-full;
+  @apply h-3 w-3 bg-info rounded-full;
   transform: scale(0);
   transition: transform 150ms ease-in-out;
+}
+.radio-button--is-checked .radio-button__ring {
+  @apply border-info;
 }
 .radio-button--is-checked .radio-button__dot {
   transform: scale(1);

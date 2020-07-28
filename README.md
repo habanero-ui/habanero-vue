@@ -10,10 +10,6 @@ Spur's Design System and Component Library
 
 - Date/Time Picker inputs clear out when label/helper/error text changes.
 
-## New Components
-
-- [ ] Tooltip
-
 ## Misc
 
 - [ ] Prevent clicking in custom DataTable cell components like Checkbox + Action from triggering row selection

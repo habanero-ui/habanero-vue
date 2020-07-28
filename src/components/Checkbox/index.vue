@@ -107,7 +107,7 @@ export default {
   left: -9999px;
 }
 .checkbox__box {
-  @apply relative flex items-center justify-center h-5 w-5 border-2 border-black rounded-sm;
+  @apply relative flex items-center justify-center h-5 w-5 border-2 border-subtle rounded-sm;
 }
 .checkbox__box::after {
   @apply absolute border-2 border-transparent rounded-sm transition-colors duration-150 ease-in-out;
@@ -116,9 +116,12 @@ export default {
   width: 1.5rem;
 }
 .checkbox__check {
-  @apply relative h-5 w-5 bg-black rounded-sm;
+  @apply relative h-5 w-5 bg-info rounded-sm;
   transform: scale(0);
   transition: transform 150ms ease-in-out;
+}
+.checkbox--is-checked .checkbox__box {
+  @apply border-info;
 }
 .checkbox--is-checked .checkbox__check {
   transform: scale(1);

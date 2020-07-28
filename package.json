@@ -12,6 +12,7 @@
     "start": "start-storybook -p 6006"
   },
   "dependencies": {
+    "@popperjs/core": "^2.4.4",
     "core-js": "^3.6.4",
     "flatpickr": "^4.6.3",
     "lodash": "^4.17.15",

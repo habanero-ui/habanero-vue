@@ -58,7 +58,6 @@ export default {
       content: this.$refs.content,
       interactive: true,
       placement: this.placement,
-      showOnCreate: true,
       theme: 'habanero',
     })
   },
@@ -88,8 +87,7 @@ function getIsPlacementValid(value) {
   @apply outline-none;
 }
 .tippy-box[data-theme~='habanero'] {
-  @apply bg-offwhite p-0 border border-solid border-border;
-  color: inherit;
+  @apply bg-offwhite text-black p-0 border border-solid border-border;
 }
 .tippy-box[data-theme~='habanero'] .tippy-content {
   @apply p-0;
@@ -100,20 +98,4 @@ function getIsPlacementValid(value) {
 .tippy-box[data-theme~='habanero'] > .tippy-svg-arrow > svg:last-child {
   fill: theme('colors.offwhite');
 }
-/* .tippy-box[data-theme~='habanero'][data-placement^='top']
-  > .tippy-arrow::before {
-  border-top-color: theme('colors.offwhite');
-}
-.tippy-box[data-theme~='habanero'][data-placement^='bottom']
-  > .tippy-arrow::before {
-  border-bottom-color: theme('colors.offwhite');
-}
-.tippy-box[data-theme~='habanero'][data-placement^='left']
-  > .tippy-arrow::before {
-  border-left-color: theme('colors.offwhite');
-}
-.tippy-box[data-theme~='habanero'][data-placement^='right']
-  > .tippy-arrow::before {
-  border-right-color: theme('colors.offwhite');
-} */
 </style>

@@ -5,33 +5,31 @@
       class="button__content"
       :showInteractionOverlay="!disabled"
     >
-      <slot>
-        <Typography
-          v-if="text"
-          class="button__text"
-          :class="{ invisible: isLoading }"
-          :color="color"
-          :colorIsBackground="variant === 'primary'"
-          variant="button"
-        >
-          {{ text }}
-        </Typography>
-        <Icon
-          v-if="iconName"
-          class="button__icon"
-          :class="{ invisible: isLoading }"
-          :color="color"
-          :colorIsBackground="variant === 'primary'"
-          :name="iconName"
-          :size="iconSize || size"
-        />
-        <Spinner
-          v-if="isLoading"
-          :color="color"
-          :colorIsBackground="variant === 'primary'"
-          style="position: absolute;"
-        />
-      </slot>
+      <Typography
+        v-if="text"
+        class="button__text"
+        :class="{ invisible: isLoading }"
+        :color="color"
+        :colorIsBackground="variant === 'primary'"
+        :variant="textVariant"
+      >
+        {{ text }}
+      </Typography>
+      <Icon
+        v-if="iconName"
+        class="button__icon"
+        :class="{ invisible: isLoading }"
+        :color="color"
+        :colorIsBackground="variant === 'primary'"
+        :name="iconName"
+        :size="iconSize || size"
+      />
+      <Spinner
+        v-if="isLoading"
+        :color="color"
+        :colorIsBackground="variant === 'primary'"
+        style="position: absolute;"
+      />
     </Box>
   </button>
 </template>
@@ -88,6 +86,10 @@ export default {
     },
     text: {
       default: undefined,
+      type: String,
+    },
+    textVariant: {
+      default: 'button',
       type: String,
     },
     type: {

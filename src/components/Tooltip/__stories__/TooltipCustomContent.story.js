@@ -22,12 +22,11 @@ export default () => ({
                 <Button
                   color="info"
                   size="small"
+                  text="Action"
+                  textVariant="body-extra-small"
                   variant="text"
-                  @click.native="onActionClick">
-                  <Typography color="info" variant="label-small">
-                    Action
-                  </Typography>
-                </Button>
+                  @click.native="onActionClick"
+                />
               </div>
             </Stack>
           </Box>

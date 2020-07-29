@@ -1,28 +1,23 @@
 import { select, text } from '@storybook/addon-knobs'
 
 import placements from '../../../constants/tooltipPlacements'
+import Typography from '../../Typography/index'
 import Tooltip from '../index'
 
 export default () => ({
-  components: { Tooltip },
+  components: { Tooltip, Typography },
   props: {
     placement: {
-      default: select('placement', placements, 'bottom'),
+      default: select('placement', placements, 'top'),
     },
-    tooltip: {
-      default: text(
-        'tooltip',
-        '<ul><li>Drive sober or get pulled over</li></ul>',
-      ),
+    text: {
+      default: text('text', 'Drive sober or get pulled over'),
     },
   },
   template: `
-    <div class="flex justify-start p-6">
-      <Tooltip :placement="placement">
-        <template slot="target">
-          <div>I'm a tooltip, hover over me</div>
-        </template>
-        <template slot="tooltip">{{ tooltip }}</template>
+    <div class="absolute inset-0 flex items-center justify-center">
+      <Tooltip :placement="placement" :text="text">
+        <Typography>Hover Me!</Typography>
       </Tooltip>
     </div>
   `,

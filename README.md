@@ -22,6 +22,10 @@ Spur's Design System and Component Library
 
 # Discussion Points
 
+## Alerts/Warnings
+
+- Should we create a component for alerts/warning after an input?
+
 ## Global Styles
 
 - To make the hover states lighter to match the Zeplin designs, should we use a different background color or opacty?

@@ -195,6 +195,16 @@ function getIsTypeValid(value) {
   padding-right: 15px;
   padding-top: 0.6875rem;
 }
+.text-input__input::-moz-placeholder {
+  @apply text-subtle;
+  opacity: 1;
+}
+.text-input__input:-ms-input-placeholder {
+  @apply text-subtle;
+}
+.text-input__input::-webkit-input-placeholder {
+  @apply text-subtle;
+}
 .text-input--error .text-input__input {
   @apply border-error;
 }

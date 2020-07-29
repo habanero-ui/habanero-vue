@@ -10,7 +10,7 @@ export default () => ({
   components: { Box, Button, Stack, Tooltip, Typography },
   template: `
     <div class="absolute inset-0 flex items-center justify-center">
-      <Tooltip :placement="placement" :text="text">
+      <Tooltip isContentInteractive>
         <Typography>Hover Me!</Typography>
         <template slot="content">
           <Box padding="medium">
@@ -31,7 +31,7 @@ export default () => ({
               </div>
             </Stack>
           </Box>
-        </
+        </template>
       </Tooltip>
     </div>
   `,

@@ -27,6 +27,10 @@ import Typography from '../Typography/index'
 export default {
   components: { Box, Typography },
   props: {
+    isContentInteractive: {
+      default: false,
+      type: Boolean,
+    },
     isOpen: {
       default: false,
       type: Boolean,
@@ -56,7 +60,7 @@ export default {
     this.tippy = tippy(this.$el, {
       arrow: roundArrow + roundArrow,
       content: this.$refs.content,
-      interactive: true,
+      interactive: this.isContentInteractive,
       placement: this.placement,
       theme: 'habanero',
     })

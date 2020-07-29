@@ -11,7 +11,7 @@
         :class="{ invisible: isLoading }"
         :color="color"
         :colorIsBackground="variant === 'primary'"
-        variant="button"
+        :variant="textVariant"
       >
         {{ text }}
       </Typography>
@@ -86,6 +86,10 @@ export default {
     },
     text: {
       default: undefined,
+      type: String,
+    },
+    textVariant: {
+      default: 'button',
       type: String,
     },
     type: {

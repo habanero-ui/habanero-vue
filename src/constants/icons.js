@@ -22,6 +22,7 @@ export default [
   'child',
   'close',
   'currency',
+  'edit',
   'error',
   'eye',
   'face-happy',

@@ -7,6 +7,7 @@ export default () => ({
   data: () => ({
     actions: ['check', 'close', 'minus', 'plus', 'swap', 'search'],
     arrows: ['arrow-up', 'arrow-down', 'arrow-left', 'arrow-right'],
+    boxes: ['edit', 'new-window'],
     calendars: ['calendar-date', 'calendar-time'],
     chevrons: ['chevron-up', 'chevron-down', 'chevron-left', 'chevron-right'],
     clocks: ['time-clock', 'time-money', 'time-progress'],
@@ -24,7 +25,6 @@ export default () => ({
       'luggage',
       'map-pin',
       'medical',
-      'new-window',
       'options',
       'settings',
       'speaker',
@@ -64,6 +64,9 @@ export default () => ({
   }),
   template: `
     <div class="p-6">
+      <div class="flex items-center mb-6">
+        <Icon v-for="box in boxes" :key="box" :name="box" class="mr-4" />
+      </div>
       <div class="flex items-center mb-6">
         <Icon v-for="calendar in calendars" :key="calendar" :name="calendar" class="mr-4" />
       </div>

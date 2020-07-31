@@ -4,26 +4,34 @@
       <slot />
     </div>
     <div :id="`habanero-menu-${id}`" ref="content" class="menu__content">
-      <slot name="content">
-        <Box padding="xsmall">
-          <Typography class="block" variant="body-extra-small">
-            {{ text }}
-          </Typography>
-        </Box>
-      </slot>
+      <Stack :showDividers="true">
+        <ListItem
+          v-for="item in items"
+          :key="item.text"
+          :primaryText="item.text"
+        />
+      </Stack>
     </div>
   </div>
 </template>
 
 <script>
+import forEach from 'lodash/forEach'
 import uniqueId from 'lodash/uniqueId'
 import tippy from 'tippy.js'
 
-import Box from '../Box/index'
-import Typography from '../Typography/index'
+import ListItem from '../ListItem/index'
+import Stack from '../Stack/index'
 
 export default {
-  components: { Box, Typography },
+  components: { ListItem, Stack },
+  props: {
+    items: {
+      default: () => [],
+      type: Array,
+      validator: getIsItemsValid,
+    },
+  },
   data: () => ({
     id: uniqueId(),
     tippy: undefined,
@@ -45,6 +53,25 @@ export default {
       trigger: 'click',
     })
   },
+}
+
+function getIsItemsValid(data) {
+  let isValid = true
+
+  forEach(data, (item) => {
+    if (!item.text) {
+      isValid = false
+    }
+  })
+
+  if (!isValid) {
+    // eslint-disable-next-line no-console
+    console.error(
+      'Menu: Each array item in the "items" prop must have a "text" key.',
+    )
+  }
+
+  return isValid
 }
 </script>
 

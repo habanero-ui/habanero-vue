@@ -9,24 +9,23 @@ import Menu from '../index'
 export default () => ({
   components: { Box, Button, ListItem, Menu, Stack },
   data: () => ({
-    items: ['Download CSV', 'Download XLS'],
+    items: [
+      {
+        text: 'Download CSV',
+      },
+      {
+        text: 'Download XLS',
+      },
+    ],
   }),
   template: `
     <div class="absolute inset-0 flex items-center justify-center">
-      <Menu>
-        <Button iconName="chevron-down" text="Download" variant="secondary" />
-        <template slot="content">
-          <Box>
-            <Stack :showDividers="true">
-              <ListItem
-                v-for="item in items"
-                :key="item"
-                :primaryText="item"
-                @click.native="action"
-              />
-            </Stack>
-          </Box>
-        </template>
+      <Menu :items="items">
+        <Button
+          iconName="menu"
+          iconSize="medium"
+          size="medium"
+          variant="text" />
       </Menu>
     </div>
   `,

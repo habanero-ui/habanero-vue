@@ -6,8 +6,8 @@ export default () => ({
     <div class="flex justify-start p-6">
       <div>
         <Button
-          iconName="minus"
-          iconSize="medium"
+          iconName="bell"
+          iconSize="small"
           size="medium"
           variant="text"
         />

@@ -307,7 +307,7 @@ export default {
 .multi-select__input-wrapper {
   @apply relative;
 }
-.multi-select:not(.multi-select--open) .multi-select__input-wrapper {
+.multi-select:not(.multi-select--open) .multi-select__input {
   @apply pointer-events-none;
 }
 .multi-select__tags {

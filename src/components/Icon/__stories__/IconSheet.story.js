@@ -11,21 +11,23 @@ export default () => ({
     calendars: ['calendar-date', 'calendar-time'],
     chevrons: ['chevron-up', 'chevron-down', 'chevron-left', 'chevron-right'],
     clocks: ['time-clock', 'time-money', 'time-progress'],
+    files: ['file-download', 'file-upload', 'file-paper-check'],
     objects: [
       'apartment',
       'award',
       'baby',
       'badge',
       'bell',
+      'chart',
       'currency',
-      'file-download',
-      'file-upload',
+      'explore-user',
       'flag',
       'hotel',
       'luggage',
       'map-pin',
       'medical',
       'options',
+      'scale',
       'settings',
       'speaker',
     ],
@@ -40,10 +42,10 @@ export default () => ({
       'umbrella',
     ],
     persons: [
-      'face-happy',
       'group-chat',
       'group-check',
       'group-home',
+      'user-add',
       'user-delete',
       'user-security',
       'user-star',
@@ -53,6 +55,7 @@ export default () => ({
       'bus',
       'child',
       'eye',
+      'face-happy',
       'fire',
       'parking',
       'stethoscope',
@@ -69,6 +72,9 @@ export default () => ({
       </div>
       <div class="flex items-center mb-6">
         <Icon v-for="calendar in calendars" :key="calendar" :name="calendar" class="mr-4" />
+      </div>
+      <div class="flex items-center mb-6">
+        <Icon v-for="file in files" :key="file" :name="file" class="mr-4" />
       </div>
       <div class="flex items-center mb-6">
         <Icon v-for="sort in sorts" :key="sort" :name="sort" class="mr-4" />

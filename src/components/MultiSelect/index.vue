@@ -52,23 +52,19 @@
             </Inline>
           </Box>
         </div>
-        <div class="multi-select-dropdown is-relative">
-          <div
-            v-if="!searchQueryState"
-            class="multi-select-all"
-            @click="handleSelectAllClick"
-          >
+        <div class="multi-select__popup is-relative">
+          <div v-if="!searchQueryState" @click="handleSelectAllClick">
             <Checkbox
               :isChecked="areAllItemsSelected"
               :text="`Select All (${items.length})`"
             />
           </div>
-          <ul class="multi-select-results">
-            <li
+          <ul>
+            <Box
               v-for="item in filteredItems"
               :key="getId(item)"
-              class="multi-select-result"
-              @click.stop="handleItemClick(item)"
+              component="li"
+              @click.native.stop="handleItemClick(item)"
             >
               <div class="py-3">
                 <Checkbox
@@ -76,13 +72,14 @@
                   :text="getText(item)"
                 />
               </div>
-            </li>
-            <li
+            </Box>
+            <Box
               v-if="!filteredItems.length"
               class="multi-select-result text-grey-400"
+              component="li"
             >
               No results matching "{{ searchQueryState }}"
-            </li>
+            </Box>
           </ul>
         </div>
       </FormGroup>
@@ -92,9 +89,9 @@
 
 <script>
 import fuzzysort from 'fuzzysort'
+import every from 'lodash/every'
 import filter from 'lodash/filter'
 import includes from 'lodash/includes'
-import isEqual from 'lodash/isEqual'
 import map from 'lodash/map'
 import sortBy from 'lodash/sortBy'
 import take from 'lodash/take'
@@ -174,9 +171,9 @@ export default {
   }),
   computed: {
     areAllItemsSelected() {
-      const allIds = map(this.items, (item) => this.getId(item))
-
-      return isEqual(allIds, this.selectedIds)
+      return every(this.items, (item) =>
+        includes(this.selectedIds, this.getId(item)),
+      )
     },
 
     classes() {

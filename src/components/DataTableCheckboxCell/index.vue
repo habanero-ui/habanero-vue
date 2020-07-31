@@ -3,6 +3,7 @@
     <Checkbox
       :isChecked="value"
       :onIsCheckedChange="handleCheckboxIsCheckedChange"
+      @click.native="handleCheckboxClick"
     />
   </Box>
 </template>
@@ -34,6 +35,11 @@ export default {
       if (!this.column.onIsCheckedChange) return
 
       this.column.onIsCheckedChange(this.row, isChecked)
+    },
+
+    handleCheckboxClick(e) {
+      e.preventDefault()
+      e.stopPropagation()
     },
   },
 }

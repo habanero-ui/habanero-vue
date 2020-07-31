@@ -13,7 +13,7 @@ export default () => ({
   }),
   template: `
     <div class="absolute inset-0 flex items-center justify-center">
-      <Dropdown :placement="placement">
+      <Dropdown>
         <Button iconName="chevron-down" text="Download" variant="secondary" />
         <template slot="content">
           <Box>

@@ -31,10 +31,6 @@ export default {
       default: false,
       type: Boolean,
     },
-    isOpen: {
-      default: false,
-      type: Boolean,
-    },
     placement: {
       default: 'top',
       type: String,

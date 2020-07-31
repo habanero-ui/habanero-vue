@@ -28,16 +28,6 @@ import Typography from '../Typography/index'
 
 export default {
   components: { Box, Typography },
-  props: {
-    isOpen: {
-      default: false,
-      type: Boolean,
-    },
-    text: {
-      default: '',
-      type: String,
-    },
-  },
   data: () => ({
     id: uniqueId(),
     tippy: undefined,

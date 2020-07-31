@@ -1,9 +1,15 @@
 import { action } from '@storybook/addon-actions'
+import { boolean } from '@storybook/addon-knobs'
 
 import Modal from '../index'
 
 export default () => ({
   components: { Modal },
+  props: {
+    isOpen: {
+      default: boolean('isOpen', true),
+    },
+  },
   data: () => ({
     confirmations: [
       'You will be cold',
@@ -18,7 +24,7 @@ export default () => ({
         :confirmations="confirmations"
         confirmColor="error"
         confirmText="Remove"
-        :isOpen="true"
+        :isOpen="isOpen"
         :onCancel="onCancel"
         :onConfirm="onConfirm"
         :onIsOpenChange="onIsOpenChange"

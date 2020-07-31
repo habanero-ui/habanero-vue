@@ -122,6 +122,13 @@ export default {
       return this.checked.length === this.confirmations.length
     },
   },
+  watch: {
+    isOpen() {
+      if (!this.isOpen) {
+        this.checked = []
+      }
+    },
+  },
   methods: {
     add(index) {
       if (this.checked.indexOf(index) === -1) {

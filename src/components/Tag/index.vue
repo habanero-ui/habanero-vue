@@ -3,7 +3,7 @@
     backgroundColor="border"
     class="tag"
     paddingX="small"
-    :paddingY="onDelete ? 'xxsmall' : 2.25"
+    :paddingY="onDelete ? '0.5' : '1.75'"
   >
     <Columns alignY="center" space="xxsmall">
       <Column>
@@ -66,10 +66,10 @@ export default {
     },
   },
   methods: {
-    handleDeleteButtonClick() {
+    handleDeleteButtonClick(e) {
       if (!this.onDelete) return
 
-      this.onDelete(this.value)
+      this.onDelete(this.value, e)
     },
   },
 }

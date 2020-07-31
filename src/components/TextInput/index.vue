@@ -16,7 +16,13 @@
         :marginLeft="marginLeft"
         :marginRight="marginRight"
       >
-        <Icon v-if="iconName" :name="iconName" :size="iconSize" />
+        <Icon
+          v-if="iconName"
+          :class="{ 'cursor-pointer': !!onIconClick }"
+          :name="iconName"
+          :size="iconSize"
+          @click.native="onIconClick"
+        />
       </Box>
       <input
         :id="inputId"
@@ -82,6 +88,10 @@ export default {
     label: {
       default: '',
       type: String,
+    },
+    onIconClick: {
+      default: undefined,
+      type: Function,
     },
     onValueChange: {
       default: undefined,

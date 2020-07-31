@@ -299,7 +299,9 @@ function getIsMaxTagCountValid(value) {
 
   if (!isValid) {
     // eslint-disable-next-line no-console
-    console.error('MultiSelect: The "maxTagCount" prop must be one or greater.')
+    console.error(
+      'MultiSelect: The "maxTagCount" prop must be greater than or equal to one.',
+    )
   }
 
   return isValid

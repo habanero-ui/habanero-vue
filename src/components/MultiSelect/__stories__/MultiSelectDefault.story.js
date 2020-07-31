@@ -1,13 +1,28 @@
 import { action } from '@storybook/addon-actions'
-import { number, object } from '@storybook/addon-knobs'
+import { boolean, number, object, text } from '@storybook/addon-knobs'
 
 import MultiSelect from '../index'
 
 export default () => ({
   components: { MultiSelect },
   props: {
+    disabled: {
+      default: boolean('disabled', false),
+    },
+    error: {
+      default: text('error', ''),
+    },
+    helperText: {
+      default: text('helperText', 'Select some options'),
+    },
+    label: {
+      default: text('label', 'Multiple Selection'),
+    },
     maxTagCount: {
       default: number('maxTagCount', 4),
+    },
+    placeholder: {
+      default: text('placeholder', 'Search...'),
     },
     selectedIds: {
       default: object('selectedIds', [
@@ -25,9 +40,14 @@ export default () => ({
   template: `
     <div class="p-6">
       <MultiSelect
+        :disabled="disabled"
+        :error="error"
+        :helperText="helperText"
         :items="items"
+        :label="label"
         :maxTagCount="maxTagCount"
         :onSelectedIdsChange="onSelectedIdsChange"
+        :placeholder="placeholder"
         :selectedIds="selectedIds"
       />
     </div>

@@ -1,12 +1,12 @@
 <template>
-  <ClickOutsideDetector :onClickOutside="handleClickOutside">
-    <div :class="classes" @click="handleRootClick">
-      <FormGroup
-        :error="error"
-        :helperText="helperText"
-        :label="label"
-        space="xsmall"
-      >
+  <div :class="classes" @click="handleRootClick">
+    <FormGroup
+      :error="error"
+      :helperText="helperText"
+      :label="label"
+      space="xsmall"
+    >
+      <ClickOutsideDetector :onClickOutside="handleClickOutside">
         <Stack class="multi-select__content-wrapper" space="xsmall">
           <div class="multi-select__input-wrapper">
             <TextInput
@@ -97,9 +97,9 @@
             </Box>
           </Stack>
         </Stack>
-      </FormGroup>
-    </div>
-  </ClickOutsideDetector>
+      </ClickOutsideDetector>
+    </FormGroup>
+  </div>
 </template>
 
 <script>
@@ -139,6 +139,10 @@ export default {
     Typography,
   },
   props: {
+    disabled: {
+      default: false,
+      type: Boolean,
+    },
     error: {
       default: '',
       type: String,
@@ -195,8 +199,8 @@ export default {
       return [
         'multi-select',
         {
-          'multi-select__is-active': this.isOpenState,
-          'multi-select__is-filtering': !this.isOpenState,
+          'multi-select--open': this.isOpenState,
+          'multi-select--disabled': this.disabled,
         },
       ]
     },
@@ -270,6 +274,8 @@ export default {
     },
 
     handleRootClick() {
+      if (this.disabled) return
+
       this.isOpenState = true
     },
 
@@ -289,11 +295,20 @@ export default {
 </script>
 
 <style scoped>
+.multi-select--disabled {
+  @apply opacity-50 cursor-not-allowed select-none;
+}
+.multi-select:not(.multi-select--open):not(.multi-select--disabled) {
+  @apply cursor-pointer;
+}
 .multi-select__content-wrapper {
   @apply relative;
 }
 .multi-select__input-wrapper {
   @apply relative;
+}
+.multi-select:not(.multi-select--open) .multi-select__input-wrapper {
+  @apply pointer-events-none;
 }
 .multi-select__tags {
   @apply absolute left-0 top-0;
@@ -305,84 +320,4 @@ export default {
   @apply overflow-y-auto;
   max-height: 10rem;
 }
-/* .multi-select {
-  @apply relative;
-}
-
-.multi-select-search {
-  @apply relative border border-black rounded-md bg-white;
-}
-
-.multi-select-counter {
-  @apply mr-2;
-}
-
-.multi-select-all {
-  @apply flex items-center px-4 h-10 w-full border-b border-black bg-transparent;
-}
-
-.multi-select-all > label {
-  @apply flex-grow;
-}
-
-.multi-select-dropdown {
-  @apply absolute z-20 hidden overflow-hidden w-full border border-t-0 border-black rounded-b-md bg-white;
-  top: 100%;
-}
-
-.multi-select-dropdown.is-relative {
-  @apply relative;
-}
-
-.multi-select-results {
-  @apply overflow-y-scroll;
-}
-
-.multi-select-results ul {
-  @apply pl-0;
-  list-style: none;
-}
-
-.multi-select-results ul .multi-select-result {
-  @apply pl-8;
-}
-
-.multi-select-results ul ul .multi-select-result {
-  @apply pl-12;
-}
-
-.multi-select-result-heading {
-  @apply text-xl;
-}
-
-.multi-select-result {
-  @apply flex flex-col justify-center px-4 h-10;
-}
-
-.multi-select-all:hover,
-.multi-select-result:hover {
-  @apply bg-offwhite cursor-pointer;
-}
-
-.multi-select.multi-select__is-active .multi-select-search {
-  @apply rounded-b-none;
-}
-.multi-select.multi-select__is-active .multi-select-icon {
-  transform: rotate(180deg);
-}
-.multi-select.multi-select__is-active .multi-select-dropdown {
-  @apply block;
-}
-
-.multi-select.multi-select__is-filtering .multi-select__input {
-  @apply hidden;
-}
-
-.multi-select.multi-select__is-filtering .multi-select-tags {
-  @apply flex;
-}
-
-.multi-select-dropdown.is-relative {
-  @apply relative;
-} */
 </style>

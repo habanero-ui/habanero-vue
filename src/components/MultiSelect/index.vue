@@ -170,6 +170,7 @@ export default {
     maxTagCount: {
       default: 4,
       type: Number,
+      validator: getIsMaxTagCountValid,
     },
     onSelectedIdsChange: {
       default: () => {},
@@ -291,6 +292,17 @@ export default {
       this.onSelectedIdsChange(without(this.selectedIds, id))
     },
   },
+}
+
+function getIsMaxTagCountValid(value) {
+  const isValid = value >= 1
+
+  if (!isValid) {
+    // eslint-disable-next-line no-console
+    console.error('MultiSelect: The "maxTagCount" prop must be one or greater.')
+  }
+
+  return isValid
 }
 </script>
 

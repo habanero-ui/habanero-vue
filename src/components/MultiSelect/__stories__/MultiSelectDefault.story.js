@@ -10,7 +10,13 @@ export default () => ({
       default: number('maxTagCount', 4),
     },
     selectedIds: {
-      default: object('selectedIds', ['Alpha', 'Delta', 'Echo']),
+      default: object('selectedIds', [
+        'Alpha',
+        'Beta',
+        'Charlie',
+        'Delta',
+        'Echo',
+      ]),
     },
   },
   data: () => ({

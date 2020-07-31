@@ -66,10 +66,10 @@ export default {
     },
   },
   methods: {
-    handleDeleteButtonClick() {
+    handleDeleteButtonClick(e) {
       if (!this.onDelete) return
 
-      this.onDelete(this.value)
+      this.onDelete(this.value, e)
     },
   },
 }

@@ -18,6 +18,7 @@
       >
         <Icon
           v-if="iconName"
+          :class="{ 'cursor-pointer': !!onIconClick }"
           :name="iconName"
           :size="iconSize"
           @click.native="onIconClick"

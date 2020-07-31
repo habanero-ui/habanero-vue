@@ -7,81 +7,96 @@
         :label="label"
         space="xsmall"
       >
-        <div class="multi-select__input-wrapper">
-          <TextInput
-            class="multi-select__input"
-            :iconName="
-              searchQueryState.length && isOpenState ? 'close' : undefined
-            "
-            :onIconClick="handleClearSearchClick"
-            :onValueChange="handleInputValueChange"
-            :placeholder="placeholder"
-            :value="searchQueryState"
-          />
-          <Box v-if="true" class="multi-select__tags" padding="xsmall">
-            <Inline space="xsmall">
-              <template v-for="tag in tags">
-                <Tooltip
-                  v-if="tag.id === 'HABANERO_MORE_TAG'"
-                  :key="tag.id"
-                  class="cursor-default"
-                >
-                  <Tag :key="tag.id" :text="tag.text" :value="tag.id" />
-                  <template slot="content">
-                    <Box padding="small">
-                      <Stack space="xsmall">
-                        <Typography
-                          v-for="remainingTag in tag.remainingTags"
-                          :key="remainingTag.id"
-                          variant="label-small"
-                        >
-                          {{ remainingTag.text }}
-                        </Typography>
-                      </Stack>
-                    </Box>
-                  </template>
-                </Tooltip>
-                <Tag
-                  v-else
-                  :key="tag.id"
-                  :onDelete="handleTagDelete"
-                  :text="tag.text"
-                  :value="tag.id"
-                />
-              </template>
-            </Inline>
-          </Box>
-        </div>
-        <div class="multi-select__popup is-relative">
-          <div v-if="!searchQueryState" @click="handleSelectAllClick">
-            <Checkbox
-              :isChecked="areAllItemsSelected"
-              :text="`Select All (${items.length})`"
+        <Stack class="multi-select__content-wrapper" space="xsmall">
+          <div class="multi-select__input-wrapper">
+            <TextInput
+              class="multi-select__input"
+              :iconName="
+                searchQueryState.length && isOpenState ? 'close' : undefined
+              "
+              iconSide="right"
+              :onIconClick="handleClearSearchClick"
+              :onValueChange="handleInputValueChange"
+              :placeholder="placeholder"
+              :value="searchQueryState"
             />
+            <Box
+              v-if="!isOpenState"
+              class="multi-select__tags"
+              padding="xsmall"
+            >
+              <Inline space="xsmall">
+                <template v-for="tag in tags">
+                  <Tooltip
+                    v-if="tag.id === 'HABANERO_MORE_TAG'"
+                    :key="tag.id"
+                    class="cursor-default"
+                  >
+                    <Tag :key="tag.id" :text="tag.text" :value="tag.id" />
+                    <template slot="content">
+                      <Box padding="small">
+                        <Stack space="xsmall">
+                          <Typography
+                            v-for="remainingTag in tag.remainingTags"
+                            :key="remainingTag.id"
+                            variant="label-small"
+                          >
+                            {{ remainingTag.text }}
+                          </Typography>
+                        </Stack>
+                      </Box>
+                    </template>
+                  </Tooltip>
+                  <Tag
+                    v-else
+                    :key="tag.id"
+                    :onDelete="handleTagDelete"
+                    :text="tag.text"
+                    :value="tag.id"
+                  />
+                </template>
+              </Inline>
+            </Box>
           </div>
-          <ul>
+          <Stack v-if="isOpenState" class="multi-select__popup" showDividers>
             <Box
-              v-for="item in filteredItems"
-              :key="getId(item)"
-              component="li"
-              @click.native.stop="handleItemClick(item)"
+              v-if="!searchQueryState"
+              paddingX="medium"
+              paddingY="small"
+              @click.native.stop="handleSelectAllClick"
             >
-              <div class="py-3">
-                <Checkbox
-                  :isChecked="getIsSelected(item)"
-                  :text="getText(item)"
-                />
-              </div>
+              <Checkbox
+                :isChecked="areAllItemsSelected"
+                :text="`Select All (${items.length})`"
+              />
             </Box>
             <Box
-              v-if="!filteredItems.length"
-              class="multi-select-result text-grey-400"
-              component="li"
+              class="multi-select__items"
+              component="ul"
+              paddingX="medium"
+              paddingY="small"
             >
-              No results matching "{{ searchQueryState }}"
+              <Stack space="medium">
+                <Box
+                  v-for="item in filteredItems"
+                  :key="getId(item)"
+                  component="li"
+                  @click.native.stop="handleItemClick(item)"
+                >
+                  <Checkbox
+                    :isChecked="getIsSelected(item)"
+                    :text="getText(item)"
+                  />
+                </Box>
+                <Box v-if="!filteredItems.length" component="li">
+                  <Typography color="subtle">
+                    No results matching "{{ searchQueryState }}"
+                  </Typography>
+                </Box>
+              </Stack>
             </Box>
-          </ul>
-        </div>
+          </Stack>
+        </Stack>
       </FormGroup>
     </div>
   </ClickOutsideDetector>
@@ -264,7 +279,9 @@ export default {
       this.onSelectedIdsChange(this.areAllItemsSelected ? [] : allIds)
     },
 
-    handleTagDelete(id) {
+    handleTagDelete(id, e) {
+      e.stopPropagation()
+
       this.onSelectedIdsChange(without(this.selectedIds, id))
     },
   },
@@ -272,11 +289,21 @@ export default {
 </script>
 
 <style scoped>
+.multi-select__content-wrapper {
+  @apply relative;
+}
 .multi-select__input-wrapper {
   @apply relative;
 }
 .multi-select__tags {
   @apply absolute left-0 top-0;
+}
+.multi-select__popup {
+  @apply absolute bg-white border border-border rounded w-full;
+}
+.multi-select__items {
+  @apply overflow-y-auto;
+  max-height: 10rem;
 }
 /* .multi-select {
   @apply relative;

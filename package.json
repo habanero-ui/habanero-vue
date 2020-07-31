@@ -16,6 +16,7 @@
     "flatpickr": "^4.6.3",
     "fuzzysort": "1.1.4",
     "lodash": "^4.17.15",
+    "tippy.js": "6.2.6",
     "vue": "2.5.22"
   },
   "devDependencies": {

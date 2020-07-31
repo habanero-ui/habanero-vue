@@ -1,10 +1,11 @@
 import { action } from '@storybook/addon-actions'
 import { boolean, select, text } from '@storybook/addon-knobs'
 
-import variants from '../../../constants/buttonVariants'
+import buttonVariants from '../../../constants/buttonVariants'
 import colors from '../../../constants/colors'
 import icons from '../../../constants/icons'
 import iconSides from '../../../constants/iconSides'
+import textVariants from '../../../constants/textVariants'
 import Button from '../index'
 
 export default () => ({
@@ -42,8 +43,11 @@ export default () => ({
     text: {
       default: text('text', 'Text'),
     },
+    textVariant: {
+      default: select('textVariant', textVariants, 'button'),
+    },
     variant: {
-      default: select('variant', variants, 'primary'),
+      default: select('variant', buttonVariants, 'primary'),
     },
   },
   template: `
@@ -58,6 +62,7 @@ export default () => ({
           :isLoading="isLoading"
           :size="size"
           :text="text"
+          :textVariant="textVariant"
           :variant="variant"
           @click.native="action"
         />

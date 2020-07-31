@@ -31,7 +31,7 @@ export default () => ({
       default: text('placeholder', 'Some placeholder text'),
     },
     selectedDate: {
-      default: date('selectedDate', new Date('2017-10-05T00:00:00.000000Z')),
+      default: date('selectedDate', new Date('2017-10-05T17:00:00.000000Z')),
     },
   },
   template: `
@@ -46,7 +46,7 @@ export default () => ({
         :minDate="new Date(minDate)"
         :onSelectedDateChange="onSelectedDateChange"
         :placeholder="placeholder"
-        :selectedDate="selectedDate"
+        :selectedDate="new Date(selectedDate)"
       />
       <div class="mt-6">UTC: {{ new Date(selectedDate).toLocaleString("en-US", { timeZone: "UTC" }) }}</div>
     </div>

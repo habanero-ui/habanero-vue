@@ -132,13 +132,27 @@ export default {
 }
 .text-area__textarea:not([disabled]):hover {
   @apply border-2;
+  padding-bottom: 7px;
   padding-left: 15px;
   padding-right: 15px;
+  padding-top: 7px;
 }
 .text-area__textarea:focus {
   @apply border-2 border-info;
+  padding-bottom: 7px;
   padding-left: 15px;
   padding-right: 15px;
+  padding-top: 7px;
+}
+.text-area__textarea::-moz-placeholder {
+  @apply text-subtle;
+  opacity: 1;
+}
+.text-area__textarea:-ms-input-placeholder {
+  @apply text-subtle;
+}
+.text-area__textarea::-webkit-input-placeholder {
+  @apply text-subtle;
 }
 .text-area--error .text-area__textarea {
   @apply border-error;

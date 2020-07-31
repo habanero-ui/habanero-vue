@@ -8,7 +8,9 @@
         <ListItem
           v-for="item in items"
           :key="item.text"
+          :iconName="item.icon"
           :primaryText="item.text"
+          @click.native="item.onClick"
         />
       </Stack>
     </div>

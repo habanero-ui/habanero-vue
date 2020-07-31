@@ -11,9 +11,11 @@ export default () => ({
   data: () => ({
     items: [
       {
+        onClick: action('click'),
         text: 'Download CSV',
       },
       {
+        onClick: action('click'),
         text: 'Download XLS',
       },
     ],
@@ -29,7 +31,4 @@ export default () => ({
       </Menu>
     </div>
   `,
-  methods: {
-    action: action('click'),
-  },
 })

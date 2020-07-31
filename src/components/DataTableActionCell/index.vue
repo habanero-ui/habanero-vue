@@ -43,7 +43,10 @@ export default {
     },
   },
   methods: {
-    handleButtonClick() {
+    handleButtonClick(e) {
+      e.preventDefault()
+      e.stopPropagation()
+
       if (!this.column.onClick) return
 
       this.column.onClick(this.row)

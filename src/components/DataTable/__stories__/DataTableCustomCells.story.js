@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions'
 import filter from 'lodash/filter'
 import map from 'lodash/map'
 
@@ -76,6 +77,7 @@ export default () => ({
     <div class="p-6"> 
       <DataTable
         :columns="columns"
+        :onRowSelect="onRowSelect"
         :rows="rows"
       />
     </div>
@@ -90,5 +92,7 @@ export default () => ({
     handleRowDelete(changedRow) {
       this.rows = filter(this.rows, (row) => row.id !== changedRow.id)
     },
+
+    onRowSelect: action('onRowSelect'),
   },
 })

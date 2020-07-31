@@ -7,7 +7,7 @@
         :label="label"
         space="xsmall"
       >
-        <div class="multi-select-search">
+        <div class="multi-select__input-wrapper">
           <TextInput
             class="multi-select__input"
             :iconName="
@@ -18,20 +18,39 @@
             :placeholder="placeholder"
             :value="searchQueryState"
           />
-          <Inline space="xxsmall">
-            <Tag v-if="sortedSelectedItems.length > 3">
-              {{ sortedSelectedItems.length }} selected
-            </Tag>
-            <template v-else>
-              <Tag
-                v-for="item in sortedSelectedItems"
-                :key="getId(item)"
-                :onDelete="handleTagDelete"
-                :value="item"
-                :text="getText(item)"
-              />
-            </template>
-          </Inline>
+          <Box v-if="true" class="multi-select__tags" padding="xsmall">
+            <Inline space="xsmall">
+              <template v-for="tag in tags">
+                <Tooltip
+                  v-if="tag.id === 'HABANERO_MORE_TAG'"
+                  :key="tag.id"
+                  class="cursor-default"
+                >
+                  <Tag :key="tag.id" :text="tag.text" :value="tag.id" />
+                  <template slot="content">
+                    <Box padding="small">
+                      <Stack space="xsmall">
+                        <Typography
+                          v-for="remainingTag in tag.remainingTags"
+                          :key="remainingTag.id"
+                          variant="label-small"
+                        >
+                          {{ remainingTag.text }}
+                        </Typography>
+                      </Stack>
+                    </Box>
+                  </template>
+                </Tooltip>
+                <Tag
+                  v-else
+                  :key="tag.id"
+                  :onDelete="handleTagDelete"
+                  :text="tag.text"
+                  :value="tag.id"
+                />
+              </template>
+            </Inline>
+          </Box>
         </div>
         <div class="multi-select-dropdown is-relative">
           <div
@@ -78,24 +97,34 @@ import includes from 'lodash/includes'
 import isEqual from 'lodash/isEqual'
 import map from 'lodash/map'
 import sortBy from 'lodash/sortBy'
+import take from 'lodash/take'
+import takeRight from 'lodash/takeRight'
 import without from 'lodash/without'
 
 import toggleInArray from '../../helpers/toggleInArray'
+import Box from '../Box/index'
 import Checkbox from '../Checkbox/index'
 import FormGroup from '../FormGroup/index'
 import Inline from '../Inline/index'
+import Stack from '../Stack/index'
 import Tag from '../Tag/index'
 import TextInput from '../TextInput/index'
+import Tooltip from '../Tooltip/index'
+import Typography from '../Typography/index'
 import ClickOutsideDetector from './ClickOutsideDetector'
 
 export default {
   components: {
+    Box,
     Checkbox,
     ClickOutsideDetector,
     FormGroup,
     Inline,
+    Stack,
     Tag,
     TextInput,
+    Tooltip,
+    Typography,
   },
   props: {
     error: {
@@ -121,6 +150,10 @@ export default {
     label: {
       default: '',
       type: String,
+    },
+    maxTagCount: {
+      default: 4,
+      type: Number,
     },
     onSelectedIdsChange: {
       default: () => {},
@@ -176,8 +209,28 @@ export default {
       )
     },
 
-    sortedSelectedItems() {
-      return sortBy(filter(this.items, this.getIsSelected), this.getText)
+    tags() {
+      const sortedSelectedItems = sortBy(
+        filter(this.items, this.getIsSelected),
+        this.getText,
+      )
+      const allTags = map(sortedSelectedItems, (selectedItem) => ({
+        id: this.getId(selectedItem),
+        text: this.getText(selectedItem),
+      }))
+
+      if (allTags.length <= this.maxTagCount) {
+        return allTags
+      }
+
+      const remainingTagCount = allTags.length - (this.maxTagCount - 1)
+      const moreTag = {
+        id: 'HABANERO_MORE_TAG',
+        text: `${remainingTagCount} more...`,
+        remainingTags: takeRight(allTags, remainingTagCount),
+      }
+
+      return [...take(allTags, this.maxTagCount - 1), moreTag]
     },
   },
   methods: {
@@ -214,14 +267,20 @@ export default {
       this.onSelectedIdsChange(this.areAllItemsSelected ? [] : allIds)
     },
 
-    handleTagDelete(item) {
-      this.onSelectedIdsChange(without(this.selectedIds, this.getId(item)))
+    handleTagDelete(id) {
+      this.onSelectedIdsChange(without(this.selectedIds, id))
     },
   },
 }
 </script>
 
 <style scoped>
+.multi-select__input-wrapper {
+  @apply relative;
+}
+.multi-select__tags {
+  @apply absolute left-0 top-0;
+}
 /* .multi-select {
   @apply relative;
 }

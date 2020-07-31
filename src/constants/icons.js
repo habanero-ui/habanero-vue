@@ -43,6 +43,7 @@ export default [
   'luggage',
   'map-pin',
   'medical',
+  'menu',
   'minus',
   'new-window',
   'options',

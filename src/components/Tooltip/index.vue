@@ -31,10 +31,6 @@ export default {
       default: false,
       type: Boolean,
     },
-    isOpen: {
-      default: false,
-      type: Boolean,
-    },
     placement: {
       default: 'top',
       type: String,
@@ -62,7 +58,7 @@ export default {
       content: this.$refs.content,
       interactive: this.isContentInteractive,
       placement: this.placement,
-      theme: 'habanero',
+      theme: 'habanero-tooltip',
     })
   },
 }
@@ -90,16 +86,18 @@ function getIsPlacementValid(value) {
 .tooltip[tabindex='0'] {
   @apply outline-none;
 }
-.tippy-box[data-theme~='habanero'] {
+.tippy-box[data-theme~='habanero-tooltip'] {
   @apply bg-offwhite text-black p-0 border border-solid border-border;
 }
-.tippy-box[data-theme~='habanero'] .tippy-content {
+.tippy-box[data-theme~='habanero-tooltip'] .tippy-content {
   @apply p-0;
 }
-.tippy-box[data-theme~='habanero'] > .tippy-svg-arrow > svg:first-child {
+.tippy-box[data-theme~='habanero-tooltip']
+  > .tippy-svg-arrow
+  > svg:first-child {
   fill: theme('colors.border');
 }
-.tippy-box[data-theme~='habanero'] > .tippy-svg-arrow > svg:last-child {
+.tippy-box[data-theme~='habanero-tooltip'] > .tippy-svg-arrow > svg:last-child {
   fill: theme('colors.offwhite');
 }
 </style>

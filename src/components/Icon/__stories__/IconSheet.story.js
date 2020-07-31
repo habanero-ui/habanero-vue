@@ -68,6 +68,9 @@ export default () => ({
   template: `
     <div class="p-6">
       <div class="flex items-center mb-6">
+        <Icon name="menu" />
+      </div>
+      <div class="flex items-center mb-6">
         <Icon v-for="box in boxes" :key="box" :name="box" class="mr-4" />
       </div>
       <div class="flex items-center mb-6">

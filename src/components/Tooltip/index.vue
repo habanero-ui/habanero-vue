@@ -21,6 +21,7 @@ import uniqueId from 'lodash/uniqueId'
 import tippy, { roundArrow } from 'tippy.js'
 
 import placements from '../../constants/tooltipPlacements'
+import triggers from '../../constants/tooltipTriggers'
 import Box from '../Box/index'
 import Typography from '../Typography/index'
 
@@ -40,6 +41,11 @@ export default {
       default: '',
       type: String,
     },
+    trigger: {
+      default: 'mouseenter focus',
+      type: String,
+      validator: getIsTriggerValid,
+    },
   },
   data: () => ({
     id: uniqueId(),
@@ -51,14 +57,22 @@ export default {
         placement: this.placement,
       })
     },
+
+    trigger() {
+      this.tippy.setProps({
+        trigger: this.trigger,
+      })
+    },
   },
   mounted() {
     this.tippy = tippy(this.$el, {
+      appendTo: document.body,
       arrow: roundArrow + roundArrow,
       content: this.$refs.content,
       interactive: this.isContentInteractive,
       placement: this.placement,
       theme: 'habanero-tooltip',
+      trigger: this.trigger,
     })
   },
 }
@@ -71,6 +85,20 @@ function getIsPlacementValid(value) {
     console.error(
       'Tooltip: The "placement" prop must be one of the following:',
       String(placements),
+    )
+  }
+
+  return isValid
+}
+
+function getIsTriggerValid(value) {
+  const isValid = includes(triggers, value)
+
+  if (!isValid) {
+    // eslint-disable-next-line no-console
+    console.error(
+      'Tooltip: The "trigger" prop must be one of the following:',
+      String(triggers),
     )
   }
 

@@ -12,7 +12,6 @@ Spur's Design System and Component Library
 
 ## Misc
 
-- [ ] Add count bubble for Tab component
 - [ ] Build a landing page for Habanero
 - [ ] Add dynamic stories, separate from `*Default` stories: Checkbox, Drawer, RadioButton, RadioGroup, Slideover, Tabs, and Toggle
 - [ ] Update `README.md` with useful info + branding

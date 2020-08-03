@@ -11,24 +11,51 @@
     @keyup.enter.space.native="handleKeyUp"
   >
     <slot>
-      <Typography :variant="isSelected ? 'label-large' : 'body-large'">
-        {{ text || name }}
-      </Typography>
+      <Columns alignY="center" space="xsmall">
+        <Column width="content">
+          <Typography :variant="isSelected ? 'label-large' : 'body-large'">
+            {{ text || name }}
+          </Typography>
+        </Column>
+        <Column v-if="isBadgeVisible" width="content">
+          <Box marginY="-0.75">
+            <Badge :color="badgeColor" :text="badgeText" />
+          </Box>
+        </Column>
+      </Columns>
     </slot>
   </Box>
 </template>
 
 <script>
+import Badge from '../Badge'
 import Box from '../Box'
+import Column from '../Column'
+import Columns from '../Columns'
 import Typography from '../Typography'
 
 export default {
   components: {
+    Badge,
     Box,
+    Column,
+    Columns,
     Typography,
   },
   props: {
+    badgeColor: {
+      default: 'error',
+      type: String,
+    },
+    badgeText: {
+      default: '',
+      type: [Number, String],
+    },
     disabled: {
+      default: false,
+      type: Boolean,
+    },
+    isBadgeVisible: {
       default: false,
       type: Boolean,
     },

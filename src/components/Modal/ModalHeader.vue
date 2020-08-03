@@ -12,7 +12,7 @@
             }}</Typography>
           </Stack>
         </Column>
-        <Column width="content">
+        <Column v-if="onCloseModal" width="content">
           <Box marginRight="-xxsmall" marginTop="-xxsmall">
             <Button
               iconName="close"

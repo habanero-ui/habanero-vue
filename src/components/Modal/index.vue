@@ -106,7 +106,7 @@ export default {
       type: Function,
     },
     onIsOpenChange: {
-      default: () => {},
+      default: undefined,
       type: Function,
     },
     titleText: {

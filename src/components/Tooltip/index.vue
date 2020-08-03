@@ -66,6 +66,7 @@ export default {
   },
   mounted() {
     this.tippy = tippy(this.$el, {
+      appendTo: document.body,
       arrow: roundArrow + roundArrow,
       content: this.$refs.content,
       interactive: this.isContentInteractive,

@@ -19,6 +19,7 @@ export default () => ({
       'badge',
       'bell',
       'chart',
+      'cog',
       'currency',
       'explore-user',
       'flag',
@@ -63,7 +64,7 @@ export default () => ({
       'walking-aid',
     ],
     sorts: ['sort', 'sort-ascending', 'sort-descending'],
-    toasts: ['checkmark', 'error', 'info', 'warning'],
+    toasts: ['checkmark', 'error', 'help', 'info', 'warning'],
   }),
   template: `
     <div class="p-6">

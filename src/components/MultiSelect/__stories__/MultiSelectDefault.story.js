@@ -35,7 +35,20 @@ export default () => ({
     },
   },
   data: () => ({
-    items: ['Alpha', 'Beta', 'Charlie', 'Delta', 'Echo'],
+    items: [
+      'Alpha',
+      'Beta',
+      'Charlie',
+      'Delta',
+      'Echo',
+      'Foxtrot',
+      'Golf',
+      'Hotel',
+      'India',
+      'Juliet',
+      'Kilo',
+      'Lima',
+    ],
   }),
   template: `
     <div class="p-6">

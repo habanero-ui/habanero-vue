@@ -45,7 +45,7 @@ export default {
   props: {
     badgeColor: {
       default: 'error',
-      type: [Number, String],
+      type: String,
     },
     badgeText: {
       default: '',

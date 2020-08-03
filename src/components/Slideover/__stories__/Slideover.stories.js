@@ -1,5 +1,6 @@
 import Slideover from '../index'
 export { default as Default } from './SlideoverDefault.story'
+export { default as Stateful } from './SlideoverStateful.story'
 
 export default {
   title: 'Slideover',

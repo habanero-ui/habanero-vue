@@ -1,5 +1,6 @@
 import Toggle from '../index'
 export { default as Default } from './ToggleDefault.story'
+export { default as Stateful } from './ToggleStateful.story'
 export { default as TextWrapping } from './ToggleTextWrapping.story'
 
 export default {

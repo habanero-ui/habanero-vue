@@ -3,7 +3,7 @@
     <SlideoverHeader
       :backText="backText"
       :openInNewWindowText="openInNewWindowText"
-      :onBack="onIsOpenChange"
+      :onBack="handleBackClick"
       :onOpenInNewWindow="onOpenInNewWindow"
     />
     <div class="slideover__content">
@@ -80,7 +80,7 @@ export default {
       type: Function,
     },
     onIsOpenChange: {
-      default: undefined,
+      default: () => {},
       type: Function,
     },
     onOpenInNewWindow: {
@@ -90,6 +90,11 @@ export default {
     openInNewWindowText: {
       default: 'Open in new window',
       type: String,
+    },
+  },
+  methods: {
+    handleBackClick() {
+      this.onIsOpenChange(!this.isOpen)
     },
   },
 }

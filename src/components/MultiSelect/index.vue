@@ -7,7 +7,7 @@
       space="xsmall"
     >
       <ClickOutsideDetector :onClickOutside="handleClickOutside">
-        <Stack class="multi-select__content-wrapper" space="xsmall">
+        <div class="multi-select__content-wrapper">
           <div class="multi-select__input-wrapper">
             <TextInput
               class="multi-select__input"
@@ -58,45 +58,51 @@
               </Inline>
             </Box>
           </div>
-          <Stack v-if="isOpenState" class="multi-select__popup" showDividers>
-            <Box
-              v-if="!searchQueryState"
-              paddingX="medium"
-              paddingY="small"
-              @click.native.stop="handleSelectAllClick"
-            >
-              <Checkbox
-                :isChecked="areAllItemsSelected"
-                :text="`Select All (${items.length})`"
-              />
-            </Box>
-            <Box
-              class="multi-select__items"
-              component="ul"
-              paddingX="medium"
-              paddingY="small"
-            >
-              <Stack space="medium">
-                <Box
-                  v-for="item in filteredItems"
-                  :key="getId(item)"
-                  component="li"
-                  @click.native.stop="handleItemClick(item)"
-                >
-                  <Checkbox
-                    :isChecked="getIsSelected(item)"
-                    :text="getText(item)"
-                  />
-                </Box>
-                <Box v-if="!filteredItems.length" component="li">
-                  <Typography color="subtle">
-                    No results matching "{{ searchQueryState }}"
-                  </Typography>
-                </Box>
-              </Stack>
-            </Box>
-          </Stack>
-        </Stack>
+          <Box
+            v-if="isOpenState"
+            class="multi-select__popup"
+            marginTop="xsmall"
+          >
+            <Stack showDividers>
+              <Box
+                v-if="!searchQueryState"
+                paddingX="medium"
+                paddingY="small"
+                @click.native.stop="handleSelectAllClick"
+              >
+                <Checkbox
+                  :isChecked="areAllItemsSelected"
+                  :text="`Select All (${items.length})`"
+                />
+              </Box>
+              <Box
+                class="multi-select__items"
+                component="ul"
+                paddingX="medium"
+                paddingY="small"
+              >
+                <Stack space="medium">
+                  <Box
+                    v-for="item in filteredItems"
+                    :key="getId(item)"
+                    component="li"
+                    @click.native.stop="handleItemClick(item)"
+                  >
+                    <Checkbox
+                      :isChecked="getIsSelected(item)"
+                      :text="getText(item)"
+                    />
+                  </Box>
+                  <Box v-if="!filteredItems.length" component="li">
+                    <Typography color="subtle">
+                      No results matching "{{ searchQueryState }}"
+                    </Typography>
+                  </Box>
+                </Stack>
+              </Box>
+            </Stack>
+          </Box>
+        </div>
       </ClickOutsideDetector>
     </FormGroup>
   </div>
@@ -328,7 +334,7 @@ function getIsMaxTagCountValid(value) {
   @apply absolute left-0 top-0;
 }
 .multi-select__popup {
-  @apply absolute bg-white border border-border rounded w-full;
+  @apply absolute bg-white border border-border rounded w-full z-50;
 }
 .multi-select__items {
   @apply overflow-y-auto;

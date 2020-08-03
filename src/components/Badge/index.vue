@@ -34,7 +34,7 @@ export default {
     },
     text: {
       default: '',
-      type: String,
+      type: [Number, String],
     },
   },
 }

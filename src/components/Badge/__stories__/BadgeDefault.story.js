@@ -17,8 +17,8 @@ export default () => ({
     <div class="flex p-6">
       <Badge
         :color="color"
-        :text="text">
-      </Badge>
+        :text="text"
+      />
     </div>
   `,
 })

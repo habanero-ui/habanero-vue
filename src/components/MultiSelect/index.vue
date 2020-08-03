@@ -334,7 +334,7 @@ function getIsMaxTagCountValid(value) {
   @apply absolute left-0 top-0;
 }
 .multi-select__popup {
-  @apply absolute bg-white shadow-md rounded w-full z-50;
+  @apply absolute bg-white border border-border shadow rounded w-full z-50;
 }
 .multi-select__items {
   @apply overflow-y-auto;

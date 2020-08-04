@@ -16,18 +16,18 @@ export default () => ({
       'apartment',
       'award',
       'baby',
-      'badge',
       'bell',
       'chart',
       'cog',
       'currency',
-      'explore-user',
       'flag',
+      'gift',
       'hotel',
       'luggage',
       'map-pin',
       'medical',
       'options',
+      'phone',
       'scale',
       'settings',
       'speaker',
@@ -43,6 +43,8 @@ export default () => ({
       'umbrella',
     ],
     persons: [
+      'badge',
+      'explore-user',
       'group-chat',
       'group-check',
       'group-home',
@@ -99,13 +101,13 @@ export default () => ({
         <Icon v-for="action in actions" :key="action" :name="action" class="mr-4" />
       </div>
       <div class="flex items-center mb-6">
-        <Icon v-for="person in persons" :key="person" :name="person" class="mr-4" />
-      </div>
-      <div class="flex items-center mb-6">
         <Icon v-for="perk in perks" :key="perk" :name="perk" class="mr-4" />
       </div>
       <div class="flex items-center mb-6">
         <Icon v-for="saving in savings" :key="saving" :name="saving" class="mr-4" />
+      </div>
+      <div class="flex items-center mb-6">
+        <Icon v-for="person in persons" :key="person" :name="person" class="mr-4" />
       </div>
       <div class="flex items-center mb-6">
         <Icon v-for="object in objects" :key="object" :name="object" class="mr-4" />

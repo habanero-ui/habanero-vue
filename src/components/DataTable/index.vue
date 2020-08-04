@@ -1,7 +1,7 @@
 <template>
   <div class="data-table">
     <table class="data-table__table">
-      <thead>
+      <thead class="data-table__head">
         <tr class="data-table__row">
           <th
             v-for="(column, cellIndex) in columns"
@@ -155,8 +155,13 @@ function getIsSortDirectionValid(value) {
   @apply w-full text-left whitespace-no-wrap;
 }
 .data-table__row {
-  @apply border-b-2 border-border;
   transform: scale(1);
+}
+.data-table__head .data-table__row {
+  @apply border-b;
+}
+.data-table__body .data-table__row:nth-child(odd) {
+  @apply bg-offwhite;
 }
 .data-table__body .data-table__row:last-child {
   @apply border-0;

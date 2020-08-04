@@ -155,8 +155,10 @@ function getIsSortDirectionValid(value) {
   @apply w-full text-left whitespace-no-wrap;
 }
 .data-table__row {
-  @apply border-b-2 border-border;
   transform: scale(1);
+}
+.data-table__body .data-table__row:nth-child(odd) {
+  @apply bg-offwhite;
 }
 .data-table__body .data-table__row:last-child {
   @apply border-0;

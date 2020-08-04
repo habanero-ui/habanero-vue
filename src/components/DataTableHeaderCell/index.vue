@@ -6,21 +6,12 @@
   >
     <Columns alignY="center" class="flex-none" space="small">
       <Column width="content">
-        <Typography
-          class="data-table-header-cell__text"
-          color="subtle"
-          variant="label-small"
-        >
+        <Typography class="data-table-header-cell__text" variant="label-small">
           {{ column.name }}
         </Typography>
       </Column>
       <Column width="content">
-        <Icon
-          v-if="column.isSortable"
-          color="subtle"
-          :name="sortIconName"
-          size="small"
-        />
+        <Icon v-if="column.isSortable" :name="sortIconName" size="small" />
       </Column>
     </Columns>
   </Box>

@@ -43,10 +43,10 @@ export default {
     DataTableCell,
   }),
   methods: {
-    handleClick(row) {
+    handleClick(e) {
       if (!this.onRowSelect) return
 
-      this.onRowSelect(row)
+      this.onRowSelect(this.row, e)
     },
   },
 }

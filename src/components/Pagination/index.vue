@@ -27,9 +27,7 @@
         </Columns>
       </Column>
       <Column>
-        <Typography color="subtle">
-          Showing {{ pageStart }} - {{ pageEnd }} of {{ itemCount }} items
-        </Typography>
+        <Typography color="subtle">{{ showing }}</Typography>
       </Column>
     </Columns>
   </Box>
@@ -87,6 +85,12 @@ export default {
         1,
         this.itemCount,
       )
+    },
+
+    showing() {
+      return this.itemCount
+        ? `Showing ${this.pageStart} - ${this.pageEnd} of ${this.itemCount} items`
+        : `Showing ${this.itemCount} items`
     },
   },
   methods: {

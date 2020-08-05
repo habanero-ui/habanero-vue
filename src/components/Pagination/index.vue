@@ -74,7 +74,7 @@ export default {
     },
 
     pageCount() {
-      return Math.ceil(this.itemCount / this.itemsPerPage)
+      return this.itemCount ? Math.ceil(this.itemCount / this.itemsPerPage) : 1
     },
 
     pageEnd() {

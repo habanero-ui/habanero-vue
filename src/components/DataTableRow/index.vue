@@ -59,9 +59,6 @@ export default {
 .data-table-row:nth-child(odd) {
   @apply bg-offwhite;
 }
-.data-table-row:last-child {
-  @apply border-0;
-}
 .data-table__cell {
   @apply p-0 align-top;
 }

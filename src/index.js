@@ -11,6 +11,7 @@ export { default as DataTableActionCell } from './components/DataTableActionCell
 export { default as DataTableCell } from './components/DataTableCell/index.vue'
 export { default as DataTableCheckboxCell } from './components/DataTableCheckboxCell/index.vue'
 export { default as DataTableHeaderCell } from './components/DataTableHeaderCell/index.vue'
+export { default as DataTableRow } from './components/DataTableRow/index.vue'
 export { default as DatePicker } from './components/DatePicker/index.vue'
 export { default as DateTimePicker } from './components/DateTimePicker/index.vue'
 export { default as Divider } from './components/Divider/index.vue'

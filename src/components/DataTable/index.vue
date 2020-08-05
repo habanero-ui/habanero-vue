@@ -20,26 +20,14 @@
         </tr>
       </thead>
       <tbody class="data-table__body">
-        <Box
+        <component
+          :is="rowComponent || DataTableRow"
           v-for="(row, rowIndex) in rows"
           :key="getRowKey(row, rowIndex)"
-          class="data-table__row"
-          component="tr"
-          :showInteractionOverlay="!!onRowSelect"
-          @click.native="() => handleRowClick(row)"
-        >
-          <td
-            v-for="(column, cellIndex) in columns"
-            :key="cellIndex"
-            class="data-table__cell"
-          >
-            <component
-              :is="column.cellComponent || DataTableCell"
-              :column="column"
-              :row="row"
-            />
-          </td>
-        </Box>
+          :columns="columns"
+          :onRowSelect="onRowSelect"
+          :row="row"
+        />
       </tbody>
     </table>
   </div>
@@ -52,12 +40,11 @@ import some from 'lodash/some'
 
 import sortDirections from '../../constants/sortDirections'
 import Box from '../Box/index'
-import DataTableCell from '../DataTableCell/index'
 import DataTableHeaderCell from '../DataTableHeaderCell/index'
-import Typography from '../Typography/index'
+import DataTableRow from '../DataTableRow/index'
 
 export default {
-  components: { Box, Typography },
+  components: { Box },
   props: {
     columns: {
       default: () => [],
@@ -80,6 +67,10 @@ export default {
       default: () => {},
       type: Function,
     },
+    rowComponent: {
+      default: undefined,
+      type: [Function, Object],
+    },
     rows: {
       default: () => [],
       type: Array,
@@ -95,8 +86,8 @@ export default {
     },
   },
   data: () => ({
-    DataTableCell,
     DataTableHeaderCell,
+    DataTableRow,
   }),
   created() {
     if (some(this.columns, (column) => column.accessor)) {
@@ -109,12 +100,6 @@ export default {
   methods: {
     getRowKey(row, index) {
       return !isNil(this.getId(row)) ? this.getId(row) : index
-    },
-
-    handleRowClick(row) {
-      if (!this.onRowSelect) return
-
-      this.onRowSelect(row)
     },
   },
 }
@@ -159,12 +144,6 @@ function getIsSortDirectionValid(value) {
 }
 .data-table__head .data-table__row {
   @apply border-b;
-}
-.data-table__body .data-table__row:nth-child(odd) {
-  @apply bg-offwhite;
-}
-.data-table__body .data-table__row:last-child {
-  @apply border-0;
 }
 .data-table__cell {
   @apply p-0 align-top;

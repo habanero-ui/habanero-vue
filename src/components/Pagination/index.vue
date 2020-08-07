@@ -1,5 +1,5 @@
 <template>
-  <Box class="pagination" marginLeft="-small">
+  <Box>
     <Columns alignY="center" space="gutter">
       <Column width="content">
         <Columns alignY="center" space="xsmall">

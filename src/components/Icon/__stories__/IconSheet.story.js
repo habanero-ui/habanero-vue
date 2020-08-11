@@ -12,6 +12,7 @@ export default () => ({
     chevrons: ['chevron-up', 'chevron-down', 'chevron-left', 'chevron-right'],
     clocks: ['time-clock', 'time-money', 'time-progress'],
     files: ['file-download', 'file-upload', 'file-paper-check'],
+    navs: ['grid', 'list', 'menu'],
     objects: [
       'apartment',
       'award',
@@ -71,13 +72,13 @@ export default () => ({
   template: `
     <div class="p-6">
       <div class="flex items-center mb-6">
-        <Icon name="menu" />
-      </div>
-      <div class="flex items-center mb-6">
         <Icon v-for="box in boxes" :key="box" :name="box" class="mr-4" />
       </div>
       <div class="flex items-center mb-6">
         <Icon v-for="calendar in calendars" :key="calendar" :name="calendar" class="mr-4" />
+      </div>
+      <div class="flex items-center mb-6">
+        <Icon v-for="nav in navs" :key="nav" :name="nav" class="mr-4" />
       </div>
       <div class="flex items-center mb-6">
         <Icon v-for="file in files" :key="file" :name="file" class="mr-4" />

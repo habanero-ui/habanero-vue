@@ -30,6 +30,7 @@
 <script>
 import filter from 'lodash/filter'
 import get from 'lodash/get'
+import isNil from 'lodash/isNil'
 
 import FormGroup from '../FormGroup'
 import Icon from '../Icon'
@@ -86,10 +87,12 @@ export default {
         this.$slots.default,
         (vnode) => vnode.tag === 'option',
       )
-      return (
-        get(optionElements, `[${index}].data.domProps.value`) ||
-        get(optionElements, `[${index}].data.attrs.value`)
-      )
+
+      const domPropValue = get(optionElements, `[${index}].data.domProps.value`)
+
+      return !isNil(domPropValue)
+        ? domPropValue
+        : get(optionElements, `[${index}].data.attrs.value`)
     },
 
     handleInputChange({ target }) {
@@ -99,7 +102,7 @@ export default {
         this.placeholder ? target.selectedIndex - 1 : target.selectedIndex,
       )
 
-      target.value = this.value || this.value === 0 ? this.value : ''
+      target.value = !isNil(this.value) ? this.value : ''
 
       this.onValueChange(optionValue)
     },

@@ -47,7 +47,7 @@ export default () => ({
     },
   },
   template: `
-    <div class="absolute inset-0">
+    <div style="height: 4000px">
       <Slideover
         :isCancelDisabled="isCancelDisabled"
         :isConfirmDisabled="isConfirmDisabled"

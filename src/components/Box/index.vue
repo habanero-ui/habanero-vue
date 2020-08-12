@@ -16,37 +16,56 @@ import without from 'lodash/without'
 import borderRadii from '../../constants/borderRadii'
 import colors from '../../constants/colors'
 import spacingAliases from '../../constants/spacingAliases'
+import PropValidation from '../../mixins/PropValidation'
 
 export default {
+  mixins: [
+    PropValidation({
+      backgroundColor: colors,
+      borderRadius: borderRadii,
+      margin: getIsSpacingPropValid('margin'),
+      marginBottom: getIsSpacingPropValid('marginBottom'),
+      marginLeft: getIsSpacingPropValid('marginLeft'),
+      marginRight: getIsSpacingPropValid('marginRight'),
+      marginTop: getIsSpacingPropValid('marginTop'),
+      marginX: getIsSpacingPropValid('marginX'),
+      marginY: getIsSpacingPropValid('marginY'),
+      padding: getIsSpacingPropValid('padding'),
+      paddingBottom: getIsSpacingPropValid('paddingBottom'),
+      paddingLeft: getIsSpacingPropValid('paddingLeft'),
+      paddingRight: getIsSpacingPropValid('paddingRight'),
+      paddingTop: getIsSpacingPropValid('paddingTop'),
+      paddingX: getIsSpacingPropValid('paddingX'),
+      paddingY: getIsSpacingPropValid('paddingY'),
+    }),
+  ],
   props: {
     backgroundColor: {
       default: 'none',
       type: String,
-      validator: getIsBackgroundColorValid,
     },
     borderRadius: {
       default: 'none',
       type: String,
-      validator: getIsBorderRadiusValid,
     },
     component: {
       default: 'div',
       type: String,
     },
-    margin: getSpacingPropType('margin'),
-    marginBottom: getSpacingPropType('marginBottom'),
-    marginLeft: getSpacingPropType('marginLeft'),
-    marginRight: getSpacingPropType('marginRight'),
-    marginTop: getSpacingPropType('marginTop'),
-    marginX: getSpacingPropType('marginX'),
-    marginY: getSpacingPropType('marginY'),
-    padding: getSpacingPropType('padding'),
-    paddingBottom: getSpacingPropType('paddingBottom'),
-    paddingLeft: getSpacingPropType('paddingLeft'),
-    paddingRight: getSpacingPropType('paddingRight'),
-    paddingTop: getSpacingPropType('paddingTop'),
-    paddingX: getSpacingPropType('paddingX'),
-    paddingY: getSpacingPropType('paddingY'),
+    margin: { default: '', type: [Number, String] },
+    marginBottom: { default: '', type: [Number, String] },
+    marginLeft: { default: '', type: [Number, String] },
+    marginRight: { default: '', type: [Number, String] },
+    marginTop: { default: '', type: [Number, String] },
+    marginX: { default: '', type: [Number, String] },
+    marginY: { default: '', type: [Number, String] },
+    padding: { default: '', type: [Number, String] },
+    paddingBottom: { default: '', type: [Number, String] },
+    paddingLeft: { default: '', type: [Number, String] },
+    paddingRight: { default: '', type: [Number, String] },
+    paddingTop: { default: '', type: [Number, String] },
+    paddingX: { default: '', type: [Number, String] },
+    paddingY: { default: '', type: [Number, String] },
     showInteractionOverlay: {
       default: false,
       type: Boolean,
@@ -86,34 +105,6 @@ export default {
   },
 }
 
-function getIsBackgroundColorValid(value) {
-  const isValid = includes(colors, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Box: The "backgroundColor" prop must be one of the following:',
-      String(colors),
-    )
-  }
-
-  return isValid
-}
-
-function getIsBorderRadiusValid(value) {
-  const isValid = includes(borderRadii, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Box: The "borderRadius" prop must be one of the following:',
-      String(borderRadii),
-    )
-  }
-
-  return isValid
-}
-
 function getIsSpacingPropValid(propName) {
   return (value) => {
     const negativeSpacingAliases = map(
@@ -127,7 +118,7 @@ function getIsSpacingPropValid(propName) {
     if (!isValid) {
       // eslint-disable-next-line no-console
       console.error(
-        `Box: The "${propName}" prop must be a number to be multiplied by 4, or one of the following aliases:`,
+        `Box: Bad value "${value}". The "${propName}" prop must be a number to be multiplied by 4, or one of the following aliases:`,
         String([...spacingAliases, ...negativeSpacingAliases]),
       )
     }
@@ -162,14 +153,6 @@ export function getRemFromSpacing(spacing) {
     '-xlarge': `-${pxToRem(64)}rem`,
     '-xxlarge': `-${pxToRem(128)}rem`,
   }[spacing]
-}
-
-function getSpacingPropType(name) {
-  return {
-    default: '',
-    type: [Number, String],
-    validator: getIsSpacingPropValid(name),
-  }
 }
 </script>
 

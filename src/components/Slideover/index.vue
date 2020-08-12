@@ -92,9 +92,33 @@ export default {
       type: String,
     },
   },
+  data: () => ({
+    initialBodyOverflowY: 'auto',
+  }),
+  watch: {
+    isOpen() {
+      this.updateBodyScrolling()
+    },
+  },
+  created() {
+    this.initialBodyOverflowY = document.body.style.overflowY
+
+    this.updateBodyScrolling()
+  },
+  beforeDestroy() {
+    document.body.style.overflowY = this.initialBodyOverflowY
+  },
   methods: {
     handleBackClick() {
       this.onIsOpenChange(!this.isOpen)
+    },
+
+    updateBodyScrolling() {
+      if (this.isOpen) {
+        document.body.style.overflowY = 'hidden'
+      } else {
+        document.body.style.overflowY = this.initialBodyOverflowY
+      }
     },
   },
 }

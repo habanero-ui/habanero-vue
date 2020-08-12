@@ -3,14 +3,17 @@
 </template>
 
 <script>
-import includes from 'lodash/includes'
-
+import PropValidation from '../../mixins/PropValidation'
 export default {
+  mixins: [
+    PropValidation({
+      thickness: ['thin', 'regular'],
+    }),
+  ],
   props: {
     thickness: {
       default: 'regular',
       type: String,
-      validator: getIsThicknessValid,
     },
   },
   computed: {
@@ -18,20 +21,6 @@ export default {
       return ['divider', `divider--thickness-${this.thickness}`]
     },
   },
-}
-
-function getIsThicknessValid(value) {
-  const isValid = includes(['thin', 'regular'], value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Divider: The "thickness" prop must be one of the following:',
-      String(['thin', 'regular']),
-    )
-  }
-
-  return isValid
 }
 </script>
 

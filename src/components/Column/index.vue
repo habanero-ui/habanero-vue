@@ -3,31 +3,20 @@
 </template>
 
 <script>
-import includes from 'lodash/includes'
-
 import columnWidths from '../../constants/columnWidths'
+import PropValidation from '../../mixins/PropValidation'
 
 export default {
+  mixins: [
+    PropValidation({
+      width: columnWidths,
+    }),
+  ],
   props: {
     width: {
       default: 'fluid',
       type: String,
-      validator: getIsWidthValid,
     },
   },
-}
-
-function getIsWidthValid(value) {
-  const isValid = includes(columnWidths, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Column: The "width" prop must be one of the following:',
-      String(columnWidths),
-    )
-  }
-
-  return isValid
 }
 </script>

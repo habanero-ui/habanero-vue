@@ -17,17 +17,22 @@ import flatten from 'lodash/flatten'
 import forEach from 'lodash/forEach'
 import map from 'lodash/map'
 
+import PropValidation from '../../mixins/PropValidation'
 import Column from '../Column/index'
 import Columns from '../Columns/index'
 import BreadcrumbItem from './BreadcrumbsItem'
 
 export default {
   components: { BreadcrumbItem, Column, Columns },
+  mixins: [
+    PropValidation({
+      items: validateItems,
+    }),
+  ],
   props: {
     items: {
       default: () => [],
       type: Array,
-      validator: getIsItemsValid,
     },
     onItemSelect: {
       default: () => {},
@@ -46,7 +51,7 @@ export default {
   },
 }
 
-function getIsItemsValid(data) {
+function validateItems(data) {
   let isValid = true
 
   forEach(data, (item) => {
@@ -61,8 +66,6 @@ function getIsItemsValid(data) {
       'Breadcrumbs: Each array item in the "items" prop must have a "text" key.',
     )
   }
-
-  return isValid
 }
 </script>
 

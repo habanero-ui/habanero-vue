@@ -22,16 +22,21 @@ import forEach from 'lodash/forEach'
 import uniqueId from 'lodash/uniqueId'
 import tippy from 'tippy.js'
 
+import PropValidation from '../../mixins/PropValidation'
 import ListItem from '../ListItem/index'
 import Stack from '../Stack/index'
 
 export default {
   components: { ListItem, Stack },
+  mixins: [
+    PropValidation({
+      items: validateItems,
+    }),
+  ],
   props: {
     items: {
       default: () => [],
       type: Array,
-      validator: getIsItemsValid,
     },
   },
   data: () => ({
@@ -58,10 +63,10 @@ export default {
   },
 }
 
-function getIsItemsValid(data) {
+function validateItems(value) {
   let isValid = true
 
-  forEach(data, (item) => {
+  forEach(value, (item) => {
     if (!item.text) {
       isValid = false
     }
@@ -73,8 +78,6 @@ function getIsItemsValid(data) {
       'Menu: Each array item in the "items" prop must have a "text" key.',
     )
   }
-
-  return isValid
 }
 </script>
 

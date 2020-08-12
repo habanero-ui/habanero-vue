@@ -34,22 +34,27 @@
 </template>
 
 <script>
-import includes from 'lodash/includes'
 import isNil from 'lodash/isNil'
 import some from 'lodash/some'
 
 import sortDirections from '../../constants/sortDirections'
+import PropValidation from '../../mixins/PropValidation'
 import Box from '../Box/index'
 import DataTableHeaderCell from '../DataTableHeaderCell/index'
 import DataTableRow from '../DataTableRow/index'
 
 export default {
   components: { Box },
+  mixins: [
+    PropValidation({
+      columns: validateColumns,
+      sortDirection: sortDirections,
+    }),
+  ],
   props: {
     columns: {
       default: () => [],
       type: Array,
-      validator: getIsColumnsValid,
     },
     getId: {
       default: (row) => row.id,
@@ -82,7 +87,6 @@ export default {
     sortDirection: {
       default: 'asc',
       type: String,
-      validator: getIsSortDirectionValid,
     },
   },
   data: () => ({
@@ -104,7 +108,7 @@ export default {
   },
 }
 
-function getIsColumnsValid(columns) {
+function validateColumns(columns) {
   const isValid = !some(columns, (column) => isNil(column.name))
 
   if (!isValid) {
@@ -113,22 +117,6 @@ function getIsColumnsValid(columns) {
       'DataTable: Each array item in the "columns" prop must have a "name" key.',
     )
   }
-
-  return isValid
-}
-
-function getIsSortDirectionValid(value) {
-  const isValid = includes(sortDirections, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'DataTable: The "sortDirection" prop must be one of the following when defined:',
-      String(sortDirections),
-    )
-  }
-
-  return isValid
 }
 </script>
 

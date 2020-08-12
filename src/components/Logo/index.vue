@@ -14,14 +14,18 @@
 </template>
 
 <script>
-import includes from 'lodash/includes'
+import PropValidation from '../../mixins/PropValidation'
 
 export default {
+  mixins: [
+    PropValidation({
+      color: ['black', 'white', 'gold'],
+    }),
+  ],
   props: {
     color: {
       default: 'black',
       type: String,
-      validator: getIsColorValid,
     },
   },
   computed: {
@@ -29,20 +33,6 @@ export default {
       return ['logo', `logo--color-${this.color}`]
     },
   },
-}
-
-function getIsColorValid(value) {
-  const isValid = includes(['black', 'white', 'gold'], value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Logo: The "color" prop must be one of the following:',
-      String(['black', 'white', 'gold']),
-    )
-  }
-
-  return isValid
 }
 </script>
 

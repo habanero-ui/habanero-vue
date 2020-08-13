@@ -1,7 +1,6 @@
 <template>
   <TextInput
     ref="textInput"
-    class="special"
     :disabled="disabled"
     :error="error"
     :helperText="helperText"
@@ -40,10 +39,6 @@ export default {
     helperText: {
       default: '',
       type: String,
-    },
-    hideTodayStyle: {
-      default: false,
-      type: Boolean,
     },
     isCalendarEnabled: {
       default: true,

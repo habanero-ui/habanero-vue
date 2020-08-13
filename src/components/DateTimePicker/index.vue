@@ -213,6 +213,43 @@ function getIsModeValid(value) {
 </script>
 
 <style>
+.flatpickr-calendar:before,
+.flatpickr-calendar:after {
+  @apply hidden;
+}
+.flatpickr-innerContainer {
+  @apply border-black border-b border-l border-r rounded-b-md;
+}
+
+/* Month */
+.flatpickr-months {
+  @apply border-black border-l border-r border-t rounded-t-md;
+}
+.flatpickr-months .flatpickr-prev-month:hover svg,
+.flatpickr-months .flatpickr-next-month:hover svg {
+  fill: #484848;
+}
+.flatpickr-months .flatpickr-month {
+  @apply bg-white;
+}
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+  @apply bg-transparent;
+}
+
+/* Week */
+.flatpickr-weekdays {
+  height: 36px;
+  @apply bg-white;
+}
+span.flatpickr-weekday {
+  font-size: 80%;
+  @apply font-medium bg-transparent;
+}
+
+/* Day */
+.flatpickr-days {
+  @apply border-l-0 border-r-0 border-t;
+}
 .flatpickr-day {
   line-height: 38px;
 }
@@ -244,9 +281,6 @@ function getIsModeValid(value) {
   background: #e2e2e2;
   border-color: #e2e2e2;
   color: #484848;
-}
-span.flatpickr-weekday {
-  @apply font-medium;
 }
 span.flatpickr-day.selected {
   @apply font-normal;

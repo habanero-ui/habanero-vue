@@ -20,10 +20,8 @@ export default () => ({
     },
   },
   template: `
-    <div class="p-6">
-      <FormGroup :error="error" :helperText="helperText" :label="label" :space="space">
-        <Checkbox text="Alpha" />
-      </FormGroup>
-    </div>
+    <FormGroup :error="error" :helperText="helperText" :label="label" :space="space">
+      <Checkbox text="Alpha" />
+    </FormGroup>
   `,
 })

@@ -51,19 +51,17 @@ export default () => ({
     ],
   }),
   template: `
-    <div class="p-6">
-      <MultiSelect
-        :disabled="disabled"
-        :error="error"
-        :helperText="helperText"
-        :items="items"
-        :label="label"
-        :maxTagCount="maxTagCount"
-        :onSelectedIdsChange="onSelectedIdsChange"
-        :placeholder="placeholder"
-        :selectedIds="selectedIds"
-      />
-    </div>
+    <MultiSelect
+      :disabled="disabled"
+      :error="error"
+      :helperText="helperText"
+      :items="items"
+      :label="label"
+      :maxTagCount="maxTagCount"
+      :onSelectedIdsChange="onSelectedIdsChange"
+      :placeholder="placeholder"
+      :selectedIds="selectedIds"
+    />
   `,
   methods: {
     onSelectedIdsChange: action('onSelectedIdsChange'),

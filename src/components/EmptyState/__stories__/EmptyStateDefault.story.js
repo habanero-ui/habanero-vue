@@ -25,14 +25,12 @@ export default () => ({
     },
   },
   template: `
-    <div class="flex flex-col p-6">
-      <EmptyState
-        :align="align"
-        :iconName="iconName"
-        :message="message"
-        :title="title">
-        <div><Button text="Perform Some Action" /></div>
-      </EmptyState>
-    </div>
+    <EmptyState
+      :align="align"
+      :iconName="iconName"
+      :message="message"
+      :title="title">
+      <div><Button text="Perform Some Action" /></div>
+    </EmptyState>
   `,
 })

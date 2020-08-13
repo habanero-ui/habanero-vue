@@ -19,8 +19,6 @@ export default () => ({
     },
   },
   template: `
-    <div class="flex justify-start p-6">
-      <ProgressBar :color="color" :value="value" />
-    </div>
+    <ProgressBar :color="color" :value="value" />
   `,
 })

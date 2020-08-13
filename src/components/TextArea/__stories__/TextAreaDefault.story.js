@@ -32,19 +32,17 @@ export default () => ({
     },
   },
   template: `
-    <div class="flex flex-col p-6">
-      <TextArea
-        :disabled="disabled"
-        :error="error"
-        :helperText="helperText"
-        :label="label"
-        :onValueChange="onValueChange"
-        :maxlength="maxlength"
-        :placeholder="placeholder"
-        :showChars="showChars"
-        :value="value"
-      />
-    </div>
+    <TextArea
+      :disabled="disabled"
+      :error="error"
+      :helperText="helperText"
+      :label="label"
+      :onValueChange="onValueChange"
+      :maxlength="maxlength"
+      :placeholder="placeholder"
+      :showChars="showChars"
+      :value="value"
+    />
   `,
   methods: {
     onValueChange: action('onValueChange'),

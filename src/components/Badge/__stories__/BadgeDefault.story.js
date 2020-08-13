@@ -4,12 +4,7 @@ const Template = (args, { argTypes }) => ({
   components: { Badge },
   props: Object.keys(argTypes),
   template: `
-    <div class="flex p-6">
-      <Badge
-        :color="color"
-        :text="text"
-      />
-    </div>
+    <Badge v-bind="$props" />
   `,
 })
 

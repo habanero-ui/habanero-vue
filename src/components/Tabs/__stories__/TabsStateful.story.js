@@ -7,14 +7,12 @@ export default () => ({
     selectedName: 'Home',
   }),
   template: `
-    <div class="p-6">
-      <Tabs :selectedName="selectedName" :onSelectedNameChange="handleSelectedNameChange">
-        <Tab name="Home" />
-        <Tab name="About" />
-        <Tab name="Contact" />
-        <Tab name="Pricing" />
-      </Tabs>
-    </div>
+    <Tabs :selectedName="selectedName" :onSelectedNameChange="handleSelectedNameChange">
+      <Tab name="Home" />
+      <Tab name="About" />
+      <Tab name="Contact" />
+      <Tab name="Pricing" />
+    </Tabs>
   `,
   methods: {
     handleSelectedNameChange(name) {

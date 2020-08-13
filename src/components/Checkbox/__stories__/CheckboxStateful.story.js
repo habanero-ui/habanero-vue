@@ -7,13 +7,11 @@ const Template = (args, { argTypes }) => ({
     isCheckedState: false,
   }),
   template: `
-    <div class="flex flex-col items-start p-6">
-      <Checkbox
-        v-bind="$props"
-        :isChecked="isCheckedState"
-        :onIsCheckedChange="handleIsCheckedChange"
-      />
-    </div>
+    <Checkbox
+      v-bind="$props"
+      :isChecked="isCheckedState"
+      :onIsCheckedChange="handleIsCheckedChange"
+    />
   `,
   methods: {
     handleIsCheckedChange(isChecked) {

@@ -35,7 +35,7 @@ export default () => ({
     },
   },
   template: `
-    <div class="w-40 p-6"> 
+    <div class="w-40"> 
       <DataTableActionCell
         :column="column"
         :row="row"

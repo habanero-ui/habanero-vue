@@ -18,13 +18,5 @@ export default () => ({
       default: text('subtitle', 'the Cat'),
     },
   },
-  template: `
-    <div class="flex flex-start p-6"> 
-      <Profile
-        :firstName="firstName"
-        :image="image"
-        :lastName="lastName"
-        :subtitle="subtitle" />
-    </div>
-  `,
+  template: `<Profile v-bind="$props" />`,
 })

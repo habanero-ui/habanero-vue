@@ -8,12 +8,10 @@ export default () => ({
     row: { id: 0, text: 'Some Text' },
   }),
   template: `
-    <div class="p-6"> 
-      <DataTableCheckboxCell
-        :column="{ onIsCheckedChange }"
-        :row="row"
-      />
-    </div>
+    <DataTableCheckboxCell
+      :column="{ onIsCheckedChange }"
+      :row="row"
+    />
   `,
   methods: {
     onIsCheckedChange: action('onIsCheckedChange'),

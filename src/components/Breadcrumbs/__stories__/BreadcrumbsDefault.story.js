@@ -7,7 +7,7 @@ const Template = ((args, { argTypes }) => ({
   components: { Breadcrumbs, Button },
   props: Object.keys(argTypes),
   template: `
-    <div class="flex flex-col flex-start p-6"> 
+    <div class="flex flex-col flex-start"> 
       <Breadcrumbs v-bind="$props" />
     </div>
   `,

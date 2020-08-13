@@ -9,9 +9,5 @@ export default () => ({
       default: select('thickness', ['regular', 'thin'], 'regular'),
     },
   },
-  template: `
-    <div class="p-6">
-      <Divider :thickness="thickness" />
-    </div>
-  `,
+  template: `<Divider :thickness="thickness" />`,
 })

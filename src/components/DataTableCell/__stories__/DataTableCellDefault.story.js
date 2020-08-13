@@ -20,11 +20,9 @@ export default () => ({
     },
   },
   template: `
-    <div class="p-6"> 
-      <DataTableCell
-        :column="column"
-        :row="row"
-      />
-    </div>
+    <DataTableCell
+      :column="column"
+      :row="row"
+    />
   `,
 })

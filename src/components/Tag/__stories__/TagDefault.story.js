@@ -20,14 +20,12 @@ export default () => ({
     },
   },
   template: `
-    <div class="p-6">
-      <Tag
-        :maxChars="maxChars"
-        :onDelete="isDeleteVisible ? onDelete : undefined"
-        :text="text"
-        :value="value"
-      />
-    </div>
+    <Tag
+      :maxChars="maxChars"
+      :onDelete="isDeleteVisible ? onDelete : undefined"
+      :text="text"
+      :value="value"
+    />
   `,
   methods: {
     onDelete: action('onDelete'),

@@ -21,9 +21,5 @@ export default () => ({
       ),
     },
   },
-  template: `
-    <div class="p-6">
-      <Spinner :color="color" :size="size" />
-    </div>
-  `,
+  template: `<Spinner v-bind="$props" />`,
 })

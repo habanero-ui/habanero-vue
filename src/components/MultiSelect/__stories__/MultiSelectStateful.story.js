@@ -7,13 +7,11 @@ export default () => ({
     selectedIds: [],
   }),
   template: `
-    <div class="p-6">
-      <MultiSelect
-        :items="items"
-        :onSelectedIdsChange="handleSelectedIdsChange"
-        :selectedIds="selectedIds"
-      />
-    </div>
+    <MultiSelect
+      :items="items"
+      :onSelectedIdsChange="handleSelectedIdsChange"
+      :selectedIds="selectedIds"
+    />
   `,
   methods: {
     handleSelectedIdsChange(selectedIds) {

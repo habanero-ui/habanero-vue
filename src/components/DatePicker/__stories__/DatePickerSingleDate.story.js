@@ -8,18 +8,16 @@ export default () => ({
     selectedDate: undefined,
   }),
   template: `
-    <div class="flex flex-col p-6">
-      <DatePicker
-        helperText="Select your birthday"
-        label="Birthday"
-        :onSelectedDateChange="handleSelectedDateChange"
-        :maxDate="maxDate"
-        :minDate="minDate"
-        mode="single"
-        placeholder="mm/dd/yyyy"
-        :selectedDate="selectedDate"
-      />
-    </div>
+    <DatePicker
+      helperText="Select your birthday"
+      label="Birthday"
+      :onSelectedDateChange="handleSelectedDateChange"
+      :maxDate="maxDate"
+      :minDate="minDate"
+      mode="single"
+      placeholder="mm/dd/yyyy"
+      :selectedDate="selectedDate"
+    />
   `,
   methods: {
     handleSelectedDateChange(selectedDate) {

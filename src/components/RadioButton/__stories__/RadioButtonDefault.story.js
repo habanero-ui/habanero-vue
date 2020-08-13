@@ -19,17 +19,7 @@ export default () => ({
       default: text('value', 'a'),
     },
   },
-  template: `
-    <div class="flex flex-col items-start p-6">
-      <RadioButton
-        :disabled="disabled"
-        :isChecked="isChecked"
-        :onIsCheckedChange="onIsCheckedChange"
-        :text="text"
-        :value="value"
-      />
-    </div>
-  `,
+  template: `<RadioButton v-bind="$props" :onIsCheckedChange="onIsCheckedChange" />`,
   methods: {
     onIsCheckedChange: action('onIsCheckedChange'),
   },

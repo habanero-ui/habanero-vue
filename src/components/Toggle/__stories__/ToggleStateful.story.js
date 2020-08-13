@@ -6,13 +6,11 @@ export default () => ({
     isChecked: false,
   }),
   template: `
-    <div class="flex flex-col items-start p-6">
-      <Toggle
-        :isChecked="isChecked"
-        :onIsCheckedChange="handleIsCheckedChange"
-        text="Flip the switch"
-      />
-    </div>
+    <Toggle
+      :isChecked="isChecked"
+      :onIsCheckedChange="handleIsCheckedChange"
+      text="Flip the switch"
+    />
   `,
   methods: {
     handleIsCheckedChange(isChecked) {

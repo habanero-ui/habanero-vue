@@ -5,11 +5,7 @@ import Checkbox from '../index'
 const Template = (args, { argTypes }) => ({
   components: { Checkbox },
   props: Object.keys(argTypes),
-  template: `
-    <div class="flex flex-col items-start p-6">
-      <Checkbox v-bind="$props" />
-    </div>
-  `,
+  template: `<Checkbox v-bind="$props" />`,
 })
 
 const CheckboxDefault = Template.bind({})

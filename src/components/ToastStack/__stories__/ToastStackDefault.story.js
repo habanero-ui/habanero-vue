@@ -23,14 +23,12 @@ export default () => ({
     ],
   }),
   template: `
-    <div class="p-6">
-      <ToastStack
-        :direction="direction"
-        :onToastRemove="onToastRemove"
-        :onToastsChange="onToastsChange"
-        :toasts="toasts"
-      />
-    </div>
+    <ToastStack
+      :direction="direction"
+      :onToastRemove="onToastRemove"
+      :onToastsChange="onToastsChange"
+      :toasts="toasts"
+    />
   `,
   methods: {
     onToastRemove: action('onToastRemove'),

@@ -21,8 +21,6 @@ export default () => ({
     variants,
   }),
   template: `
-    <div class="p-6">
-      <Typography :color="color" :variant="variant">{{ text }}</Typography>
-    </div>
+    <Typography :color="color" :variant="variant">{{ text }}</Typography>
   `,
 })

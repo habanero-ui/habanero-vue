@@ -17,7 +17,7 @@ export default () => ({
     ],
   }),
   template: `
-    <div class="p-6 max-w-md">
+    <div class="max-w-md">
       <Inline space="small">
         <Tag
           v-for="tag in tags"

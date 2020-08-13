@@ -20,15 +20,13 @@ export default () => ({
     },
   },
   template: `
-    <div class="flex flex-col items-start p-6">
-      <Toggle
-        :disabled="disabled"
-        :isChecked="isChecked"
-        :onIsCheckedChange="onIsCheckedChange"
-        :size="size"
-        :text="text"
-      />
-    </div>
+    <Toggle
+      :disabled="disabled"
+      :isChecked="isChecked"
+      :onIsCheckedChange="onIsCheckedChange"
+      :size="size"
+      :text="text"
+    />
   `,
   methods: {
     onIsCheckedChange: action('onIsCheckedChange'),

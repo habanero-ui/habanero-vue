@@ -30,18 +30,16 @@ export default () => ({
     },
   },
   template: `
-    <div class="flex flex-start p-6"> 
-      <Tab
-        :badgeColor="badgeColor"
-        :badgeText="badgeText"
-        :disabled="disabled"
-        :isBadgeVisible="isBadgeVisible"
-        :isSelected="isSelected"
-        :name="text"
-        :onSelect="onSelect"
-        :text="text"
-      />
-    </div>
+    <Tab
+      :badgeColor="badgeColor"
+      :badgeText="badgeText"
+      :disabled="disabled"
+      :isBadgeVisible="isBadgeVisible"
+      :isSelected="isSelected"
+      :name="text"
+      :onSelect="onSelect"
+      :text="text"
+    />
   `,
   methods: {
     onSelect: action('onSelect'),

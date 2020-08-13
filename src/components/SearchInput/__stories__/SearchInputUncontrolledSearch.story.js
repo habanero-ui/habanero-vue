@@ -14,7 +14,7 @@ export default () => ({
     searchedValue: 'Query Value',
   }),
   template: `
-    <div class="flex flex-col p-6">
+    <div>
       <SearchInput
         :delay="500"
         :onSearch="handleSearch"

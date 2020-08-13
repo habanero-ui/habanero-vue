@@ -4,10 +4,16 @@ const Template = (args, { argTypes }) => ({
   components: { Checkbox },
   props: Object.keys(argTypes),
   template: `
-    <div class="flex flex-col items-start max-w-xs p-6">
+    <div class="max-w-xs">
       <Checkbox v-bind="$props" />
     </div>
   `,
 })
 
-export default Template.bind({})
+const CheckboxTextWrapping = Template.bind({})
+
+CheckboxTextWrapping.args = {
+  text: 'The quick brown fox jumps over the lazy dog',
+}
+
+export default CheckboxTextWrapping

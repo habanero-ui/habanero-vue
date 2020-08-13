@@ -17,14 +17,10 @@ export default () => ({
     },
   },
   template: `
-    <div class="p-6">
-      <Pagination
-        :itemCount="itemCount"
-        :itemsPerPage="itemsPerPage"
-        :onSelectedPageChange="onSelectedPageChange"
-        :selectedPage="selectedPage"
-      />
-    </div>
+    <Pagination
+      v-bind="$props"
+      :onSelectedPageChange="onSelectedPageChange"
+    />
   `,
   methods: {
     onSelectedPageChange: action('onSelectedPageChange'),

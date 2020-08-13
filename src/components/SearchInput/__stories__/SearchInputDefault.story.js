@@ -32,19 +32,17 @@ export default () => ({
     },
   },
   template: `
-    <div class="flex flex-col p-6">
-      <SearchInput
-        :delay="delay"
-        :disabled="disabled"
-        :error="error"
-        :helperText="helperText"
-        :label="label"
-        :onValueChange="onValueChange"
-        :onSearch="onSearch"
-        :placeholder="placeholder"
-        :value="value"
-      />
-    </div>
+    <SearchInput
+      :delay="delay"
+      :disabled="disabled"
+      :error="error"
+      :helperText="helperText"
+      :label="label"
+      :onValueChange="onValueChange"
+      :onSearch="onSearch"
+      :placeholder="placeholder"
+      :value="value"
+    />
   `,
   methods: {
     onSearch: action('onSearch'),

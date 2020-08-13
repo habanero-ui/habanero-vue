@@ -33,15 +33,13 @@ export default () => ({
     },
   },
   template: `
-    <div class="flex p-6"> 
-      <DataTableHeaderCell
-        :column="column"
-        :onSortByChange="onSortByChange"
-        :onSortDirectionChange="onSortDirectionChange"
-        :sortBy="sortBy"
-        :sortDirection="sortDirection"
-      />
-    </div>
+    <DataTableHeaderCell
+      :column="column"
+      :onSortByChange="onSortByChange"
+      :onSortDirectionChange="onSortDirectionChange"
+      :sortBy="sortBy"
+      :sortDirection="sortDirection"
+    />
   `,
   methods: {
     onSortByChange: action('onSortByChange'),

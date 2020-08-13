@@ -41,20 +41,18 @@ export default () => ({
     },
   },
   template: `
-    <div class="flex flex-col p-6">
-      <TextInput
-        :disabled="disabled"
-        :error="error"
-        :helperText="helperText"
-        :iconName="iconName"
-        :iconSide="iconSide"
-        :label="label"
-        :onValueChange="onValueChange"
-        :placeholder="placeholder"
-        :type="type"
-        :value="value"
-      />
-    </div>
+    <TextInput
+      :disabled="disabled"
+      :error="error"
+      :helperText="helperText"
+      :iconName="iconName"
+      :iconSide="iconSide"
+      :label="label"
+      :onValueChange="onValueChange"
+      :placeholder="placeholder"
+      :type="type"
+      :value="value"
+    />
   `,
   methods: {
     onValueChange: action('onValueChange'),

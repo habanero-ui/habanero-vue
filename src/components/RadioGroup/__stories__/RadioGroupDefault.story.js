@@ -21,19 +21,17 @@ export default () => ({
     },
   },
   template: `
-    <div class="flex flex-col items-start p-6">
-      <RadioGroup
-        :error="error"
-        :helperText="helperText"
-        :label="label"
-        :onValueChange="onValueChange"
-        :value="value"
-      >
-        <RadioButton text="Alpha" value="a" />
-        <RadioButton text="Bravo" value="b" />
-        <RadioButton text="Charlie" value="c" />
-      </RadioGroup>
-    </div>
+    <RadioGroup
+      :error="error"
+      :helperText="helperText"
+      :label="label"
+      :onValueChange="onValueChange"
+      :value="value"
+    >
+      <RadioButton text="Alpha" value="a" />
+      <RadioButton text="Bravo" value="b" />
+      <RadioButton text="Charlie" value="c" />
+    </RadioGroup>
   `,
   methods: {
     onValueChange: action('onValueChange'),

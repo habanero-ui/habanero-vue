@@ -35,7 +35,7 @@ export default () => ({
     },
   },
   template: `
-    <div class="flex flex-col p-6">
+    <div>
       <TimePicker
         :disabled="disabled"
         :error="error"

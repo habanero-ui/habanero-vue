@@ -58,16 +58,14 @@ export default () => ({
     },
   },
   template: `
-    <div class="p-6"> 
-      <DataTable
-        :columns="columns"
-        :onSortByChange="handleSortByChange"
-        :onSortDirectionChange="handleSortDirectionChange"
-        :rows="sortedRows"
-        :sortBy="sortBy"
-        :sortDirection="sortDirection"
-      />
-    </div>
+    <DataTable
+      :columns="columns"
+      :onSortByChange="handleSortByChange"
+      :onSortDirectionChange="handleSortDirectionChange"
+      :rows="sortedRows"
+      :sortBy="sortBy"
+      :sortDirection="sortDirection"
+    />
   `,
   methods: {
     handleSortByChange(sortBy) {

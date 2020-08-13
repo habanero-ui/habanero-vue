@@ -4,11 +4,9 @@ const Template = (args, { argTypes }) => ({
   components: { Box },
   props: Object.keys(argTypes),
   template: `
-    <div class="flex flex-start p-6"> 
-      <Box v-bind="$props">
-        Content
-      </Box>
-    </div>
+    <Box v-bind="$props">
+      Content
+    </Box>
   `,
 })
 

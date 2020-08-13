@@ -57,13 +57,11 @@ export default () => ({
     },
   }),
   template: `
-    <div class="p-6"> 
-      <DataTableRow
-        :columns="columns"
-        :onRowSelect="onRowSelect"
-        :row="row"
-      />
-    </div>
+    <DataTableRow
+      :columns="columns"
+      :onRowSelect="onRowSelect"
+      :row="row"
+    />
   `,
   methods: {
     onRowSelect: action('onRowSelect'),

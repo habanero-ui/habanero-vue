@@ -6,14 +6,12 @@ import Tabs from '../index'
 export default () => ({
   components: { Tab, Tabs },
   template: `
-    <div class="p-6">
-      <Tabs selectedName="About" :onSelectedNameChange="onSelectedNameChange">
-        <Tab name="Home" />
-        <Tab name="About" />
-        <Tab disabled name="Contact" />
-        <Tab name="Pricing" />
-      </Tabs>
-    </div>
+    <Tabs selectedName="About" :onSelectedNameChange="onSelectedNameChange">
+      <Tab name="Home" />
+      <Tab name="About" />
+      <Tab disabled name="Contact" />
+      <Tab name="Pricing" />
+    </Tabs>
   `,
   methods: {
     onSelectedNameChange: action('onSelectedNameChange'),

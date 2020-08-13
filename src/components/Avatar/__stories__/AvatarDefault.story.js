@@ -4,12 +4,7 @@ const Template = (args, { argTypes }) => ({
   components: { Avatar },
   props: Object.keys(argTypes),
   template: `
-    <div class="flex flex-start p-6">
-      <Avatar
-        :firstName="firstName"
-        :image="image"
-        :lastName="lastName" />
-    </div>
+    <Avatar v-bind="$props" />
   `,
 })
 

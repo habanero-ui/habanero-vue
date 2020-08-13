@@ -48,12 +48,10 @@ export default () => ({
     rows: tableData,
   }),
   template: `
-    <div class="p-6"> 
-      <DataTable
-        :columns="columns"
-        :rowComponent="rowComponent"
-        :rows="rows"
-      />
-    </div>
+    <DataTable
+      :columns="columns"
+      :rowComponent="rowComponent"
+      :rows="rows"
+    />
   `,
 })

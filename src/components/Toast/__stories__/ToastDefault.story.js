@@ -21,15 +21,13 @@ export default () => ({
     },
   },
   template: `
-    <div class="flex justify-start p-6">
-      <Toast
-        :id="id"
-        :label="label"
-        :message="message"
-        :onClose="onClose"
-        :status="status"
-      />
-    </div>
+    <Toast
+      :id="id"
+      :label="label"
+      :message="message"
+      :onClose="onClose"
+      :status="status"
+    />
   `,
   methods: {
     onClose: action('onClose'),

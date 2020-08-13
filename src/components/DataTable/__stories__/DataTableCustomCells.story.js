@@ -74,13 +74,11 @@ export default () => ({
     },
   },
   template: `
-    <div class="p-6"> 
-      <DataTable
-        :columns="columns"
-        :onRowSelect="onRowSelect"
-        :rows="rows"
-      />
-    </div>
+    <DataTable
+      :columns="columns"
+      :onRowSelect="onRowSelect"
+      :rows="rows"
+    />
   `,
   methods: {
     handleSeenChange({ id }, seen) {

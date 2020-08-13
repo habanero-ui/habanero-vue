@@ -17,13 +17,11 @@ export default () => ({
     },
   },
   template: `
-    <div class="flex justify-start p-6">
-      <FileUpload
-        :accept="accept"
-        :onChange="onChange"
-        :text="text"
-      />
-    </div>
+    <FileUpload
+      :accept="accept"
+      :onChange="onChange"
+      :text="text"
+    />
   `,
   methods: {
     onChange: action('onChange'),

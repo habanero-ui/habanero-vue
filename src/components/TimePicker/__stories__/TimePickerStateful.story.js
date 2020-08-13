@@ -8,17 +8,15 @@ export default () => ({
     selectedDate: new Date('2020-01-01T12:00:00.000000Z'),
   }),
   template: `
-    <div class="flex flex-col p-6">
-      <TimePicker
-        helperText="Select a time below"
-        label="Time"
-        :onSelectedDateChange="handleSelectedDateChange"
-        :maxTime="maxTime"
-        :minTime="minTime"
-        placeholder="Select a time"
-        :selectedDate="selectedDate"
-      />
-    </div>
+    <TimePicker
+      helperText="Select a time below"
+      label="Time"
+      :onSelectedDateChange="handleSelectedDateChange"
+      :maxTime="maxTime"
+      :minTime="minTime"
+      placeholder="Select a time"
+      :selectedDate="selectedDate"
+    />
   `,
   methods: {
     handleSelectedDateChange(selectedDate) {

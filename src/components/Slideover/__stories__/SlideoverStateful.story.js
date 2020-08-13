@@ -7,7 +7,7 @@ export default () => ({
     isOpen: false,
   }),
   template: `
-    <div class="absolute flex flex-col items-start inset-0 p-6">
+    <div class="absolute flex flex-col items-start inset-0">
       <div>
         <Button
           text="Open Slideover"

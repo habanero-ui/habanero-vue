@@ -1,18 +1,22 @@
 <script>
 import filter from 'lodash/filter'
 import flatten from 'lodash/flatten'
-import includes from 'lodash/includes'
 import map from 'lodash/map'
 
-import spacingAliases from '../../constants/spacingAliases'
+import PropValidation from '../../mixins/PropValidation'
 import Box from '../Box/index'
 import Divider from '../Divider/index'
 
 export default {
+  mixins: [
+    PropValidation({
+      align: ['center', 'left', 'right', 'stretch'],
+    }),
+  ],
   props: {
     align: {
       default: 'stretch',
-      validator: getIsAlignValid,
+      type: String,
     },
     component: {
       default: 'div',
@@ -25,7 +29,6 @@ export default {
     space: {
       default: '',
       type: [Number, String],
-      validator: getIsSpaceValid,
     },
   },
   computed: {
@@ -73,35 +76,6 @@ export default {
         : null,
     )
   },
-}
-
-function getIsAlignValid(value) {
-  const isValid = includes(['center', 'left', 'right', 'stretch'], value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Stack: The "align" prop must be one of the following when defined:',
-      String(['center', 'left', 'right', 'stretch']),
-    )
-  }
-
-  return isValid
-}
-
-function getIsSpaceValid(value) {
-  const isValid =
-    includes(['', ...spacingAliases], value) || !isNaN(parseFloat(value))
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      `Stack: The "space" prop must be a number to be multiplied by 4, or one of the following aliases:`,
-      String(spacingAliases),
-    )
-  }
-
-  return isValid
 }
 </script>
 

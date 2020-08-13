@@ -49,9 +49,8 @@
 </template>
 
 <script>
-import includes from 'lodash/includes'
-
 import statuses from '../../constants/statuses'
+import PropValidation from '../../mixins/PropValidation'
 import Box from '../Box/index'
 import Column from '../Column/index'
 import Columns from '../Columns/index'
@@ -68,6 +67,11 @@ export default {
     Stack,
     Typography,
   },
+  mixins: [
+    PropValidation({
+      status: statuses,
+    }),
+  ],
   props: {
     id: {
       default: '',
@@ -88,7 +92,6 @@ export default {
     status: {
       default: 'info',
       type: String,
-      validator: getIsStatusValid,
     },
   },
   computed: {
@@ -101,20 +104,6 @@ export default {
       this.onClose(this.id)
     },
   },
-}
-
-function getIsStatusValid(value) {
-  const isValid = includes(statuses, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Toast: The "status" prop must be one of the following:',
-      String(statuses),
-    )
-  }
-
-  return isValid
 }
 </script>
 

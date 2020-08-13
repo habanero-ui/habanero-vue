@@ -16,17 +16,23 @@
 </template>
 
 <script>
-import includes from 'lodash/includes'
 import uniqueId from 'lodash/uniqueId'
 import tippy, { roundArrow } from 'tippy.js'
 
-import placements from '../../constants/tooltipPlacements'
-import triggers from '../../constants/tooltipTriggers'
+import tooltipPlacements from '../../constants/tooltipPlacements'
+import tooltipTriggers from '../../constants/tooltipTriggers'
+import PropValidation from '../../mixins/PropValidation'
 import Box from '../Box/index'
 import Typography from '../Typography/index'
 
 export default {
   components: { Box, Typography },
+  mixins: [
+    PropValidation({
+      trigger: tooltipTriggers,
+      placement: tooltipPlacements,
+    }),
+  ],
   props: {
     isContentInteractive: {
       default: false,
@@ -35,7 +41,6 @@ export default {
     placement: {
       default: 'top',
       type: String,
-      validator: getIsPlacementValid,
     },
     text: {
       default: '',
@@ -44,7 +49,6 @@ export default {
     trigger: {
       default: 'mouseenter focus',
       type: String,
-      validator: getIsTriggerValid,
     },
   },
   data: () => ({
@@ -75,34 +79,6 @@ export default {
       trigger: this.trigger,
     })
   },
-}
-
-function getIsPlacementValid(value) {
-  const isValid = includes(placements, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Tooltip: The "placement" prop must be one of the following:',
-      String(placements),
-    )
-  }
-
-  return isValid
-}
-
-function getIsTriggerValid(value) {
-  const isValid = includes(triggers, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Tooltip: The "trigger" prop must be one of the following:',
-      String(triggers),
-    )
-  }
-
-  return isValid
 }
 </script>
 

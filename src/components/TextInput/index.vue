@@ -40,10 +40,9 @@
 </template>
 
 <script>
-import includes from 'lodash/includes'
-
 import iconSides from '../../constants/iconSides'
 import textInputTypes from '../../constants/textInputTypes'
+import PropValidation from '../../mixins/PropValidation'
 import Box from '../Box/index'
 import FormGroup from '../FormGroup/index'
 import Icon from '../Icon/index'
@@ -54,6 +53,12 @@ export default {
     FormGroup,
     Icon,
   },
+  mixins: [
+    PropValidation({
+      iconSide: iconSides,
+      type: textInputTypes,
+    }),
+  ],
   inheritAttrs: false,
   props: {
     disabled: {
@@ -75,7 +80,6 @@ export default {
     iconSide: {
       default: 'left',
       type: String,
-      validator: getIsIconSideValid,
     },
     iconSize: {
       default: 'medium',
@@ -100,7 +104,6 @@ export default {
     type: {
       default: 'text',
       type: String,
-      validator: getIsTypeValid,
     },
     value: {
       default: '',
@@ -143,34 +146,6 @@ export default {
       this.onValueChange(newValue)
     },
   },
-}
-
-function getIsIconSideValid(value) {
-  const isValid = includes(iconSides, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'TextInput: The "iconSide" prop must be one of the following:',
-      String(iconSides),
-    )
-  }
-
-  return isValid
-}
-
-function getIsTypeValid(value) {
-  const isValid = includes(textInputTypes, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'TextInput: The "type" prop must be one of the following:',
-      String(textInputTypes),
-    )
-  }
-
-  return isValid
 }
 </script>
 

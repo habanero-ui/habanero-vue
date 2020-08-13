@@ -1,4 +1,4 @@
-import variants from '../../../constants/textVariants'
+import variants from '../../../constants/typographyVariants'
 import Typography from '../index'
 
 export default () => ({

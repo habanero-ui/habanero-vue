@@ -5,7 +5,7 @@ import buttonVariants from '../../../constants/buttonVariants'
 import colors from '../../../constants/colors'
 import icons from '../../../constants/icons'
 import iconSides from '../../../constants/iconSides'
-import textVariants from '../../../constants/textVariants'
+import typographyVariants from '../../../constants/typographyVariants'
 import Button from '../index'
 
 export default () => ({
@@ -44,7 +44,7 @@ export default () => ({
       default: text('text', 'Text'),
     },
     textVariant: {
-      default: select('textVariant', textVariants, 'button'),
+      default: select('textVariant', typographyVariants, 'button'),
     },
     variant: {
       default: select('variant', buttonVariants, 'primary'),

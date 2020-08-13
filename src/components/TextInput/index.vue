@@ -162,23 +162,17 @@ export default {
 .text-input__input {
   @apply bg-transparent border border-black px-4 transition-colors duration-300 ease-in-out outline-none w-full;
   border-radius: 0.3125rem;
-  line-height: 1;
-  padding-bottom: 0.75rem;
-  padding-top: 0.75rem;
+  height: 2.75rem;
 }
 .text-input__input:not([disabled]):hover {
   @apply border-2;
-  padding-bottom: 0.6875rem;
   padding-left: 15px;
   padding-right: 15px;
-  padding-top: 0.6875rem;
 }
 .text-input__input:focus {
   @apply border-2 border-info;
-  padding-bottom: 0.6875rem;
   padding-left: 15px;
   padding-right: 15px;
-  padding-top: 0.6875rem;
 }
 .text-input__input::-moz-placeholder {
   @apply text-subtle;

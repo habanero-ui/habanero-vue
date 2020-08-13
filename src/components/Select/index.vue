@@ -127,17 +127,13 @@ export default {
   @apply bg-transparent pl-4 pr-10 w-full border border-black rounded-md text-black cursor-pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
-  line-height: 1;
-  padding-bottom: 0.75rem;
-  padding-top: 0.75rem;
+  height: 2.75rem;
   transition: border-color 300ms ease-in-out;
 }
 .select__input:not([disabled]):hover {
   @apply border-2;
-  padding-bottom: 0.6875rem;
   padding-left: 15px;
   padding-right: 39px;
-  padding-top: 0.6875rem;
 }
 .select__input::-ms-expand {
   display: none;
@@ -145,9 +141,7 @@ export default {
 .select__input:focus {
   @apply border-2 border-info outline-none;
   padding-left: 15px;
-  padding-bottom: 0.6875rem;
   padding-right: 39px;
-  padding-top: 0.6875rem;
 }
 .select__input > .selected {
   @apply flex-1;

@@ -1,27 +1,47 @@
 import DatePicker from '../index'
 
-export default () => ({
+const Template = (args, { argTypes }) => ({
   components: { DatePicker },
+  props: Object.keys(argTypes),
   data: () => ({
-    maxDate: new Date(),
-    minDate: new Date('1900-01-01'),
-    selectedDate: undefined,
+    selectedDateState: undefined,
   }),
   template: `
-    <DatePicker
-      helperText="Select your birthday"
-      label="Birthday"
-      :onSelectedDateChange="handleSelectedDateChange"
-      :maxDate="maxDate"
-      :minDate="minDate"
-      mode="single"
-      placeholder="mm/dd/yyyy"
-      :selectedDate="selectedDate"
-    />
+    <div class="flex flex-col">
+      <DatePicker
+        v-bind="$props"
+        helperText="Select your birthday"
+        label="Birthday"
+        :maxDate="new Date(maxDate)"
+        :minDate="new Date(minDate)"
+        mode="single"
+        :onSelectedDateChange="handleSelectedDateChange"
+        placeholder="mm/dd/yyyy"
+        :selectedDate="selectedDateState"
+      />
+    </div>
   `,
   methods: {
     handleSelectedDateChange(selectedDate) {
-      this.selectedDate = selectedDate
+      this.selectedDateState = selectedDate
     },
   },
 })
+
+const DatePickerSingleDate = Template.bind({})
+
+DatePickerSingleDate.argTypes = {
+  helperText: { table: { disable: true } },
+  label: { table: { disable: true } },
+  mode: { table: { disable: true } },
+  onSelectedDateChange: { table: { disable: true } },
+  placeholder: { table: { disable: true } },
+  selectedDate: { table: { disable: true } },
+}
+
+DatePickerSingleDate.args = {
+  maxDate: new Date(),
+  minDate: new Date('1900-01-01'),
+}
+
+export default DatePickerSingleDate

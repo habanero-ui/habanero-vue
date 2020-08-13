@@ -250,6 +250,13 @@ function getIsModeValid(value) {
   border-color: #e2e2e2;
   color: #484848;
 }
+span.flatpickr-weekday {
+  @apply font-medium;
+}
+span.flatpickr-day.selected {
+  @apply font-normal;
+}
+
 /* IE11 fix for flatpickr */
 @media all and (-ms-high-contrast: none) {
   span.flatpickr-day {

@@ -1,6 +1,7 @@
 <template>
   <TextInput
     ref="textInput"
+    class="special"
     :disabled="disabled"
     :error="error"
     :helperText="helperText"
@@ -39,6 +40,10 @@ export default {
     helperText: {
       default: '',
       type: String,
+    },
+    hideTodayStyle: {
+      default: false,
+      type: Boolean,
     },
     isCalendarEnabled: {
       default: true,
@@ -211,3 +216,45 @@ function getIsModeValid(value) {
   return isValid
 }
 </script>
+
+<style>
+.flatpickr-day {
+  line-height: 38px;
+}
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange,
+.flatpickr-day.selected.inRange,
+.flatpickr-day.startRange.inRange,
+.flatpickr-day.endRange.inRange,
+.flatpickr-day.selected:focus,
+.flatpickr-day.startRange:focus,
+.flatpickr-day.endRange:focus,
+.flatpickr-day.selected:hover,
+.flatpickr-day.startRange:hover,
+.flatpickr-day.endRange:hover,
+.flatpickr-day.selected.prevMonthDay,
+.flatpickr-day.startRange.prevMonthDay,
+.flatpickr-day.endRange.prevMonthDay,
+.flatpickr-day.selected.nextMonthDay,
+.flatpickr-day.startRange.nextMonthDay,
+.flatpickr-day.endRange.nextMonthDay {
+  @apply bg-info border-info;
+}
+.flatpickr-day.today {
+  @apply border-transparent;
+}
+.flatpickr-day.today:hover,
+.flatpickr-day.today:focus {
+  background: #e2e2e2;
+  border-color: #e2e2e2;
+  color: #484848;
+}
+/* IE11 fix for flatpickr */
+@media all and (-ms-high-contrast: none) {
+  span.flatpickr-day {
+    flex: 1 0 auto;
+    width: 43px;
+  }
+}
+</style>

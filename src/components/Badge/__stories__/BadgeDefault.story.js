@@ -4,7 +4,7 @@ const Template = (args, { argTypes }) => ({
   components: { Badge },
   props: Object.keys(argTypes),
   template: `
-    <Badge v-bind="$props" />
+    <div class="flex"><Badge v-bind="$props" /></div>
   `,
 })
 

@@ -1,10 +1,11 @@
 import Button from '../../Button/index'
 import Drawer from '../index'
 
-export default () => ({
+export default (args, { argTypes }) => ({
   components: { Button, Drawer },
+  props: Object.keys(argTypes),
   data: () => ({
-    isOpen: false,
+    isOpenState: false,
   }),
   template: `
     <div class="absolute flex flex-col items-start inset-0">
@@ -14,20 +15,18 @@ export default () => ({
           @click.native="handleOpenDrawerClick"
         />
       </div>
-      <Drawer
-        :isOpen="isOpen"
-        :onIsOpenChange="handleIsOpenChange">
-        <div>Some Content</div>
+      <Drawer v-bind="$props" :isOpen="isOpenState" :onIsOpenChange="handleIsOpenChange">
+        Some Content
       </Drawer>
     </div>
   `,
   methods: {
     handleIsOpenChange(isOpen) {
-      this.isOpen = isOpen
+      this.isOpenState = isOpen
     },
 
     handleOpenDrawerClick() {
-      this.isOpen = true
+      this.isOpenState = true
     },
   },
 })

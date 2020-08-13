@@ -1,58 +1,22 @@
-import { boolean, select, text } from '@storybook/addon-knobs'
-
-import borderRadii from '../../../constants/borderRadii'
-import colors from '../../../constants/colors'
 import Box from '../index'
 
-export default () => ({
+const Template = (args, { argTypes }) => ({
   components: { Box },
-  props: {
-    backgroundColor: {
-      default: select('backgroundColor', colors, 'none'),
-    },
-    borderRadius: {
-      default: select('borderRadius', borderRadii, 'none'),
-    },
-    padding: {
-      default: text('padding', ''),
-    },
-    paddingBottom: {
-      default: text('paddingBottom', ''),
-    },
-    paddingLeft: {
-      default: text('paddingLeft', ''),
-    },
-    paddingRight: {
-      default: text('paddingRight', ''),
-    },
-    paddingTop: {
-      default: text('paddingTop', ''),
-    },
-    paddingX: {
-      default: text('paddingX', ''),
-    },
-    paddingY: {
-      default: text('paddingY', ''),
-    },
-    showInteractionOverlay: {
-      default: boolean('showInteractionOverlay', false),
-    },
-  },
+  props: Object.keys(argTypes),
   template: `
     <div class="flex flex-start p-6"> 
-      <Box
-        :backgroundColor="backgroundColor"
-        :borderRadius="borderRadius"
-        :padding="padding"
-        :paddingBottom="paddingBottom"
-        :paddingLeft="paddingLeft"
-        :paddingRight="paddingRight"
-        :paddingTop="paddingTop"
-        :paddingX="paddingX"
-        :showInteractionOverlay="showInteractionOverlay"
-        :paddingY="paddingY">
+      <Box v-bind="$props">
         Content
       </Box>
     </div>
   `,
 })
+
+const BoxDefault = Template.bind({})
+
+BoxDefault.args = {
+  backgroundColor: 'none',
+  borderRadius: 'none',
+}
+
+export default BoxDefault

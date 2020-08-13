@@ -30,10 +30,16 @@ export default {
     }),
   ],
   props: {
+    /**
+     * An array of objects that describe the list of breadcrumbs to display. Every item should have a `text` key. An optional `href` key is also supported.
+     */
     items: {
       default: () => [],
       type: Array,
     },
+    /**
+     * A callback that will be invoked when a Breadcrumb Item is pressed. The first param is the object from `items` corresponding to the pressed Breadcrumb Item.
+     */
     onItemSelect: {
       default: () => {},
       type: Function,

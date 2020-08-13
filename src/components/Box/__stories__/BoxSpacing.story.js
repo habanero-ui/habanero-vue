@@ -1,27 +1,22 @@
 import spacingAliases from '../../../constants/spacingAliases'
 import Box, { getRemFromSpacing } from '../index'
 
-export default () => ({
+export default ((args, { argTypes }) => ({
   components: { Box },
+  props: Object.keys(argTypes),
   data: () => ({
     spacingAliases,
   }),
   template: `
     <div class="p-6">
-      <div v-for="(alias, index) in spacingAliases" :key="alias">
-        <Box
-          class="border"
-          :padding="alias"
-          :marginBottom="alias"
-          >
-          {{ alias }} - {{ getSpacingRemValue(alias) }}
+      <div v-for="(spacingAlias, index) in spacingAliases" :key="spacingAlias">
+        <Box class="border" :padding="spacingAlias">
+          {{ spacingAlias }} - {{ getRemFromSpacing(spacingAlias) }}
         </Box>
       </div>
     </div>
   `,
   methods: {
-    getSpacingRemValue(alias) {
-      return getRemFromSpacing(alias)
-    },
+    getRemFromSpacing,
   },
-})
+})).bind({})

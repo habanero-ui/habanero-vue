@@ -31,10 +31,16 @@ export default {
     }),
   ],
   props: {
+    /**
+     * The color for the Badge.
+     */
     color: {
       default: 'black',
       type: String,
     },
+    /**
+     * The text that will be displayed in the Badge.
+     */
     text: {
       default: '',
       type: [Number, String],

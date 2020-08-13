@@ -309,6 +309,15 @@ span.flatpickr-day.selected {
   @apply font-normal;
 }
 
+/* Time */
+.flatpickr-calendar.showTimeInput.hasTime .flatpickr-innerContainer {
+  border-bottom: 1px solid;
+}
+.flatpickr-calendar.showTimeInput.hasTime .flatpickr-time {
+  margin-top: 2px;
+  @apply border-black border rounded-md;
+}
+
 /* IE11 fix for flatpickr */
 @media all and (-ms-high-contrast: none) {
   span.flatpickr-day {

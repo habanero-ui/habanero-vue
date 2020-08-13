@@ -1,26 +1,32 @@
 import TimePicker from '../index'
 
-export default () => ({
+const Template = (args, { argTypes }) => ({
   components: { TimePicker },
+  props: Object.keys(argTypes),
   data: () => ({
-    maxTime: new Date('2020-01-01T20:00:00.000000Z'),
-    minTime: new Date('2020-01-01T06:00:00.000000Z'),
-    selectedDate: new Date('2020-01-01T12:00:00.000000Z'),
+    selectedDateState: new Date('2020-01-01T12:00:00.000000Z'),
   }),
   template: `
     <TimePicker
-      helperText="Select a time below"
-      label="Time"
+      v-bind="$props"
+      :maxTime="new Date(maxTime)"
+      :minTime="new Date(minTime)"
       :onSelectedDateChange="handleSelectedDateChange"
-      :maxTime="maxTime"
-      :minTime="minTime"
-      placeholder="Select a time"
-      :selectedDate="selectedDate"
+      :selectedDate="selectedDateState"
     />
   `,
   methods: {
     handleSelectedDateChange(selectedDate) {
-      this.selectedDate = selectedDate
+      this.selectedDateState = selectedDate
     },
   },
 })
+
+const TimePickerStateful = Template.bind({})
+
+TimePickerStateful.argTypes = {
+  onSelectedDateChange: { table: { disable: true } },
+  selectedDate: { table: { disable: true } },
+}
+
+export default TimePickerStateful

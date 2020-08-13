@@ -189,6 +189,7 @@ export default {
         minDate: this.minDate,
         minTime: this.minTime,
         mode: this.mode,
+        monthSelectorType: 'static',
         noCalendar: !this.isCalendarEnabled,
         onChange: this.handleFlatpickrChange,
       })
@@ -225,12 +226,34 @@ function getIsModeValid(value) {
 .flatpickr-months {
   @apply border-black border-l border-r border-t rounded-t-md;
 }
+.flatpickr-months .flatpickr-month,
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month,
+.flatpickr-current-month {
+  height: 56px;
+}
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month {
+  padding: 25px 10px;
+}
 .flatpickr-months .flatpickr-prev-month:hover svg,
 .flatpickr-months .flatpickr-next-month:hover svg {
   fill: #484848;
 }
 .flatpickr-months .flatpickr-month {
   @apply bg-white;
+}
+.flatpickr-current-month {
+  font-size: 110%;
+  padding: 16px 0 0 0;
+  @apply leading-loose;
+}
+.flatpickr-current-month span.cur-month {
+  color: #5a6171;
+  @apply font-medium;
+}
+.flatpickr-current-month input.cur-year {
+  @apply font-medium;
 }
 .flatpickr-current-month .flatpickr-monthDropdown-months {
   @apply bg-transparent;

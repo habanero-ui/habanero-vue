@@ -16,7 +16,7 @@ Spur's Design System and Component Library
 - [ ] Update `README.md` with useful info + branding
 - [ ] Update Select component to be custom, not native
 - [ ] Establish z-index ordering for elements (so far `Modal`, `Select`, and `Spinner` leverage style)
-- [ ] Finish tweaking flatpickr styles for calendar to match design specs
+- [ ] Swap out chevrons on Flatpickr to use our icons
 
 # Discussion Points
 

@@ -1,3 +1,4 @@
+import sortDirections from '../../../constants/sortDirections'
 import DataTable from '../index'
 import tableData from './tableData'
 export { default as Default } from './DataTableDefault.story'
@@ -11,6 +12,12 @@ export default {
   argTypes: {
     rowComponent: { table: { disable: true } },
     rows: { table: { disable: true } },
+    sortDirection: {
+      control: {
+        type: 'select',
+        options: sortDirections,
+      },
+    },
   },
   args: {
     rows: tableData,

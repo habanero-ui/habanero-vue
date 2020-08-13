@@ -1,19 +1,11 @@
-import { action } from '@storybook/addon-actions'
-
 import DataTableCheckboxCell from '../index'
 
-export default () => ({
+const Template = (args, { argTypes }) => ({
   components: { DataTableCheckboxCell },
-  data: () => ({
-    row: { id: 0, text: 'Some Text' },
-  }),
+  props: Object.keys(argTypes),
   template: `
-    <DataTableCheckboxCell
-      :column="{ onIsCheckedChange }"
-      :row="row"
-    />
+    <DataTableCheckboxCell v-bind="$props" />
   `,
-  methods: {
-    onIsCheckedChange: action('onIsCheckedChange'),
-  },
 })
+
+export default Template.bind({})

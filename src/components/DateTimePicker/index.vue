@@ -191,7 +191,7 @@ export default {
         mode: this.mode,
         monthSelectorType: 'static',
         noCalendar: !this.isCalendarEnabled,
-        onChange: this.handleFlatpickrChange,
+        onClose: this.handleFlatpickrChange,
       })
       this.picker.setDate(this.selectedDate || this.selectedDates, false)
     },

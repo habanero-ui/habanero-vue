@@ -19,3 +19,7 @@ const GlobalStylesDecorator = addDecorator(() => ({
     </div>
   `,
 }))
+
+export const parameters = {
+  controls: { expanded: true },
+}

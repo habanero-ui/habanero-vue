@@ -1,13 +1,13 @@
 import Checkbox from '../index'
 
-export default () => ({
+const Template = (args, { argTypes }) => ({
   components: { Checkbox },
+  props: Object.keys(argTypes),
   template: `
     <div class="flex flex-col items-start max-w-xs p-6">
-      <Checkbox
-        :isChecked="true"
-        text="The quick brown fox jumps over the lazy dog"
-      />
+      <Checkbox v-bind="$props" />
     </div>
   `,
 })
+
+export default Template.bind({})

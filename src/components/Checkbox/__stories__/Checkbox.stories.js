@@ -6,4 +6,9 @@ export { default as TextWrapping } from './CheckboxTextWrapping.story'
 export default {
   title: 'Checkbox',
   component: Checkbox,
+  args: {
+    disabled: false,
+    isChecked: false,
+    text: 'Check me out',
+  },
 }

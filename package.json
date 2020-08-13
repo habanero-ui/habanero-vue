@@ -10,7 +10,7 @@
     "prebuild": "npm run clean",
     "prepublishOnly": "npm run build",
     "start": "start-storybook -p 6006",
-    "chromatic": "npx chromatic"
+    "chromatic": "chromatic"
   },
   "dependencies": {
     "core-js": "^3.6.4",

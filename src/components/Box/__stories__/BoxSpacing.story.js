@@ -8,10 +8,12 @@ export default ((args, { argTypes }) => ({
     spacingAliases,
   }),
   template: `
-    <div v-for="(spacingAlias, index) in spacingAliases" :key="spacingAlias">
-      <Box class="border" :padding="spacingAlias">
-        {{ spacingAlias }} - {{ getRemFromSpacing(spacingAlias) }}
-      </Box>
+    <div>
+      <div v-for="(spacingAlias, index) in spacingAliases" :key="spacingAlias">
+        <Box class="border" :padding="spacingAlias">
+          {{ spacingAlias }} - {{ getRemFromSpacing(spacingAlias) }}
+        </Box>
+      </div>
     </div>
   `,
   methods: {

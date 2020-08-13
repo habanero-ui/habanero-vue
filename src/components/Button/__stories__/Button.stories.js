@@ -52,16 +52,10 @@ export default {
         options: buttonVariants,
       },
     },
-    wrapWithDiv: {
-      name: 'Wrap With <div>',
-      description:
-        'Wraps the Button in a div so that it does not take up the full parent width.',
-    },
   },
   args: {
     disabled: false,
     isLoading: false,
     text: 'Text',
-    wrapWithDiv: true,
   },
 }

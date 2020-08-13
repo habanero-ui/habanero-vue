@@ -127,9 +127,7 @@ export default {
   @apply bg-transparent pl-4 pr-10 w-full border border-black rounded-md text-black cursor-pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
-  line-height: 1;
-  padding-bottom: 0.75rem;
-  padding-top: 0.75rem;
+  line-height: 2.5;
   transition: border-color 300ms ease-in-out;
 }
 .select__input:not([disabled]):hover {

@@ -56,6 +56,12 @@ export default {
     tippy: undefined,
   }),
   watch: {
+    isContentInteractive() {
+      this.tippy.setProps({
+        interactive: this.isContentInteractive,
+      })
+    },
+
     placement() {
       this.tippy.setProps({
         placement: this.placement,

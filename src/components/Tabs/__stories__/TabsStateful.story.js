@@ -1,13 +1,14 @@
 import Tab from '../../Tab/index'
 import Tabs from '../index'
 
-export default () => ({
+const Template = ((args, { argTypes }) => ({
   components: { Tab, Tabs },
+  props: Object.keys(argTypes),
   data: () => ({
-    selectedName: 'Home',
+    selectedNameState: 'Home',
   }),
   template: `
-    <Tabs :selectedName="selectedName" :onSelectedNameChange="handleSelectedNameChange">
+    <Tabs v-bind="$props" :selectedName="selectedNameState" :onSelectedNameChange="handleSelectedNameChange">
       <Tab name="Home" />
       <Tab name="About" />
       <Tab name="Contact" />
@@ -16,7 +17,15 @@ export default () => ({
   `,
   methods: {
     handleSelectedNameChange(name) {
-      this.selectedName = name
+      this.selectedNameState = name
     },
   },
-})
+})).bind({})
+
+const TabsStateful = Template.bind({})
+
+TabsStateful.argTypes = {
+  selectedName: { table: { disable: true } },
+}
+
+export default TabsStateful

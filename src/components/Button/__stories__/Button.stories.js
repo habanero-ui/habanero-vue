@@ -42,7 +42,7 @@ export default {
     },
     textVariant: {
       control: {
-        type: 'inline-radio',
+        type: 'select',
         options: typographyVariants,
       },
     },

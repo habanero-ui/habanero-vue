@@ -1,20 +1,21 @@
 import Toggle from '../index'
 
-export default () => ({
+export default ((args, { argTypes }) => ({
   components: { Toggle },
+  props: Object.keys(argTypes),
   data: () => ({
-    isChecked: false,
+    isCheckedState: false,
   }),
   template: `
     <Toggle
-      :isChecked="isChecked"
+      v-bind="$props"
+      :isChecked="isCheckedState"
       :onIsCheckedChange="handleIsCheckedChange"
-      text="Flip the switch"
     />
   `,
   methods: {
     handleIsCheckedChange(isChecked) {
-      this.isChecked = isChecked
+      this.isCheckedState = isChecked
     },
   },
-})
+})).bind({})

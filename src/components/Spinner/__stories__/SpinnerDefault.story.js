@@ -1,25 +1,7 @@
-import { select } from '@storybook/addon-knobs'
-
-import colors from '../../../constants/colors'
 import Spinner from '../index'
 
-export default () => ({
+export default ((args, { argTypes }) => ({
   components: { Spinner },
-  props: {
-    color: {
-      default: select('color', colors, 'black'),
-    },
-    size: {
-      default: select(
-        'size',
-        {
-          small: 'small',
-          medium: 'medium',
-          large: 'large',
-        },
-        'medium',
-      ),
-    },
-  },
+  props: Object.keys(argTypes),
   template: `<Spinner v-bind="$props" />`,
-})
+})).bind({})

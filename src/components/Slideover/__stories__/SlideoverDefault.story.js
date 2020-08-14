@@ -1,67 +1,15 @@
-import { action } from '@storybook/addon-actions'
-import { boolean, text } from '@storybook/addon-knobs'
-
 import Slideover from '../index'
 
-export default () => ({
+export default ((args, { argTypes }) => ({
   components: { Slideover },
-  props: {
-    backText: {
-      default: text('backText', 'Back'),
-    },
-    cancelText: {
-      default: text('cancelText', 'Cancel'),
-    },
-    confirmText: {
-      default: text('confirmText', 'Confirm'),
-    },
-    destroyText: {
-      default: text('destroyText', 'Destroy'),
-    },
-    isCancelVisible: {
-      default: boolean('isCancelVisible', true),
-    },
-    isCancelDisabled: {
-      default: boolean('isCancelDisabled', false),
-    },
-    isConfirmDisabled: {
-      default: boolean('isConfirmDisabled', false),
-    },
-    isConfirmLoading: {
-      default: boolean('isConfirmLoading', false),
-    },
-    isConfirmVisible: {
-      default: boolean('isConfirmVisible', true),
-    },
-    isDestroyVisible: {
-      default: boolean('isDestroyVisible', true),
-    },
-    isOpen: {
-      default: boolean('isOpen', true),
-    },
-    isOpenInNewWindowVisible: {
-      default: boolean('isOpenInNewWindowVisible', true),
-    },
-    openInNewWindowText: {
-      default: text('openInNewWindowText', 'Open in new window'),
-    },
-  },
+  props: Object.keys(argTypes),
   template: `
     <div style="height: 4000px">
       <Slideover
-        :isCancelDisabled="isCancelDisabled"
-        :isConfirmDisabled="isConfirmDisabled"
-        :isConfirmLoading="isConfirmLoading"
-        :isOpen="isOpen"
-        :backText="backText"
-        :cancelText="cancelText"
-        :confirmText="confirmText"
-        :destroyText="destroyText"
-        :openInNewWindowText="openInNewWindowText"
+        v-bind="$props"
         :onCancel="isCancelVisible ? onCancel : undefined"
         :onConfirm="isConfirmVisible ? onConfirm : undefined"
         :onDestroy="isDestroyVisible ? onDestroy : undefined"
-        :onIsOpenChange="onIsOpenChange"
         :onOpenInNewWindow="isOpenInNewWindowVisible ? onOpenInNewWindow : undefined">
         <div class="flex-none" style="background: linear-gradient(to bottom right, #36d, #fff); height: 4000px;">
           Some Scrolling Content
@@ -69,11 +17,4 @@ export default () => ({
       </Slideover>
     </div>
   `,
-  methods: {
-    onCancel: action('onCancel'),
-    onConfirm: action('onConfirm'),
-    onDestroy: action('onDestroy'),
-    onIsOpenChange: action('onIsOpenChange'),
-    onOpenInNewWindow: action('onOpenInNewWindow'),
-  },
-})
+})).bind({})

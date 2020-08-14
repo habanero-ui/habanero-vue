@@ -1,37 +1,23 @@
-import { action } from '@storybook/addon-actions'
-import { select } from '@storybook/addon-knobs'
-
-import toastStackDirections from '../../../constants/toastStackDirections'
 import ToastStack from '../index'
 
-export default () => ({
+const Template = (args, { argTypes }) => ({
   components: { ToastStack },
-  props: {
-    direction: {
-      default: select('direction', toastStackDirections, 'down'),
-    },
-  },
-  data: () => ({
-    toasts: [
-      { id: 1, label: 'First Toast', message: 'Message for the first toast' },
-      {
-        id: 2,
-        label: 'Second Toast',
-        message: 'Message for the second toast',
-      },
-      { id: 3, label: 'Third Toast', message: 'Message for the third toast' },
-    ],
-  }),
-  template: `
-    <ToastStack
-      :direction="direction"
-      :onToastRemove="onToastRemove"
-      :onToastsChange="onToastsChange"
-      :toasts="toasts"
-    />
-  `,
-  methods: {
-    onToastRemove: action('onToastRemove'),
-    onToastsChange: action('onToastsChange'),
-  },
+  props: Object.keys(argTypes),
+  template: `<ToastStack v-bind="$props" />`,
 })
+
+const ToastStackDefault = Template.bind({})
+
+ToastStackDefault.args = {
+  toasts: [
+    { id: 1, label: 'First Toast', message: 'Message for the first toast' },
+    {
+      id: 2,
+      label: 'Second Toast',
+      message: 'Message for the second toast',
+    },
+    { id: 3, label: 'Third Toast', message: 'Message for the third toast' },
+  ],
+}
+
+export default ToastStackDefault

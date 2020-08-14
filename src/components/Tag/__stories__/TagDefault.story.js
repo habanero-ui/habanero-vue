@@ -1,33 +1,9 @@
-import { action } from '@storybook/addon-actions'
-import { boolean, number, text } from '@storybook/addon-knobs'
-
 import Tag from '../index'
 
-export default () => ({
+export default ((args, { argTypes }) => ({
   components: { Tag },
-  props: {
-    isDeleteVisible: {
-      default: boolean('isDeleteVisible', true),
-    },
-    maxChars: {
-      default: number('maxChars', 9),
-    },
-    text: {
-      default: text('text', 'Some Long Text'),
-    },
-    value: {
-      default: text('value', 'a'),
-    },
-  },
+  props: Object.keys(argTypes),
   template: `
-    <Tag
-      :maxChars="maxChars"
-      :onDelete="isDeleteVisible ? onDelete : undefined"
-      :text="text"
-      :value="value"
-    />
+    <Tag v-bind="$props" :onDelete="isDeleteVisible ? onDelete : undefined"  />
   `,
-  methods: {
-    onDelete: action('onDelete'),
-  },
-})
+})).bind({})

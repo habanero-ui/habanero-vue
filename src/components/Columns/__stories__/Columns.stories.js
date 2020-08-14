@@ -34,4 +34,5 @@ export default {
     isReversed: false,
     space: 'gutter',
   },
+  parameters: { layout: 'padded' },
 }

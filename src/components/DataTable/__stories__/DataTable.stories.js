@@ -22,4 +22,5 @@ export default {
   args: {
     rows: tableData,
   },
+  parameters: { layout: 'fullscreen' },
 }

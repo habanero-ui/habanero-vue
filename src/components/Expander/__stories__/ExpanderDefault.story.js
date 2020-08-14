@@ -1,38 +1,13 @@
-import { action } from '@storybook/addon-actions'
-import { boolean, text } from '@storybook/addon-knobs'
-
-import Box from '../../Box/index'
 import Expander from '../index'
 
-export default () => ({
-  components: { Box, Expander },
-  props: {
-    headerPaddingX: {
-      default: text('headerPaddingX', 'gutter'),
-    },
-    isOpen: {
-      default: boolean('isOpen', true),
-    },
-    text: {
-      default: text('text', 'Some Text'),
-    },
-  },
+export default ((args, { argTypes }) => ({
+  components: { Expander },
+  props: Object.keys(argTypes),
   template: `
-    <Box padding="gutter">
-      <Box class="border-2 border-border">
-        <Expander
-          :headerPaddingX="headerPaddingX"
-          :isOpen="isOpen"
-          :onIsOpenChange="onIsOpenChange"
-          :text="text">
-          <Box backgroundColor="blue" padding="gutter">
-            Some Content
-          </Box>
-        </Expander>
-      </Box>
-    </Box>
+    <div class="w-screen max-w-lg border-2 border-border">
+      <Expander v-bind="$props">
+        Some Content
+      </Expander>
+    </div>
   `,
-  methods: {
-    onIsOpenChange: action('onIsOpenChange'),
-  },
-})
+})).bind({})

@@ -8,9 +8,9 @@ export default {
   component: DataTableCheckboxCell,
   args: {
     column: {
-      key: 'text',
+      key: 'isChecked',
       onIsCheckedChange: action('onIsCheckedChange'),
     },
-    row: { id: 0, text: 'Some Text' },
+    row: { id: 0, isChecked: true },
   },
 }

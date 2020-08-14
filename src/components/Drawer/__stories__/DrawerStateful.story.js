@@ -1,7 +1,7 @@
 import Button from '../../Button/index'
 import Drawer from '../index'
 
-export default (args, { argTypes }) => ({
+const Template = (args, { argTypes }) => ({
   components: { Button, Drawer },
   props: Object.keys(argTypes),
   data: () => ({
@@ -30,3 +30,12 @@ export default (args, { argTypes }) => ({
     },
   },
 })
+
+const DrawerStateful = Template.bind({})
+
+DrawerStateful.argTypes = {
+  isOpen: { table: { disable: true } },
+  onIsOpenChange: { table: { disable: true } },
+}
+
+export default DrawerStateful

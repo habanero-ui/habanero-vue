@@ -63,8 +63,8 @@ export default {
           {
             class: 'inline__content',
             props: {
-              marginLeft: `-${this.space}`,
-              marginTop: `-${this.space}`,
+              marginLeft: this.space ? `-${this.space}` : '',
+              marginTop: this.space ? `-${this.space}` : '',
             },
           },
           [

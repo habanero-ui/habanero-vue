@@ -1,5 +1,5 @@
 <template>
-  <progress :class="classes" :max="max" :value="value" />
+  <progress :class="classes" :value="value" />
 </template>
 
 <script>
@@ -16,10 +16,6 @@ export default {
     color: {
       default: 'none',
       type: String,
-    },
-    max: {
-      default: 100,
-      type: Number,
     },
     value: {
       default: 0,

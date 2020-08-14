@@ -65,10 +65,6 @@ export default {
       default: 'Cancel',
       type: String,
     },
-    confirmations: {
-      default: () => [],
-      type: Array,
-    },
     confirmColor: {
       default: undefined,
       type: String,
@@ -76,6 +72,10 @@ export default {
     confirmText: {
       default: 'Confirm',
       type: String,
+    },
+    confirmations: {
+      default: () => [],
+      type: Array,
     },
     helperText: {
       default: '',

@@ -300,6 +300,8 @@ export default {
     handleTagDelete(id, e) {
       e.stopPropagation()
 
+      if (this.disabled) return
+
       this.onSelectedIdsChange(without(this.selectedIds, id))
     },
   },

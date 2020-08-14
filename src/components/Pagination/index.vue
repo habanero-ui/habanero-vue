@@ -1,5 +1,5 @@
 <template>
-  <Box>
+  <Box marginLeft="-small">
     <Columns alignY="center" space="gutter">
       <Column width="content">
         <Columns alignY="center" space="xsmall">

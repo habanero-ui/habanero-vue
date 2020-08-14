@@ -1,34 +1,26 @@
-import { action } from '@storybook/addon-actions'
-import { text } from '@storybook/addon-knobs'
-
 import Box from '../../Box/index'
-import Typography from '../../Typography/index'
+import Button from '../../Button/index'
 import PageSection from '../index'
 
-export default () => ({
-  components: { Box, PageSection, Typography },
-  props: {
-    actionText: {
-      default: text('actionText', 'Action'),
-    },
-    titleText: {
-      default: text('titleText', 'Section Title'),
-    },
-  },
+const Template = (args, { argTypes }) => ({
+  components: { Box, Button, PageSection },
+  props: Object.keys(argTypes),
   template: `
-    <Box class="flex flex-col" padding="gutter">
-      <PageSection
-        :actionText="actionText"
-        :onActionClick="onActionClick"
-        :titleText="titleText">
-        <template slot="action">
-          <Typography class="cursor-pointer" color="error" variant="button">Report</Typography>
+    <Box class="w-screen max-w-lg" padding="gutter">
+      <PageSection v-bind="$props">
+        <template slot="action"> 
+          <Button color="error" :text="actionText" variant="text" />
         </template>
         <Box padding="gutter">Put some content here...</Box>
       </PageSection>
     </Box>
   `,
-  methods: {
-    onActionClick: action('onActionClick'),
-  },
 })
+
+const PageSectionCustomAction = Template.bind({})
+
+PageSectionCustomAction.args = {
+  actionText: 'Report',
+}
+
+export default PageSectionCustomAction

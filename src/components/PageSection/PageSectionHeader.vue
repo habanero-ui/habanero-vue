@@ -9,16 +9,17 @@
           {{ titleText }}
         </Typography>
       </Column>
-      <Column v-if="onActionClick && actionText" width="content">
+      <Column
+        v-if="$slots.action || (onActionClick && actionText)"
+        width="content"
+      >
         <slot name="action">
-          <Typography
-            class="page-section-header__action-text"
+          <Button
             color="info"
-            variant="button"
+            :text="actionText"
+            variant="text"
             @click.native="onActionClick"
-          >
-            {{ actionText }}
-          </Typography>
+          />
         </slot>
       </Column>
     </Columns>
@@ -26,12 +27,14 @@
 </template>
 
 <script>
+import Button from '../Button/index'
 import Column from '../Column/index'
 import Columns from '../Columns/index'
 import Typography from '../Typography/index'
 
 export default {
   components: {
+    Button,
     Column,
     Columns,
     Typography,
@@ -50,15 +53,14 @@ export default {
       type: String,
     },
   },
+  mounted() {
+    console.log('header', this.$slots)
+  },
 }
 </script>
 
 <style scoped>
 .page-section-header {
   @apply flex flex-col;
-}
-
-.page-section-header__action-text {
-  @apply cursor-pointer;
 }
 </style>

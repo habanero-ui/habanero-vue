@@ -17,12 +17,10 @@ jobs:
         skip_cleanup: true
         script:
           - npx semantic-release
-    - stage: preparedeployment
+    - stage: deploy-to-firebase
       node_js: lts/*
       script:
         - npm run build-storybook
-    - stage: deploy-to-firebase
-      node_js: lts/*
       deploy:
         provider: firebase
         edge:

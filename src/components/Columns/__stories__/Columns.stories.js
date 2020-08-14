@@ -10,7 +10,7 @@ export default {
   argTypes: {
     alignY: {
       control: {
-        type: 'select',
+        type: 'inline-radio',
         options: verticalAlignments,
       },
     },

@@ -1,25 +1,26 @@
-import { addDecorator, addParameters } from '@storybook/vue'
-import { withKnobs } from '@storybook/addon-knobs'
-
 import GlobalStyles from '../src/components/GlobalStyles/index'
+import map from 'lodash/map'
+import tailwindConfig from '../tailwind.config'
 import './index.css'
 
 export const parameters = {
+  backgrounds: {
+    values: map(Object.keys(tailwindConfig.theme.extend.colors), (name) => ({
+      name,
+      value: tailwindConfig.theme.extend.colors[name],
+    })),
+  },
   layout: 'centered',
 }
 
-addDecorator(
-  withKnobs({
-    escapeHTML: false,
-  }),
-)
-
-const GlobalStylesDecorator = addDecorator(() => ({
-  components: { GlobalStyles },
-  template: `
+export const decorators = [
+  () => ({
+    components: { GlobalStyles },
+    template: `
     <div>
       <GlobalStyles />
       <story />
     </div>
   `,
-}))
+  }),
+]

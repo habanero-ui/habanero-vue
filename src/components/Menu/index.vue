@@ -10,7 +10,7 @@
           :key="item.text"
           :iconName="item.icon"
           :primaryText="item.text"
-          @click.native="item.onClick"
+          @click.native="handleItemClick(item, $event)"
         />
       </Stack>
     </div>
@@ -60,6 +60,17 @@ export default {
       theme: 'habanero-menu',
       trigger: 'click',
     })
+  },
+  methods: {
+    handleItemClick(item, e) {
+      if (!item.onClick) return
+
+      item.onClick(e)
+
+      if (!this.tippy) return
+
+      this.tippy.hide()
+    },
   },
 }
 

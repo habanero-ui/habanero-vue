@@ -1,33 +1,20 @@
-import { select, text } from '@storybook/addon-knobs'
-
-import verticalAlignments from '../../../constants/verticalAlignments'
 import Box from '../../Box/index'
 import Inline from '../index'
 
-export default () => ({
+export default ((args, { argTypes }) => ({
   components: { Box, Inline },
-  props: {
-    align: {
-      default: select('align', ['left', 'center', 'right'], 'left'),
-    },
-    alignY: {
-      default: select('alignY', verticalAlignments, 'stretch'),
-    },
-    space: {
-      default: text('space', 'gutter'),
-    },
-  },
+  props: Object.keys(argTypes),
   template: `
-    <Box backgroundColor="gold" class="max-w-md">
-      <Inline :align="align" :alignY="alignY" :space="space">
+    <div class="max-w-md">
+      <Inline v-bind="$props">
         <Box
           v-for="n in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]"
-          backgroundColor="black"
+          backgroundColor="subtle"
           class="w-10"
           :class="n % 2 === 0 ? 'h-10' : 'h-8'"
           :key="n"
         />
       </Inline>
-    </Box>
+    </div>
   `,
-})
+})).bind({})

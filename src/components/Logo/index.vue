@@ -14,12 +14,13 @@
 </template>
 
 <script>
+import colors from '../../constants/colors'
 import PropValidation from '../../mixins/PropValidation'
 
 export default {
   mixins: [
     PropValidation({
-      color: ['black', 'white', 'gold'],
+      color: [...colors, 'white'],
     }),
   ],
   props: {
@@ -40,13 +41,49 @@ export default {
 .logo > svg {
   @apply fill-current w-full h-auto;
 }
-.logo--color-black {
-  @apply text-black;
+.logo--color-gold {
+  @apply text-gold;
 }
 .logo--color-white {
   @apply text-white;
 }
-.logo--color-gold {
-  @apply text-gold;
+.logo--color-black {
+  @apply text-black;
+}
+.logo--color-blue {
+  @apply text-blue;
+}
+.logo--color-border {
+  @apply text-border;
+}
+.logo--color-green {
+  @apply text-green;
+}
+.logo--color-orange {
+  @apply text-orange;
+}
+.logo--color-pink {
+  @apply text-pink;
+}
+.logo--color-purple {
+  @apply text-purple;
+}
+.logo--color-error {
+  @apply text-error;
+}
+.logo--color-info {
+  @apply text-info;
+}
+.logo--color-offwhite {
+  @apply text-offwhite;
+}
+.logo--color-subtle {
+  @apply text-subtle;
+}
+.logo--color-success {
+  @apply text-success;
+}
+.logo--color-warning {
+  @apply text-warning;
 }
 </style>

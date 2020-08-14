@@ -1,3 +1,5 @@
+import { action } from '@storybook/addon-actions'
+
 import sortDirections from '../../../constants/sortDirections'
 import DataTable from '../index'
 import tableData from './tableData'
@@ -11,7 +13,6 @@ export default {
   component: DataTable,
   argTypes: {
     rowComponent: { table: { disable: true } },
-    rows: { table: { disable: true } },
     sortDirection: {
       control: {
         type: 'select',
@@ -20,6 +21,7 @@ export default {
     },
   },
   args: {
+    onRowSelect: action('onRowSelect'),
     rows: tableData,
   },
   parameters: { layout: 'fullscreen' },

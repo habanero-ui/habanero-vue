@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions'
-
 import DataTable from '../index'
 
 const Template = (args, { argTypes }) => ({
@@ -9,6 +7,10 @@ const Template = (args, { argTypes }) => ({
 })
 
 const DataTableDefault = Template.bind({})
+
+DataTableDefault.argTypes = {
+  columns: { table: { disable: true } },
+}
 
 DataTableDefault.args = {
   columns: [
@@ -48,7 +50,6 @@ DataTableDefault.args = {
       key: 'rating',
     },
   ],
-  onRowSelect: action('onRowSelect'),
 }
 
 export default DataTableDefault

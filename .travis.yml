@@ -7,17 +7,36 @@ cache:
 notifications:
   email:
     - nick.johnson@spurjobs.com
-script:
-  - npm run build-storybook
-deploy:
-  provider: firebase
-  edge:
-    branch: master
-  only: hosting:production
-  on:
-    branch: master
-  token:
-    secure: x7CaxsQoE6wtt535Xl+Ig5Lj3Vc+VAYc2FZPa5kScjUJmqThbV/CbDNd4gOi2uLvruxbNW0crZS6ikjKJnblANDVHZfcL2DBJZYyTYpl1X43gVICBDFZSdsJEoISf0lfHVW3LY3mNjAVNnbeYEhIgnlZrkrj82QmQhlAQpiQbfuJ2gUhqOdmxdzGOT22qODaf/Dg8WbryFZbyTmSSv9GDNBaBJecef1qXYQxmqJwWrWGXupIjuboNjG0YibZq3htxbaE3ixYp1WEtRl9sfjtgPndlUfRcDqE3pXfGpu4UV1rUQjUPBA3ZDH4bzJI37aWFyIWt6CCk21QY/mbxuc7jk0N48K+8wEt5NjgxMoGqpfbQH7yMzR6RWp8m+uZDBE68cYl7ohHDe8IyrUhvCeoribJtBYyf27xkjuR3CdnWlwyjcfoKQfn4+3ZI/tI94fGXqmAfSjspdNB7g2VGiKXLgZFlx0jy7v724n0YIWSuD46BpsCZGYOG2jbiDsfmrwLkOVi9sM5ZbnU7Nev6qEcHt6hGq2+5E4er346UItBvgOOIVwAuvQgAumEmGNhs/doA1D2oDAxHlgZX3TxgpN7IYtSIG9hH7D/k2arwGo8udsok4dT0qwZW7rVGGmnDHy9N8PqBb0ZwzyjedHZoqc4mlU3AEK9crxraSTLw/99ZDo=
-  skip_cleanup: true
-after_success:
-  - npx semantic-release
+jobs:
+  include:
+    # Define the release stage that runs semantic-release
+    - stage: release
+      node_js: lts/*
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - npx semantic-release
+    - stage: preparedeployment
+      node_js: lts/*
+      script:
+        - npm run build-storybook
+    - stage: deploy-to-firebase
+      node_js: lts/*
+      deploy:
+        provider: firebase
+        edge:
+          branch: master
+        only: hosting:production
+        on:
+          branch: master
+        token:
+          secure: x7CaxsQoE6wtt535Xl+Ig5Lj3Vc+VAYc2FZPa5kScjUJmqThbV/CbDNd4gOi2uLvruxbNW0crZS6ikjKJnblANDVHZfcL2DBJZYyTYpl1X43gVICBDFZSdsJEoISf0lfHVW3LY3mNjAVNnbeYEhIgnlZrkrj82QmQhlAQpiQbfuJ2gUhqOdmxdzGOT22qODaf/Dg8WbryFZbyTmSSv9GDNBaBJecef1qXYQxmqJwWrWGXupIjuboNjG0YibZq3htxbaE3ixYp1WEtRl9sfjtgPndlUfRcDqE3pXfGpu4UV1rUQjUPBA3ZDH4bzJI37aWFyIWt6CCk21QY/mbxuc7jk0N48K+8wEt5NjgxMoGqpfbQH7yMzR6RWp8m+uZDBE68cYl7ohHDe8IyrUhvCeoribJtBYyf27xkjuR3CdnWlwyjcfoKQfn4+3ZI/tI94fGXqmAfSjspdNB7g2VGiKXLgZFlx0jy7v724n0YIWSuD46BpsCZGYOG2jbiDsfmrwLkOVi9sM5ZbnU7Nev6qEcHt6hGq2+5E4er346UItBvgOOIVwAuvQgAumEmGNhs/doA1D2oDAxHlgZX3TxgpN7IYtSIG9hH7D/k2arwGo8udsok4dT0qwZW7rVGGmnDHy9N8PqBb0ZwzyjedHZoqc4mlU3AEK9crxraSTLw/99ZDo=
+        skip_cleanup: true
+    - stage: deploy-to-chromatic
+      node_js: lts/*
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - npx chromatic

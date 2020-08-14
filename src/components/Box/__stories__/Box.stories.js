@@ -43,4 +43,8 @@ export default {
     paddingX: spacingArgType,
     paddingY: spacingArgType,
   },
+  args: {
+    backgroundColor: 'none',
+    borderRadius: 'none',
+  },
 }

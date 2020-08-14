@@ -1,9 +1,8 @@
-import columnWidths from '../../../constants/columnWidths'
 import Box from '../../Box/index'
 import Column from '../../Column/index'
 import Columns from '../index'
 
-const Template = (args, { argTypes }) => ({
+export default ((args, { argTypes }) => ({
   components: { Box, Column, Columns },
   props: Object.keys(argTypes),
   template: `
@@ -20,12 +19,4 @@ const Template = (args, { argTypes }) => ({
       </Column>
     </Columns>
   `,
-})
-
-const ColumnsDefault = Template.bind({})
-
-ColumnsDefault.args = {
-  widths: columnWidths,
-}
-
-export default ColumnsDefault
+})).bind({})

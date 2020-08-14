@@ -13,4 +13,8 @@ export default {
       },
     },
   },
+  args: {
+    color: 'black',
+    text: 'Some Text',
+  },
 }

@@ -1,20 +1,7 @@
 import Box from '../index'
 
-const Template = (args, { argTypes }) => ({
+export default ((args, { argTypes }) => ({
   components: { Box },
   props: Object.keys(argTypes),
-  template: `
-    <Box v-bind="$props">
-      Content
-    </Box>
-  `,
-})
-
-const BoxDefault = Template.bind({})
-
-BoxDefault.args = {
-  backgroundColor: 'none',
-  borderRadius: 'none',
-}
-
-export default BoxDefault
+  template: `<Box v-bind="$props">Content</Box>`,
+})).bind({})

@@ -1,6 +1,5 @@
 export default [
   'apartment',
-  'archive-paper-check',
   'arrow-down',
   'arrow-left',
   'arrow-right',
@@ -31,6 +30,7 @@ export default [
   'eye',
   'face-happy',
   'file-download',
+  'file-paper-check',
   'file-upload',
   'fire',
   'flag',

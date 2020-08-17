@@ -37,9 +37,6 @@ export default {
       type: String,
     },
   },
-  mounted() {
-    console.log(this.$slots)
-  },
 }
 </script>
 

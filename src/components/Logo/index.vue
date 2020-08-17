@@ -20,7 +20,7 @@ import PropValidation from '../../mixins/PropValidation'
 export default {
   mixins: [
     PropValidation({
-      color: [...colors, 'white'],
+      color: colors,
     }),
   ],
   props: {

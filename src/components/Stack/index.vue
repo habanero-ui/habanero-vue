@@ -19,6 +19,10 @@ export default {
       default: 'stretch',
       type: String,
     },
+    dividerThickness: {
+      default: 'thin',
+      type: String,
+    },
     component: {
       default: 'div',
       type: String,
@@ -65,7 +69,9 @@ export default {
                 this.showDividers && index > 0
                   ? [
                       this.mapSlotNode(
-                        h(Divider, { props: { thickness: 'thin' } }),
+                        h(Divider, {
+                          props: { thickness: this.dividerThickness },
+                        }),
                         h,
                         index,
                       ),

@@ -2,7 +2,10 @@
   <Box paddingX="medium" paddingY="2.75">
     <Columns class="flex-none" alignY="center" space="xsmall">
       <Column width="content">
-        <Avatar :firstName="movieName" image="http://placekitten.com/256/256" />
+        <Avatar
+          :firstName="movieName"
+          image="http://placekitten.com/256/256?image=1"
+        />
       </Column>
       <Column>
         <Stack space="xxsmall">

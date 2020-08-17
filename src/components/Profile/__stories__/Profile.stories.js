@@ -6,7 +6,7 @@ export default {
   component: Profile,
   args: {
     firstName: 'Patches',
-    image: 'http://placekitten.com/256/256',
+    image: 'http://placekitten.com/256/256?image=1',
     lastName: "O'Houlihan",
     subtitle: 'the Cat',
   },

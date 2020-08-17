@@ -21,7 +21,7 @@
           class="modal__confirmations"
         >
           <Checkbox
-            v-for="(confirmation, index) of confirmations"
+            v-for="(confirmation, index) in confirmations"
             :key="index"
             :isChecked="isChecked(index)"
             :onIsCheckedChange="

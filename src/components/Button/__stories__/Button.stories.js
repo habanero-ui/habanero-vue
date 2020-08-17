@@ -54,8 +54,15 @@ export default {
     },
   },
   args: {
+    color: 'black',
     disabled: false,
+    iconSide: 'right',
+    iconSize: 'small',
     isLoading: false,
+    size: 'medium',
     text: 'Text',
+    textVariant: 'button',
+    type: 'button',
+    variant: 'primary',
   },
 }

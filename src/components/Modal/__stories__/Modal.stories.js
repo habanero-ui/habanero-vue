@@ -14,6 +14,12 @@ export default {
         options: colors,
       },
     },
+    confirmations: {
+      control: {
+        type: 'check',
+        options: ['Confirmation A', 'Confirmation B', 'Confirmation C'],
+      },
+    },
   },
   args: {
     cancelText: 'Cancel',

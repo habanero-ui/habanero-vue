@@ -18,20 +18,24 @@
 </template>
 
 <script>
-import includes from 'lodash/includes'
 import reverse from 'lodash/reverse'
 
 import toastStackDirections from '../../constants/toastStackDirections'
+import PropValidation from '../../mixins/PropValidation'
 import Box from '../Box/index'
 import Toast from '../Toast/index'
 
 export default {
   components: { Box, Toast },
+  mixins: [
+    PropValidation({
+      direction: toastStackDirections,
+    }),
+  ],
   props: {
     direction: {
       default: 'down',
       type: String,
-      validator: getIsDirectionValid,
     },
     onToastRemove: {
       default: () => {},
@@ -62,20 +66,6 @@ export default {
       this.onToastsChange(this.toasts.filter((toast) => toast.id !== id))
     },
   },
-}
-
-function getIsDirectionValid(value) {
-  const isValid = includes(toastStackDirections, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'ToastStack: The "direction" prop must be one of the following:',
-      String(toastStackDirections),
-    )
-  }
-
-  return isValid
 }
 </script>
 

@@ -17,18 +17,29 @@ import flatten from 'lodash/flatten'
 import forEach from 'lodash/forEach'
 import map from 'lodash/map'
 
+import PropValidation from '../../mixins/PropValidation'
 import Column from '../Column/index'
 import Columns from '../Columns/index'
 import BreadcrumbItem from './BreadcrumbsItem'
 
 export default {
   components: { BreadcrumbItem, Column, Columns },
+  mixins: [
+    PropValidation({
+      items: validateItems,
+    }),
+  ],
   props: {
+    /**
+     * An array of objects that describe the list of breadcrumbs to display. Every item should have a `text` key. An optional `href` key is also supported.
+     */
     items: {
       default: () => [],
       type: Array,
-      validator: getIsItemsValid,
     },
+    /**
+     * A callback that will be invoked when a Breadcrumb Item is pressed. The first param is the object from `items` corresponding to the pressed Breadcrumb Item.
+     */
     onItemSelect: {
       default: () => {},
       type: Function,
@@ -46,7 +57,7 @@ export default {
   },
 }
 
-function getIsItemsValid(data) {
+function validateItems(data) {
   let isValid = true
 
   forEach(data, (item) => {
@@ -61,8 +72,6 @@ function getIsItemsValid(data) {
       'Breadcrumbs: Each array item in the "items" prop must have a "text" key.',
     )
   }
-
-  return isValid
 }
 </script>
 

@@ -1,10 +1,27 @@
+import colors from '../../../constants/colors'
 import Spinner from '../index'
 export { default as Default } from './SpinnerDefault.story'
-export { default as Color } from './SpinnerColor.story'
-export { default as ColorBackground } from './SpinnerColorBackground.story'
-export { default as Size } from './SpinnerSize.story'
 
 export default {
   title: 'Spinner',
   component: Spinner,
+  argTypes: {
+    color: {
+      control: {
+        type: 'select',
+        options: colors,
+      },
+    },
+    size: {
+      control: {
+        type: 'inline-radio',
+        options: ['small', 'medium', 'large'],
+      },
+    },
+  },
+  args: {
+    color: 'black',
+    colorIsBackground: false,
+    size: 'medium',
+  },
 }

@@ -24,6 +24,8 @@ jobs:
         skip_cleanup: true
         script:
           - npx chromatic --exit-zero-on-changes
+        on:
+          all_branches: true
     - stage: deploy-to-firebase
       node_js: lts/*
       script:

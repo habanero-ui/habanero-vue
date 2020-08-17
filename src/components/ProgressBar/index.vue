@@ -1,21 +1,21 @@
 <template>
-  <progress :class="classes" :max="max" :value="value" />
+  <progress :class="classes" :value="value" />
 </template>
 
 <script>
-import includes from 'lodash/includes'
-
 import colors from '../../constants/colors'
+import PropValidation from '../../mixins/PropValidation'
 
 export default {
+  mixins: [
+    PropValidation({
+      color: colors,
+    }),
+  ],
   props: {
     color: {
       default: 'none',
-      validator: getIsColorValid,
-    },
-    max: {
-      default: 100,
-      type: Number,
+      type: String,
     },
     value: {
       default: 0,
@@ -27,20 +27,6 @@ export default {
       return ['progress-bar', `progress-bar--color-${this.color}`]
     },
   },
-}
-
-function getIsColorValid(value) {
-  const isValid = includes(colors, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Icon: The "color" prop must be one of the following:',
-      String(colors),
-    )
-  }
-
-  return isValid
 }
 </script>
 

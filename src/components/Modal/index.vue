@@ -21,7 +21,7 @@
           class="modal__confirmations"
         >
           <Checkbox
-            v-for="(confirmation, index) of confirmations"
+            v-for="(confirmation, index) in confirmations"
             :key="index"
             :isChecked="isChecked(index)"
             :onIsCheckedChange="
@@ -65,10 +65,6 @@ export default {
       default: 'Cancel',
       type: String,
     },
-    confirmations: {
-      default: () => [],
-      type: Array,
-    },
     confirmColor: {
       default: undefined,
       type: String,
@@ -76,6 +72,10 @@ export default {
     confirmText: {
       default: 'Confirm',
       type: String,
+    },
+    confirmations: {
+      default: () => [],
+      type: Array,
     },
     helperText: {
       default: '',

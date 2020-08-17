@@ -1,18 +1,21 @@
 import DatePicker from '../index'
 
-export default () => ({
+const Template = (args, { argTypes }) => ({
   components: { DatePicker },
+  props: Object.keys(argTypes),
   data: () => ({
     selectedDates: undefined,
   }),
   template: `
-    <div class="flex flex-col p-6">
+    <div class="flex flex-col">
       <DatePicker
+        v-bind="$props"
         helperText="Select the days you were absent"
         label="Absences"
-        :onSelectedDatesChange="handleSelectedDatesChange"
         maxDate="today"
+        :minDate="new Date(minDate)"
         mode="multiple"
+        :onSelectedDatesChange="handleSelectedDatesChange"
         placeholder="Select days..."
         :selectedDates="selectedDates"
       />
@@ -24,3 +27,18 @@ export default () => ({
     },
   },
 })
+
+const DatePickerMultiDate = Template.bind({})
+
+DatePickerMultiDate.argTypes = {
+  helperText: { table: { disable: true } },
+  label: { table: { disable: true } },
+  mode: { table: { disable: true } },
+  maxDate: { table: { disable: true } },
+  minDate: { table: { disable: true } },
+  onSelectedDateChange: { table: { disable: true } },
+  placeholder: { table: { disable: true } },
+  selectedDate: { table: { disable: true } },
+}
+
+export default DatePickerMultiDate

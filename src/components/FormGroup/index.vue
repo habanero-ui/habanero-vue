@@ -21,9 +21,6 @@
 </template>
 
 <script>
-import includes from 'lodash/includes'
-
-import spacingAliases from '../../constants/spacingAliases'
 import Stack from '../Stack/index'
 import Typography from '../Typography/index'
 
@@ -57,23 +54,7 @@ export default {
     space: {
       default: 'medium',
       type: String,
-      validator: getIsSpaceValid,
     },
   },
-}
-
-function getIsSpaceValid(value) {
-  const isValid =
-    includes(['', ...spacingAliases], value) || !isNaN(parseFloat(value))
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      `FormGroup: The "space" prop must be a number to be multiplied by 4, or one of the following aliases:`,
-      String(spacingAliases),
-    )
-  }
-
-  return isValid
 }
 </script>

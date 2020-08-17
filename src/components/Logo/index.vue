@@ -14,35 +14,36 @@
 </template>
 
 <script>
-import includes from 'lodash/includes'
+import colors from '../../constants/colors'
+import PropValidation from '../../mixins/PropValidation'
 
 export default {
+  mixins: [
+    PropValidation({
+      color: colors,
+    }),
+  ],
   props: {
     color: {
       default: 'black',
       type: String,
-      validator: getIsColorValid,
+    },
+    colorIsBackground: {
+      default: false,
+      type: Boolean,
     },
   },
   computed: {
     classes() {
-      return ['logo', `logo--color-${this.color}`]
+      return [
+        'logo',
+        {
+          'logo--color-is-background': this.colorIsBackground,
+        },
+        `logo--color-${this.color}`,
+      ]
     },
   },
-}
-
-function getIsColorValid(value) {
-  const isValid = includes(['black', 'white', 'gold'], value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Logo: The "color" prop must be one of the following:',
-      String(['black', 'white', 'gold']),
-    )
-  }
-
-  return isValid
 }
 </script>
 
@@ -53,10 +54,85 @@ function getIsColorValid(value) {
 .logo--color-black {
   @apply text-black;
 }
-.logo--color-white {
+.logo--color-black.logo--color-is-background {
+  @apply text-white;
+}
+.logo--color-blue {
+  @apply text-blue;
+}
+.logo--color-blue.logo--color-is-background {
+  @apply text-black;
+}
+.logo--color-border {
+  @apply text-border;
+}
+.logo--color-border.logo--color-is-background {
+  @apply text-black;
+}
+.logo--color-error {
+  @apply text-error;
+}
+.logo--color-error.logo--color-is-background {
   @apply text-white;
 }
 .logo--color-gold {
   @apply text-gold;
+}
+.logo--color-gold.logo--color-is-background {
+  @apply text-white;
+}
+.logo--color-green {
+  @apply text-green;
+}
+.logo--color-green.logo--color-is-background {
+  @apply text-black;
+}
+.logo--color-info {
+  @apply text-info;
+}
+.logo--color-info.logo--color-is-background {
+  @apply text-white;
+}
+.logo--color-orange {
+  @apply text-orange;
+}
+.logo--color-orange.logo--color-is-background {
+  @apply text-black;
+}
+.logo--color-pink {
+  @apply text-pink;
+}
+.logo--color-pink.logo--color-is-background {
+  @apply text-black;
+}
+.logo--color-purple {
+  @apply text-purple;
+}
+.logo--color-purple.logo--color-is-background {
+  @apply text-black;
+}
+.logo--color-offwhite {
+  @apply text-offwhite;
+}
+.logo--color-offwhite.logo--color-is-background {
+  @apply text-black;
+}
+.logo--color-subtle {
+  @apply text-subtle;
+}
+.logo--color-subtle.logo--color-is-background {
+  @apply text-white;
+}
+.logo--color-success {
+  @apply text-success;
+}
+.logo--color-success.logo--color-is-background {
+  @apply text-white;
+}
+.logo--color-warning {
+  @apply text-warning;
+}
+.logo--color-warning.logo--color-is-background {
+  @apply text-black;
 }
 </style>

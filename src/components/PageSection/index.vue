@@ -6,7 +6,7 @@
         :onActionClick="onActionClick"
         :titleText="titleText"
       >
-        <template slot="action">
+        <template v-if="$slots.action" slot="action">
           <slot name="action" />
         </template>
       </PageSectionHeader>

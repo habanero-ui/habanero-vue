@@ -1,23 +1,32 @@
 import MultiSelect from '../index'
 
-export default () => ({
+const Template = (args, { argTypes }) => ({
   components: { MultiSelect },
+  props: Object.keys(argTypes),
   data: () => ({
-    items: ['Alpha', 'Beta', 'Charlie', 'Delta', 'Echo'],
-    selectedIds: [],
+    selectedIdsState: [],
   }),
   template: `
-    <div class="p-6">
+    <div class="w-screen max-w-lg">
       <MultiSelect
-        :items="items"
+        v-bind="$props"
         :onSelectedIdsChange="handleSelectedIdsChange"
-        :selectedIds="selectedIds"
+        :selectedIds="selectedIdsState"
       />
     </div>
   `,
   methods: {
     handleSelectedIdsChange(selectedIds) {
-      this.selectedIds = selectedIds
+      this.selectedIdsState = selectedIds
     },
   },
 })
+
+const MultiSelectStateful = Template.bind({})
+
+MultiSelectStateful.argTypes = {
+  onSelectedIdsChange: { table: { disable: true } },
+  selectedIds: { table: { disable: true } },
+}
+
+export default MultiSelectStateful

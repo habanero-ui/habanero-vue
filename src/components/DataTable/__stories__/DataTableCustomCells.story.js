@@ -1,4 +1,3 @@
-import { action } from '@storybook/addon-actions'
 import filter from 'lodash/filter'
 import map from 'lodash/map'
 
@@ -7,15 +6,16 @@ import DataTableCheckboxCell from '../../DataTableCheckboxCell/index'
 import DataTable from '../index'
 import DataTableMultilineCell from './DataTableMultilineCell'
 import DataTableProfileCell from './DataTableProfileCell'
-import tableData from './tableData.js'
+import tableData from './tableData'
 
-export default () => ({
+export default ((args, { argTypes }) => ({
   components: { DataTable },
+  props: Object.keys(argTypes),
   data: () => ({
-    rows: tableData,
+    rowsState: tableData,
   }),
   computed: {
-    columns() {
+    columnsState() {
       return [
         {
           name: 'Rank',
@@ -73,26 +73,16 @@ export default () => ({
       ]
     },
   },
-  template: `
-    <div class="p-6"> 
-      <DataTable
-        :columns="columns"
-        :onRowSelect="onRowSelect"
-        :rows="rows"
-      />
-    </div>
-  `,
+  template: `<DataTable v-bind="$props" :columns="columnsState" :rows="rowsState" />`,
   methods: {
+    handleRowDelete(changedRow) {
+      this.rowsState = filter(this.rowsState, (row) => row.id !== changedRow.id)
+    },
+
     handleSeenChange({ id }, seen) {
-      this.rows = map(this.rows, (row) =>
+      this.rowsState = map(this.rowsState, (row) =>
         row.id === id ? { ...row, movie: { ...row.movie, seen } } : row,
       )
     },
-
-    handleRowDelete(changedRow) {
-      this.rows = filter(this.rows, (row) => row.id !== changedRow.id)
-    },
-
-    onRowSelect: action('onRowSelect'),
   },
-})
+})).bind({})

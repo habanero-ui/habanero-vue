@@ -120,6 +120,7 @@ import takeRight from 'lodash/takeRight'
 import without from 'lodash/without'
 
 import toggleInArray from '../../helpers/toggleInArray'
+import PropValidation from '../../mixins/PropValidation'
 import Box from '../Box/index'
 import Checkbox from '../Checkbox/index'
 import FormGroup from '../FormGroup/index'
@@ -144,6 +145,11 @@ export default {
     Tooltip,
     Typography,
   },
+  mixins: [
+    PropValidation({
+      maxTagCount: validateMaxTagCount,
+    }),
+  ],
   props: {
     disabled: {
       default: false,
@@ -176,7 +182,6 @@ export default {
     maxTagCount: {
       default: 4,
       type: Number,
-      validator: getIsMaxTagCountValid,
     },
     onSelectedIdsChange: {
       default: () => {},
@@ -295,12 +300,14 @@ export default {
     handleTagDelete(id, e) {
       e.stopPropagation()
 
+      if (this.disabled) return
+
       this.onSelectedIdsChange(without(this.selectedIds, id))
     },
   },
 }
 
-function getIsMaxTagCountValid(value) {
+function validateMaxTagCount(value) {
   const isValid = value >= 1
 
   if (!isValid) {

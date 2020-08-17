@@ -1,35 +1,17 @@
-import { boolean, select, text } from '@storybook/addon-knobs'
-
 import Button from '../../Button/index'
 import TextInput from '../../TextInput/index'
 import Stack from '../index'
 
-export default () => ({
+export default ((args, { argTypes }) => ({
   components: { Button, Stack, TextInput },
-  props: {
-    align: {
-      default: select(
-        'align',
-        ['center', 'left', 'right', 'stretch'],
-        'stretch',
-      ),
-    },
-    showDividers: {
-      default: boolean('showDividers', false),
-    },
-    space: {
-      default: text('space', 'gutter'),
-    },
-  },
+  props: Object.keys(argTypes),
   template: `
-    <div>
-      <Stack :align="align" :showDividers="showDividers" :space="space">
-        <Button text="Button 1" />
-        <div class="bg-purple">Colored DIV!</div>
-        <Button text="Button 2" />
-        <span>Normal SPAN.</span>
-        <TextInput value="TextInput" />
-      </Stack>
-    </div>
+    <Stack v-bind="$props">
+      <Button text="Button 1" />
+      <div class="bg-purple">Colored DIV!</div>
+      <Button text="Button 2" />
+      <span>Normal SPAN.</span>
+      <TextInput value="TextInput" />
+    </Stack>
   `,
-})
+})).bind({})

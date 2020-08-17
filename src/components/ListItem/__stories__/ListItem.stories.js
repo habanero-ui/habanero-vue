@@ -1,14 +1,36 @@
+import colors from '../../../constants/colors'
+import icons from '../../../constants/icons'
 import ListItem from '../index'
-export { default as SingleLine } from './ListItemSingleLine.story'
-export { default as DoubleLine } from './ListItemDoubleLine.story'
-export { default as TripleLine } from './ListItemTripleLine.story'
-export { default as Navigation } from './ListItemNavigation.story'
-export { default as NotActionable } from './ListItemNotActionable.story'
-export { default as WithAvatar } from './ListItemWithAvatar.story'
-export { default as WithIcon } from './ListItemWithIcon.story'
-export { default as WithStatus } from './ListItemWithStatus.story'
+export { default as Default } from './ListItemDefault.story'
 
 export default {
   title: 'ListItem',
   component: ListItem,
+  argTypes: {
+    iconName: {
+      control: {
+        type: 'select',
+        options: icons,
+      },
+    },
+    primaryStatusTextColor: {
+      control: {
+        type: 'select',
+        options: colors,
+      },
+    },
+  },
+  args: {
+    avatarFirstName: '',
+    avatarImage: '',
+    avatarLastName: '',
+    iconName: '',
+    isActionable: true,
+    isNavigation: false,
+    primaryStatusText: 'Primary Status Text',
+    primaryStatusTextColor: 'subtle',
+    primaryText: 'Primary Text',
+    secondaryText: 'Secondary Text',
+    tertiaryText: 'Tertiary Text',
+  },
 }

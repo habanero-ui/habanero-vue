@@ -14,19 +14,22 @@
 </template>
 
 <script>
-import includes from 'lodash/includes'
-
+import PropValidation from '../../mixins/PropValidation'
 import Icon from '../Icon/index'
 import Stack from '../Stack/index'
 import Typography from '../Typography/index'
 
 export default {
   components: { Icon, Stack, Typography },
+  mixins: [
+    PropValidation({
+      align: ['center', 'left', 'right', 'stretch'],
+    }),
+  ],
   props: {
     align: {
       default: 'center',
       type: String,
-      validator: getIsAlignValid,
     },
     iconName: {
       default: '',
@@ -50,20 +53,6 @@ export default {
       return ['empty-state', `empty-state--align-${this.align}`]
     },
   },
-}
-
-function getIsAlignValid(value) {
-  const isValid = includes(['center', 'left', 'right', 'stretch'], value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Stack: The "align" prop must be one of the following when defined:',
-      String(['center', 'left', 'right', 'stretch']),
-    )
-  }
-
-  return isValid
 }
 </script>
 

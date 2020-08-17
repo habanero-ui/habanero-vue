@@ -1,22 +1,30 @@
 import Checkbox from '../index'
 
-export default () => ({
+const Template = (args, { argTypes }) => ({
   components: { Checkbox },
+  props: Object.keys(argTypes),
   data: () => ({
-    isChecked: false,
+    isCheckedState: false,
   }),
   template: `
-    <div class="flex flex-col items-start p-6">
-      <Checkbox
-        :isChecked="isChecked"
-        :onIsCheckedChange="handleIsCheckedChange"
-        text="Check me out"
-      />
-    </div>
+    <Checkbox
+      v-bind="$props"
+      :isChecked="isCheckedState"
+      :onIsCheckedChange="handleIsCheckedChange"
+    />
   `,
   methods: {
     handleIsCheckedChange(isChecked) {
-      this.isChecked = isChecked
+      this.isCheckedState = isChecked
     },
   },
 })
+
+const CheckboxStateful = Template.bind({})
+
+CheckboxStateful.argTypes = {
+  isChecked: { table: { disable: true } },
+  onIsCheckedChange: { table: { disable: true } },
+}
+
+export default CheckboxStateful

@@ -5,12 +5,17 @@
 </template>
 
 <script>
-import includes from 'lodash/includes'
-
 import colors from '../../constants/colors'
-import variants from '../../constants/textVariants'
+import typographyVariants from '../../constants/typographyVariants'
+import PropValidation from '../../mixins/PropValidation'
 
 export default {
+  mixins: [
+    PropValidation({
+      color: colors,
+      variant: typographyVariants,
+    }),
+  ],
   props: {
     component: {
       default: 'span',
@@ -18,7 +23,7 @@ export default {
     },
     color: {
       default: 'none',
-      validator: getIsColorValid,
+      type: String,
     },
     colorIsBackground: {
       default: false,
@@ -26,7 +31,7 @@ export default {
     },
     variant: {
       default: 'body-large',
-      validator: getIsVariantValid,
+      type: String,
     },
   },
   computed: {
@@ -41,34 +46,6 @@ export default {
       ]
     },
   },
-}
-
-function getIsColorValid(value) {
-  const isValid = includes(colors, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Typography: The "color" prop must be one of the following:',
-      String(colors),
-    )
-  }
-
-  return isValid
-}
-
-function getIsVariantValid(value) {
-  const isValid = includes(variants, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Typography: The "variant" prop must be one of the following:',
-      String(variants),
-    )
-  }
-
-  return isValid
 }
 </script>
 

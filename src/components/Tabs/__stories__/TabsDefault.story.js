@@ -1,21 +1,32 @@
-import { action } from '@storybook/addon-actions'
-
 import Tab from '../../Tab/index'
 import Tabs from '../index'
 
-export default () => ({
+const Template = (args, { argTypes }) => ({
   components: { Tab, Tabs },
+  props: Object.keys(argTypes),
   template: `
-    <div class="p-6">
-      <Tabs selectedName="About" :onSelectedNameChange="onSelectedNameChange">
-        <Tab name="Home" />
-        <Tab name="About" />
-        <Tab disabled name="Contact" />
-        <Tab name="Pricing" />
-      </Tabs>
-    </div>
+    <Tabs v-bind="$props">
+      <Tab name="Home" />
+      <Tab name="About" />
+      <Tab disabled name="Contact" />
+      <Tab name="Pricing" />
+    </Tabs>
   `,
-  methods: {
-    onSelectedNameChange: action('onSelectedNameChange'),
-  },
 })
+
+const TabsDefault = Template.bind({})
+
+TabsDefault.argTypes = {
+  selectedName: {
+    control: {
+      type: 'inline-radio',
+      options: ['Home', 'About', 'Contact', 'Pricing'],
+    },
+  },
+}
+
+TabsDefault.args = {
+  selectedName: 'About',
+}
+
+export default TabsDefault

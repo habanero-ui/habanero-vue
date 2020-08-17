@@ -35,11 +35,10 @@
 </template>
 
 <script>
-import includes from 'lodash/includes'
-
 import buttonVariants from '../../constants/buttonVariants'
 import colors from '../../constants/colors'
 import iconSides from '../../constants/iconSides'
+import PropValidation from '../../mixins/PropValidation'
 import Box from '../Box/index'
 import Icon from '../Icon/index'
 import Spinner from '../Spinner/index'
@@ -52,11 +51,18 @@ export default {
     Spinner,
     Typography,
   },
+  mixins: [
+    PropValidation({
+      color: colors,
+      iconSide: iconSides,
+      size: ['small', 'medium'],
+      variant: buttonVariants,
+    }),
+  ],
   props: {
     color: {
       default: 'black',
       type: String,
-      validator: getIsColorValid,
     },
     disabled: {
       default: false,
@@ -69,7 +75,6 @@ export default {
     iconSide: {
       default: 'right',
       type: String,
-      validator: getIsIconSideValid,
     },
     iconSize: {
       default: 'small',
@@ -82,7 +87,6 @@ export default {
     size: {
       default: 'medium',
       type: String,
-      validator: getIsSizeValid,
     },
     text: {
       default: undefined,
@@ -99,7 +103,6 @@ export default {
     variant: {
       default: 'primary',
       type: String,
-      validator: getIsVariantValid,
     },
   },
   computed: {
@@ -123,62 +126,6 @@ export default {
       return this.variant === 'primary' ? this.color : undefined
     },
   },
-}
-
-function getIsColorValid(value) {
-  const isValid = includes(colors, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Button: The "color" prop must be one of the following:',
-      String(colors),
-    )
-  }
-
-  return isValid
-}
-
-function getIsIconSideValid(value) {
-  const isValid = includes(iconSides, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Button: The "iconSide" prop must be one of the following:',
-      String(iconSides),
-    )
-  }
-
-  return isValid
-}
-
-function getIsSizeValid(value) {
-  const isValid = includes(['small', 'medium'], value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Button: The "size" prop must be one of the following:',
-      String(['small', 'medium']),
-    )
-  }
-
-  return isValid
-}
-
-function getIsVariantValid(value) {
-  const isValid = includes(buttonVariants, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Button: The "variant" prop must be one of the following:',
-      String(buttonVariants),
-    )
-  }
-
-  return isValid
 }
 </script>
 

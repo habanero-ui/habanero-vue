@@ -1,10 +1,10 @@
 export default [
   'none',
-  'gutter',
   'xxsmall',
   'xsmall',
   'small',
   'medium',
+  'gutter',
   'large',
   'xlarge',
   'xxlarge',

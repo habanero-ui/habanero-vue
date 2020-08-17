@@ -3,16 +3,20 @@
 </template>
 
 <script>
-import includes from 'lodash/includes'
-
 import colors from '../../constants/colors'
+import PropValidation from '../../mixins/PropValidation'
 
 export default {
+  mixins: [
+    PropValidation({
+      color: colors,
+      size: ['small', 'medium', 'large'],
+    }),
+  ],
   props: {
     color: {
       default: 'black',
       type: String,
-      validator: getIsColorValid,
     },
     colorIsBackground: {
       default: false,
@@ -21,7 +25,6 @@ export default {
     size: {
       default: 'medium',
       type: String,
-      validator: getIsSizeValid,
     },
   },
   computed: {
@@ -36,34 +39,6 @@ export default {
       ]
     },
   },
-}
-
-function getIsColorValid(value) {
-  const isValid = includes(colors, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Spinner: The "color" prop must be one of the following:',
-      String(colors),
-    )
-  }
-
-  return isValid
-}
-
-function getIsSizeValid(value) {
-  const isValid = includes(['small', 'medium', 'large'], value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Spinner: The "size" prop must be one of the following:',
-      String(['small', 'medium', 'large']),
-    )
-  }
-
-  return isValid
 }
 </script>
 

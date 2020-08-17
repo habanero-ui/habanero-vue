@@ -18,8 +18,6 @@
 </template>
 
 <script>
-import random from 'lodash/random'
-
 import Box from '../../Box/index'
 import Column from '../../Column/index'
 import Columns from '../../Columns/index'
@@ -42,9 +40,8 @@ export default {
     ratings() {
       return [
         { source: 'Critics', value: this.row.rating.toFixed(1) },
-        { source: 'Users', value: random(0.0, 10.0, true).toFixed(1) },
-        { source: 'Random', value: random(0.0, 10.0, true).toFixed(1) },
-        { source: 'Metacritic', value: random(0.0, 10.0, true).toFixed(1) },
+        { source: 'Users', value: (10 - this.row.rating).toFixed(1) },
+        { source: 'Metacritic', value: (this.row.rating / 2).toFixed(1) },
       ]
     },
   },

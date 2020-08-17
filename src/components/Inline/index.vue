@@ -1,26 +1,30 @@
 <script>
 import filter from 'lodash/filter'
-import includes from 'lodash/includes'
 import map from 'lodash/map'
 
-import spacingAliases from '../../constants/spacingAliases'
 import verticalAlignments from '../../constants/verticalAlignments'
+import PropValidation from '../../mixins/PropValidation'
 import Box from '../Box/index'
 
 export default {
+  mixins: [
+    PropValidation({
+      align: ['center', 'left', 'right'],
+      alignY: verticalAlignments,
+    }),
+  ],
   props: {
     align: {
       default: 'left',
-      validator: getIsAlignValid,
+      type: String,
     },
     alignY: {
       default: 'stretch',
-      validator: getIsAlignYValid,
+      type: String,
     },
     space: {
       default: '',
       type: [Number, String],
-      validator: getIsSpaceValid,
     },
   },
   computed: {
@@ -59,8 +63,8 @@ export default {
           {
             class: 'inline__content',
             props: {
-              marginLeft: `-${this.space}`,
-              marginTop: `-${this.space}`,
+              marginLeft: this.space ? `-${this.space}` : '',
+              marginTop: this.space ? `-${this.space}` : '',
             },
           },
           [
@@ -73,49 +77,6 @@ export default {
       ],
     )
   },
-}
-
-function getIsAlignValid(value) {
-  const isValid = includes(['center', 'left', 'right'], value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Inline: The "align" prop must be one of the following when defined:',
-      String(['center', 'left', 'right']),
-    )
-  }
-
-  return isValid
-}
-
-function getIsAlignYValid(value) {
-  const isValid = includes(verticalAlignments, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Inline: The "alignY" prop must be one of the following when defined:',
-      String(verticalAlignments),
-    )
-  }
-
-  return isValid
-}
-
-function getIsSpaceValid(value) {
-  const isValid =
-    includes(['', ...spacingAliases], value) || !isNaN(parseFloat(value))
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      `Inline: The "space" prop must be a number to be multiplied by 4, or one of the following aliases:`,
-      String(spacingAliases),
-    )
-  }
-
-  return isValid
 }
 </script>
 

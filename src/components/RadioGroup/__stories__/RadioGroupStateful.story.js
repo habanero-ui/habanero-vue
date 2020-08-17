@@ -1,26 +1,31 @@
 import RadioButton from '../../RadioButton/index'
 import RadioGroup from '../index'
 
-export default () => ({
+const Template = (args, { argTypes }) => ({
   components: { RadioButton, RadioGroup },
+  props: Object.keys(argTypes),
   data: () => ({
-    value: 'a',
+    valueState: 'a',
   }),
   template: `
-    <div class="flex flex-col items-start p-6">
-      <RadioGroup
-        :onValueChange="handleValueChange"
-        :value="value"
-      >
-        <RadioButton text="Alpha" value="a" />
-        <RadioButton text="Bravo" value="b" />
-        <RadioButton text="Charlie" value="c" />
-      </RadioGroup>
-    </div>
+    <RadioGroup v-bind="$props" :onValueChange="handleValueChange" :value="valueState" >
+      <RadioButton text="Alpha" value="a" />
+      <RadioButton text="Bravo" value="b" />
+      <RadioButton text="Charlie" value="c" />
+    </RadioGroup>
   `,
   methods: {
     handleValueChange(value) {
-      this.value = value
+      this.valueState = value
     },
   },
 })
+
+const RadioGroupStateful = Template.bind({})
+
+RadioGroupStateful.argTypes = {
+  onValueChange: { table: { disable: true } },
+  value: { table: { disable: true } },
+}
+
+export default RadioGroupStateful

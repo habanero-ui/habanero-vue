@@ -18,39 +18,34 @@
 </template>
 
 <script>
-import includes from 'lodash/includes'
-
 import colors from '../../constants/colors'
+import PropValidation from '../../mixins/PropValidation'
 import Box from '../Box/index'
 import Typography from '../Typography/index'
 
 export default {
   components: { Box, Typography },
+  mixins: [
+    PropValidation({
+      color: colors,
+    }),
+  ],
   props: {
+    /**
+     * The color for the Badge.
+     */
     color: {
       default: 'black',
       type: String,
-      validator: getIsColorValid,
     },
+    /**
+     * The text that will be displayed in the Badge.
+     */
     text: {
       default: '',
       type: [Number, String],
     },
   },
-}
-
-function getIsColorValid(value) {
-  const isValid = includes(colors, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Badge: The "color" prop must be one of the following:',
-      String(colors),
-    )
-  }
-
-  return isValid
 }
 </script>
 

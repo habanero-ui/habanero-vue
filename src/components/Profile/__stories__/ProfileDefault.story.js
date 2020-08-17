@@ -1,30 +1,7 @@
-import { text } from '@storybook/addon-knobs'
-
 import Profile from '../index'
 
-export default () => ({
+export default ((args, { argTypes }) => ({
   components: { Profile },
-  props: {
-    firstName: {
-      default: text('firstName', 'Patches'),
-    },
-    image: {
-      default: text('image', 'http://placekitten.com/256/256'),
-    },
-    lastName: {
-      default: text('lastName', "O'Houlihan"),
-    },
-    subtitle: {
-      default: text('subtitle', 'the Cat'),
-    },
-  },
-  template: `
-    <div class="flex flex-start p-6"> 
-      <Profile
-        :firstName="firstName"
-        :image="image"
-        :lastName="lastName"
-        :subtitle="subtitle" />
-    </div>
-  `,
-})
+  props: Object.keys(argTypes),
+  template: `<Profile v-bind="$props" />`,
+})).bind({})

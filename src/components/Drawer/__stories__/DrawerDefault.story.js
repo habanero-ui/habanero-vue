@@ -1,25 +1,13 @@
-import { action } from '@storybook/addon-actions'
-import { boolean } from '@storybook/addon-knobs'
-
 import Drawer from '../index'
 
-export default () => ({
+export default ((args, { argTypes }) => ({
   components: { Drawer },
-  props: {
-    isOpen: {
-      default: boolean('isOpen', true),
-    },
-  },
+  props: Object.keys(argTypes),
   template: `
     <div class="absolute inset-0">
-      <Drawer
-        :isOpen="isOpen"
-        :onIsOpenChange="onIsOpenChange">
-        <div>Some Content</div>
+      <Drawer v-bind="$props">
+        Some Content
       </Drawer>
     </div>
   `,
-  methods: {
-    onIsOpenChange: action('onIsOpenChange'),
-  },
-})
+})).bind({})

@@ -1,22 +1,30 @@
 import Toggle from '../index'
 
-export default () => ({
+const Template = (args, { argTypes }) => ({
   components: { Toggle },
+  props: Object.keys(argTypes),
   data: () => ({
-    isChecked: false,
+    isCheckedState: false,
   }),
   template: `
-    <div class="flex flex-col items-start p-6">
-      <Toggle
-        :isChecked="isChecked"
-        :onIsCheckedChange="handleIsCheckedChange"
-        text="Flip the switch"
-      />
-    </div>
+    <Toggle
+      v-bind="$props"
+      :isChecked="isCheckedState"
+      :onIsCheckedChange="handleIsCheckedChange"
+    />
   `,
   methods: {
     handleIsCheckedChange(isChecked) {
-      this.isChecked = isChecked
+      this.isCheckedState = isChecked
     },
   },
 })
+
+const ToggleStateful = Template.bind({})
+
+ToggleStateful.argTypes = {
+  isChecked: { table: { disable: true } },
+  onIsCheckedChange: { table: { disable: true } },
+}
+
+export default ToggleStateful

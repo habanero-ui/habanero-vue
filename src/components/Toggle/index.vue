@@ -37,8 +37,7 @@
 </template>
 
 <script>
-import includes from 'lodash/includes'
-
+import PropValidation from '../../mixins/PropValidation'
 import Box from '../Box/index'
 import Column from '../Column/index'
 import Columns from '../Columns/index'
@@ -47,6 +46,11 @@ import Typography from '../Typography/index'
 
 export default {
   components: { Box, Column, Columns, Icon, Typography },
+  mixins: [
+    PropValidation({
+      size: ['small', 'medium'],
+    }),
+  ],
   props: {
     disabled: {
       default: false,
@@ -63,7 +67,6 @@ export default {
     size: {
       default: 'medium',
       type: String,
-      validator: getIsSizeValid,
     },
     text: {
       default: '',
@@ -107,20 +110,6 @@ export default {
       this.onIsCheckedChange(!this.isChecked)
     },
   },
-}
-
-function getIsSizeValid(value) {
-  const isValid = includes(['small', 'medium'], value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'Toggle: The "size" prop must be one of the following:',
-      String(['small', 'medium']),
-    )
-  }
-
-  return isValid
 }
 </script>
 

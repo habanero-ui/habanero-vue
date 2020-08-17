@@ -40,10 +40,9 @@
 </template>
 
 <script>
-import includes from 'lodash/includes'
-
 import iconSides from '../../constants/iconSides'
 import textInputTypes from '../../constants/textInputTypes'
+import PropValidation from '../../mixins/PropValidation'
 import Box from '../Box/index'
 import FormGroup from '../FormGroup/index'
 import Icon from '../Icon/index'
@@ -54,6 +53,12 @@ export default {
     FormGroup,
     Icon,
   },
+  mixins: [
+    PropValidation({
+      iconSide: iconSides,
+      type: textInputTypes,
+    }),
+  ],
   inheritAttrs: false,
   props: {
     disabled: {
@@ -75,7 +80,6 @@ export default {
     iconSide: {
       default: 'left',
       type: String,
-      validator: getIsIconSideValid,
     },
     iconSize: {
       default: 'medium',
@@ -100,7 +104,6 @@ export default {
     type: {
       default: 'text',
       type: String,
-      validator: getIsTypeValid,
     },
     value: {
       default: '',
@@ -144,34 +147,6 @@ export default {
     },
   },
 }
-
-function getIsIconSideValid(value) {
-  const isValid = includes(iconSides, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'TextInput: The "iconSide" prop must be one of the following:',
-      String(iconSides),
-    )
-  }
-
-  return isValid
-}
-
-function getIsTypeValid(value) {
-  const isValid = includes(textInputTypes, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'TextInput: The "type" prop must be one of the following:',
-      String(textInputTypes),
-    )
-  }
-
-  return isValid
-}
 </script>
 
 <style scoped>
@@ -187,23 +162,17 @@ function getIsTypeValid(value) {
 .text-input__input {
   @apply bg-transparent border border-black px-4 transition-colors duration-300 ease-in-out outline-none w-full;
   border-radius: 0.3125rem;
-  line-height: 1;
-  padding-bottom: 0.75rem;
-  padding-top: 0.75rem;
+  height: 2.75rem;
 }
 .text-input__input:not([disabled]):hover {
   @apply border-2;
-  padding-bottom: 0.6875rem;
   padding-left: 15px;
   padding-right: 15px;
-  padding-top: 0.6875rem;
 }
 .text-input__input:focus {
   @apply border-2 border-info;
-  padding-bottom: 0.6875rem;
   padding-left: 15px;
   padding-right: 15px;
-  padding-top: 0.6875rem;
 }
 .text-input__input::-moz-placeholder {
   @apply text-subtle;

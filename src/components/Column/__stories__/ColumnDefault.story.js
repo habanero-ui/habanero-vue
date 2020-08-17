@@ -1,20 +1,7 @@
-import { select } from '@storybook/addon-knobs'
-
-import columnWidths from '../../../constants/columnWidths'
 import Column from '../index'
 
-export default () => ({
+export default ((args, { argTypes }) => ({
   components: { Column },
-  props: {
-    width: {
-      default: select('width', columnWidths, 'fluid'),
-    },
-  },
-  template: `
-    <div class="p-6"> 
-      <Column :width="width">
-        Column Content
-      </Column>
-    </div>
-  `,
-})
+  props: Object.keys(argTypes),
+  template: `<Column v-bind="$props">Column Content</Column>`,
+})).bind({})

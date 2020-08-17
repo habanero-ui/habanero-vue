@@ -1,11 +1,35 @@
+import colors from '../../../constants/colors'
+import icons from '../../../constants/icons'
 import Icon from '../index'
 export { default as Default } from './IconDefault.story'
-export { default as Color } from './IconColor.story'
-export { default as ColorBackground } from './IconColorBackground.story'
-export { default as Sheet } from './IconSheet.story'
-export { default as Size } from './IconSize.story'
 
 export default {
   title: 'Icon',
   component: Icon,
+  argTypes: {
+    color: {
+      control: {
+        type: 'select',
+        options: colors,
+      },
+    },
+    name: {
+      control: {
+        type: 'select',
+        options: icons,
+      },
+    },
+    size: {
+      control: {
+        type: 'inline-radio',
+        options: ['small', 'medium', 'large'],
+      },
+    },
+  },
+  args: {
+    color: 'black',
+    colorIsBackground: false,
+    name: 'bell',
+    size: 'medium',
+  },
 }

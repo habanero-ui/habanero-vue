@@ -4,10 +4,11 @@ import Box from '../../Box/index'
 import Button from '../../Button/index'
 import ToastStack from '../index'
 
-export default () => ({
+const Template = (args, { argTypes }) => ({
   components: { Box, Button, ToastStack },
+  props: Object.keys(argTypes),
   data: () => ({
-    toasts: [],
+    toastsState: [],
   }),
   template: `
     <Box class="absolute inset-0 flex flex-col items-start" padding="gutter">
@@ -19,8 +20,9 @@ export default () => ({
       </div>
       <Box class="fixed right-0 top-0" padding="gutter">
         <ToastStack
+          v-bind="$props"
           :onToastsChange="handleToastsChange"
-          :toasts="toasts"
+          :toasts="toastsState"
         />
       </Box>
     </Box>
@@ -28,8 +30,8 @@ export default () => ({
   methods: {
     handleAddToastClick() {
       const id = uniqueId()
-      this.toasts = [
-        ...this.toasts,
+      this.toastsState = [
+        ...this.toastsState,
         {
           id,
           label: 'Toast Label',
@@ -42,7 +44,16 @@ export default () => ({
     },
 
     handleToastsChange(toasts) {
-      this.toasts = toasts
+      this.toastsState = toasts
     },
   },
 })
+
+const ToastStackStateful = Template.bind({})
+
+ToastStackStateful.argTypes = {
+  onToastsChange: { table: { disable: true } },
+  toasts: { table: { disable: true } },
+}
+
+export default ToastStackStateful

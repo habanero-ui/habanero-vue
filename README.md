@@ -6,6 +6,9 @@ Spur's Design System and Component Library
 
 # Roadmap
 
+- [ ] Support helperText other than errors below elements in FormGroup
+- [ ] Improved validation support for DataTable
+
 ## Known Issues
 
 - Date/Time Picker inputs clear out when label/helper/error text changes.

@@ -1,17 +1,11 @@
-import { select } from '@storybook/addon-knobs'
-
 import Divider from '../index'
 
-export default () => ({
+export default ((args, { argTypes }) => ({
   components: { Divider },
-  props: {
-    thickness: {
-      default: select('thickness', ['regular', 'thin'], 'regular'),
-    },
-  },
+  props: Object.keys(argTypes),
   template: `
-    <div class="p-6">
-      <Divider :thickness="thickness" />
+    <div class="w-screen max-w-lg"> 
+      <Divider v-bind="$props" />
     </div>
   `,
-})
+})).bind({})

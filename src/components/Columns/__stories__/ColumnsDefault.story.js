@@ -1,32 +1,12 @@
-import { boolean, select, text } from '@storybook/addon-knobs'
-
-import columnWidths from '../../../constants/columnWidths'
-import verticalAlignments from '../../../constants/verticalAlignments'
 import Box from '../../Box/index'
 import Column from '../../Column/index'
 import Columns from '../index'
 
-export default () => ({
+export default ((args, { argTypes }) => ({
   components: { Box, Column, Columns },
-  props: {
-    alignY: {
-      default: select('alignY', verticalAlignments, 'top'),
-    },
-    firstColumnWidth: {
-      default: select('firstColumnWidth', columnWidths, 'content'),
-    },
-    isReversed: {
-      default: boolean('isReversed', false),
-    },
-    space: {
-      default: text('space', ''),
-    },
-  },
-  data: () => ({
-    widths: columnWidths,
-  }),
+  props: Object.keys(argTypes),
   template: `
-    <Columns :alignY="alignY" :isReversed="isReversed" :space="space">
+    <Columns v-bind="$props">
       <Column :width="firstColumnWidth">
         <Box backgroundColor="subtle" class="flex-grow" padding="small">
           {{ firstColumnWidth }}
@@ -39,4 +19,4 @@ export default () => ({
       </Column>
     </Columns>
   `,
-})
+})).bind({})

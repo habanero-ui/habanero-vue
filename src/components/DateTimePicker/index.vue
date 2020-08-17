@@ -12,17 +12,22 @@
 
 <script>
 import flatpickr from 'flatpickr'
-import includes from 'lodash/includes'
 import isEqual from 'lodash/isEqual'
 import map from 'lodash/map'
 
 import datePickerModes from '../../constants/datePickerModes'
+import PropValidation from '../../mixins/PropValidation'
 import TextInput from '../TextInput/index'
 
 export default {
   components: {
     TextInput,
   },
+  mixins: [
+    PropValidation({
+      mode: datePickerModes,
+    }),
+  ],
   props: {
     disabled: {
       default: false,
@@ -83,7 +88,6 @@ export default {
     mode: {
       default: 'single',
       type: String,
-      validator: getIsModeValid,
     },
     placeholder: {
       default: '',
@@ -196,20 +200,6 @@ export default {
       this.picker.setDate(this.selectedDate || this.selectedDates, false)
     },
   },
-}
-
-function getIsModeValid(value) {
-  const isValid = includes(datePickerModes, value)
-
-  if (!isValid) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'DateTimePicker: The "mode" prop must be one of the following:',
-      String(datePickerModes),
-    )
-  }
-
-  return isValid
 }
 </script>
 

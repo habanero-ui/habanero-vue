@@ -1,7 +1,19 @@
+import columnWidths from '../../../constants/columnWidths'
 import Column from '../index'
 export { default as Default } from './ColumnDefault.story'
 
 export default {
   title: 'Column',
   component: Column,
+  argTypes: {
+    width: {
+      control: {
+        type: 'select',
+        options: columnWidths,
+      },
+    },
+  },
+  args: {
+    width: 'fluid',
+  },
 }

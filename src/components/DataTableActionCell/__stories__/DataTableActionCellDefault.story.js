@@ -1,48 +1,13 @@
-import { action } from '@storybook/addon-actions'
-import { boolean, select } from '@storybook/addon-knobs'
-
-import icons from '../../../constants/icons'
 import DataTableActionCell from '../index'
 
-export default () => ({
+const Template = (args, { argTypes }) => ({
   components: { DataTableActionCell },
-  props: {
-    iconName: {
-      default: select('iconName', icons, 'close'),
-    },
-    iconSize: {
-      default: select(
-        'iconSize',
-        ['auto', 'small', 'medium', 'large'],
-        'medium',
-      ),
-    },
-    isVisible: {
-      default: boolean('isVisible', true),
-    },
-  },
-  data: () => ({
-    row: { id: 0, text: 'Some Text' },
-  }),
-  computed: {
-    column() {
-      return {
-        getIsVisible: () => this.isVisible,
-        iconName: this.iconName,
-        iconSize: this.iconSize,
-        onClick: this.onClick,
-      }
-    },
-  },
+  props: Object.keys(argTypes),
   template: `
-    <div class="w-40 p-6"> 
-      <DataTableActionCell
-        :column="column"
-        :row="row"
-      />
+    <div class="w-40"> 
+      <DataTableActionCell v-bind="$props" />
     </div>
   `,
-  methods: {
-    onClick: action('onClick'),
-  },
 })
+
+export default Template.bind({})

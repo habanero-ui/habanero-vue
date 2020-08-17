@@ -65,8 +65,8 @@ export default {
     return {
       alt,
       handleImageLoadError,
-      initials,
       hasError,
+      initials,
     }
   },
 }

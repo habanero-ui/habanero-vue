@@ -1,7 +1,7 @@
 import RadioButton from '../../RadioButton/index'
 import RadioGroup from '../index'
 
-export default ((args, { argTypes }) => ({
+const Template = (args, { argTypes }) => ({
   components: { RadioButton, RadioGroup },
   props: Object.keys(argTypes),
   data: () => ({
@@ -19,4 +19,13 @@ export default ((args, { argTypes }) => ({
       this.valueState = value
     },
   },
-})).bind({})
+})
+
+const RadioGroupStateful = Template.bind({})
+
+RadioGroupStateful.argTypes = {
+  onValueChange: { table: { disable: true } },
+  value: { table: { disable: true } },
+}
+
+export default RadioGroupStateful

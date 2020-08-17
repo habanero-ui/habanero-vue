@@ -1,7 +1,7 @@
 import Button from '../../Button/index'
 import Slideover from '../index'
 
-export default ((args, { argTypes }) => ({
+const Template = (args, { argTypes }) => ({
   components: { Button, Slideover },
   props: Object.keys(argTypes),
   data: () => ({
@@ -26,4 +26,13 @@ export default ((args, { argTypes }) => ({
       this.isOpenState = true
     },
   },
-})).bind({})
+})
+
+const SlideoverStateful = Template.bind({})
+
+SlideoverStateful.argTypes = {
+  isOpen: { table: { disable: true } },
+  onIsOpenChange: { table: { disable: true } },
+}
+
+export default SlideoverStateful

@@ -1,6 +1,6 @@
 import Checkbox from '../index'
 
-export default ((args, { argTypes }) => ({
+const Template = (args, { argTypes }) => ({
   components: { Checkbox },
   props: Object.keys(argTypes),
   data: () => ({
@@ -18,4 +18,13 @@ export default ((args, { argTypes }) => ({
       this.isCheckedState = isChecked
     },
   },
-})).bind({})
+})
+
+const CheckboxStateful = Template.bind({})
+
+CheckboxStateful.argTypes = {
+  isChecked: { table: { disable: true } },
+  onIsCheckedChange: { table: { disable: true } },
+}
+
+export default CheckboxStateful

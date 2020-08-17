@@ -8,7 +8,11 @@ const Template = ((args, { argTypes }) => ({
     selectedNameState: 'Home',
   }),
   template: `
-    <Tabs v-bind="$props" :selectedName="selectedNameState" :onSelectedNameChange="handleSelectedNameChange">
+    <Tabs
+      v-bind="$props"
+      :onSelectedNameChange="handleSelectedNameChange"
+      :selectedName="selectedNameState"
+    >
       <Tab name="Home" />
       <Tab name="About" />
       <Tab name="Contact" />
@@ -25,6 +29,7 @@ const Template = ((args, { argTypes }) => ({
 const TabsStateful = Template.bind({})
 
 TabsStateful.argTypes = {
+  onSelectedNameChange: { table: { disable: true } },
   selectedName: { table: { disable: true } },
 }
 

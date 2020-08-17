@@ -1,6 +1,6 @@
 import Toggle from '../index'
 
-export default ((args, { argTypes }) => ({
+const Template = (args, { argTypes }) => ({
   components: { Toggle },
   props: Object.keys(argTypes),
   data: () => ({
@@ -18,4 +18,13 @@ export default ((args, { argTypes }) => ({
       this.isCheckedState = isChecked
     },
   },
-})).bind({})
+})
+
+const ToggleStateful = Template.bind({})
+
+ToggleStateful.argTypes = {
+  isChecked: { table: { disable: true } },
+  onIsCheckedChange: { table: { disable: true } },
+}
+
+export default ToggleStateful

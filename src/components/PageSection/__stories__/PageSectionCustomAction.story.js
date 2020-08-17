@@ -9,7 +9,7 @@ const Template = (args, { argTypes }) => ({
     <Box class="w-screen max-w-lg" padding="gutter">
       <PageSection v-bind="$props">
         <template slot="action"> 
-          <Button color="error" :text="actionText" variant="text" />
+          <Button color="error" :text="actionText" variant="text" @click.native="onActionClick" />
         </template>
         <Box padding="gutter">Put some content here...</Box>
       </PageSection>

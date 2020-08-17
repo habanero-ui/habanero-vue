@@ -10,7 +10,7 @@ export default {
     value: {
       control: {
         type: 'select',
-        options: { [undefined]: undefined, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5 },
+        options: [1, 2, 3, 4, 5],
       },
     },
   },

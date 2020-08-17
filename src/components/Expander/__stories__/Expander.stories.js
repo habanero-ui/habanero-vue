@@ -11,7 +11,7 @@ export default {
     headerPaddingX: {
       control: {
         type: 'select',
-        options: [undefined, 2.5, ...spacingAliases],
+        options: [2.5, ...spacingAliases],
       },
     },
   },

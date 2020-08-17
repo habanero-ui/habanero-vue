@@ -16,7 +16,7 @@ export default {
     name: {
       control: {
         type: 'select',
-        options: [undefined, ...icons],
+        options: icons,
       },
     },
     size: {

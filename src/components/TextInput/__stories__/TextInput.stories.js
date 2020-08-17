@@ -14,7 +14,7 @@ export default {
     iconName: {
       control: {
         type: 'select',
-        options: [undefined, ...icons],
+        options: icons,
       },
     },
     iconSide: {

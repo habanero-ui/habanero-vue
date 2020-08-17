@@ -2,6 +2,7 @@ import { action } from '@storybook/addon-actions'
 
 import TextArea from '../index'
 export { default as Default } from './TextAreaDefault.story'
+export { default as Stateful } from './TextAreaStateful.story'
 
 export default {
   title: 'TextArea',

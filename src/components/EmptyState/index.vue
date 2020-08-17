@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import stackAlignments from '../../constants/stackAlignments'
 import PropValidation from '../../mixins/PropValidation'
 import Icon from '../Icon/index'
 import Stack from '../Stack/index'
@@ -23,7 +24,7 @@ export default {
   components: { Icon, Stack, Typography },
   mixins: [
     PropValidation({
-      align: ['center', 'left', 'right', 'stretch'],
+      align: stackAlignments,
     }),
   ],
   props: {

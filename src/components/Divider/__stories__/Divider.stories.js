@@ -1,3 +1,4 @@
+import dividerThicknesses from '../../../constants/dividerThicknesses'
 import Divider from '../index'
 export { default as Default } from './DividerDefault.story'
 
@@ -8,7 +9,7 @@ export default {
     thickness: {
       control: {
         type: 'inline-radio',
-        options: ['regular', 'thin'],
+        options: dividerThicknesses,
       },
     },
   },

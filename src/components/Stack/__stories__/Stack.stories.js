@@ -1,4 +1,6 @@
+import dividerThicknesses from '../../../constants/dividerThicknesses'
 import spacingAliases from '../../../constants/spacingAliases'
+import stackAlignments from '../../../constants/stackAlignments'
 import Stack from '../index'
 export { default as Default } from './StackDefault.story'
 
@@ -9,7 +11,13 @@ export default {
     align: {
       control: {
         type: 'inline-radio',
-        options: ['center', 'left', 'right', 'stretch'],
+        options: stackAlignments,
+      },
+    },
+    dividerThicknesses: {
+      control: {
+        type: 'inline-radio',
+        options: dividerThicknesses,
       },
     },
     space: {

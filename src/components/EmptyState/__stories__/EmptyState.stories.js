@@ -1,4 +1,6 @@
 import icons from '../../../constants/icons'
+import iconSizes from '../../../constants/iconSizes'
+import stackAlignments from '../../../constants/stackAlignments'
 import EmptyState from '../index'
 export { default as Default } from './EmptyStateDefault.story'
 
@@ -9,7 +11,7 @@ export default {
     align: {
       control: {
         type: 'inline-radio',
-        options: ['center', 'left', 'right', 'stretch'],
+        options: stackAlignments,
       },
     },
     iconName: {
@@ -21,7 +23,7 @@ export default {
     iconSize: {
       control: {
         type: 'inline-radio',
-        options: ['small', 'medium', 'large'],
+        options: iconSizes,
       },
     },
   },

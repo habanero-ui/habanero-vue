@@ -12,6 +12,7 @@
     "start": "start-storybook -p 6006"
   },
   "dependencies": {
+    "@vue/composition-api": "1.0.0-beta.10",
     "core-js": "^3.6.4",
     "flatpickr": "^4.6.3",
     "fuzzysort": "1.1.4",

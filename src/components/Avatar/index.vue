@@ -1,19 +1,21 @@
 <template>
   <Box class="avatar">
     <img
-      v-if="image && isLoaded"
+      v-if="image && !hasError"
       :alt="alt"
       class="avatar__image"
       :src="image"
-      @error="imageLoadError"
+      @error="handleImageLoadError"
     />
-    <div v-if="!image || !isLoaded" class="avatar__image">
+    <div v-if="!image || hasError" class="avatar__image">
       {{ initials }}
     </div>
   </Box>
 </template>
 
 <script>
+import { computed, ref, toRefs, watch } from '@vue/composition-api'
+
 import Box from '../Box'
 
 export default {
@@ -34,27 +36,38 @@ export default {
       type: String,
     },
   },
-  data: () => ({
-    isLoaded: true,
-  }),
-  computed: {
-    alt() {
-      return this.firstName || this.lastName
-        ? `${this.firstName} ${this.lastName}`.trim()
-        : undefined
-    },
-    initials() {
-      return `
-        ${this.firstName ? this.firstName[0] : ''}${
-        this.lastName ? this.lastName[0] : ''
+  setup(props) {
+    const { firstName, image, lastName } = toRefs(props)
+    const hasError = ref(false)
+
+    const alt = computed(() =>
+      firstName.value || lastName.value
+        ? `${firstName.value} ${lastName.value}`.trim()
+        : undefined,
+    )
+
+    const initials = computed(
+      () => `
+        ${firstName.value ? firstName.value[0] : ''}${
+        lastName.value ? lastName.value[0] : ''
       }
-      `
-    },
-  },
-  methods: {
-    imageLoadError() {
-      this.isLoaded = false
-    },
+      `,
+    )
+
+    const handleImageLoadError = () => {
+      hasError.value = true
+    }
+
+    watch(image, () => {
+      hasError.value = false
+    })
+
+    return {
+      alt,
+      handleImageLoadError,
+      initials,
+      hasError,
+    }
   },
 }
 </script>

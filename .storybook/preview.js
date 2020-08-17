@@ -1,7 +1,11 @@
 import GlobalStyles from '../src/components/GlobalStyles/index'
 import map from 'lodash/map'
+import Vue from 'vue'
+import VueCompositionAPI from '@vue/composition-api'
 import tailwindConfig from '../tailwind.config'
 import './index.css'
+
+Vue.use(VueCompositionAPI)
 
 export const parameters = {
   backgrounds: {

@@ -15,5 +15,6 @@ export default {
   },
   args: {
     color: 'black',
+    colorIsBackground: false,
   },
 }

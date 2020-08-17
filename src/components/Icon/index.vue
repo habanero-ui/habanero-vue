@@ -4,13 +4,14 @@
 
 <script>
 import colors from '../../constants/colors'
+import iconSizes from '../../constants/iconSizes'
 import PropValidation from '../../mixins/PropValidation'
 
 export default {
   mixins: [
     PropValidation({
       color: colors,
-      size: ['auto', 'small', 'medium', 'large'],
+      size: iconSizes,
     }),
   ],
   props: {

@@ -2,6 +2,7 @@ import { action } from '@storybook/addon-actions'
 
 import icons from '../../../constants/icons'
 import iconSides from '../../../constants/iconSides'
+import iconSizes from '../../../constants/iconSizes'
 import textInputTypes from '../../../constants/textInputTypes'
 import TextInput from '../index'
 export { default as Default } from './TextInputDefault.story'
@@ -26,7 +27,7 @@ export default {
     iconSize: {
       control: {
         type: 'inline-radio',
-        options: ['small', 'medium', 'large'],
+        options: iconSizes,
       },
     },
     type: {

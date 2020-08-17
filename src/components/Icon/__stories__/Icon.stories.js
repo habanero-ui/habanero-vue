@@ -1,5 +1,6 @@
 import colors from '../../../constants/colors'
 import icons from '../../../constants/icons'
+import iconSizes from '../../../constants/iconSizes'
 import Icon from '../index'
 export { default as Default } from './IconDefault.story'
 
@@ -22,7 +23,7 @@ export default {
     size: {
       control: {
         type: 'inline-radio',
-        options: ['small', 'medium', 'large'],
+        options: iconSizes,
       },
     },
   },

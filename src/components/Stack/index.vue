@@ -3,6 +3,7 @@ import filter from 'lodash/filter'
 import flatten from 'lodash/flatten'
 import map from 'lodash/map'
 
+import stackAlignments from '../../constants/stackAlignments'
 import PropValidation from '../../mixins/PropValidation'
 import Box from '../Box/index'
 import Divider from '../Divider/index'
@@ -10,7 +11,7 @@ import Divider from '../Divider/index'
 export default {
   mixins: [
     PropValidation({
-      align: ['center', 'left', 'right', 'stretch'],
+      align: stackAlignments,
     }),
   ],
   props: {

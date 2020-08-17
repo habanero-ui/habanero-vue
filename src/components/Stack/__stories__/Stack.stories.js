@@ -1,4 +1,5 @@
 import spacingAliases from '../../../constants/spacingAliases'
+import stackAlignments from '../../../constants/stackAlignments'
 import Stack from '../index'
 export { default as Default } from './StackDefault.story'
 
@@ -9,7 +10,7 @@ export default {
     align: {
       control: {
         type: 'inline-radio',
-        options: ['center', 'left', 'right', 'stretch'],
+        options: stackAlignments,
       },
     },
     space: {

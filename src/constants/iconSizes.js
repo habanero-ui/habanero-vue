@@ -1,1 +1,1 @@
-export default ['small', 'medium', 'large']
+export default ['auto', 'small', 'medium', 'large']

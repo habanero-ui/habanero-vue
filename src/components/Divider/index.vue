@@ -3,13 +3,13 @@
 </template>
 
 <script>
-import dividerThickness from '../../constants/dividerThickness'
+import dividerThicknesses from '../../constants/dividerThicknesses'
 import PropValidation from '../../mixins/PropValidation'
 
 export default {
   mixins: [
     PropValidation({
-      thickness: dividerThickness,
+      thickness: dividerThicknesses,
     }),
   ],
   props: {

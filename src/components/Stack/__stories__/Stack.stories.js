@@ -1,4 +1,4 @@
-import dividerThickness from '../../../constants/dividerThickness'
+import dividerThicknesses from '../../../constants/dividerThicknesses'
 import spacingAliases from '../../../constants/spacingAliases'
 import stackAlignments from '../../../constants/stackAlignments'
 import Stack from '../index'
@@ -14,10 +14,10 @@ export default {
         options: stackAlignments,
       },
     },
-    dividerThickness: {
+    dividerThicknesses: {
       control: {
         type: 'inline-radio',
-        options: dividerThickness,
+        options: dividerThicknesses,
       },
     },
     space: {

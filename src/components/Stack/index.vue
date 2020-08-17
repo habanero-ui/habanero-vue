@@ -19,7 +19,7 @@ export default {
       default: 'stretch',
       type: String,
     },
-    dividerThickness: {
+    dividerThicknesses: {
       default: 'thin',
       type: String,
     },
@@ -70,7 +70,7 @@ export default {
                   ? [
                       this.mapSlotNode(
                         h(Divider, {
-                          props: { thickness: this.dividerThickness },
+                          props: { thickness: this.dividerThicknesses },
                         }),
                         h,
                         index,

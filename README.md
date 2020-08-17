@@ -29,7 +29,6 @@ Spur's Design System and Component Library
 
 ## Global Styles
 
-- To make the hover states lighter to match the Zeplin designs, should we use a different background color or opacty?
 - What kind of things should we do to facilitate Valid HTML when the components are used?
 
 ## Icons

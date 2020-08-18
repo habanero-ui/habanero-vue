@@ -189,7 +189,7 @@ export default {
 .typography--variant-label-large {
   font-size: 1rem;
   font-weight: 500;
-  line-height: 1rem;
+  line-height: 1.188rem;
 }
 .typography--variant-label-small {
   font-size: 0.75rem;

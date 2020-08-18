@@ -117,6 +117,7 @@ export default {
 <style scoped>
 .tab {
   @apply border-b-2 border-border flex flex-none items-center outline-none;
+  min-height: 40px;
   min-width: 8rem;
 }
 .tab::before {

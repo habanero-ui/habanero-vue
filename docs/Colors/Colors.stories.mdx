@@ -7,30 +7,44 @@ import { Meta } from '@storybook/addon-docs/blocks'
 export const groups = [
   {
     name: 'Primary',
-    colors: ['gold', 'beige', 'dark-beige'],
+    colors: [
+      { name: 'gold', textColor: 'white' },
+      { name: 'beige', textColor: 'black' },
+      { name: 'dark-beige', textColor: 'black' },
+    ],
     description: 'This is a description about these colors.',
   },
   {
     name: 'Secondary',
-    colors: ['blue', 'green', 'orange', 'pink', 'purple'],
+    colors: [
+      { name: 'blue', textColor: 'black' },
+      { name: 'green', textColor: 'black' },
+      { name: 'orange', textColor: 'black' },
+      { name: 'pink', textColor: 'black' },
+      { name: 'purple', textColor: 'white' },
+    ],
     description: 'This is a description about these colors.',
   },
   {
     name: 'Supportive',
     colors: [
-      'border',
-      'error',
-      'info',
-      'offwhite',
-      'subtle',
-      'success',
-      'warning',
+      { name: 'border', textColor: 'black' },
+      { name: 'error', textColor: 'white' },
+      { name: 'info', textColor: 'white' },
+      { name: 'offwhite', textColor: 'black' },
+      { name: 'subtle', textColor: 'white' },
+      { name: 'success', textColor: 'white' },
+      { name: 'warning', textColor: 'black' },
     ],
     description: 'This is a description about these colors.',
   },
   {
     name: 'Surface',
-    colors: ['white', 'heavy-black', 'black'],
+    colors: [
+      { name: 'white', textColor: 'black' },
+      { name: 'heavy-black', textColor: 'white' },
+      { name: 'black' ,textColor: 'white' },
+    ],
     description: 'This is a description about these colors.',
   },
 ]
@@ -46,7 +60,7 @@ Insert info on colors
       <p>{group.description}</p>
       {group.colors.map((color) => (
         <div
-          key={color}
+          key={color.name}
           style={{
             display: 'flex',
             flexDirection: 'row',
@@ -54,26 +68,28 @@ Insert info on colors
             justifyContent: 'space-between',
             height: '3rem',
             padding: '1rem',
-            backgroundColor: tailwindConfig.theme.extend.colors[color],
+            backgroundColor: tailwindConfig.theme.extend.colors[color.name],
             textTransform: 'capitalize',
             cursor: 'pointer',
           }}
         >
           <div 
             style={{
+              color: color.textColor,
               fontSize: '0.75rem',
               lineHeight: '0.875rem',
             }}
           >
-            {color.replace('-', ' ')}
+            {color.name.replace('-', ' ')}
           </div>
           <div 
             style={{
+              color: color.textColor,
               fontSize: '0.75rem',
               lineHeight: '0.875rem',
             }}
           >
-            {tailwindConfig.theme.extend.colors[color]}
+            {tailwindConfig.theme.extend.colors[color.name]}
           </div>
         </div>
       ))}

@@ -1,6 +1,52 @@
+import startCase from 'lodash/startCase'
+import { Meta } from '@storybook/addon-docs/blocks'
 import Box from '../../src/components/Box/index'
 import tailwindConfig from '../../tailwind.config'
-import { Meta } from '@storybook/addon-docs/blocks'
+import useCopyToClipboard from './useCopyToClipboard'
+
+export const Color = (props) => {
+  const { name, textColor } = props.color
+  const value = tailwindConfig.theme.extend.colors[name]
+  const [isCopying, copy] = useCopyToClipboard()
+  const primaryText = React.useMemo(() =>
+    isCopying ? 'Copied!' : startCase(name),
+  )
+  const handleClick = React.useCallback(() => {
+    copy(value)
+  }, [])
+  return (
+    <div
+      key={name}
+      onClick={handleClick}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '1rem',
+        backgroundColor: value,
+        cursor: 'pointer',
+      }}
+    >
+      <div style={{ color: textColor, fontSize: '0.875rem' }}>
+        {primaryText}
+      </div>
+      <div style={{ color: textColor, fontSize: '0.875rem' }}>{value}</div>
+    </div>
+  )
+}
+
+export const Group = (props) => {
+  const { colors, description, name } = props.group
+  return (
+    <div key={name} style={{ marginBottom: '2.5rem' }}>
+      <h2 style={{ marginBottom: '1rem' }}>{name}</h2>
+      <p>{description}</p>
+      {colors.map((color) => (
+        <Color key={color.name} color={color} />
+      ))}
+    </div>
+  )
+}
 
 <Meta title="Styles/Colors" />
 
@@ -23,7 +69,8 @@ export const groups = [
       { name: 'pink', textColor: 'black' },
       { name: 'purple', textColor: 'white' },
     ],
-    description: 'The secondary colors highlight and compliment our primary colors.',
+    description:
+      'The secondary colors highlight and compliment our primary colors.',
   },
   {
     name: 'Supportive',
@@ -43,7 +90,7 @@ export const groups = [
     colors: [
       { name: 'white', textColor: 'black' },
       { name: 'heavy-black', textColor: 'white' },
-      { name: 'black' ,textColor: 'white' },
+      { name: 'black', textColor: 'white' },
     ],
     description: 'The surface colors affect background and font color.',
   },
@@ -51,46 +98,8 @@ export const groups = [
 
 # Colors
 
-<div>
+<React.Fragment>
   {groups.map((group) => (
-    <div key={group.name} style={{ marginBottom: 40 }}>
-      <h2 style={{ marginBottom: 16 }}>{group.name}</h2>
-      <p>{group.description}</p>
-      {group.colors.map((color) => (
-        <div
-          key={color.name}
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            height: '3rem',
-            padding: '1rem',
-            backgroundColor: tailwindConfig.theme.extend.colors[color.name],
-            textTransform: 'capitalize',
-            cursor: 'pointer',
-          }}
-        >
-          <div 
-            style={{
-              color: color.textColor,
-              fontSize: '0.75rem',
-              lineHeight: '0.875rem',
-            }}
-          >
-            {color.name.replace('-', ' ')}
-          </div>
-          <div 
-            style={{
-              color: color.textColor,
-              fontSize: '0.75rem',
-              lineHeight: '0.875rem',
-            }}
-          >
-            {tailwindConfig.theme.extend.colors[color.name]}
-          </div>
-        </div>
-      ))}
-    </div>
+    <Group key={group.name} group={group} />
   ))}
-</div>
+</React.Fragment>

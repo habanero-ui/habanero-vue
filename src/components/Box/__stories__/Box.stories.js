@@ -13,7 +13,7 @@ const spacingArgType = {
 }
 
 export default {
-  title: 'Box',
+  title: 'Components/Box',
   component: Box,
   argTypes: {
     backgroundColor: {

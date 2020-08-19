@@ -4,7 +4,7 @@ import RadioButton from '../index'
 export { default as Default } from './RadioButtonDefault.story'
 
 export default {
-  title: 'RadioButton',
+  title: 'Components/RadioButton',
   component: RadioButton,
   args: {
     disabled: false,

@@ -5,7 +5,7 @@ import Icon from '../index'
 export { default as Default } from './IconDefault.story'
 
 export default {
-  title: 'Icon',
+  title: 'Components/Icon',
   component: Icon,
   argTypes: {
     color: {

@@ -2,7 +2,7 @@ import DataTableCell from '../index'
 export { default as Default } from './DataTableCellDefault.story'
 
 export default {
-  title: 'DataTableCell',
+  title: 'Components/DataTableCell',
   component: DataTableCell,
   args: {
     column: {

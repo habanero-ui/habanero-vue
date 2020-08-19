@@ -4,7 +4,7 @@ import DataTableActionCell from '../index'
 export { default as Default } from './DataTableActionCellDefault.story'
 
 export default {
-  title: 'DataTableActionCell',
+  title: 'Components/DataTableActionCell',
   component: DataTableActionCell,
   args: {
     column: {

@@ -8,7 +8,7 @@ import Button from '../index'
 export { default as Default } from './ButtonDefault.story'
 
 export default {
-  title: 'Button',
+  title: 'Components/Button',
   component: Button,
   argTypes: {
     color: {

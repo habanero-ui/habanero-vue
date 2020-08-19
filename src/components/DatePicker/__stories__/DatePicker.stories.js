@@ -7,7 +7,7 @@ export { default as MultiDate } from './DatePickerMultiDate.story'
 export { default as RangeDate } from './DatePickerRangeDate.story'
 
 export default {
-  title: 'DatePicker',
+  title: 'Components/DatePicker',
   component: DatePicker,
   argTypes: {
     maxDate: {

@@ -5,7 +5,7 @@ export { default as Default } from './TextAreaDefault.story'
 export { default as Stateful } from './TextAreaStateful.story'
 
 export default {
-  title: 'TextArea',
+  title: 'Components/TextArea',
   component: TextArea,
   argTypes: {
     placeholder: {

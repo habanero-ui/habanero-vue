@@ -5,7 +5,7 @@ import Tab from '../index'
 export { default as Default } from './TabDefault.story'
 
 export default {
-  title: 'Tab',
+  title: 'Components/Tab',
   component: Tab,
   argTypes: {
     badgeColor: {

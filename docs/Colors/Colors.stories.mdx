@@ -8,9 +8,6 @@ export const Color = (props) => {
   const { name, textColor } = props.color
   const value = tailwindConfig.theme.extend.colors[name]
   const [isCopying, copy] = useCopyToClipboard()
-  const primaryText = React.useMemo(() =>
-    isCopying ? 'Copied!' : startCase(name),
-  )
   const handleClick = React.useCallback(() => {
     copy(value)
   }, [])
@@ -28,7 +25,7 @@ export const Color = (props) => {
       }}
     >
       <div style={{ color: textColor, fontSize: '0.875rem' }}>
-        {primaryText}
+        {isCopying ? 'Copied!' : startCase(name)}
       </div>
       <div style={{ color: textColor, fontSize: '0.875rem' }}>{value}</div>
     </div>

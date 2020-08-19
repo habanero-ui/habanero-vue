@@ -8,10 +8,12 @@ export const groups = [
   {
     name: 'Primary',
     colors: ['gold', 'beige', 'dark-beige'],
+    description: 'This is a description about these colors.',
   },
   {
     name: 'Secondary',
     colors: ['blue', 'green', 'orange', 'pink', 'purple'],
+    description: 'This is a description about these colors.',
   },
   {
     name: 'Supportive',
@@ -24,10 +26,12 @@ export const groups = [
       'success',
       'warning',
     ],
+    description: 'This is a description about these colors.',
   },
   {
     name: 'Surface',
     colors: ['white', 'heavy-black', 'black'],
+    description: 'This is a description about these colors.',
   },
 ]
 
@@ -38,7 +42,8 @@ Insert info on colors
 <div>
   {groups.map((group) => (
     <div key={group.name} style={{ marginBottom: 40 }}>
-      <h1 style={{ marginBottom: 16 }}>{group.name}</h1>
+      <h2 style={{ marginBottom: 16 }}>{group.name}</h2>
+      <p>{group.description}</p>
       {group.colors.map((color) => (
         <div
           key={color}
@@ -47,12 +52,29 @@ Insert info on colors
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
+            height: '3rem',
+            padding: '1rem',
             backgroundColor: tailwindConfig.theme.extend.colors[color],
-            padding: 24,
+            textTransform: 'capitalize',
+            cursor: 'pointer',
           }}
         >
-          <div>{color.replace('-', ' ')}</div>
-          <div>{tailwindConfig.theme.extend.colors[color]}</div>
+          <div 
+            style={{
+              fontSize: '0.75rem',
+              lineHeight: '0.875rem',
+            }}
+          >
+            {color.replace('-', ' ')}
+          </div>
+          <div 
+            style={{
+              fontSize: '0.75rem',
+              lineHeight: '0.875rem',
+            }}
+          >
+            {tailwindConfig.theme.extend.colors[color]}
+          </div>
         </div>
       ))}
     </div>

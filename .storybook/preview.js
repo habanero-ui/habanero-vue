@@ -11,16 +11,21 @@ export const parameters = {
     })),
   },
   layout: 'centered',
+  options: {
+    storySort: {
+      order: ['Getting Started', 'Components', 'Styles'],
+    },
+  },
 }
 
 export const decorators = [
   () => ({
     components: { GlobalStyles },
     template: `
-    <div>
-      <GlobalStyles />
-      <story />
-    </div>
-  `,
+      <div>
+        <GlobalStyles />
+        <story />
+      </div>
+    `,
   }),
 ]

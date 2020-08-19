@@ -43,11 +43,16 @@ Insert info on colors
         <div
           key={color}
           style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
             backgroundColor: tailwindConfig.theme.extend.colors[color],
             padding: 24,
           }}
         >
-          {color}
+          <div>{color.replace('-', ' ')}</div>
+          <div>{tailwindConfig.theme.extend.colors[color]}</div>
         </div>
       ))}
     </div>

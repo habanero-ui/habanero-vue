@@ -1,8 +1,55 @@
 import Box from '../../src/components/Box/index'
+import tailwindConfig from '../../tailwind.config'
 import { Meta } from '@storybook/addon-docs/blocks'
 
 <Meta title="Styles/Colors" />
 
+export const groups = [
+  {
+    name: 'Primary',
+    colors: ['gold', 'beige', 'dark-beige'],
+  },
+  {
+    name: 'Secondary',
+    colors: ['blue', 'green', 'orange', 'pink', 'purple'],
+  },
+  {
+    name: 'Supportive',
+    colors: [
+      'border',
+      'error',
+      'info',
+      'offwhite',
+      'subtle',
+      'success',
+      'warning',
+    ],
+  },
+  {
+    name: 'Surface',
+    colors: ['white', 'heavy-black', 'black'],
+  },
+]
+
 # Colors
 
 Insert info on colors
+
+<div>
+  {groups.map((group) => (
+    <div key={group.name} style={{ marginBottom: 40 }}>
+      <h1 style={{ marginBottom: 16 }}>{group.name}</h1>
+      {group.colors.map((color) => (
+        <div
+          key={color}
+          style={{
+            backgroundColor: tailwindConfig.theme.extend.colors[color],
+            padding: 24,
+          }}
+        >
+          {color}
+        </div>
+      ))}
+    </div>
+  ))}
+</div>

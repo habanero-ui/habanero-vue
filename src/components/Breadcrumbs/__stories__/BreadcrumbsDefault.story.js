@@ -1,8 +1,7 @@
-import Button from '../../Button/index'
 import Breadcrumbs from '../index'
 
 export default ((args, { argTypes }) => ({
-  components: { Breadcrumbs, Button },
+  components: { Breadcrumbs },
   props: Object.keys(argTypes),
   template: `<Breadcrumbs v-bind="$props" />`,
 })).bind({})

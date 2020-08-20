@@ -6,8 +6,8 @@ Spur's Design System and Component Library
 
 # Roadmap
 
-- [ ] Support helperText other than errors below elements in FormGroup
-- [ ] Improved validation support for DataTable
+- [ ] Icon sizing and consistency (PD-79)
+- [ ] Improved validation support for DataTable (PD-82)
 
 ## Known Issues
 
@@ -23,14 +23,6 @@ Spur's Design System and Component Library
 
 # Discussion Points
 
-## Alerts/Warnings
-
 - Should we create a component for alerts/warning after an input?
-
-## Global Styles
-
 - What kind of things should we do to facilitate Valid HTML when the components are used?
-
-## Icons
-
-- We need optical adjustments done on icons to make sure they all appear to have the same optical weight.
+- Support helperText other than errors below elements in FormGroup

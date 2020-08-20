@@ -4,7 +4,7 @@ import DataTableRow from '../index'
 export { default as Default } from './DataTableRowDefault.story'
 
 export default {
-  title: 'DataTableRow',
+  title: 'Components/DataTableRow',
   component: DataTableRow,
   argTypes: {
     columns: { table: { disable: true } },

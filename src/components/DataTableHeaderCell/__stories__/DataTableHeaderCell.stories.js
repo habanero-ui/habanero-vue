@@ -5,7 +5,7 @@ import DataTableHeaderCell from '../index'
 export { default as Default } from './DataTableHeaderCellDefault.story'
 
 export default {
-  title: 'DataTableHeaderCell',
+  title: 'Components/DataTableHeaderCell',
   component: DataTableHeaderCell,
   argTypes: {
     sortDirection: {

@@ -5,7 +5,7 @@ export { default as Default } from './TooltipDefault.story'
 export { default as CustomContent } from './TooltipCustomContent.story'
 
 export default {
-  title: 'Tooltip',
+  title: 'Components/Tooltip',
   component: Tooltip,
   argTypes: {
     placement: {

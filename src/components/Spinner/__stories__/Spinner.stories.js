@@ -3,7 +3,7 @@ import Spinner from '../index'
 export { default as Default } from './SpinnerDefault.story'
 
 export default {
-  title: 'Spinner',
+  title: 'Components/Spinner',
   component: Spinner,
   argTypes: {
     color: {

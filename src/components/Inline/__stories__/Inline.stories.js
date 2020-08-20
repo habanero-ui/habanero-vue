@@ -4,7 +4,7 @@ import Inline from '../index'
 export { default as Default } from './InlineDefault.story'
 
 export default {
-  title: 'Inline',
+  title: 'Components/Inline',
   component: Inline,
   argTypes: {
     align: {

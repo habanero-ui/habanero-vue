@@ -3,7 +3,7 @@ import Column from '../index'
 export { default as Default } from './ColumnDefault.story'
 
 export default {
-  title: 'Column',
+  title: 'Components/Column',
   component: Column,
   argTypes: {
     width: {

@@ -4,7 +4,7 @@ import Typography from '../index'
 export { default as Default } from './TypographyDefault.story'
 
 export default {
-  title: 'Typography',
+  title: 'Components/Typography',
   component: Typography,
   argTypes: {
     color: {

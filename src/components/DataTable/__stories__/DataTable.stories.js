@@ -9,7 +9,7 @@ export { default as CustomRows } from './DataTableCustomRows.story'
 export { default as Sorting } from './DataTableSorting.story'
 
 export default {
-  title: 'DataTable',
+  title: 'Components/DataTable',
   component: DataTable,
   argTypes: {
     rowComponent: { table: { disable: true } },

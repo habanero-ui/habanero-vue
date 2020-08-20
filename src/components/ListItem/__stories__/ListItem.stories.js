@@ -4,7 +4,7 @@ import ListItem from '../index'
 export { default as Default } from './ListItemDefault.story'
 
 export default {
-  title: 'ListItem',
+  title: 'Components/ListItem',
   component: ListItem,
   argTypes: {
     iconName: {

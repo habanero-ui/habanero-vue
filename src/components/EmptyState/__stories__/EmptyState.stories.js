@@ -5,7 +5,7 @@ import EmptyState from '../index'
 export { default as Default } from './EmptyStateDefault.story'
 
 export default {
-  title: 'EmptyState',
+  title: 'Components/EmptyState',
   component: EmptyState,
   argTypes: {
     align: {
@@ -32,6 +32,6 @@ export default {
     iconName: 'warning',
     iconSize: 'large',
     message: 'A longer descriptive message.',
-    title: 'Some Title Text',
+    title: 'Components/Some Title Text',
   },
 }

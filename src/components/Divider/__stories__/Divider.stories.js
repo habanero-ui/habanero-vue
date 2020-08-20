@@ -3,7 +3,7 @@ import Divider from '../index'
 export { default as Default } from './DividerDefault.story'
 
 export default {
-  title: 'Divider',
+  title: 'Components/Divider',
   component: Divider,
   argTypes: {
     thickness: {

@@ -15,27 +15,23 @@
           <slot />
         </div>
         <Box
-          v-if="confirmations.length"
+          v-if="disclaimers.length"
           backgroundColor="offwhite"
           padding="gutter"
-          class="modal__confirmations"
+          class="modal__disclaimers"
         >
-          <Checkbox
-            v-for="(confirmation, index) in confirmations"
-            :key="index"
-            :isChecked="isChecked(index)"
-            :onIsCheckedChange="
-              ($event) => handleConfirmationChange(index, $event)
-            "
-            :text="confirmation"
-          />
+          <ul class="pl-6 list-disc">
+            <li v-for="(disclaimer, index) in disclaimers" :key="index">
+              {{ disclaimer }}
+            </li>
+          </ul>
         </Box>
         <ModalFooter
           :cancelText="cancelText"
           :confirmColor="confirmColor"
           :confirmText="confirmText"
           :isCancelDisabled="isCancelDisabled"
-          :isConfirmDisabled="!canConfirm || isConfirmDisabled"
+          :isConfirmDisabled="isConfirmDisabled"
           :isConfirmLoading="isConfirmLoading"
           :onCancel="onCancel"
           :onConfirm="onConfirm"
@@ -47,7 +43,6 @@
 
 <script>
 import Box from '../Box/index'
-import Checkbox from '../Checkbox/index'
 import Stack from '../Stack/index'
 import ModalFooter from './ModalFooter'
 import ModalHeader from './ModalHeader'
@@ -55,7 +50,6 @@ import ModalHeader from './ModalHeader'
 export default {
   components: {
     Box,
-    Checkbox,
     ModalFooter,
     ModalHeader,
     Stack,
@@ -73,7 +67,7 @@ export default {
       default: 'Confirm',
       type: String,
     },
-    confirmations: {
+    disclaimers: {
       default: () => [],
       type: Array,
     },
@@ -114,14 +108,6 @@ export default {
       type: String,
     },
   },
-  data: () => ({
-    checked: [],
-  }),
-  computed: {
-    canConfirm() {
-      return this.checked.length === this.confirmations.length
-    },
-  },
   watch: {
     isOpen() {
       if (!this.isOpen) {
@@ -130,26 +116,8 @@ export default {
     },
   },
   methods: {
-    add(index) {
-      if (this.checked.indexOf(index) === -1) {
-        this.checked.push(index)
-      }
-    },
-
     handleBackgroundClick() {
       this.onIsOpenChange(false)
-    },
-
-    handleConfirmationChange(index, add) {
-      return add ? this.add(index) : this.remove(index)
-    },
-
-    isChecked(index) {
-      return Boolean(this.checked.filter((c) => c === index).length)
-    },
-
-    remove(index) {
-      this.checked = this.checked.filter((c) => c !== index)
     },
   },
 }
@@ -163,7 +131,7 @@ export default {
 .modal__window {
   @apply rounded bg-white flex flex-col w-11/12 max-w-3xl mx-auto shadow-lg z-50 overflow-y-auto;
 }
-.modal__confirmations {
+.modal__disclaimers {
   @apply border-t border-b border-border;
 }
 .modal--is-open {

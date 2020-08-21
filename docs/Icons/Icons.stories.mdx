@@ -11,9 +11,8 @@ export const Icon = (props) => {
         alignItems: 'center',
         justifyContent: 'center',
         height: 128,
-        width: 128,
-        borderBottom: '1px solid #E5E5E5',
-        borderRight: '1px solid #E5E5E5',
+        margin: '0 -1px -1px 0',
+        border: '1px solid #E5E5E5',
       }}
     >
       <div
@@ -35,13 +34,7 @@ The offical icon set for Habanero.
 
 <React.Fragment>
   <div
-    style={{
-      display: 'flex',
-      justifyContent: 'flex-start',
-      flexWrap: 'wrap',
-      margin: '0 -1px -1px 0',
-      borderLeft: '1px solid #E5E5E5',
-      borderTop: '1px solid #E5E5E5' }}>
+    style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(128px, 1fr))' }}>
     {icons.map((icon) => (
       <Icon icon={icon} key={icon} />
     ))}

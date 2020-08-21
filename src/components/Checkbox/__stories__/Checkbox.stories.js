@@ -5,7 +5,7 @@ export { default as Default } from './CheckboxDefault.story'
 export { default as Stateful } from './CheckboxStateful.story'
 
 export default {
-  title: 'Checkbox',
+  title: 'Components/Checkbox',
   component: Checkbox,
   args: {
     disabled: false,

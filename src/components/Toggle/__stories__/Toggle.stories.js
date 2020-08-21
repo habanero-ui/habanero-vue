@@ -5,7 +5,7 @@ export { default as Default } from './ToggleDefault.story'
 export { default as Stateful } from './ToggleStateful.story'
 
 export default {
-  title: 'Toggle',
+  title: 'Components/Toggle',
   component: Toggle,
   argTypes: {
     size: {

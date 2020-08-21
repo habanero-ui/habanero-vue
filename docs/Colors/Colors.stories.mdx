@@ -1,0 +1,101 @@
+import startCase from 'lodash/startCase'
+import { Meta } from '@storybook/addon-docs/blocks'
+import tailwindConfig from '../../tailwind.config'
+import useCopyToClipboard from './useCopyToClipboard'
+
+export const Color = (props) => {
+  const { name, textColor } = props.color
+  const value = tailwindConfig.theme.extend.colors[name]
+  const [isCopying, copy] = useCopyToClipboard()
+  const handleClick = React.useCallback(() => {
+    copy(value)
+  }, [])
+  return (
+    <div
+      key={name}
+      onClick={handleClick}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '1rem',
+        backgroundColor: value,
+        cursor: 'pointer',
+      }}
+    >
+      <div style={{ color: textColor, fontSize: '0.875rem' }}>
+        {isCopying ? 'Copied!' : startCase(name)}
+      </div>
+      <div style={{ color: textColor, fontSize: '0.875rem' }}>{value}</div>
+    </div>
+  )
+}
+
+export const Group = (props) => {
+  const { colors, description, name } = props.group
+  return (
+    <div key={name} style={{ marginBottom: '2.5rem' }}>
+      <h2 style={{ marginBottom: '1rem' }}>{name}</h2>
+      <p>{description}</p>
+      {colors.map((color) => (
+        <Color key={color.name} color={color} />
+      ))}
+    </div>
+  )
+}
+
+<Meta title="Styles/Colors" />
+
+export const groups = [
+  {
+    name: 'Primary',
+    colors: [
+      { name: 'gold', textColor: 'white' },
+      { name: 'beige', textColor: 'black' },
+      { name: 'dark-beige', textColor: 'black' },
+    ],
+    description: 'The primary colors are the core colors for Habanero.',
+  },
+  {
+    name: 'Secondary',
+    colors: [
+      { name: 'blue', textColor: 'black' },
+      { name: 'green', textColor: 'black' },
+      { name: 'orange', textColor: 'black' },
+      { name: 'pink', textColor: 'black' },
+      { name: 'purple', textColor: 'white' },
+    ],
+    description:
+      'The secondary colors highlight and compliment our primary colors.',
+  },
+  {
+    name: 'Supportive',
+    colors: [
+      { name: 'border', textColor: 'black' },
+      { name: 'error', textColor: 'white' },
+      { name: 'info', textColor: 'white' },
+      { name: 'offwhite', textColor: 'black' },
+      { name: 'subtle', textColor: 'white' },
+      { name: 'success', textColor: 'white' },
+      { name: 'warning', textColor: 'black' },
+    ],
+    description: 'The supportive colors convey meaning through color.',
+  },
+  {
+    name: 'Surface',
+    colors: [
+      { name: 'white', textColor: 'black' },
+      { name: 'heavy-black', textColor: 'white' },
+      { name: 'black', textColor: 'white' },
+    ],
+    description: 'The surface colors affect background and font color.',
+  },
+]
+
+# Colors
+
+<React.Fragment>
+  {groups.map((group) => (
+    <Group key={group.name} group={group} />
+  ))}
+</React.Fragment>

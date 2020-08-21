@@ -7,4 +7,5 @@ postcss.config.js
 prettier.config.js
 firebase.json
 src
+docs
 storybook-static

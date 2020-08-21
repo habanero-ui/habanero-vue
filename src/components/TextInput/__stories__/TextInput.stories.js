@@ -9,7 +9,7 @@ export { default as Default } from './TextInputDefault.story'
 export { default as Stateful } from './TextInputStateful.story'
 
 export default {
-  title: 'TextInput',
+  title: 'Components/TextInput',
   component: TextInput,
   argTypes: {
     iconName: {

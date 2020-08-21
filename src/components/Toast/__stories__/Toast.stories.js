@@ -5,7 +5,7 @@ import Toast from '../index'
 export { default as Default } from './ToastDefault.story'
 
 export default {
-  title: 'Toast',
+  title: 'Components/Toast',
   component: Toast,
   argTypes: {
     status: {

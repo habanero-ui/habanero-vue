@@ -5,7 +5,7 @@ import Stack from '../index'
 export { default as Default } from './StackDefault.story'
 
 export default {
-  title: 'Stack',
+  title: 'Components/Stack',
   component: Stack,
   argTypes: {
     align: {

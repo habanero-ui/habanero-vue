@@ -6,7 +6,7 @@ export { default as Default } from './ToastStackDefault.story'
 export { default as Stateful } from './ToastStackStateful.story'
 
 export default {
-  title: 'ToastStack',
+  title: 'Components/ToastStack',
   component: ToastStack,
   argTypes: {
     direction: {

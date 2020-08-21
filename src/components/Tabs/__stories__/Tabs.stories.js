@@ -5,7 +5,7 @@ export { default as Default } from './TabsDefault.story'
 export { default as Stateful } from './TabsStateful.story'
 
 export default {
-  title: 'Tabs',
+  title: 'Components/Tabs',
   component: Tabs,
   args: {
     onSelectedNameChange: action('onSelectedNameChange'),

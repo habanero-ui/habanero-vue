@@ -5,7 +5,7 @@ import Modal from '../index'
 export { default as Default } from './ModalDefault.story'
 
 export default {
-  title: 'Modal',
+  title: 'Components/Modal',
   component: Modal,
   argTypes: {
     confirmColor: {
@@ -14,10 +14,10 @@ export default {
         options: colors,
       },
     },
-    confirmations: {
+    disclaimers: {
       control: {
         type: 'check',
-        options: ['Confirmation A', 'Confirmation B', 'Confirmation C'],
+        options: ['Disclaimer A', 'Disclaimer B', 'Disclaimer C'],
       },
     },
   },
@@ -25,7 +25,7 @@ export default {
     cancelText: 'Cancel',
     confirmColor: 'black',
     confirmText: 'Confirm',
-    confirmations: [],
+    disclaimers: [],
     helperText: 'Some Helper Text',
     isCancelDisabled: false,
     isConfirmDisabled: false,

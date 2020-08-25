@@ -55,6 +55,7 @@ export default [
   'parking',
   'phone',
   'plus',
+  'printer',
   'ring',
   'scale',
   'search',

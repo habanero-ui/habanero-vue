@@ -58,3 +58,10 @@ export default {
   },
 }
 </script>
+
+<style>
+fieldset.form-group {
+  margin: 0;
+  padding: 0;
+}
+</style>

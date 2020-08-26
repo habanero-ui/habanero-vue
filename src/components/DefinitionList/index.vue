@@ -2,14 +2,9 @@
   <dl class="definition-list"><slot /></dl>
 </template>
 
-<script>
-export default {}
-</script>
-
 <style scoped>
 .definition-list {
-  @apply table;
-  margin: -2rem;
+  @apply table -m-8;
   border-spacing: 2rem;
 }
 </style>

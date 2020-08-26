@@ -14,6 +14,8 @@ export { default as DataTableHeaderCell } from './components/DataTableHeaderCell
 export { default as DataTableRow } from './components/DataTableRow/index.vue'
 export { default as DatePicker } from './components/DatePicker/index.vue'
 export { default as DateTimePicker } from './components/DateTimePicker/index.vue'
+export { default as DefinitionList } from './components/DefinitionList/index.vue'
+export { default as DefinitionListItem } from './components/DefinitionListItem/index.vue'
 export { default as Divider } from './components/Divider/index.vue'
 export { default as Drawer } from './components/Drawer/index.vue'
 export { default as EmptyState } from './components/EmptyState/index.vue'

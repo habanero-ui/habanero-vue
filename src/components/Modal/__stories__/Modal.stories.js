@@ -20,6 +20,12 @@ export default {
         options: ['Disclaimer A', 'Disclaimer B', 'Disclaimer C'],
       },
     },
+    isCancelVisible: {
+      control: 'boolean',
+    },
+    isConfirmVisible: {
+      control: 'boolean',
+    },
   },
   args: {
     cancelText: 'Cancel',
@@ -28,6 +34,8 @@ export default {
     disclaimers: [],
     helperText: 'Some Helper Text',
     isCancelDisabled: false,
+    isCancelVisible: true,
+    isConfirmVisible: true,
     isConfirmDisabled: false,
     isConfirmLoading: false,
     isOpen: true,

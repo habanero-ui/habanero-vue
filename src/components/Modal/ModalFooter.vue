@@ -1,5 +1,5 @@
 <template>
-  <footer v-if="onCancel || onConfirm" class="modal-footer">
+  <footer class="modal-footer">
     <Box paddingX="gutter">
       <Columns space="6">
         <Column v-if="onCancel">

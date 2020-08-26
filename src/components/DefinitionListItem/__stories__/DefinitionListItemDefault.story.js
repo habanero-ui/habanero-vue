@@ -1,7 +1,8 @@
+import DefinitionList from '../../DefinitionList/index'
 import DefinitionListItem from '../index'
 
 export default ((args, { argTypes }) => ({
-  components: { DefinitionListItem },
+  components: { DefinitionList, DefinitionListItem },
   props: Object.keys(argTypes),
-  template: `<DefinitionListItem v-bind="$props">Test</DefinitionListItem>`,
+  template: `<DefinitionList><DefinitionListItem v-bind="$props">Test</DefinitionListItem></DefinitionList>`,
 })).bind({})

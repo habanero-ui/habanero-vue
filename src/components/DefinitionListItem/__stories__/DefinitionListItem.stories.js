@@ -5,6 +5,7 @@ export default {
   title: 'Components/DefinitionListItem',
   component: DefinitionListItem,
   args: {
-    name: 'Birthday',
+    name: 'Game',
+    value: 'Banjo-Kazooie',
   },
 }

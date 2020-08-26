@@ -27,6 +27,7 @@
           </ul>
         </Box>
         <ModalFooter
+          v-if="onCancel || onConfirm"
           :cancelText="cancelText"
           :confirmColor="confirmColor"
           :confirmText="confirmText"

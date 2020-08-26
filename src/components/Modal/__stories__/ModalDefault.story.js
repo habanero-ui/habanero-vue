@@ -5,7 +5,10 @@ export default ((args, { argTypes }) => ({
   props: Object.keys(argTypes),
   template: `
     <div class="absolute inset-0">
-      <Modal v-bind="$props">
+      <Modal
+        v-bind="$props"
+        :onCancel="isCancelVisible ? onCancel : undefined"
+        :onConfirm="isConfirmVisible ? onConfirm : undefined">
         <div class="px-6">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
         </div>

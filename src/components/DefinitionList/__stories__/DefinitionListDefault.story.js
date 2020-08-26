@@ -6,17 +6,8 @@ export default ((args, { argTypes }) => ({
   props: Object.keys(argTypes),
   template: `
     <DefinitionList v-bind="$props">
-      <DefinitionListItem name="Game">
-        Banjo-Kazooie
-      </DefinitionListItem>
-      <DefinitionListItem name="Platform">
-        Nintendo 64
-      </DefinitionListItem>
-      <DefinitionListItem name="Release">
-        June 29, 1998
-      </DefinitionListItem>
-      <DefinitionListItem name="Rating">
-        E
+      <DefinitionListItem v-for="item in items" :key="item.id" :name="item.name">
+        {{ item.value }}
       </DefinitionListItem>
     </DefinitionList>
     `,

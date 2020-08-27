@@ -17,13 +17,25 @@
       <Column v-if="iconName" width="content"><Icon :name="iconName" /></Column>
       <Column>
         <Stack space="xxsmall">
-          <Typography v-if="primaryText" variant="label-large">
+          <Typography
+            v-if="primaryText"
+            :color="primaryTextColor"
+            variant="label-large"
+          >
             {{ primaryText }}
           </Typography>
-          <Typography v-if="secondaryText" variant="body-small">
+          <Typography
+            v-if="secondaryText"
+            :color="secondaryTextColor"
+            variant="body-small"
+          >
             {{ secondaryText }}
           </Typography>
-          <Typography v-if="tertiaryText" color="subtle" variant="body-small">
+          <Typography
+            v-if="tertiaryText"
+            :color="tertiaryTextColor"
+            variant="body-small"
+          >
             {{ tertiaryText }}
           </Typography>
         </Stack>
@@ -88,12 +100,24 @@ export default {
       default: undefined,
       type: String,
     },
+    primaryTextColor: {
+      default: 'black',
+      type: String,
+    },
     secondaryText: {
       default: undefined,
       type: String,
     },
+    secondaryTextColor: {
+      default: 'black',
+      type: String,
+    },
     tertiaryText: {
       default: undefined,
+      type: String,
+    },
+    tertiaryTextColor: {
+      default: 'subtle',
       type: String,
     },
   },

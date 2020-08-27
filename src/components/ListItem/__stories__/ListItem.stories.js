@@ -13,7 +13,25 @@ export default {
         options: icons,
       },
     },
+    primaryTextColor: {
+      control: {
+        type: 'select',
+        options: colors,
+      },
+    },
     primaryStatusTextColor: {
+      control: {
+        type: 'select',
+        options: colors,
+      },
+    },
+    secondaryTextColor: {
+      control: {
+        type: 'select',
+        options: colors,
+      },
+    },
+    tertiaryTextColor: {
       control: {
         type: 'select',
         options: colors,
@@ -30,7 +48,10 @@ export default {
     primaryStatusText: 'Primary Status Text',
     primaryStatusTextColor: 'subtle',
     primaryText: 'Primary Text',
+    primaryTextColor: 'black',
     secondaryText: 'Secondary Text',
+    secondaryTextColor: 'black',
     tertiaryText: 'Tertiary Text',
+    tertiaryTextColor: 'subtle',
   },
 }

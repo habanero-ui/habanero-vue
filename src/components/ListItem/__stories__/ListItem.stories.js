@@ -19,6 +19,12 @@ export default {
         options: colors,
       },
     },
+    secondaryTextColor: {
+      control: {
+        type: 'select',
+        options: colors,
+      },
+    },
   },
   args: {
     avatarFirstName: '',
@@ -31,6 +37,7 @@ export default {
     primaryStatusTextColor: 'subtle',
     primaryText: 'Primary Text',
     secondaryText: 'Secondary Text',
+    secondaryTextColor: 'black',
     tertiaryText: 'Tertiary Text',
   },
 }

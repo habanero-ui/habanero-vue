@@ -20,7 +20,11 @@
           <Typography v-if="primaryText" variant="label-large">
             {{ primaryText }}
           </Typography>
-          <Typography v-if="secondaryText" variant="body-small">
+          <Typography
+            v-if="secondaryText"
+            :color="secondaryTextColor"
+            variant="body-small"
+          >
             {{ secondaryText }}
           </Typography>
           <Typography v-if="tertiaryText" color="subtle" variant="body-small">
@@ -90,6 +94,10 @@ export default {
     },
     secondaryText: {
       default: undefined,
+      type: String,
+    },
+    secondaryTextColor: {
+      default: 'black',
       type: String,
     },
     tertiaryText: {

@@ -26,6 +26,9 @@
             </li>
           </ul>
         </Box>
+        <div>
+          <slot name="bottom" />
+        </div>
         <ModalFooter
           v-if="onCancel || onConfirm"
           :cancelText="cancelText"

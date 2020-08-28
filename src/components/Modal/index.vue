@@ -14,18 +14,16 @@
         <div>
           <slot />
         </div>
-        <Box
-          v-if="disclaimers.length"
-          backgroundColor="offwhite"
-          padding="gutter"
-          class="modal__disclaimers"
-        >
+        <Box v-if="disclaimers.length" paddingX="gutter">
           <ul class="pl-6 list-disc">
             <li v-for="(disclaimer, index) in disclaimers" :key="index">
               {{ disclaimer }}
             </li>
           </ul>
         </Box>
+        <div>
+          <slot name="bottom" />
+        </div>
         <ModalFooter
           v-if="onCancel || onConfirm"
           :cancelText="cancelText"
@@ -131,9 +129,6 @@ export default {
 }
 .modal__window {
   @apply rounded bg-white flex flex-col w-11/12 max-w-3xl mx-auto shadow-lg z-50 overflow-y-auto;
-}
-.modal__disclaimers {
-  @apply border-t border-b border-border;
 }
 .modal--is-open {
   @apply pointer-events-auto opacity-100;

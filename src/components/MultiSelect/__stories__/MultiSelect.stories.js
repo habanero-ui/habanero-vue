@@ -28,7 +28,7 @@ export default {
     label: '',
     maxTagCount: 4,
     onSelectedIdsChange: action('onSelectedIdsChange'),
-    placeholder: 'Search...',
+    placeholder: 'Select...',
     selectedIds: ['Alpha', 'Beta', 'Charlie', 'Delta', 'Echo'],
   },
 }

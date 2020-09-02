@@ -57,7 +57,7 @@ export default {
     items: people.slice(0, 50),
     label: '',
     onSelectedIdChange: action('onSelectedIdChange'),
-    placeholder: 'Search people...',
+    placeholder: 'Select people...',
     selectedId: 4,
   },
 }

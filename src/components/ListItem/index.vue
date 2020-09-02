@@ -1,5 +1,6 @@
 <template>
   <Box
+    :backgroundColor="backgroundColor"
     class="list-item"
     component="li"
     paddingX="gutter"
@@ -14,12 +15,19 @@
           :lastName="avatarLastName"
         />
       </Column>
-      <Column v-if="iconName" width="content"><Icon :name="iconName" /></Column>
+      <Column v-if="iconName" width="content">
+        <Icon
+          :color="iconColor"
+          :colorIsBackground="isSelected"
+          :name="iconName"
+        />
+      </Column>
       <Column>
         <Stack space="xxsmall">
           <Typography
             v-if="primaryText"
             :color="primaryTextColor"
+            :colorIsBackground="isSelected"
             variant="label-large"
           >
             {{ primaryText }}
@@ -27,6 +35,7 @@
           <Typography
             v-if="secondaryText"
             :color="secondaryTextColor"
+            :colorIsBackground="isSelected"
             variant="body-small"
           >
             {{ secondaryText }}
@@ -34,6 +43,7 @@
           <Typography
             v-if="tertiaryText"
             :color="tertiaryTextColor"
+            :colorIsBackground="isSelected"
             variant="body-small"
           >
             {{ tertiaryText }}
@@ -41,7 +51,11 @@
         </Stack>
       </Column>
       <Column v-if="primaryStatusText" width="content">
-        <Typography :color="primaryStatusTextColor" variant="body-extra-small">
+        <Typography
+          :color="primaryStatusTextColor"
+          :colorIsBackground="isSelected"
+          variant="body-extra-small"
+        >
           {{ primaryStatusText }}
         </Typography>
       </Column>
@@ -76,6 +90,10 @@ export default {
       default: '',
       type: String,
     },
+    iconColor: {
+      default: 'black',
+      type: String,
+    },
     iconName: {
       default: undefined,
       type: String,
@@ -85,6 +103,10 @@ export default {
       type: Boolean,
     },
     isNavigation: {
+      default: false,
+      type: Boolean,
+    },
+    isSelected: {
       default: false,
       type: Boolean,
     },
@@ -122,6 +144,10 @@ export default {
     },
   },
   computed: {
+    backgroundColor() {
+      return this.isSelected ? 'info' : undefined
+    },
+
     isAvatarVisible() {
       return this.avatarFirstName || this.avatarImage || this.avatarLastName
     },

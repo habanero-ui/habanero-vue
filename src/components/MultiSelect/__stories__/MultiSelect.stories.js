@@ -9,8 +9,8 @@ export default {
   component: MultiSelect,
   args: {
     disabled: false,
-    helperText: '',
     error: '',
+    helperText: '',
     items: [
       'Alpha',
       'Beta',
@@ -28,7 +28,7 @@ export default {
     label: '',
     maxTagCount: 4,
     onSelectedIdsChange: action('onSelectedIdsChange'),
-    placeholder: 'Search...',
+    placeholder: 'Select...',
     selectedIds: ['Alpha', 'Beta', 'Charlie', 'Delta', 'Echo'],
   },
 }

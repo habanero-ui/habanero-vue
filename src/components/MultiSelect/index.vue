@@ -11,11 +11,9 @@
           <div class="multi-select__input-wrapper">
             <TextInput
               class="multi-select__input"
-              :iconName="
-                searchQueryState.length && isOpenState ? 'close' : undefined
-              "
+              :iconName="inputIconName"
               iconSide="right"
-              :onIconClick="handleClearSearchClick"
+              :onIconClick="handleInputIconClick"
               :onValueChange="handleInputValueChange"
               :placeholder="placeholder"
               :value="searchQueryState"
@@ -119,6 +117,7 @@ import take from 'lodash/take'
 import takeRight from 'lodash/takeRight'
 import without from 'lodash/without'
 
+import ClickOutsideDetector from '../__internal/ClickOutsideDetector/index'
 import toggleInArray from '../../helpers/toggleInArray'
 import PropValidation from '../../mixins/PropValidation'
 import Box from '../Box/index'
@@ -130,7 +129,6 @@ import Tag from '../Tag/index'
 import TextInput from '../TextInput/index'
 import Tooltip from '../Tooltip/index'
 import Typography from '../Typography/index'
-import ClickOutsideDetector from './ClickOutsideDetector'
 
 export default {
   components: {
@@ -237,6 +235,14 @@ export default {
       )
     },
 
+    inputIconName() {
+      if (!this.isOpenState) {
+        return 'chevron-down'
+      }
+
+      return this.searchQueryState.length ? 'close' : 'chevron-up'
+    },
+
     tags() {
       const sortedSelectedItems = sortBy(
         filter(this.items, this.getIsSelected),
@@ -266,13 +272,20 @@ export default {
       return includes(this.selectedIds, this.getId(item))
     },
 
-    handleClearSearchClick() {
-      this.searchQueryState = ''
-    },
-
     handleClickOutside() {
       this.isOpenState = false
       this.searchQueryState = ''
+    },
+
+    handleInputIconClick(e) {
+      if (this.searchQueryState) {
+        this.searchQueryState = ''
+        return
+      }
+
+      e.stopPropagation()
+
+      this.isOpenState = !this.isOpenState
     },
 
     handleInputValueChange(searchQueryState) {

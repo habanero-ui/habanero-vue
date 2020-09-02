@@ -7,6 +7,12 @@ export default {
   title: 'Components/ListItem',
   component: ListItem,
   argTypes: {
+    iconColor: {
+      control: {
+        type: 'select',
+        options: colors,
+      },
+    },
     iconName: {
       control: {
         type: 'select',
@@ -42,9 +48,11 @@ export default {
     avatarFirstName: '',
     avatarImage: '',
     avatarLastName: '',
+    iconColor: 'black',
     iconName: '',
     isActionable: true,
     isNavigation: false,
+    isSelected: false,
     primaryStatusText: 'Primary Status Text',
     primaryStatusTextColor: 'subtle',
     primaryText: 'Primary Text',

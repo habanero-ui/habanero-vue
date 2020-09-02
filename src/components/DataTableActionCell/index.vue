@@ -3,10 +3,11 @@
     v-if="isVisible"
     class="data-table-action-cell"
     paddingX="medium"
-    paddingY="2.5"
+    :paddingY="column.iconName ? 2.5 : 'medium'"
   >
     <div>
       <Button
+        :color="column.color"
         :iconName="column.iconName"
         :iconSide="column.iconSide || 'left'"
         :iconSize="column.iconSize || 'medium'"

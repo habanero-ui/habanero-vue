@@ -11,7 +11,6 @@ export default {
     column: {
       getIsVisible: () => true,
       iconName: 'close',
-      text: 'Delete',
       onClick: action('onClick'),
     },
     row: { id: 0, text: 'Some Text' },

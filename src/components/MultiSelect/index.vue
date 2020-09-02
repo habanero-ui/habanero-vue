@@ -11,11 +11,9 @@
           <div class="multi-select__input-wrapper">
             <TextInput
               class="multi-select__input"
-              :iconName="
-                searchQueryState.length && isOpenState ? 'close' : undefined
-              "
+              :iconName="inputIconName"
               iconSide="right"
-              :onIconClick="handleClearSearchClick"
+              :onIconClick="handleInputIconClick"
               :onValueChange="handleInputValueChange"
               :placeholder="placeholder"
               :value="searchQueryState"
@@ -237,6 +235,14 @@ export default {
       )
     },
 
+    inputIconName() {
+      if (!this.isOpenState) {
+        return 'chevron-down'
+      }
+
+      return this.searchQueryState.length ? 'close' : 'chevron-up'
+    },
+
     tags() {
       const sortedSelectedItems = sortBy(
         filter(this.items, this.getIsSelected),
@@ -266,13 +272,20 @@ export default {
       return includes(this.selectedIds, this.getId(item))
     },
 
-    handleClearSearchClick() {
-      this.searchQueryState = ''
-    },
-
     handleClickOutside() {
       this.isOpenState = false
       this.searchQueryState = ''
+    },
+
+    handleInputIconClick(e) {
+      if (this.searchQueryState) {
+        this.searchQueryState = ''
+        return
+      }
+
+      e.stopPropagation()
+
+      this.isOpenState = !this.isOpenState
     },
 
     handleInputValueChange(searchQueryState) {

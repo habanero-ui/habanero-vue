@@ -1,5 +1,6 @@
 import { action } from '@storybook/addon-actions'
 
+// import iconSizes from '../../../constants/iconSizes'
 import DataTableActionCell from '../index'
 export { default as Default } from './DataTableActionCellDefault.story'
 
@@ -9,7 +10,8 @@ export default {
   args: {
     column: {
       getIsVisible: () => true,
-      iconName: 'bell',
+      iconName: 'close',
+      text: 'Delete',
       onClick: action('onClick'),
     },
     row: { id: 0, text: 'Some Text' },

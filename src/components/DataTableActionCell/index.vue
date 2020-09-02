@@ -8,8 +8,11 @@
     <div>
       <Button
         :iconName="column.iconName"
+        :iconSide="column.iconSide || 'left'"
         :iconSize="column.iconSize || 'medium'"
         variant="text"
+        :text="column.text"
+        :textVariant="column.textVariant || 'label-small'"
         @click.native="handleButtonClick"
       />
     </div>

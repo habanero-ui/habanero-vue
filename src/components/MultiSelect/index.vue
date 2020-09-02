@@ -117,6 +117,7 @@ import take from 'lodash/take'
 import takeRight from 'lodash/takeRight'
 import without from 'lodash/without'
 
+import ClickOutsideDetector from '../__internal/ClickOutsideDetector/index'
 import toggleInArray from '../../helpers/toggleInArray'
 import PropValidation from '../../mixins/PropValidation'
 import Box from '../Box/index'
@@ -128,7 +129,6 @@ import Tag from '../Tag/index'
 import TextInput from '../TextInput/index'
 import Tooltip from '../Tooltip/index'
 import Typography from '../Typography/index'
-import ClickOutsideDetector from './ClickOutsideDetector'
 
 export default {
   components: {

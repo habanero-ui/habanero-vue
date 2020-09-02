@@ -9,8 +9,8 @@ export default {
   component: MultiSelect,
   args: {
     disabled: false,
-    helperText: '',
     error: '',
+    helperText: '',
     items: [
       'Alpha',
       'Beta',

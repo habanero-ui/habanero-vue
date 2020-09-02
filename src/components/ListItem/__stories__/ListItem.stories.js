@@ -45,6 +45,7 @@ export default {
     iconName: '',
     isActionable: true,
     isNavigation: false,
+    isSelected: false,
     primaryStatusText: 'Primary Status Text',
     primaryStatusTextColor: 'subtle',
     primaryText: 'Primary Text',

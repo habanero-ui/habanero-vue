@@ -9,7 +9,7 @@ export default {
   args: {
     column: {
       getIsVisible: () => true,
-      iconName: 'bell',
+      iconName: 'close',
       onClick: action('onClick'),
     },
     row: { id: 0, text: 'Some Text' },

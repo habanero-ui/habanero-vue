@@ -10,6 +10,7 @@
         <div class="single-select__content-wrapper">
           <div class="single-select__input-wrapper">
             <TextInput
+              ref="textInput"
               class="single-select__input"
               :iconName="inputIconName"
               iconSide="right"
@@ -29,7 +30,12 @@
                 <ListItem
                   v-for="item in filteredItems"
                   :key="getId(item)"
+                  :avatarFirstName="getAvatarFirstName(item)"
+                  :avatarImage="getAvatarImage(item)"
+                  :avatarLastName="getAvatarLastName(item)"
+                  :iconName="getIconName(item)"
                   :isSelected="getIsSelected(item)"
+                  :primaryStatusText="getPrimaryStatusText(item)"
                   :primaryText="getPrimaryText(item) || getText(item)"
                   :secondaryText="getSecondaryText(item)"
                   :tertiaryText="getTertiaryText(item)"
@@ -83,8 +89,28 @@ export default {
       default: '',
       type: String,
     },
+    getAvatarFirstName: {
+      default: () => {},
+      type: Function,
+    },
+    getAvatarImage: {
+      default: () => {},
+      type: Function,
+    },
+    getAvatarLastName: {
+      default: () => {},
+      type: Function,
+    },
+    getIconName: {
+      default: () => {},
+      type: Function,
+    },
     getId: {
       default: (item) => item,
+      type: Function,
+    },
+    getPrimaryStatusText: {
+      default: () => {},
       type: Function,
     },
     getPrimaryText: {
@@ -106,10 +132,6 @@ export default {
     helperText: {
       default: '',
       type: String,
-    },
-    isFilteringEnabled: {
-      default: true,
-      type: Boolean,
     },
     items: {
       default: () => [],
@@ -148,7 +170,7 @@ export default {
     },
 
     filteredItems() {
-      if (!this.searchQueryState || !this.isFilteringEnabled) {
+      if (!this.searchQueryState) {
         return this.items
       }
 
@@ -229,6 +251,8 @@ export default {
       if (this.disabled) return
 
       this.isOpenState = true
+
+      this.$refs.textInput.$refs.input.focus()
     },
   },
 }

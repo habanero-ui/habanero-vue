@@ -1,5 +1,6 @@
 import { action } from '@storybook/addon-actions'
 
+import people from '../../../../.storybook/dummyData/people'
 import SingleSelect from '../index'
 export { default as Default } from './SingleSelectDefault.story'
 export { default as Stateful } from './SingleSelectStateful.story'
@@ -9,47 +10,46 @@ export default {
   component: SingleSelect,
   argTypes: {
     selectedId: {
-      control: {
-        options: [
-          'Alpha',
-          'Beta',
-          'Charlie',
-          'Delta',
-          'Echo',
-          'Foxtrot',
-          'Golf',
-          'Hotel',
-          'India',
-          'Juliet',
-          'Kilo',
-          'Lima',
-        ],
-        type: 'select',
-      },
+      control: 'number',
+    },
+    isAvatarFirstNameEnabled: {
+      control: 'boolean',
+    },
+    isAvatarImageEnabled: {
+      control: 'boolean',
+    },
+    isAvatarLastNameEnabled: {
+      control: 'boolean',
+    },
+    isIconEnabled: {
+      control: 'boolean',
+    },
+    isPrimaryStatusTextEnabled: {
+      control: 'boolean',
     },
   },
   args: {
     disabled: false,
     error: '',
-    getSecondaryText: () => 'Secondary Text',
+    getAvatarFirstName: (item) => item.first_name,
+    getAvatarImage: (item) => item.photo,
+    getAvatarLastName: (item) => item.last_name,
+    getIconName: () => 'bell',
+    getId: (item) => item.id,
+    getPrimaryStatusText: () => 'Primary status text',
+    getPrimaryText: (item) => `${item.first_name} ${item.last_name}`,
+    getSecondaryText: (item) => item.job,
+    getTertiaryText: (item) => item.city,
     helperText: '',
-    items: [
-      'Alpha',
-      'Beta',
-      'Charlie',
-      'Delta',
-      'Echo',
-      'Foxtrot',
-      'Golf',
-      'Hotel',
-      'India',
-      'Juliet',
-      'Kilo',
-      'Lima',
-    ],
+    isAvatarFirstNameEnabled: false,
+    isAvatarImageEnabled: false,
+    isAvatarLastNameEnabled: false,
+    isIconEnabled: false,
+    isPrimaryStatusTextEnabled: false,
+    items: people.slice(0, 50),
     label: '',
     onSelectedIdChange: action('onSelectedIdChange'),
-    placeholder: 'Search...',
-    selectedId: 'Beta',
+    placeholder: 'Search people...',
+    selectedId: 4,
   },
 }

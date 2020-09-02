@@ -10,6 +10,11 @@ const Template = (args, { argTypes }) => ({
     <div class="w-screen max-w-lg">
       <SingleSelect
         v-bind="$props"
+        :getAvatarFirstName="isAvatarFirstNameEnabled ? getAvatarFirstName : undefined"
+        :getAvatarImage="isAvatarImageEnabled ? getAvatarImage : undefined"
+        :getAvatarLastName="isAvatarLastNameEnabled ? getAvatarLastName : undefined"
+        :getIconName="isIconEnabled ? getIconName : undefined"
+        :getPrimaryStatusText="isPrimaryStatusTextEnabled ? getPrimaryStatusText : undefined"
         :onSelectedIdChange="handleSelectedIdChange"
         :selectedId="selectedIdState"
       />

@@ -5,7 +5,14 @@ export default (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   template: `
     <div class="w-screen max-w-lg">
-      <SingleSelect v-bind="$props" />
+      <SingleSelect
+        v-bind="$props"
+        :getAvatarFirstName="isAvatarFirstNameEnabled ? getAvatarFirstName : undefined"
+        :getAvatarImage="isAvatarImageEnabled ? getAvatarImage : undefined"
+        :getAvatarLastName="isAvatarLastNameEnabled ? getAvatarLastName : undefined"
+        :getIconName="isIconEnabled ? getIconName : undefined"
+        :getPrimaryStatusText="isPrimaryStatusTextEnabled ? getPrimaryStatusText : undefined"
+      />
     </div>
   `,
 })

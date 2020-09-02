@@ -1,6 +1,5 @@
 import { action } from '@storybook/addon-actions'
 
-// import iconSizes from '../../../constants/iconSizes'
 import DataTableActionCell from '../index'
 export { default as Default } from './DataTableActionCellDefault.story'
 

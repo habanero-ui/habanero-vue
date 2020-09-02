@@ -27,6 +27,12 @@ export default {
     isPrimaryStatusTextEnabled: {
       control: 'boolean',
     },
+    isSecondaryTextEnabled: {
+      control: 'boolean',
+    },
+    isTertiaryTextEnabled: {
+      control: 'boolean',
+    },
   },
   args: {
     disabled: false,
@@ -46,6 +52,8 @@ export default {
     isAvatarLastNameEnabled: false,
     isIconEnabled: false,
     isPrimaryStatusTextEnabled: false,
+    isSecondaryTextEnabled: true,
+    isTertiaryTextEnabled: true,
     items: people.slice(0, 50),
     label: '',
     onSelectedIdChange: action('onSelectedIdChange'),

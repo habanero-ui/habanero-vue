@@ -12,6 +12,8 @@ export default (args, { argTypes }) => ({
         :getAvatarLastName="isAvatarLastNameEnabled ? getAvatarLastName : undefined"
         :getIconName="isIconEnabled ? getIconName : undefined"
         :getPrimaryStatusText="isPrimaryStatusTextEnabled ? getPrimaryStatusText : undefined"
+        :getSecondaryText="isSecondaryTextEnabled ? getSecondaryText : undefined"
+        :getTertiaryText="isTertiaryTextEnabled ? getTertiaryText : undefined"
       />
     </div>
   `,

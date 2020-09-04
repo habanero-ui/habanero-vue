@@ -17,10 +17,6 @@ export default {
     }),
   ],
   props: {
-    component: {
-      default: 'span',
-      type: String,
-    },
     color: {
       default: 'none',
       type: String,
@@ -28,6 +24,10 @@ export default {
     colorIsBackground: {
       default: false,
       type: Boolean,
+    },
+    component: {
+      default: 'span',
+      type: String,
     },
     variant: {
       default: 'body-large',

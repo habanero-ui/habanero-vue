@@ -25,7 +25,7 @@ import Icon from '../Icon/index'
 import Typography from '../Typography/index'
 
 export default {
-  components: { Box, Icon, Column, Columns, Typography },
+  components: { Box, Column, Columns, Icon, Typography },
   props: {
     column: {
       default: () => ({}),

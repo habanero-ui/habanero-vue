@@ -209,8 +209,8 @@ export default {
       return [
         'multi-select',
         {
-          'multi-select--open': this.isOpenState,
           'multi-select--disabled': this.disabled,
+          'multi-select--open': this.isOpenState,
         },
       ]
     },
@@ -260,8 +260,8 @@ export default {
       const remainingTagCount = allTags.length - (this.maxTagCount - 1)
       const moreTag = {
         id: 'HABANERO_MORE_TAG',
-        text: `${remainingTagCount} more...`,
         remainingTags: takeRight(allTags, remainingTagCount),
+        text: `${remainingTagCount} more...`,
       }
 
       return [...take(allTags, this.maxTagCount - 1), moreTag]

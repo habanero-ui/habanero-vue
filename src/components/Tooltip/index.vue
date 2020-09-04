@@ -29,8 +29,8 @@ export default {
   components: { Box, Typography },
   mixins: [
     PropValidation({
-      trigger: tooltipTriggers,
       placement: tooltipPlacements,
+      trigger: tooltipTriggers,
     }),
   ],
   props: {

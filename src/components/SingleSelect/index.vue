@@ -163,8 +163,8 @@ export default {
       return [
         'single-select',
         {
-          'single-select--open': this.isOpenState,
           'single-select--disabled': this.disabled,
+          'single-select--open': this.isOpenState,
         },
       ]
     },

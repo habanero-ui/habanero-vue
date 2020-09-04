@@ -63,12 +63,12 @@ export default {
       default: Number.MAX_SAFE_INTEGER,
       type: Number,
     },
-    onIconClick: {
-      default: undefined,
-      type: Function,
-    },
     onCentsChange: {
       default: () => {},
+      type: Function,
+    },
+    onIconClick: {
+      default: undefined,
       type: Function,
     },
   },
@@ -77,8 +77,8 @@ export default {
       const dollars = (this.cents || 0) / 100
 
       return dollars.toLocaleString('en-US', {
-        style: 'currency',
         currency: 'USD',
+        style: 'currency',
       })
     },
 
@@ -108,9 +108,9 @@ export default {
       }
 
       const nextCents = getNextCents({
-        prevCents: this.cents,
         isDeleteKey,
         key,
+        prevCents: this.cents,
       })
 
       if (nextCents > this.max) {

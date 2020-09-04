@@ -19,12 +19,12 @@ export default {
       default: 'stretch',
       type: String,
     },
-    dividerThicknesses: {
-      default: 'thin',
-      type: String,
-    },
     component: {
       default: 'div',
+      type: String,
+    },
+    dividerThicknesses: {
+      default: 'thin',
       type: String,
     },
     showDividers: {

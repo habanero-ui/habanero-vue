@@ -135,23 +135,23 @@ export function getRemFromSpacing(spacing) {
   const pxToRem = (px) => px / 16
 
   return {
-    none: '0',
-    gutter: `${pxToRem(24)}rem`,
-    xxsmall: `${pxToRem(4)}rem`,
-    xsmall: `${pxToRem(8)}rem`,
-    small: `${pxToRem(12)}rem`,
-    medium: `${pxToRem(16)}rem`,
-    large: `${pxToRem(40)}rem`,
-    xlarge: `${pxToRem(64)}rem`,
-    xxlarge: `${pxToRem(128)}rem`,
     '-gutter': `-${pxToRem(24)}rem`,
-    '-xxsmall': `-${pxToRem(4)}rem`,
-    '-xsmall': `-${pxToRem(8)}rem`,
-    '-small': `-${pxToRem(12)}rem`,
-    '-medium': `-${pxToRem(16)}rem`,
     '-large': `-${pxToRem(40)}rem`,
+    '-medium': `-${pxToRem(16)}rem`,
+    '-small': `-${pxToRem(12)}rem`,
     '-xlarge': `-${pxToRem(64)}rem`,
+    '-xsmall': `-${pxToRem(8)}rem`,
     '-xxlarge': `-${pxToRem(128)}rem`,
+    '-xxsmall': `-${pxToRem(4)}rem`,
+    gutter: `${pxToRem(24)}rem`,
+    large: `${pxToRem(40)}rem`,
+    medium: `${pxToRem(16)}rem`,
+    none: '0',
+    small: `${pxToRem(12)}rem`,
+    xlarge: `${pxToRem(64)}rem`,
+    xsmall: `${pxToRem(8)}rem`,
+    xxlarge: `${pxToRem(128)}rem`,
+    xxsmall: `${pxToRem(4)}rem`,
   }[spacing]
 }
 </script>

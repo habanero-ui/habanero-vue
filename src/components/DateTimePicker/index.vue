@@ -57,18 +57,6 @@ export default {
       default: '',
       type: String,
     },
-    onSelectedDateChange: {
-      default: undefined,
-      type: Function,
-    },
-    onSelectedDatesChange: {
-      default: undefined,
-      type: Function,
-    },
-    onValueChange: {
-      default: undefined,
-      type: Function,
-    },
     maxDate: {
       default: null,
       type: [Date, String],
@@ -88,6 +76,18 @@ export default {
     mode: {
       default: 'single',
       type: String,
+    },
+    onSelectedDateChange: {
+      default: undefined,
+      type: Function,
+    },
+    onSelectedDatesChange: {
+      default: undefined,
+      type: Function,
+    },
+    onValueChange: {
+      default: undefined,
+      type: Function,
     },
     placeholder: {
       default: '',

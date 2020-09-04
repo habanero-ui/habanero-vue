@@ -20,6 +20,7 @@ module.exports = {
     'no-console': 1,
     'vue/attribute-hyphenation': ['error', 'never'],
     'vue/no-v-html': 0,
+    'vue/sort-keys': ['error', 'asc', { caseSensitive: false }],
     'simple-import-sort/sort': 'error',
   },
 }

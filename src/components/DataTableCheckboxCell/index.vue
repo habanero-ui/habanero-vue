@@ -31,15 +31,15 @@ export default {
     },
   },
   methods: {
+    handleCheckboxClick(e) {
+      e.preventDefault()
+      e.stopPropagation()
+    },
+
     handleCheckboxIsCheckedChange(isChecked) {
       if (!this.column.onIsCheckedChange) return
 
       this.column.onIsCheckedChange(this.row, isChecked)
-    },
-
-    handleCheckboxClick(e) {
-      e.preventDefault()
-      e.stopPropagation()
     },
   },
 }

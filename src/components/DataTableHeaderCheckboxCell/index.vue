@@ -1,7 +1,7 @@
 <template>
-  <Box padding="medium" :paddingY="paddingY">
+  <Box padding="medium" paddingY="3.25">
     <Checkbox
-      :isChecked="isChecked"
+      :isChecked="column.headerIsChecked"
       :onIsCheckedChange="handleCheckboxIsCheckedChange"
       @click.native="handleCheckboxClick"
     />
@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import getWithAccessor from '../../helpers/getWithAccessor'
 import Box from '../Box/index'
 import Checkbox from '../Checkbox/index'
 
@@ -20,19 +19,6 @@ export default {
       default: () => ({}),
       type: Object,
     },
-    row: {
-      default: () => ({}),
-      type: Object,
-    },
-  },
-  computed: {
-    isChecked() {
-      return getWithAccessor(this.row, this.column.getValue || this.column.key)
-    },
-
-    paddingY() {
-      return this.column.paddingY || 3.25
-    },
   },
   methods: {
     handleCheckboxClick(e) {
@@ -41,9 +27,9 @@ export default {
     },
 
     handleCheckboxIsCheckedChange(isChecked) {
-      if (!this.column.onIsCheckedChange) return
+      if (!this.column.onHeaderIsCheckedChange) return
 
-      this.column.onIsCheckedChange(this.row, isChecked)
+      this.column.onHeaderIsCheckedChange(isChecked)
     },
   },
 }

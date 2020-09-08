@@ -116,9 +116,9 @@ import sortBy from 'lodash/sortBy'
 import take from 'lodash/take'
 import takeRight from 'lodash/takeRight'
 import without from 'lodash/without'
+import xor from 'lodash/xor'
 
 import ClickOutsideDetector from '../__internal/ClickOutsideDetector/index'
-import toggleInArray from '../../helpers/toggleInArray'
 import PropValidation from '../../mixins/PropValidation'
 import Box from '../Box/index'
 import Checkbox from '../Checkbox/index'
@@ -293,9 +293,7 @@ export default {
     },
 
     handleItemClick(item) {
-      this.onSelectedIdsChange(
-        toggleInArray(this.getId(item), this.selectedIds),
-      )
+      this.onSelectedIdsChange(xor(this.selectedIds, [this.getId(item)]))
     },
 
     handleRootClick() {

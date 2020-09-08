@@ -1,7 +1,7 @@
 <template>
-  <Box padding="medium" paddingY="3.25">
+  <Box padding="medium" :paddingY="paddingY">
     <Checkbox
-      :isChecked="value"
+      :isChecked="isChecked"
       :onIsCheckedChange="handleCheckboxIsCheckedChange"
       @click.native="handleCheckboxClick"
     />
@@ -26,8 +26,12 @@ export default {
     },
   },
   computed: {
-    value() {
+    isChecked() {
       return getWithAccessor(this.row, this.column.getValue || this.column.key)
+    },
+
+    paddingY() {
+      return this.column.paddingY || 3.25
     },
   },
   methods: {

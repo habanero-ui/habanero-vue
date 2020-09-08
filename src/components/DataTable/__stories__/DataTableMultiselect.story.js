@@ -7,6 +7,7 @@ import xor from 'lodash/xor'
 import DataTableCheckboxCell from '../../DataTableCheckboxCell'
 import DataTableHeaderCheckboxCell from '../../DataTableHeaderCheckboxCell'
 import DataTable from '../index'
+import DataTableProfileCell from './DataTableProfileCell'
 
 const Template = (args, { argTypes }) => ({
   components: { DataTable },
@@ -29,14 +30,12 @@ const Template = (args, { argTypes }) => ({
           name: '',
           onHeaderIsCheckedChange: this.handleHeaderIsCheckedChange,
           onIsCheckedChange: this.handleRowIsCheckedChange,
-        },
-        {
-          name: 'Rank',
-          key: 'id',
+          paddingY: 5,
         },
         {
           name: 'Movie',
           key: 'movie.name',
+          cellComponent: DataTableProfileCell,
         },
         {
           name: 'Director',

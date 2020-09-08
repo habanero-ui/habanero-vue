@@ -1,5 +1,5 @@
 <template>
-  <Box padding="medium">
+  <Box padding="medium" :paddingY="column.paddingY">
     <Typography class="block" variant="body-extra-small">
       {{ value }}
     </Typography>

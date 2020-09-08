@@ -3,7 +3,7 @@
     v-if="isVisible"
     class="data-table-action-cell"
     paddingX="medium"
-    :paddingY="column.iconName ? 2.5 : 'medium'"
+    :paddingY="paddingY"
   >
     <div>
       <Button
@@ -44,6 +44,14 @@ export default {
         !isFunction(this.column.getIsVisible) ||
         this.column.getIsVisible(this.row)
       )
+    },
+
+    paddingY() {
+      if (this.column.paddingY) {
+        return this.column.paddingY
+      }
+
+      return this.column.iconName ? 2.5 : 'medium'
     },
   },
   methods: {

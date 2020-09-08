@@ -1,9 +1,8 @@
-import difference from 'lodash/difference'
 import every from 'lodash/every'
 import includes from 'lodash/includes'
 import map from 'lodash/map'
 import omit from 'lodash/omit'
-import union from 'lodash/union'
+import xor from 'lodash/xor'
 
 import DataTableCheckboxCell from '../../DataTableCheckboxCell'
 import DataTableHeaderCheckboxCell from '../../DataTableHeaderCheckboxCell'
@@ -75,10 +74,8 @@ const Template = (args, { argTypes }) => ({
       this.selectedIds = isChecked ? map(this.rows, 'id') : []
     },
 
-    handleRowIsCheckedChange({ id }, isChecked) {
-      this.selectedIds = isChecked
-        ? union(this.selectedIds, [id])
-        : difference(this.selectedIds, [id])
+    handleRowIsCheckedChange({ id }) {
+      this.selectedIds = xor(this.selectedIds, [id])
     },
   },
 })

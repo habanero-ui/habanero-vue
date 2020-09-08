@@ -11,7 +11,7 @@
           :onCloseModal="onIsOpenChange"
           :titleText="titleText"
         />
-        <div>
+        <div v-if="$slots.default">
           <slot />
         </div>
         <Box v-if="disclaimers.length" paddingX="gutter">
@@ -21,7 +21,7 @@
             </li>
           </ul>
         </Box>
-        <div>
+        <div v-if="$slots.bottom">
           <slot name="bottom" />
         </div>
         <ModalFooter

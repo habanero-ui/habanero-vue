@@ -4,6 +4,7 @@ import drawerModes from '../../../constants/drawerModes'
 import drawerPositions from '../../../constants/drawerPositions'
 import Drawer from '../index'
 export { default as Default } from './DrawerDefault.story'
+export { default as Sidebar } from './DrawerSidebar.story'
 export { default as Stateful } from './DrawerStateful.story'
 
 export default {

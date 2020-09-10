@@ -22,11 +22,20 @@ export default {
         options: drawerPositions,
       },
     },
+    width: {
+      control: {
+        type: 'range',
+        min: 256,
+        max: 900,
+        step: 16,
+      },
+    },
   },
   args: {
     isOpen: true,
     mode: 'cover',
     onIsOpenChange: action('onIsOpenChange'),
     position: 'left',
+    width: 256,
   },
 }

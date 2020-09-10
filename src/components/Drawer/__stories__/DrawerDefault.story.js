@@ -4,15 +4,15 @@ export default ((args, { argTypes }) => ({
   components: { Drawer },
   props: Object.keys(argTypes),
   template: `
-    <div class="absolute flex inset-0">
-      <div v-if="position === 'right'" class="flex-1">
-        Content Before
-      </div>
+    <div
+      class="absolute flex inset-0"
+      :class="{ 'flex-row-reverse': position === 'right' }"
+    >
       <Drawer v-bind="$props">
         Some Content
       </Drawer>
-      <div v-if="position === 'left'" class="flex-1">
-        Content After
+      <div class="flex-1">
+        Outside Content
       </div>
     </div>
   `,

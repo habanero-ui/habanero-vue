@@ -1,6 +1,10 @@
 <template>
-  <div class="drawer" :class="classes" @click.self="handleBackgroundClick">
-    <div v-if="mode === 'cover'" class="drawer__overlay" />
+  <div class="drawer" :class="classes">
+    <div
+      v-if="mode === 'cover'"
+      class="drawer__overlay"
+      @click.self="handleOverlayClick"
+    />
     <div ref="panel" class="drawer__panel" :style="panelStyles">
       <slot />
     </div>
@@ -66,26 +70,32 @@ export default {
   },
   watch: {
     isOpen() {
-      if (this.$refs.panel) {
-        this.handleIsOpenChange()
-      }
+      this.handleIsOpenChange()
+    },
+
+    mode() {
+      this.handleIsOpenChange()
     },
 
     position() {
-      if (this.$refs.panel) {
-        this.handleIsOpenChange()
-      }
+      this.handleIsOpenChange()
+    },
+
+    width() {
+      this.handleIsOpenChange()
     },
   },
   mounted() {
     this.handleIsOpenChange()
   },
   methods: {
-    handleBackgroundClick() {
+    handleOverlayClick() {
       this.onIsOpenChange(false)
     },
 
     handleIsOpenChange() {
+      if (!this.$refs.panel) return
+
       const offset = this.isOpen
         ? 0
         : -this.$refs.panel.getBoundingClientRect().width

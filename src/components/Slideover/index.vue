@@ -3,6 +3,7 @@
     class="slideover"
     :isOpen="isOpen"
     :onIsOpenChange="onIsOpenChange"
+    position="right"
     :width="900"
   >
     <SlideoverHeader

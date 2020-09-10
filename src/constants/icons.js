@@ -26,6 +26,7 @@ export default [
   'currency',
   'edit',
   'error',
+  'exclamation',
   'explore-user',
   'eye',
   'face-happy',

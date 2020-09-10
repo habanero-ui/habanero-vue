@@ -50,6 +50,7 @@ export default {
 <style scoped>
 .icon {
   @apply flex-none fill-current overflow-hidden;
+  transition: color 200ms ease;
 }
 .icon > svg {
   @apply h-full w-full;

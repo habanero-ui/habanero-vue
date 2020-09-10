@@ -52,6 +52,7 @@ export default {
 <style scoped>
 .typography {
   font-family: inter, sans-serif;
+  transition: color 200ms ease;
 }
 .typography--color-gold {
   @apply text-gold;

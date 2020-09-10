@@ -1,6 +1,6 @@
 <template>
   <Box
-    :backgroundColor="backgroundColor"
+    :backgroundColor="backgroundColorState"
     class="list-item"
     component="li"
     paddingX="gutter"
@@ -18,7 +18,7 @@
       <Column v-if="iconName" width="content">
         <Icon
           :color="iconColor"
-          :colorIsBackground="isSelected"
+          :colorIsBackground="colorIsBackground || isSelected"
           :name="iconName"
         />
       </Column>
@@ -27,7 +27,7 @@
           <Typography
             v-if="primaryText"
             :color="primaryTextColor"
-            :colorIsBackground="isSelected"
+            :colorIsBackground="colorIsBackground || isSelected"
             variant="label-large"
           >
             {{ primaryText }}
@@ -35,7 +35,7 @@
           <Typography
             v-if="secondaryText"
             :color="secondaryTextColor"
-            :colorIsBackground="isSelected"
+            :colorIsBackground="colorIsBackground || isSelected"
             variant="body-small"
           >
             {{ secondaryText }}
@@ -43,7 +43,7 @@
           <Typography
             v-if="tertiaryText"
             :color="tertiaryTextColor"
-            :colorIsBackground="isSelected"
+            :colorIsBackground="colorIsBackground || isSelected"
             variant="body-small"
           >
             {{ tertiaryText }}
@@ -53,7 +53,7 @@
       <Column v-if="primaryStatusText" width="content">
         <Typography
           :color="primaryStatusTextColor"
-          :colorIsBackground="isSelected"
+          :colorIsBackground="colorIsBackground || isSelected"
           variant="body-extra-small"
         >
           {{ primaryStatusText }}
@@ -89,6 +89,14 @@ export default {
     avatarLastName: {
       default: '',
       type: String,
+    },
+    backgroundColor: {
+      default: undefined,
+      type: String,
+    },
+    colorIsBackground: {
+      default: undefined,
+      type: Boolean,
     },
     iconColor: {
       default: 'black',
@@ -144,7 +152,11 @@ export default {
     },
   },
   computed: {
-    backgroundColor() {
+    backgroundColorState() {
+      if (this.backgroundColor) {
+        return this.backgroundColor
+      }
+
       return this.isSelected ? 'info' : undefined
     },
 

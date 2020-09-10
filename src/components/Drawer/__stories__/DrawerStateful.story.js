@@ -8,16 +8,21 @@ const Template = (args, { argTypes }) => ({
     isOpenState: false,
   }),
   template: `
-    <div class="absolute flex flex-col items-start inset-0">
-      <div>
-        <Button
-          text="Open Drawer"
-          @click.native="handleOpenDrawerClick"
-        />
-      </div>
+    <div
+      class="absolute flex inset-0"
+      :class="{ 'flex-row-reverse': position === 'right' }"
+    >
       <Drawer v-bind="$props" :isOpen="isOpenState" :onIsOpenChange="handleIsOpenChange">
         Some Content
       </Drawer>
+      <div class="flex flex-1 p-6">
+        <div>
+          <Button
+            text="Toggle Drawer"
+            @click.native="handleToggleDrawerClick"
+          />
+        </div>
+      </div>
     </div>
   `,
   methods: {
@@ -25,8 +30,8 @@ const Template = (args, { argTypes }) => ({
       this.isOpenState = isOpen
     },
 
-    handleOpenDrawerClick() {
-      this.isOpenState = true
+    handleToggleDrawerClick() {
+      this.isOpenState = !this.isOpenState
     },
   },
 })

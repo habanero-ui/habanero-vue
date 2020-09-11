@@ -46,8 +46,7 @@ export default {
     },
   },
   data: () => ({
-    offsetLeft: 0,
-    offsetRight: 0,
+    offset: '-9999px',
   }),
   computed: {
     classes() {
@@ -62,8 +61,8 @@ export default {
 
     panelStyles() {
       return {
-        marginLeft: this.offsetLeft,
-        marginRight: this.offsetRight,
+        marginLeft: this.position === 'left' ? this.offset : undefined,
+        marginRight: this.position === 'right' ? this.offset : undefined,
         [this.mode === 'cover' ? 'maxWidth' : 'width']: `${this.width / 16}rem`,
       }
     },
@@ -100,10 +99,7 @@ export default {
         ? 0
         : -this.$refs.panel.getBoundingClientRect().width
 
-      this.offsetLeft =
-        this.position === 'left' ? `${offset / 16}rem` : undefined
-      this.offsetRight =
-        this.position === 'right' ? `${offset / 16}rem` : undefined
+      this.offset = `${offset / 16}rem`
     },
   },
 }

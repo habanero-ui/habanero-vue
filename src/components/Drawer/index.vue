@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import throttle from 'lodash/throttle'
+
 import drawerModes from '../../constants/drawerModes'
 import drawerPositions from '../../constants/drawerPositions'
 import PropValidation from '../../mixins/PropValidation'
@@ -47,6 +49,7 @@ export default {
   },
   data: () => ({
     offset: '-9999px',
+    windowResizeHandler: undefined,
   }),
   computed: {
     classes() {
@@ -86,6 +89,13 @@ export default {
   },
   mounted() {
     this.handleIsOpenChange()
+
+    this.windowResizeHandler = throttle(this.handleIsOpenChange, 100)
+
+    window.addEventListener('resize', this.windowResizeHandler)
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.windowResizeHandler)
   },
   methods: {
     handleOverlayClick() {

@@ -30,10 +30,21 @@ export default {
         options: iconSizes,
       },
     },
+    size: {
+      control: {
+        type: 'inline-radio',
+        options: ['small', 'medium'],
+      },
+    },
     type: {
       control: {
         type: 'select',
         options: textInputTypes,
+      },
+    },
+    value: {
+      control: {
+        type: 'text',
       },
     },
   },
@@ -48,6 +59,7 @@ export default {
     onIconClick: action('onIconClick'),
     onValueChange: action('onValueChange'),
     placeholder: 'John Michael Doe',
+    size: 'medium',
     type: 'text',
     value: '',
   },

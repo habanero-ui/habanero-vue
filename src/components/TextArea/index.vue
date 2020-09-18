@@ -103,11 +103,7 @@ export default {
     handleTextAreaInput({ target }) {
       if (!this.onValueChange) return
 
-      const newValue = target.value
-
-      target.value = this.value ? this.value : ''
-
-      this.onValueChange(newValue)
+      this.onValueChange(target.value)
     },
   },
 }

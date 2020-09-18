@@ -59,7 +59,7 @@ export default {
     onIconClick: action('onIconClick'),
     onValueChange: action('onValueChange'),
     placeholder: 'John Michael Doe',
-    size: 'small',
+    size: 'medium',
     type: 'text',
     value: '',
   },

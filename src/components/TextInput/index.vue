@@ -13,14 +13,14 @@
       <Box
         class="absolute"
         :class="{ 'right-0': iconSide === 'right' }"
-        :marginLeft="marginLeft"
-        :marginRight="marginRight"
+        :marginLeft="iconMarginLeft"
+        :marginRight="iconMarginRight"
       >
         <Icon
           v-if="iconName"
           :class="{ 'cursor-pointer': !!onIconClick }"
           :name="iconName"
-          :size="iconSize"
+          :size="adjustedIconSize"
           @click.native="onIconClick"
         />
       </Box>
@@ -56,6 +56,7 @@ export default {
   mixins: [
     PropValidation({
       iconSide: iconSides,
+      size: ['small', 'medium'],
       type: textInputTypes,
     }),
   ],
@@ -82,7 +83,7 @@ export default {
       type: String,
     },
     iconSize: {
-      default: 'medium',
+      default: undefined,
       type: String,
     },
     id: {
@@ -101,6 +102,10 @@ export default {
       default: undefined,
       type: Function,
     },
+    size: {
+      default: 'medium',
+      type: String,
+    },
     type: {
       default: 'text',
       type: String,
@@ -111,6 +116,14 @@ export default {
     },
   },
   computed: {
+    adjustedIconSize() {
+      if (this.iconSize) {
+        return this.iconSize
+      }
+
+      return this.size === 'small' ? 'small' : 'medium'
+    },
+
     classes() {
       return [
         'text-input',
@@ -120,19 +133,24 @@ export default {
           'text-input--has-icon': this.iconName,
         },
         `text-input--icon-side-${this.iconSide}`,
+        `text-input--size-${this.size}`,
       ]
+    },
+
+    iconMarginLeft() {
+      const spacing = this.size === 'medium' ? 3.75 : 2
+
+      return this.iconSide === 'left' ? spacing : undefined
+    },
+
+    iconMarginRight() {
+      const spacing = this.size === 'medium' ? 3.75 : 2
+
+      return this.iconSide === 'right' ? spacing : undefined
     },
 
     inputId() {
       return this.id || this.label.replace(/ /g, '') || undefined
-    },
-
-    marginLeft() {
-      return this.iconSide === 'left' ? 4.25 : undefined
-    },
-
-    marginRight() {
-      return this.iconSide === 'right' ? 4.25 : undefined
     },
   },
   methods: {
@@ -156,9 +174,7 @@ export default {
   @apply cursor-not-allowed select-none;
 }
 .text-input__input {
-  @apply bg-transparent border border-black px-4 transition-colors duration-300 ease-in-out outline-none w-full;
-  border-radius: 0.3125rem;
-  height: 2.75rem;
+  @apply bg-transparent border border-black transition-colors duration-300 ease-in-out outline-none w-full;
 }
 .text-input__input:not([disabled]):hover {
   @apply border-2;
@@ -180,27 +196,80 @@ export default {
 .text-input__input::-webkit-input-placeholder {
   @apply text-subtle;
 }
+.text-input--size-small .text-input__input {
+  @apply px-2 rounded-none text-xs;
+  height: 2rem;
+}
+.text-input--size-small .text-input__input:not([disabled]):hover {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+.text-input--size-small .text-input__input:focus {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+.text-input--size-small.text-input--has-icon.text-input--icon-side-left
+  .text-input__input {
+  padding-left: 2rem;
+}
+.text-input--size-small.text-input--has-icon.text-input--icon-side-left
+  .text-input__input:not([disabled]):hover {
+  padding-left: 1.9375rem;
+}
+.text-input--size-small.text-input--has-icon.text-input--icon-side-left
+  .text-input__input:focus {
+  padding-left: 1.9375rem;
+}
+.text-input--size-small.text-input--has-icon.text-input--icon-side-right
+  .text-input__input {
+  padding-right: 2rem;
+}
+.text-input--size-small.text-input--has-icon.text-input--icon-side-right
+  .text-input__input:not([disabled]):hover {
+  padding-right: 1.9375rem;
+}
+.text-input--size-small.text-input--has-icon.text-input--icon-side-right
+  .text-input__input:focus {
+  padding-right: 1.9375rem;
+}
+.text-input--size-medium .text-input__input {
+  @apply px-4;
+  border-radius: 0.3125rem;
+  height: 2.75rem;
+}
+.text-input--size-medium .text-input__input:not([disabled]):hover {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.text-input--size-medium .text-input__input:focus {
+  padding-left: 15px;
+  padding-right: 15px;
+}
 .text-input--error .text-input__input {
   @apply border-error;
 }
-.text-input--has-icon.text-input--icon-side-left .text-input__input {
+.text-input--size-medium.text-input--has-icon.text-input--icon-side-left
+  .text-input__input {
   padding-left: 3.25rem;
 }
-.text-input--has-icon.text-input--icon-side-left
+.text-input--size-medium.text-input--has-icon.text-input--icon-side-left
   .text-input__input:not([disabled]):hover {
   padding-left: 3.1875rem;
 }
-.text-input--has-icon.text-input--icon-side-left .text-input__input:focus {
+.text-input--size-medium.text-input--has-icon.text-input--icon-side-left
+  .text-input__input:focus {
   padding-left: 3.1875rem;
 }
-.text-input--has-icon.text-input--icon-side-right .text-input__input {
+.text-input--size-medium.text-input--has-icon.text-input--icon-side-right
+  .text-input__input {
   padding-right: 3.25rem;
 }
-.text-input--has-icon.text-input--icon-side-right
+.text-input--size-medium.text-input--has-icon.text-input--icon-side-right
   .text-input__input:not([disabled]):hover {
   padding-right: 3.1875rem;
 }
-.text-input--has-icon.text-input--icon-side-right .text-input__input:focus {
+.text-input--size-medium.text-input--has-icon.text-input--icon-side-right
+  .text-input__input:focus {
   padding-right: 3.1875rem;
 }
 </style>

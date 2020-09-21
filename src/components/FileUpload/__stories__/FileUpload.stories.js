@@ -8,6 +8,7 @@ export default {
   component: FileUpload,
   args: {
     accept: 'image/x-png,application/pdf,image/jpeg,image/jpg',
+    isLoading: false,
     onChange: action('onChange'),
     text: 'Select File',
   },

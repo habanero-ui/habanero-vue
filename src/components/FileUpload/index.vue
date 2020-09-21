@@ -1,7 +1,11 @@
 <template>
   <Columns alignY="center" space="small">
     <Column width="content">
-      <Button :text="text" @click.native="handleFileSelect" />
+      <Button
+        :isLoading="isLoading"
+        :text="text"
+        @click.native="handleFileSelect"
+      />
       <input
         ref="input"
         :accept="accept"
@@ -11,7 +15,7 @@
       />
     </Column>
     <Column width="fluid">
-      <Tag v-if="file" :onDelete="handleFileDelete" :text="fileName" />
+      <Tag v-if="isTagVisible" :onDelete="handleFileDelete" :text="fileName" />
     </Column>
   </Columns>
 </template>
@@ -34,6 +38,10 @@ export default {
       default: undefined,
       type: String,
     },
+    isLoading: {
+      default: undefined,
+      type: Boolean,
+    },
     onChange: {
       default: undefined,
       type: Function,
@@ -49,6 +57,10 @@ export default {
   computed: {
     fileName() {
       return this.file.name
+    },
+
+    isTagVisible() {
+      return this.file && !this.isLoading
     },
   },
   methods: {

@@ -4,6 +4,7 @@
       <Button
         :isLoading="isLoading"
         :text="text"
+        :variant="buttonVariant"
         @click.native="handleFileSelect"
       />
       <input
@@ -35,6 +36,10 @@ export default {
   },
   props: {
     accept: {
+      default: undefined,
+      type: String,
+    },
+    buttonVariant: {
       default: undefined,
       type: String,
     },

@@ -22,6 +22,12 @@ export default {
         type: 'date',
       },
     },
+    size: {
+      control: {
+        type: 'inline-radio',
+        options: ['small', 'medium'],
+      },
+    },
   },
   args: {
     disabled: false,
@@ -34,5 +40,6 @@ export default {
     onSelectedDateChange: action('onSelectedDateChange'),
     placeholder: 'Some placeholder text',
     selectedDate: new Date('2017-10-05T17:00:00.000000Z'),
+    size: 'medium',
   },
 }

@@ -32,11 +32,17 @@ import filter from 'lodash/filter'
 import get from 'lodash/get'
 import isNil from 'lodash/isNil'
 
+import PropValidation from '../../mixins/PropValidation'
 import FormGroup from '../FormGroup'
 import Icon from '../Icon'
 
 export default {
   components: { FormGroup, Icon },
+  mixins: [
+    PropValidation({
+      size: ['small', 'medium'],
+    }),
+  ],
   inheritAttrs: false,
   props: {
     disabled: {
@@ -63,6 +69,10 @@ export default {
       default: '',
       type: String,
     },
+    size: {
+      default: 'medium',
+      type: String,
+    },
     value: {
       default: '',
       type: [Number, String],
@@ -78,6 +88,7 @@ export default {
           'select--placeholder-visible':
             this.placeholder && !this.value && this.value !== 0,
         },
+        `select--size-${this.size}`,
       ]
     },
   },
@@ -124,10 +135,9 @@ export default {
   @apply cursor-not-allowed;
 }
 .select__input {
-  @apply bg-transparent pl-4 pr-10 w-full border border-black rounded-md text-black cursor-pointer;
+  @apply bg-transparent w-full border border-black text-black cursor-pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
-  height: 2.75rem;
   transition: border-color 300ms ease-in-out;
 }
 .select__input:not([disabled]):hover {
@@ -143,9 +153,6 @@ export default {
   padding-left: 15px;
   padding-right: 39px;
 }
-.select__input > .selected {
-  @apply flex-1;
-}
 .select--error .select__input {
   @apply border-error;
 }
@@ -154,6 +161,37 @@ export default {
 }
 .select__chevron {
   @apply pointer-events-none;
-  margin-left: -2.25rem;
+}
+.select--size-small .select__input {
+  @apply pl-2 rounded-none text-xs;
+  height: 2rem;
+  padding-right: 1.875rem;
+}
+.select--size-small .select__input:not([disabled]):hover {
+  padding-left: 7px;
+  padding-right: 29px;
+}
+.select--size-small .select__input:focus {
+  padding-left: 7px;
+  padding-right: 29px;
+}
+.select--size-small .select__chevron {
+  margin-left: -1.75rem;
+}
+.select--size-medium .select__input {
+  @apply pl-4 pr-10;
+  border-radius: 0.3125rem;
+  height: 2.75rem;
+}
+.select--size-medium .select__input:not([disabled]):hover {
+  padding-left: 15px;
+  padding-right: 39px;
+}
+.select--size-medium .select__input:focus {
+  padding-left: 15px;
+  padding-right: 39px;
+}
+.select--size-medium .select__chevron {
+  margin-left: -2.125rem;
 }
 </style>

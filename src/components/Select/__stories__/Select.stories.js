@@ -7,6 +7,12 @@ export default {
   title: 'Components/Select',
   component: Select,
   argTypes: {
+    size: {
+      control: {
+        type: 'inline-radio',
+        options: ['small', 'medium'],
+      },
+    },
     value: {
       control: {
         type: 'select',
@@ -21,6 +27,7 @@ export default {
     label: 'Some Label Text',
     onValueChange: action('onValueChange'),
     placeholder: 'Some placeholder text',
+    size: 'medium',
     value: undefined,
   },
 }

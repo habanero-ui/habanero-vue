@@ -6,6 +6,7 @@
     :helperText="helperText"
     :label="label"
     :placeholder="placeholder"
+    :size="size"
     :value="value"
   />
 </template>
@@ -100,6 +101,10 @@ export default {
     selectedDates: {
       default: undefined,
       type: Array,
+    },
+    size: {
+      default: undefined,
+      type: String,
     },
     value: {
       default: undefined,

@@ -245,9 +245,6 @@ export default {
   padding-left: 15px;
   padding-right: 15px;
 }
-.text-input--error .text-input__input {
-  @apply border-error;
-}
 .text-input--size-medium.text-input--has-icon.text-input--icon-side-left
   .text-input__input {
   padding-left: 3.25rem;
@@ -271,5 +268,8 @@ export default {
 .text-input--size-medium.text-input--has-icon.text-input--icon-side-right
   .text-input__input:focus {
   padding-right: 3.1875rem;
+}
+.text-input--error .text-input__input {
+  @apply border-error;
 }
 </style>

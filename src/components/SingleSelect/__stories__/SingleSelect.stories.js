@@ -9,9 +9,6 @@ export default {
   title: 'Components/SingleSelect',
   component: SingleSelect,
   argTypes: {
-    selectedId: {
-      control: 'number',
-    },
     isAvatarFirstNameEnabled: {
       control: 'boolean',
     },
@@ -32,6 +29,15 @@ export default {
     },
     isTertiaryTextEnabled: {
       control: 'boolean',
+    },
+    selectedId: {
+      control: 'number',
+    },
+    size: {
+      control: {
+        type: 'inline-radio',
+        options: ['small', 'medium'],
+      },
     },
   },
   args: {
@@ -59,5 +65,6 @@ export default {
     onSelectedIdChange: action('onSelectedIdChange'),
     placeholder: 'Select people...',
     selectedId: 4,
+    size: 'medium',
   },
 }

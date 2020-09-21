@@ -17,6 +17,7 @@
               :onIconClick="handleInputIconClick"
               :onValueChange="handleInputValueChange"
               :placeholder="placeholder"
+              :size="size"
               :value="inputValue"
             />
           </div>
@@ -147,6 +148,10 @@ export default {
     },
     placeholder: {
       default: 'Search...',
+      type: String,
+    },
+    size: {
+      default: undefined,
       type: String,
     },
     selectedId: {

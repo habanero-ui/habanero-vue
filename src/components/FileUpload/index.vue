@@ -3,7 +3,7 @@
     <Column width="content">
       <Button :text="text" @click.native="handleFileSelect" />
       <input
-        ref="fileUpload"
+        ref="input"
         :accept="accept"
         class="hidden mr-4"
         type="file"
@@ -44,7 +44,7 @@ export default {
     },
   },
   data: () => ({
-    file: null,
+    file: undefined,
   }),
   computed: {
     fileName() {
@@ -55,22 +55,20 @@ export default {
     handleChange(event) {
       const files = event.target.files || event.dataTransfer.files
 
-      if (!files.length) {
-        return
-      }
+      if (!files.length) return
 
       this.file = files[0]
-
       this.onChange(this.file)
     },
 
     handleFileDelete() {
-      this.file = null
-      this.$refs.fileUpload.value = null
+      this.file = undefined
+      this.onChange(undefined)
+      this.$refs.input.value = ''
     },
 
     handleFileSelect() {
-      this.$refs.fileUpload.click()
+      this.$refs.input.click()
     },
   },
 }

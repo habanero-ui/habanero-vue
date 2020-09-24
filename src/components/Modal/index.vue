@@ -9,7 +9,7 @@
       <Stack space="gutter">
         <ModalHeader
           :helperText="helperText"
-          :onCloseModal="onIsOpenChange"
+          :onCloseModal="headerCloseModalHandler"
           :titleText="titleText"
         />
         <div v-if="$slots.default">
@@ -108,6 +108,11 @@ export default {
       type: String,
     },
   },
+  computed: {
+    headerCloseModalHandler() {
+      return this.onCancel ? undefined : this.onIsOpenChange
+    },
+  },
   watch: {
     isOpen() {
       if (!this.isOpen) {
@@ -117,6 +122,8 @@ export default {
   },
   methods: {
     handleBackgroundClick() {
+      if (!this.onIsOpenChange) return
+
       this.onIsOpenChange(false)
     },
   },

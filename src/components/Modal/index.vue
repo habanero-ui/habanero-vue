@@ -33,6 +33,7 @@
           :isCancelDisabled="isCancelDisabled"
           :isConfirmDisabled="isConfirmDisabled"
           :isConfirmLoading="isConfirmLoading"
+          :isOpen="isOpen"
           :onCancel="onCancel"
           :onConfirm="onConfirm"
         />

@@ -65,6 +65,10 @@ export default {
       default: false,
       type: Boolean,
     },
+    isOpen: {
+      default: false,
+      type: Boolean,
+    },
     onCancel: {
       default: undefined,
       type: Function,
@@ -81,6 +85,11 @@ export default {
   computed: {
     buttonColumnWidth() {
       return this.isWide ? 'content' : 'fluid'
+    },
+  },
+  watch: {
+    isOpen() {
+      this.handleWindowResize()
     },
   },
   mounted() {

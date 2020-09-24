@@ -1,7 +1,8 @@
 <template>
-  <div
+  <Box
     class="modal"
     :class="{ 'modal--is-open': isOpen }"
+    padding="gutter"
     @click.self="handleBackgroundClick"
   >
     <Box class="modal__window" paddingY="gutter">
@@ -37,7 +38,7 @@
         />
       </Stack>
     </Box>
-  </div>
+  </Box>
 </template>
 
 <script>
@@ -128,7 +129,7 @@ export default {
   z-index: 60;
 }
 .modal__window {
-  @apply rounded bg-white flex flex-col w-11/12 max-w-3xl mx-auto shadow-lg z-50 overflow-y-auto;
+  @apply max-w-3xl rounded bg-white flex flex-col shadow-lg z-50 overflow-y-auto;
 }
 .modal--is-open {
   @apply pointer-events-auto opacity-100;

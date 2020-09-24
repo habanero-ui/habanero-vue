@@ -1,8 +1,9 @@
 <template>
   <footer class="modal-footer">
     <Box paddingX="gutter">
-      <Columns space="6">
-        <Column v-if="onCancel">
+      <Columns space="medium">
+        <Column v-if="isWide" />
+        <Column v-if="onCancel" :width="buttonColumnWidth">
           <Button
             :disabled="isCancelDisabled"
             :text="cancelText"
@@ -10,7 +11,7 @@
             @click.native="onCancel"
           />
         </Column>
-        <Column v-if="onConfirm">
+        <Column v-if="onConfirm" :width="buttonColumnWidth">
           <Button
             :color="confirmColor"
             :disabled="isConfirmDisabled"
@@ -25,6 +26,8 @@
 </template>
 
 <script>
+import throttle from 'lodash/throttle'
+
 import Box from '../Box/index'
 import Button from '../Button/index'
 import Column from '../Column/index'
@@ -69,6 +72,30 @@ export default {
     onConfirm: {
       default: undefined,
       type: Function,
+    },
+  },
+  data: () => ({
+    isWide: false,
+    throttledWindowResizeListener: undefined,
+  }),
+  computed: {
+    buttonColumnWidth() {
+      return this.isWide ? 'content' : 'fluid'
+    },
+  },
+  mounted() {
+    this.handleWindowResize()
+
+    this.throttledWindowResizeListener = throttle(this.handleWindowResize, 16)
+
+    window.addEventListener('resize', this.throttledWindowResizeListener)
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.throttledWindowResizeListener)
+  },
+  methods: {
+    handleWindowResize() {
+      this.isWide = this.$el.offsetWidth > 384
     },
   },
 }

@@ -2,6 +2,7 @@
   <div class="page-section">
     <Stack class="page-section__main" space="medium">
       <PageSectionHeader
+        v-if="isHeaderVisible"
         :actionText="actionText"
         :onActionClick="onActionClick"
         :titleText="titleText"
@@ -35,6 +36,15 @@ export default {
     titleText: {
       default: '',
       type: String,
+    },
+  },
+  computed: {
+    isHeaderVisible() {
+      return (
+        this.titleText ||
+        (this.actionText && this.onActionClick) ||
+        this.$slots.action
+      )
     },
   },
 }

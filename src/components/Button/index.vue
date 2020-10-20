@@ -28,7 +28,7 @@
         v-if="isLoading"
         :color="color"
         :colorIsBackground="variant === 'primary'"
-        style="position: absolute;"
+        style="position: absolute"
       />
     </Box>
   </button>

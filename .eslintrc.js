@@ -18,6 +18,7 @@ module.exports = {
   },
   rules: {
     'no-console': 1,
+    'no-extra-bind': 0,
     'vue/attribute-hyphenation': ['error', 'never'],
     'vue/no-v-html': 0,
     'simple-import-sort/sort': 'error',

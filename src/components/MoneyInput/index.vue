@@ -1,5 +1,6 @@
 <template>
   <TextInput
+    ref="input"
     v-bind="TextInputProps"
     inputMode="numeric"
     :onValueChange="() => {}"
@@ -89,6 +90,14 @@ export default {
       }
     },
   },
+  watch: {
+    cents() {
+      this.updateValue()
+    },
+  },
+  mounted() {
+    this.updateValue()
+  },
   methods: {
     handleKeyDown({ code, key, keyCode }) {
       const VALID_FIRST_CHAR = /^[1-9]{1}$/
@@ -118,6 +127,14 @@ export default {
       }
 
       this.onCentsChange(nextCents)
+    },
+
+    updateValue() {
+      if (!this.$refs.input) return
+
+      setTimeout(() => {
+        this.$refs.input.$refs.input.value = this.formattedValue
+      })
     },
   },
 }

@@ -1,9 +1,24 @@
+import WithScreenSize from '../../../mixins/WithScreenSize'
 import Box from '../index'
 
 const Template = (args, { argTypes }) => ({
   components: { Box },
+  mixins: [WithScreenSize],
   props: Object.keys(argTypes),
-  template: `<Box v-bind="$props" :padding="['xsmall', 'gutter', 'xlarge']">Content</Box>`,
+  mounted() {
+    this.ScreenSize.startWatching()
+  },
+  beforeDestroy() {
+    this.ScreenSize.stopWatching()
+  },
+  template: `
+    <Box
+      v-bind="$props"
+      :padding="['xsmall', 'gutter', 'xlarge']"
+    >
+      Screen Size Type: {{ ScreenSize.type }}
+    </Box>
+  `,
 })
 
 const BoxResponsive = Template.bind({})

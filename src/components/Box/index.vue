@@ -12,18 +12,18 @@ import isArray from 'lodash/isArray'
 import isNaN from 'lodash/isNaN'
 import isNil from 'lodash/isNil'
 import isNumber from 'lodash/isNumber'
-import last from 'lodash/last'
 import map from 'lodash/map'
 import omitBy from 'lodash/omitBy'
 import pick from 'lodash/pick'
 import some from 'lodash/some'
-import throttle from 'lodash/throttle'
 import without from 'lodash/without'
 
 import borderRadii from '../../constants/borderRadii'
 import colors from '../../constants/colors'
 import spacingAliases from '../../constants/spacingAliases'
+import getResponsivePropValue from '../../helpers/getResponsivePropValue'
 import PropValidation from '../../mixins/PropValidation'
+import WithScreenSize from '../../mixins/WithScreenSize'
 
 const responsivePropNames = [
   'margin',
@@ -63,6 +63,7 @@ export default {
       paddingX: getIsSpacingPropValid('paddingX'),
       paddingY: getIsSpacingPropValid('paddingY'),
     }),
+    WithScreenSize,
   ],
   props: {
     backgroundColor: {
@@ -99,7 +100,7 @@ export default {
   data: () => ({
     isKeyDown: false,
     windowResizeHandler: undefined,
-    windowSize: 'mobile',
+    screenSize: 'mobile',
   }),
   computed: {
     classes() {
@@ -121,7 +122,9 @@ export default {
 
     styles() {
       const getValue = (baseValue) =>
-        getRemFromSpacing(this.getResponsiveValue(baseValue))
+        getRemFromSpacing(
+          getResponsivePropValue(baseValue, this.ScreenSize.type),
+        )
 
       return omitBy(
         {
@@ -142,48 +145,19 @@ export default {
   },
   mounted() {
     if (this.hasResponsiveProp) {
-      this.intializeResizeListener()
+      this.ScreenSize.startWatching()
     }
 
     forEach(responsivePropNames, (propName) => {
       this.$watch(propName, () => {
         if (this.windowResizeHandler) return
 
-        this.intializeResizeListener()
+        this.ScreenSize.startWatching()
       })
     })
   },
   beforeDestroy() {
-    if (this.windowResizeHandler) {
-      window.removeEventListener('resize', this.windowResizeHandler)
-    }
-  },
-  methods: {
-    getResponsiveValue(basePropValue) {
-      if (!isArray(basePropValue)) {
-        return basePropValue
-      }
-
-      if (this.windowSize === 'mobile' || basePropValue.length === 1) {
-        return basePropValue[0]
-      }
-
-      if (this.windowSize === 'tablet' || basePropValue.length === 2) {
-        return basePropValue[1]
-      }
-
-      return last(basePropValue)
-    },
-
-    intializeResizeListener() {
-      this.windowSize = getWindowSize()
-
-      this.windowResizeHandler = throttle(() => {
-        this.windowSize = getWindowSize()
-      }, 16)
-
-      window.addEventListener('resize', this.windowResizeHandler)
-    },
+    this.ScreenSize.stopWatching()
   },
 }
 
@@ -243,18 +217,6 @@ export function getRemFromSpacing(spacing) {
     xxlarge: `${pxToRem(128)}rem`,
     xxsmall: `${pxToRem(4)}rem`,
   }[spacing]
-}
-
-function getWindowSize() {
-  if (window.innerWidth >= 1024) {
-    return 'desktop'
-  }
-
-  if (window.innerWidth >= 640) {
-    return 'tablet'
-  }
-
-  return 'mobile'
 }
 </script>
 

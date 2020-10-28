@@ -2,6 +2,7 @@
 import includes from 'lodash/includes'
 import map from 'lodash/map'
 
+import breakpoints from '../../constants/breakpoints'
 import verticalAlignments from '../../constants/verticalAlignments'
 import PropValidation from '../../mixins/PropValidation'
 import Box from '../Box/index'
@@ -10,11 +11,16 @@ export default {
   mixins: [
     PropValidation({
       alignY: verticalAlignments,
+      collapseBelow: breakpoints,
     }),
   ],
   props: {
     alignY: {
       default: 'top',
+      type: String,
+    },
+    collapseBelow: {
+      default: undefined,
       type: String,
     },
     isReversed: {
@@ -32,6 +38,9 @@ export default {
         'columns',
         { 'columns--is-reversed': this.isReversed },
         `columns--align-y-${this.alignY}`,
+        this.collapseBelow
+          ? `columns--collapse-below-${this.collapseBelow}`
+          : undefined,
       ]
     },
 
@@ -171,5 +180,15 @@ function getStylesFromWidth(width) {
   > .columns__column-content
   > .column {
   @apply items-start;
+}
+@media only screen and (max-width: theme('screens.sm')) {
+  .columns.columns--collapse-below-tablet {
+    background-color: pink;
+  }
+}
+@media only screen and (max-width: theme('screens.lg')) {
+  .columns.columns--collapse-below-desktop {
+    background-color: blue;
+  }
 }
 </style>

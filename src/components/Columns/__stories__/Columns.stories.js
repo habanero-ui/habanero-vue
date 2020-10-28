@@ -1,3 +1,4 @@
+import breakpoints from '../../../constants/breakpoints'
 import columnWidths from '../../../constants/columnWidths'
 import spacingAliases from '../../../constants/spacingAliases'
 import verticalAlignments from '../../../constants/verticalAlignments'
@@ -12,6 +13,12 @@ export default {
       control: {
         type: 'inline-radio',
         options: verticalAlignments,
+      },
+    },
+    collapseBelow: {
+      control: {
+        type: 'select',
+        options: breakpoints,
       },
     },
     firstColumnWidth: {

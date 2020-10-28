@@ -2,6 +2,7 @@ import spacingAliases from '../../../constants/spacingAliases'
 import verticalAlignments from '../../../constants/verticalAlignments'
 import Inline from '../index'
 export { default as Default } from './InlineDefault.story'
+export { default as Responsive } from './InlineResponsive.story'
 
 export default {
   title: 'Components/Inline',

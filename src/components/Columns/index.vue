@@ -1,20 +1,29 @@
 <script>
 import includes from 'lodash/includes'
+import isArray from 'lodash/isArray'
 import map from 'lodash/map'
 
+import breakpoints from '../../constants/breakpoints'
 import verticalAlignments from '../../constants/verticalAlignments'
 import PropValidation from '../../mixins/PropValidation'
+import WithScreenSize from '../../mixins/WithScreenSize'
 import Box from '../Box/index'
 
 export default {
   mixins: [
     PropValidation({
       alignY: verticalAlignments,
+      collapseBelow: breakpoints,
     }),
+    WithScreenSize,
   ],
   props: {
     alignY: {
       default: 'top',
+      type: String,
+    },
+    collapseBelow: {
+      default: undefined,
       type: String,
     },
     isReversed: {
@@ -23,7 +32,7 @@ export default {
     },
     space: {
       default: '',
-      type: [Number, String],
+      type: [Array, Number, String],
     },
   },
   computed: {
@@ -32,14 +41,100 @@ export default {
         'columns',
         { 'columns--is-reversed': this.isReversed },
         `columns--align-y-${this.alignY}`,
+        this.collapseBelow
+          ? `columns--collapse-below-${this.collapseBelow}`
+          : undefined,
       ]
     },
 
-    columnStyle() {
-      const paddingSide = this.isReversed ? 'right' : 'left'
+    columnPaddingBottom() {
+      if (!this.isReversed) {
+        return ''
+      }
 
-      return `padding-${paddingSide}: ${(parseFloat(this.space) * 4) / 16}rem;`
+      if (
+        (this.collapseBelow === 'tablet' &&
+          this.ScreenSize.type === 'mobile') ||
+        (this.collapseBelow === 'desktop' &&
+          includes(['mobile', 'tablet'], this.ScreenSize.type))
+      ) {
+        return this.space
+      }
+
+      return ''
     },
+
+    columnPaddingLeft() {
+      if (this.isReversed) {
+        return ''
+      }
+
+      if (
+        (this.collapseBelow === 'tablet' &&
+          this.ScreenSize.type === 'mobile') ||
+        (this.collapseBelow === 'desktop' &&
+          includes(['mobile', 'tablet'], this.ScreenSize.type))
+      ) {
+        return ''
+      }
+
+      return this.space
+    },
+
+    columnPaddingRight() {
+      if (!this.isReversed) {
+        return ''
+      }
+
+      if (
+        (this.collapseBelow === 'tablet' &&
+          this.ScreenSize.type === 'mobile') ||
+        (this.collapseBelow === 'desktop' &&
+          includes(['mobile', 'tablet'], this.ScreenSize.type))
+      ) {
+        return ''
+      }
+
+      return this.space
+    },
+
+    columnPaddingTop() {
+      if (this.isReversed) {
+        return ''
+      }
+
+      if (
+        (this.collapseBelow === 'tablet' &&
+          this.ScreenSize.type === 'mobile') ||
+        (this.collapseBelow === 'desktop' &&
+          includes(['mobile', 'tablet'], this.ScreenSize.type))
+      ) {
+        return this.space
+      }
+
+      return ''
+    },
+  },
+  watch: {
+    collapseBelow() {
+      if (this.collapseBelow) {
+        this.ScreenSize.startWatching()
+      }
+    },
+
+    space() {
+      if (isArray(this.collapseBelow)) {
+        this.ScreenSize.startWatching()
+      }
+    },
+  },
+  mounted() {
+    if (isArray(this.space)) {
+      this.ScreenSize.startWatching()
+    }
+  },
+  beforeDestroy() {
+    this.ScreenSize.stopWatching()
   },
   methods: {
     mapSlotNode(vnode, h, index) {
@@ -57,8 +152,10 @@ export default {
             {
               class: 'columns__column-content',
               props: {
-                [`padding${this.isReversed ? 'Right' : 'Left'}`]:
-                  index > 0 ? this.space : '',
+                paddingBottom: index > 0 ? this.columnPaddingBottom : '',
+                paddingLeft: index > 0 ? this.columnPaddingLeft : '',
+                paddingRight: index > 0 ? this.columnPaddingRight : '',
+                paddingTop: index > 0 ? this.columnPaddingTop : '',
               },
             },
             [vnode.componentOptions.children],
@@ -171,5 +268,21 @@ function getStylesFromWidth(width) {
   > .columns__column-content
   > .column {
   @apply items-start;
+}
+@media only screen and (max-width: theme('screens.sm')) {
+  .columns.columns--collapse-below-tablet {
+    @apply flex-col;
+  }
+  .columns.columns--collapse-below-tablet.columns.columns--is-reversed {
+    @apply flex-col-reverse;
+  }
+}
+@media only screen and (max-width: theme('screens.lg')) {
+  .columns.columns--collapse-below-desktop {
+    @apply flex-col;
+  }
+  .columns.columns--collapse-below-desktop.columns.columns--is-reversed {
+    @apply flex-col-reverse;
+  }
 }
 </style>

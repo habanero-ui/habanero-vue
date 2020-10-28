@@ -3,6 +3,7 @@ import spacingAliases from '../../../constants/spacingAliases'
 import stackAlignments from '../../../constants/stackAlignments'
 import Stack from '../index'
 export { default as Default } from './StackDefault.story'
+export { default as Responsive } from './StackResponsive.story'
 
 export default {
   title: 'Components/Stack',

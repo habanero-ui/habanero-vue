@@ -3,6 +3,7 @@ import colors from '../../../constants/colors'
 import spacingAliases from '../../../constants/spacingAliases'
 import Box from '../index'
 export { default as Default } from './BoxDefault.story'
+export { default as Responsive } from './BoxResponsive.story'
 export { default as Spacing } from './BoxSpacing.story'
 
 const spacingArgType = {

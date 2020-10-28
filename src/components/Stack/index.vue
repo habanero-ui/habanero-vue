@@ -33,7 +33,7 @@ export default {
     },
     space: {
       default: '',
-      type: [Number, String],
+      type: [Array, Number, String],
     },
   },
   computed: {

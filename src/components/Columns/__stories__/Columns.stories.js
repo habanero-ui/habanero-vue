@@ -1,8 +1,10 @@
+import breakpoints from '../../../constants/breakpoints'
 import columnWidths from '../../../constants/columnWidths'
 import spacingAliases from '../../../constants/spacingAliases'
 import verticalAlignments from '../../../constants/verticalAlignments'
 import Columns from '../index'
 export { default as Default } from './ColumnsDefault.story'
+export { default as Responsive } from './ColumnsResponsive.story'
 
 export default {
   title: 'Components/Columns',
@@ -12,6 +14,12 @@ export default {
       control: {
         type: 'inline-radio',
         options: verticalAlignments,
+      },
+    },
+    collapseBelow: {
+      control: {
+        type: 'select',
+        options: breakpoints,
       },
     },
     firstColumnWidth: {

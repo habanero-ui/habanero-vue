@@ -5,18 +5,43 @@
 </template>
 
 <script>
+import every from 'lodash/every'
+import forEach from 'lodash/forEach'
 import includes from 'lodash/includes'
+import isArray from 'lodash/isArray'
 import isNaN from 'lodash/isNaN'
 import isNil from 'lodash/isNil'
 import isNumber from 'lodash/isNumber'
 import map from 'lodash/map'
 import omitBy from 'lodash/omitBy'
+import pick from 'lodash/pick'
+import some from 'lodash/some'
 import without from 'lodash/without'
 
 import borderRadii from '../../constants/borderRadii'
 import colors from '../../constants/colors'
 import spacingAliases from '../../constants/spacingAliases'
+import getResponsivePropValue from '../../helpers/getResponsivePropValue'
 import PropValidation from '../../mixins/PropValidation'
+import WithScreenSize from '../../mixins/WithScreenSize'
+
+const responsivePropNames = [
+  'margin',
+  'marginBottom',
+  'marginLeft',
+  'marginRight',
+  'marginTop',
+  'padding',
+  'paddingBottom',
+  'paddingLeft',
+  'paddingRight',
+  'paddingTop',
+]
+
+const spacingPropType = {
+  default: '',
+  type: [Array, Number, String],
+}
 
 export default {
   mixins: [
@@ -38,6 +63,7 @@ export default {
       paddingX: getIsSpacingPropValid('paddingX'),
       paddingY: getIsSpacingPropValid('paddingY'),
     }),
+    WithScreenSize,
   ],
   props: {
     backgroundColor: {
@@ -52,20 +78,20 @@ export default {
       default: 'div',
       type: String,
     },
-    margin: { default: '', type: [Number, String] },
-    marginBottom: { default: '', type: [Number, String] },
-    marginLeft: { default: '', type: [Number, String] },
-    marginRight: { default: '', type: [Number, String] },
-    marginTop: { default: '', type: [Number, String] },
-    marginX: { default: '', type: [Number, String] },
-    marginY: { default: '', type: [Number, String] },
-    padding: { default: '', type: [Number, String] },
-    paddingBottom: { default: '', type: [Number, String] },
-    paddingLeft: { default: '', type: [Number, String] },
-    paddingRight: { default: '', type: [Number, String] },
-    paddingTop: { default: '', type: [Number, String] },
-    paddingX: { default: '', type: [Number, String] },
-    paddingY: { default: '', type: [Number, String] },
+    margin: spacingPropType,
+    marginBottom: spacingPropType,
+    marginLeft: spacingPropType,
+    marginRight: spacingPropType,
+    marginTop: spacingPropType,
+    marginX: spacingPropType,
+    marginY: spacingPropType,
+    padding: spacingPropType,
+    paddingBottom: spacingPropType,
+    paddingLeft: spacingPropType,
+    paddingRight: spacingPropType,
+    paddingTop: spacingPropType,
+    paddingX: spacingPropType,
+    paddingY: spacingPropType,
     showInteractionOverlay: {
       default: false,
       type: Boolean,
@@ -73,6 +99,8 @@ export default {
   },
   data: () => ({
     isKeyDown: false,
+    windowResizeHandler: undefined,
+    screenSize: 'mobile',
   }),
   computed: {
     classes() {
@@ -85,23 +113,51 @@ export default {
         },
       ]
     },
+
+    hasResponsiveProp() {
+      return some(pick(this.$props, responsivePropNames), (prop) =>
+        isArray(prop),
+      )
+    },
+
     styles() {
+      const getValue = (baseValue) =>
+        getRemFromSpacing(
+          getResponsivePropValue(baseValue, this.ScreenSize.type),
+        )
+
       return omitBy(
         {
-          margin: getRemFromSpacing(this.margin),
-          marginBottom: getRemFromSpacing(this.marginBottom || this.marginY),
-          marginLeft: getRemFromSpacing(this.marginLeft || this.marginX),
-          marginRight: getRemFromSpacing(this.marginRight || this.marginX),
-          marginTop: getRemFromSpacing(this.marginTop || this.marginY),
-          padding: getRemFromSpacing(this.padding),
-          paddingBottom: getRemFromSpacing(this.paddingBottom || this.paddingY),
-          paddingLeft: getRemFromSpacing(this.paddingLeft || this.paddingX),
-          paddingRight: getRemFromSpacing(this.paddingRight || this.paddingX),
-          paddingTop: getRemFromSpacing(this.paddingTop || this.paddingY),
+          margin: getValue(this.margin),
+          marginBottom: getValue(this.marginBottom || this.marginY),
+          marginLeft: getValue(this.marginLeft || this.marginX),
+          marginRight: getValue(this.marginRight || this.marginX),
+          marginTop: getValue(this.marginTop || this.marginY),
+          padding: getValue(this.padding),
+          paddingBottom: getValue(this.paddingBottom || this.paddingY),
+          paddingLeft: getValue(this.paddingLeft || this.paddingX),
+          paddingRight: getValue(this.paddingRight || this.paddingX),
+          paddingTop: getValue(this.paddingTop || this.paddingY),
         },
         isNil,
       )
     },
+  },
+  mounted() {
+    if (this.hasResponsiveProp) {
+      this.ScreenSize.startWatching()
+    }
+
+    forEach(responsivePropNames, (propName) => {
+      this.$watch(propName, () => {
+        if (this.windowResizeHandler) return
+
+        this.ScreenSize.startWatching()
+      })
+    })
+  },
+  beforeDestroy() {
+    this.ScreenSize.stopWatching()
   },
 }
 
@@ -111,14 +167,22 @@ function getIsSpacingPropValid(propName) {
       without(spacingAliases, 'none'),
       (alias) => `-${alias}`,
     )
-    const isValid =
-      includes(['', ...spacingAliases, ...negativeSpacingAliases], value) ||
-      !isNaN(parseFloat(value))
+    const isSingleValueValid = (singleValue) =>
+      includes(
+        ['', ...spacingAliases, ...negativeSpacingAliases],
+        singleValue,
+      ) || !isNaN(parseFloat(singleValue))
+
+    const isValid = isArray(value)
+      ? value.length >= 1 &&
+        value.length <= 3 &&
+        every(value, isSingleValueValid)
+      : isSingleValueValid(value)
 
     if (!isValid) {
       // eslint-disable-next-line no-console
       console.error(
-        `Box: Bad value "${value}". The "${propName}" prop must be a number to be multiplied by 4, or one of the following aliases:`,
+        `Box: Bad value "${value}". The "${propName}" prop must be a number to be multiplied by 4, an array of two or three numbers corresponding to screen sizes, one of the following aliases, or an array of two or three of the following aliases, corresponding to screen sizes:`,
         String([...spacingAliases, ...negativeSpacingAliases]),
       )
     }

@@ -1,5 +1,6 @@
 <script>
 import filter from 'lodash/filter'
+import isArray from 'lodash/isArray'
 import map from 'lodash/map'
 
 import verticalAlignments from '../../constants/verticalAlignments'
@@ -24,7 +25,7 @@ export default {
     },
     space: {
       default: '',
-      type: [Number, String],
+      type: [Array, Number, String],
     },
   },
   computed: {
@@ -52,6 +53,10 @@ export default {
     },
   },
   render(h) {
+    const mapSpace = (baseSpace) => (baseSpace ? `-${baseSpace}` : '')
+    const space = isArray(this.space)
+      ? map(this.space, mapSpace)
+      : mapSpace(this.space)
     return h(
       'div',
       {
@@ -63,8 +68,8 @@ export default {
           {
             class: 'inline__content',
             props: {
-              marginLeft: this.space ? `-${this.space}` : '',
-              marginTop: this.space ? `-${this.space}` : '',
+              marginLeft: space,
+              marginTop: space,
             },
           },
           [

@@ -1,10 +1,12 @@
 <script>
 import includes from 'lodash/includes'
+import isArray from 'lodash/isArray'
 import map from 'lodash/map'
 
 import breakpoints from '../../constants/breakpoints'
 import verticalAlignments from '../../constants/verticalAlignments'
 import PropValidation from '../../mixins/PropValidation'
+import WithScreenSize from '../../mixins/WithScreenSize'
 import Box from '../Box/index'
 
 export default {
@@ -13,6 +15,7 @@ export default {
       alignY: verticalAlignments,
       collapseBelow: breakpoints,
     }),
+    WithScreenSize,
   ],
   props: {
     alignY: {
@@ -29,7 +32,7 @@ export default {
     },
     space: {
       default: '',
-      type: [Number, String],
+      type: [Array, Number, String],
     },
   },
   computed: {
@@ -49,12 +52,13 @@ export default {
         return ''
       }
 
-      if (this.collapseBelow === 'tablet') {
-        return [this.space, '']
-      }
-
-      if (this.collapseBelow === 'desktop') {
-        return [this.space, this.space, '']
+      if (
+        (this.collapseBelow === 'tablet' &&
+          this.ScreenSize.type === 'mobile') ||
+        (this.collapseBelow === 'desktop' &&
+          includes(['mobile', 'tablet'], this.ScreenSize.type))
+      ) {
+        return this.space
       }
 
       return ''
@@ -65,12 +69,13 @@ export default {
         return ''
       }
 
-      if (this.collapseBelow === 'tablet') {
-        return ['', this.space]
-      }
-
-      if (this.collapseBelow === 'desktop') {
-        return ['', '', this.space]
+      if (
+        (this.collapseBelow === 'tablet' &&
+          this.ScreenSize.type === 'mobile') ||
+        (this.collapseBelow === 'desktop' &&
+          includes(['mobile', 'tablet'], this.ScreenSize.type))
+      ) {
+        return ''
       }
 
       return this.space
@@ -81,12 +86,13 @@ export default {
         return ''
       }
 
-      if (this.collapseBelow === 'tablet') {
-        return ['', this.space]
-      }
-
-      if (this.collapseBelow === 'desktop') {
-        return ['', '', this.space]
+      if (
+        (this.collapseBelow === 'tablet' &&
+          this.ScreenSize.type === 'mobile') ||
+        (this.collapseBelow === 'desktop' &&
+          includes(['mobile', 'tablet'], this.ScreenSize.type))
+      ) {
+        return ''
       }
 
       return this.space
@@ -97,16 +103,38 @@ export default {
         return ''
       }
 
-      if (this.collapseBelow === 'tablet') {
-        return [this.space, '']
-      }
-
-      if (this.collapseBelow === 'desktop') {
-        return [this.space, this.space, '']
+      if (
+        (this.collapseBelow === 'tablet' &&
+          this.ScreenSize.type === 'mobile') ||
+        (this.collapseBelow === 'desktop' &&
+          includes(['mobile', 'tablet'], this.ScreenSize.type))
+      ) {
+        return this.space
       }
 
       return ''
     },
+  },
+  watch: {
+    collapseBelow() {
+      if (this.collapseBelow) {
+        this.ScreenSize.startWatching()
+      }
+    },
+
+    space() {
+      if (isArray(this.collapseBelow)) {
+        this.ScreenSize.startWatching()
+      }
+    },
+  },
+  mounted() {
+    if (isArray(this.space)) {
+      this.ScreenSize.startWatching()
+    }
+  },
+  beforeDestroy() {
+    this.ScreenSize.stopWatching()
   },
   methods: {
     mapSlotNode(vnode, h, index) {

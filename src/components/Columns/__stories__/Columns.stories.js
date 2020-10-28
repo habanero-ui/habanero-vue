@@ -4,6 +4,7 @@ import spacingAliases from '../../../constants/spacingAliases'
 import verticalAlignments from '../../../constants/verticalAlignments'
 import Columns from '../index'
 export { default as Default } from './ColumnsDefault.story'
+export { default as Responsive } from './ColumnsResponsive.story'
 
 export default {
   title: 'Components/Columns',

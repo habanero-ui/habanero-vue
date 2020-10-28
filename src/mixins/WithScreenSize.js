@@ -37,11 +37,11 @@ export default {
 }
 
 function getScreenSizeType() {
-  if (window.innerWidth >= 1024) {
+  if (window.innerWidth >= 992) {
     return 'desktop'
   }
 
-  if (window.innerWidth >= 640) {
+  if (window.innerWidth >= 576) {
     return 'tablet'
   }
 

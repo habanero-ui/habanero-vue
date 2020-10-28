@@ -44,10 +44,68 @@ export default {
       ]
     },
 
-    columnStyle() {
-      const paddingSide = this.isReversed ? 'right' : 'left'
+    columnPaddingBottom() {
+      if (!this.isReversed) {
+        return ''
+      }
 
-      return `padding-${paddingSide}: ${(parseFloat(this.space) * 4) / 16}rem;`
+      if (this.collapseBelow === 'tablet') {
+        return [this.space, '']
+      }
+
+      if (this.collapseBelow === 'desktop') {
+        return [this.space, this.space, '']
+      }
+
+      return ''
+    },
+
+    columnPaddingLeft() {
+      if (this.isReversed) {
+        return ''
+      }
+
+      if (this.collapseBelow === 'tablet') {
+        return ['', this.space]
+      }
+
+      if (this.collapseBelow === 'desktop') {
+        return ['', '', this.space]
+      }
+
+      return this.space
+    },
+
+    columnPaddingRight() {
+      if (!this.isReversed) {
+        return ''
+      }
+
+      if (this.collapseBelow === 'tablet') {
+        return ['', this.space]
+      }
+
+      if (this.collapseBelow === 'desktop') {
+        return ['', '', this.space]
+      }
+
+      return this.space
+    },
+
+    columnPaddingTop() {
+      if (this.isReversed) {
+        return ''
+      }
+
+      if (this.collapseBelow === 'tablet') {
+        return [this.space, '']
+      }
+
+      if (this.collapseBelow === 'desktop') {
+        return [this.space, this.space, '']
+      }
+
+      return ''
     },
   },
   methods: {
@@ -66,8 +124,10 @@ export default {
             {
               class: 'columns__column-content',
               props: {
-                [`padding${this.isReversed ? 'Right' : 'Left'}`]:
-                  index > 0 ? this.space : '',
+                paddingBottom: index > 0 ? this.columnPaddingBottom : '',
+                paddingLeft: index > 0 ? this.columnPaddingLeft : '',
+                paddingRight: index > 0 ? this.columnPaddingRight : '',
+                paddingTop: index > 0 ? this.columnPaddingTop : '',
               },
             },
             [vnode.componentOptions.children],
@@ -183,12 +243,18 @@ function getStylesFromWidth(width) {
 }
 @media only screen and (max-width: theme('screens.sm')) {
   .columns.columns--collapse-below-tablet {
-    background-color: pink;
+    @apply flex-col;
+  }
+  .columns.columns--collapse-below-tablet.columns.columns--is-reversed {
+    @apply flex-col-reverse;
   }
 }
 @media only screen and (max-width: theme('screens.lg')) {
   .columns.columns--collapse-below-desktop {
-    background-color: blue;
+    @apply flex-col;
+  }
+  .columns.columns--collapse-below-desktop.columns.columns--is-reversed {
+    @apply flex-col-reverse;
   }
 }
 </style>

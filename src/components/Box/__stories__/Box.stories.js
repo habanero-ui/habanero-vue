@@ -45,7 +45,7 @@ export default {
     paddingY: spacingArgType,
   },
   args: {
-    backgroundColor: 'pink',
+    backgroundColor: 'none',
     borderRadius: 'none',
   },
 }

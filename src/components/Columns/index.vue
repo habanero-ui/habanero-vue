@@ -214,7 +214,7 @@ function getStylesFromWidth(width) {
 .columns.columns--is-reversed {
   @apply flex-row-reverse;
 }
-@media screen and (max-width: 576px) {
+@media screen and (max-width: theme('screens.sm')) {
   .columns.columns--collapse-below-tablet {
     @apply flex-col;
   }
@@ -286,7 +286,7 @@ function getStylesFromWidth(width) {
     @apply items-start;
   }
 }
-@media screen and (max-width: 992px) {
+@media screen and (max-width: theme('screens.lg')) {
   .columns.columns--collapse-below-desktop {
     @apply flex-col;
   }
@@ -358,7 +358,7 @@ function getStylesFromWidth(width) {
     @apply items-start;
   }
 }
-@media screen and (min-width: 993px) {
+@media screen and (min-width: calc(theme('screens.lg') + 1px)) {
   .columns.columns--align-y-bottom,
   .columns.columns--align-y-bottom > .columns__column,
   .columns.columns--align-y-bottom

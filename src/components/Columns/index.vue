@@ -16,6 +16,7 @@ export default {
     PropValidation({
       align: stackAlignments,
       alignY: verticalAlignments,
+      collapseAbove: breakpoints,
       collapseBelow: breakpoints,
     }),
     WithScreenSize,

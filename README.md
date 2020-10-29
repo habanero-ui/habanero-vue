@@ -19,6 +19,7 @@ Spur's Design System and Component Library
 - [ ] Update Select component to be custom, not native
 - [ ] Establish z-index ordering for elements (so far `Modal`, `Select`, and `Spinner` leverage style)
 - [ ] Swap out chevrons on Flatpickr to use our icons
+- [ ] Support better styling for Flatpickr when date and time selections are both available
 
 # Discussion Points
 

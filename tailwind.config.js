@@ -31,6 +31,13 @@ module.exports = {
         'white-half': 'rgba(255,255,255, 0.5)',
         'black-half': 'rgba(36, 35, 36, 0.5)',
       },
+      screens: {
+        sm: '576px',
+        md: '768px',
+        lg: '992px',
+        xl: '1200px',
+        xxl: '1440px',
+      },
     },
   },
 }

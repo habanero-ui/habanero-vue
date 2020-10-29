@@ -1,5 +1,7 @@
 import throttle from 'lodash/throttle'
 
+import tailwindConfig from '../../tailwind.config'
+
 export default {
   data: () => ({
     handler: undefined,
@@ -37,11 +39,17 @@ export default {
 }
 
 function getScreenSizeType() {
-  if (window.innerWidth >= 992) {
+  if (
+    window.innerWidth >=
+    parseInt(tailwindConfig.theme.extend.screens.lg.replace('px', ''), 10)
+  ) {
     return 'desktop'
   }
 
-  if (window.innerWidth >= 576) {
+  if (
+    window.innerWidth >=
+    parseInt(tailwindConfig.theme.extend.screens.sm.replace('px', ''), 10)
+  ) {
     return 'tablet'
   }
 

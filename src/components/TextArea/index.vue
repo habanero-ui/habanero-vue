@@ -28,7 +28,7 @@
       class="text-area__characters"
       color="subtle"
       variant="label-small"
-      >{{ value.length
+      >{{ value ? value.length : 0
       }}<span v-if="maxlength">{{ `/${maxlength}` }}</span></Typography
     >
   </Box>

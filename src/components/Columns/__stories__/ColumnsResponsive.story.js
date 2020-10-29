@@ -32,6 +32,7 @@ const Template = (args, { argTypes }) => ({
 const ColumnsResponsive = Template.bind({})
 
 ColumnsResponsive.argTypes = {
+  isReversed: { table: { disable: true } },
   space: { table: { disable: true } },
 }
 

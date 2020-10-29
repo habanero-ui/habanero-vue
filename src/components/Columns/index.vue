@@ -29,6 +29,10 @@ export default {
       default: 'top',
       type: String,
     },
+    collapseAbove: {
+      default: undefined,
+      type: String,
+    },
     collapseBelow: {
       default: undefined,
       type: String,
@@ -49,6 +53,9 @@ export default {
         { 'columns--is-reversed': this.responsiveIsReversed },
         `columns--align-${this.align}`,
         `columns--align-y-${this.alignY}`,
+        this.collapseAbove
+          ? `columns--collapse-above-${this.collapseAbove}`
+          : undefined,
         this.collapseBelow
           ? `columns--collapse-below-${this.collapseBelow}`
           : undefined,
@@ -60,12 +67,7 @@ export default {
         return ''
       }
 
-      if (
-        (this.collapseBelow === 'tablet' &&
-          this.ScreenSize.type === 'mobile') ||
-        (this.collapseBelow === 'desktop' &&
-          includes(['mobile', 'tablet'], this.ScreenSize.type))
-      ) {
+      if (this.isCollapsed) {
         return this.space
       }
 
@@ -77,12 +79,7 @@ export default {
         return ''
       }
 
-      if (
-        (this.collapseBelow === 'tablet' &&
-          this.ScreenSize.type === 'mobile') ||
-        (this.collapseBelow === 'desktop' &&
-          includes(['mobile', 'tablet'], this.ScreenSize.type))
-      ) {
+      if (this.isCollapsed) {
         return ''
       }
 
@@ -94,12 +91,7 @@ export default {
         return ''
       }
 
-      if (
-        (this.collapseBelow === 'tablet' &&
-          this.ScreenSize.type === 'mobile') ||
-        (this.collapseBelow === 'desktop' &&
-          includes(['mobile', 'tablet'], this.ScreenSize.type))
-      ) {
+      if (this.isCollapsed) {
         return ''
       }
 
@@ -111,16 +103,23 @@ export default {
         return ''
       }
 
-      if (
-        (this.collapseBelow === 'tablet' &&
-          this.ScreenSize.type === 'mobile') ||
-        (this.collapseBelow === 'desktop' &&
-          includes(['mobile', 'tablet'], this.ScreenSize.type))
-      ) {
+      if (this.isCollapsed) {
         return this.space
       }
 
       return ''
+    },
+
+    isCollapsed() {
+      return (
+        (this.collapseBelow === 'tablet' &&
+          this.ScreenSize.type === 'mobile') ||
+        (this.collapseBelow === 'desktop' &&
+          includes(['mobile', 'tablet'], this.ScreenSize.type)) ||
+        (this.collapseAbove === 'tablet' &&
+          includes(['desktop', 'tablet'], this.ScreenSize.type)) ||
+        (this.collapseAbove === 'desktop' && this.screenSize === 'desktop')
+      )
     },
 
     responsiveIsReversed() {
@@ -215,186 +214,278 @@ function getStylesFromWidth(width) {
 <style scoped>
 .columns {
   @apply flex;
-}
-.columns__column {
-  @apply flex;
-}
-.columns__column-content {
-  @apply flex flex-grow;
-}
-.columns.columns--is-reversed {
-  @apply flex-row-reverse;
-}
-@media screen and (max-width: theme('screens.sm')) {
-  .columns.columns--collapse-below-tablet {
-    @apply flex-col;
+  & .columns__column {
+    @apply flex;
   }
-  .columns.columns--collapse-below-tablet.columns.columns--is-reversed {
-    @apply flex-col-reverse;
+  & .columns__column-content {
+    @apply flex flex-grow;
   }
-  .columns.columns--collapse-below-tablet.columns--align-center,
-  .columns.columns--collapse-below-tablet.columns--align-center
-    > .columns__column,
-  .columns.columns--collapse-below-tablet.columns--align-center
-    > .columns__column
-    > .columns__column-content {
-    @apply items-center;
+  &.columns--is-reversed {
+    @apply flex-row-reverse;
   }
-  .columns.columns--collapse-below-tablet.columns--align-left,
-  .columns.columns--collapse-below-tablet.columns--align-left
-    > .columns__column,
-  .columns.columns--collapse-below-tablet.columns--align-left
-    > .columns__column
-    > .columns__column-content {
-    @apply items-start;
+  @media screen and (max-width: theme('screens.sm')) {
+    &.columns--collapse-below-tablet {
+      @apply flex-col;
+      &.columns--is-reversed {
+        @apply flex-col-reverse;
+      }
+      &.columns--align-center {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-center;
+        }
+      }
+      &.columns--align-left {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-start;
+        }
+      }
+      &.columns--align-right {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-end;
+        }
+      }
+      &.columns--align-stretch {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-stretch;
+        }
+      }
+    }
+    &:not(.columns--collapse-below-tablet, .columns--collapse-below-desktop) {
+      &.columns--align-y-bottom {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-end;
+        }
+      }
+      &.columns--align-y-center {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-center;
+        }
+      }
+      &.columns--align-y-stretch {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-stretch;
+        }
+      }
+      &.columns--align-y-top {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-start;
+        }
+      }
+    }
   }
-  .columns.columns--collapse-below-tablet.columns--align-right,
-  .columns.columns--collapse-below-tablet.columns--align-right
-    > .columns__column,
-  .columns.columns--collapse-below-tablet.columns--align-right
-    > .columns__column
-    > .columns__column-content {
-    @apply items-end;
+  @media screen and (min-width: calc(theme('screens.sm') + 1px)) {
+    &.columns--collapse-above-tablet {
+      @apply flex-col;
+      &.columns--is-reversed {
+        @apply flex-col-reverse;
+      }
+      &.columns--align-center {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-center;
+        }
+      }
+      &.columns--align-left {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-start;
+        }
+      }
+      &.columns--align-right {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-end;
+        }
+      }
+      &.columns--align-stretch {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-stretch;
+        }
+      }
+    }
+    &:not(.columns--collapse-above-tablet) {
+      &.columns--align-y-bottom {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-end;
+        }
+      }
+      &.columns--align-y-center {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-center;
+        }
+      }
+      &.columns--align-y-stretch {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-stretch;
+        }
+      }
+      &.columns--align-y-top {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-start;
+        }
+      }
+    }
   }
-  .columns.columns--collapse-below-tablet.columns--align-stretch,
-  .columns.columns--collapse-below-tablet.columns--align-stretch
-    > .columns__column,
-  .columns.columns--collapse-below-tablet.columns--align-stretch
-    > .columns__column
-    > .columns__column-content {
-    @apply items-stretch;
+  @media screen and (max-width: theme('screens.lg')) {
+    &.columns--collapse-below-desktop {
+      @apply flex-col;
+      &.columns--is-reversed {
+        @apply flex-col-reverse;
+      }
+      &.columns--align-center {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-center;
+        }
+      }
+      &.columns--align-left {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-start;
+        }
+      }
+      &.columns--align-right {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-end;
+        }
+      }
+      &.columns--align-stretch {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-stretch;
+        }
+      }
+    }
+    &:not(.columns--collapse-below-desktop) {
+      &.columns--align-y-bottom {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-end;
+        }
+      }
+      &.columns--align-y-center {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-center;
+        }
+      }
+      &.columns--align-y-stretch {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-stretch;
+        }
+      }
+      &.columns--align-y-top {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-start;
+        }
+      }
+    }
   }
-  .columns:not(.columns--collapse-below-tablet).columns--align-y-bottom,
-  .columns:not(.columns--collapse-below-tablet).columns--align-y-bottom
-    > .columns__column,
-  .columns:not(.columns--collapse-below-tablet).columns--align-y-bottom
-    > .columns__column
-    > .columns__column-content {
-    @apply items-end;
-  }
-  .columns:not(.columns--collapse-below-tablet).columns--align-y-center,
-  .columns:not(.columns--collapse-below-tablet).columns--align-y-center
-    > .columns__column,
-  .columns:not(.columns--collapse-below-tablet).columns--align-y-center
-    > .columns__column
-    > .columns__column-content {
-    @apply items-center;
-  }
-  .columns:not(.columns--collapse-below-tablet).columns--align-y-stretch,
-  .columns:not(.columns--collapse-below-tablet).columns--align-y-stretch
-    > .columns__column,
-  .columns:not(.columns--collapse-below-tablet).columns--align-y-stretch
-    > .columns__column
-    > .columns__column-content {
-    @apply items-stretch;
-  }
-  .columns:not(.columns--collapse-below-tablet).columns--align-y-top,
-  .columns:not(.columns--collapse-below-tablet).columns--align-y-top
-    > .columns__column,
-  .columns:not(.columns--collapse-below-tablet).columns--align-y-top
-    > .columns__column
-    > .columns__column-content {
-    @apply items-start;
-  }
-}
-@media screen and (max-width: theme('screens.lg')) {
-  .columns.columns--collapse-below-desktop {
-    @apply flex-col;
-  }
-  .columns.columns--collapse-below-desktop.columns.columns--is-reversed {
-    @apply flex-col-reverse;
-  }
-  .columns.columns--collapse-below-desktop.columns--align-center,
-  .columns.columns--collapse-below-desktop.columns--align-center
-    > .columns__column,
-  .columns.columns--collapse-below-desktop.columns--align-center
-    > .columns__column
-    > .columns__column-content {
-    @apply items-center;
-  }
-  .columns.columns--collapse-below-desktop.columns--align-left,
-  .columns.columns--collapse-below-desktop.columns--align-left
-    > .columns__column,
-  .columns.columns--collapse-below-desktop.columns--align-left
-    > .columns__column
-    > .columns__column-content {
-    @apply items-start;
-  }
-  .columns.columns--collapse-below-desktop.columns--align-right,
-  .columns.columns--collapse-below-desktop.columns--align-right
-    > .columns__column,
-  .columns.columns--collapse-below-desktop.columns--align-right
-    > .columns__column
-    > .columns__column-content {
-    @apply items-end;
-  }
-  .columns.columns--collapse-below-desktop.columns--align-stretch,
-  .columns.columns--collapse-below-desktop.columns--align-stretch
-    > .columns__column,
-  .columns.columns--collapse-below-desktop.columns--align-stretch
-    > .columns__column
-    > .columns__column-content {
-    @apply items-stretch;
-  }
-  .columns:not(.columns--collapse-below-desktop).columns--align-y-bottom,
-  .columns:not(.columns--collapse-below-desktop).columns--align-y-bottom
-    > .columns__column,
-  .columns:not(.columns--collapse-below-desktop).columns--align-y-bottom
-    > .columns__column
-    > .columns__column-content {
-    @apply items-end;
-  }
-  .columns:not(.columns--collapse-below-desktop).columns--align-y-center,
-  .columns:not(.columns--collapse-below-desktop).columns--align-y-center
-    > .columns__column,
-  .columns:not(.columns--collapse-below-desktop).columns--align-y-center
-    > .columns__column
-    > .columns__column-content {
-    @apply items-center;
-  }
-  .columns:not(.columns--collapse-below-desktop).columns--align-y-stretch,
-  .columns:not(.columns--collapse-below-desktop).columns--align-y-stretch
-    > .columns__column,
-  .columns:not(.columns--collapse-below-desktop).columns--align-y-stretch
-    > .columns__column
-    > .columns__column-content {
-    @apply items-stretch;
-  }
-  .columns:not(.columns--collapse-below-desktop).columns--align-y-top,
-  .columns:not(.columns--collapse-below-desktop).columns--align-y-top
-    > .columns__column,
-  .columns:not(.columns--collapse-below-desktop).columns--align-y-top
-    > .columns__column
-    > .columns__column-content {
-    @apply items-start;
-  }
-}
-@media screen and (min-width: calc(theme('screens.lg') + 1px)) {
-  .columns.columns--align-y-bottom,
-  .columns.columns--align-y-bottom > .columns__column,
-  .columns.columns--align-y-bottom
-    > .columns__column
-    > .columns__column-content {
-    @apply items-end;
-  }
-  .columns.columns--align-y-center,
-  .columns.columns--align-y-center > .columns__column,
-  .columns.columns--align-y-center
-    > .columns__column
-    > .columns__column-content {
-    @apply items-center;
-  }
-  .columns.columns--align-y-stretch,
-  .columns.columns--align-y-stretch > .columns__column,
-  .columns.columns--align-y-stretch
-    > .columns__column
-    > .columns__column-content {
-    @apply items-stretch;
-  }
-  .columns.columns--align-y-top,
-  .columns.columns--align-y-top > .columns__column,
-  .columns.columns--align-y-top > .columns__column > .columns__column-content {
-    @apply items-start;
+  @media screen and (min-width: calc(theme('screens.lg') + 1px)) {
+    &.columns--collapse-above-desktop {
+      @apply flex-col;
+      &.columns--is-reversed {
+        @apply flex-col-reverse;
+      }
+      &.columns--align-center {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-center;
+        }
+      }
+      &.columns--align-left {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-start;
+        }
+      }
+      &.columns--align-right {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-end;
+        }
+      }
+      &.columns--align-stretch {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-stretch;
+        }
+      }
+    }
+    &:not(.columns--collapse-above-desktop, .columns--collapse-above-tablet) {
+      &.columns--align-y-bottom {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-end;
+        }
+      }
+      &.columns--align-y-center {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-center;
+        }
+      }
+      &.columns--align-y-stretch {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-stretch;
+        }
+      }
+      &.columns--align-y-top {
+        &,
+        & > .columns__column,
+        & > .columns__column > .columns__column-content {
+          @apply items-start;
+        }
+      }
+    }
   }
 }
 </style>

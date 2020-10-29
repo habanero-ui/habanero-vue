@@ -23,6 +23,12 @@ export default {
         options: verticalAlignments,
       },
     },
+    collapseAbove: {
+      control: {
+        type: 'select',
+        options: breakpoints,
+      },
+    },
     collapseBelow: {
       control: {
         type: 'select',
@@ -34,6 +40,11 @@ export default {
       control: {
         type: 'select',
         options: columnWidths,
+      },
+    },
+    isReversed: {
+      control: {
+        type: 'boolean',
       },
     },
     space: {

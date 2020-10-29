@@ -4,6 +4,7 @@ import isArray from 'lodash/isArray'
 import map from 'lodash/map'
 
 import breakpoints from '../../constants/breakpoints'
+import stackAlignments from '../../constants/stackAlignments'
 import verticalAlignments from '../../constants/verticalAlignments'
 import PropValidation from '../../mixins/PropValidation'
 import WithScreenSize from '../../mixins/WithScreenSize'
@@ -12,12 +13,17 @@ import Box from '../Box/index'
 export default {
   mixins: [
     PropValidation({
+      align: stackAlignments,
       alignY: verticalAlignments,
       collapseBelow: breakpoints,
     }),
     WithScreenSize,
   ],
   props: {
+    align: {
+      default: 'stretch',
+      type: String,
+    },
     alignY: {
       default: 'top',
       type: String,
@@ -40,6 +46,7 @@ export default {
       return [
         'columns',
         { 'columns--is-reversed': this.isReversed },
+        `columns--align-${this.align}`,
         `columns--align-y-${this.alignY}`,
         this.collapseBelow
           ? `columns--collapse-below-${this.collapseBelow}`
@@ -129,7 +136,7 @@ export default {
     },
   },
   mounted() {
-    if (isArray(this.space)) {
+    if (this.collapseBelow || isArray(this.space)) {
       this.ScreenSize.startWatching()
     }
   },
@@ -207,82 +214,176 @@ function getStylesFromWidth(width) {
 .columns.columns--is-reversed {
   @apply flex-row-reverse;
 }
-.columns.columns--align-y-bottom {
-  @apply items-end;
-}
-.columns.columns--align-y-center {
-  @apply items-center;
-}
-.columns.columns--align-y-stretch {
-  @apply items-stretch;
-}
-.columns.columns--align-y-top {
-  @apply items-start;
-}
-.columns.columns--align-y-bottom > .columns__column {
-  @apply items-end;
-}
-.columns.columns--align-y-center > .columns__column {
-  @apply items-center;
-}
-.columns.columns--align-y-stretch > .columns__column {
-  @apply items-stretch;
-}
-.columns.columns--align-y-top > .columns__column {
-  @apply items-start;
-}
-.columns.columns--align-y-bottom > .columns__column > .columns__column-content {
-  @apply items-end;
-}
-.columns.columns--align-y-center > .columns__column > .columns__column-content {
-  @apply items-center;
-}
-.columns.columns--align-y-stretch
-  > .columns__column
-  > .columns__column-content {
-  @apply items-stretch;
-}
-.columns.columns--align-y-top > .columns__column > .columns__column-content {
-  @apply items-start;
-}
-.columns.columns--align-y-bottom
-  > .columns__column
-  > .columns__column-content
-  > .column {
-  @apply items-end;
-}
-.columns.columns--align-y-center
-  > .columns__column
-  > .columns__column-content
-  > .column {
-  @apply items-center;
-}
-.columns.columns--align-y-stretch
-  > .columns__column
-  > .columns__column-content
-  > .column {
-  @apply items-stretch;
-}
-.columns.columns--align-y-top
-  > .columns__column
-  > .columns__column-content
-  > .column {
-  @apply items-start;
-}
-@media only screen and (max-width: theme('screens.sm')) {
+@media screen and (max-width: 576px) {
   .columns.columns--collapse-below-tablet {
     @apply flex-col;
   }
   .columns.columns--collapse-below-tablet.columns.columns--is-reversed {
     @apply flex-col-reverse;
   }
+  .columns.columns--collapse-below-tablet.columns--align-center,
+  .columns.columns--collapse-below-tablet.columns--align-center
+    > .columns__column,
+  .columns.columns--collapse-below-tablet.columns--align-center
+    > .columns__column
+    > .columns__column-content {
+    @apply items-center;
+  }
+  .columns.columns--collapse-below-tablet.columns--align-left,
+  .columns.columns--collapse-below-tablet.columns--align-left
+    > .columns__column,
+  .columns.columns--collapse-below-tablet.columns--align-left
+    > .columns__column
+    > .columns__column-content {
+    @apply items-start;
+  }
+  .columns.columns--collapse-below-tablet.columns--align-right,
+  .columns.columns--collapse-below-tablet.columns--align-right
+    > .columns__column,
+  .columns.columns--collapse-below-tablet.columns--align-right
+    > .columns__column
+    > .columns__column-content {
+    @apply items-end;
+  }
+  .columns.columns--collapse-below-tablet.columns--align-stretch,
+  .columns.columns--collapse-below-tablet.columns--align-stretch
+    > .columns__column,
+  .columns.columns--collapse-below-tablet.columns--align-stretch
+    > .columns__column
+    > .columns__column-content {
+    @apply items-stretch;
+  }
+  .columns:not(.columns--collapse-below-tablet).columns--align-y-bottom,
+  .columns:not(.columns--collapse-below-tablet).columns--align-y-bottom
+    > .columns__column,
+  .columns:not(.columns--collapse-below-tablet).columns--align-y-bottom
+    > .columns__column
+    > .columns__column-content {
+    @apply items-end;
+  }
+  .columns:not(.columns--collapse-below-tablet).columns--align-y-center,
+  .columns:not(.columns--collapse-below-tablet).columns--align-y-center
+    > .columns__column,
+  .columns:not(.columns--collapse-below-tablet).columns--align-y-center
+    > .columns__column
+    > .columns__column-content {
+    @apply items-center;
+  }
+  .columns:not(.columns--collapse-below-tablet).columns--align-y-stretch,
+  .columns:not(.columns--collapse-below-tablet).columns--align-y-stretch
+    > .columns__column,
+  .columns:not(.columns--collapse-below-tablet).columns--align-y-stretch
+    > .columns__column
+    > .columns__column-content {
+    @apply items-stretch;
+  }
+  .columns:not(.columns--collapse-below-tablet).columns--align-y-top,
+  .columns:not(.columns--collapse-below-tablet).columns--align-y-top
+    > .columns__column,
+  .columns:not(.columns--collapse-below-tablet).columns--align-y-top
+    > .columns__column
+    > .columns__column-content {
+    @apply items-start;
+  }
 }
-@media only screen and (max-width: theme('screens.lg')) {
+@media screen and (max-width: 992px) {
   .columns.columns--collapse-below-desktop {
     @apply flex-col;
   }
   .columns.columns--collapse-below-desktop.columns.columns--is-reversed {
     @apply flex-col-reverse;
+  }
+  .columns.columns--collapse-below-desktop.columns--align-center,
+  .columns.columns--collapse-below-desktop.columns--align-center
+    > .columns__column,
+  .columns.columns--collapse-below-desktop.columns--align-center
+    > .columns__column
+    > .columns__column-content {
+    @apply items-center;
+  }
+  .columns.columns--collapse-below-desktop.columns--align-left,
+  .columns.columns--collapse-below-desktop.columns--align-left
+    > .columns__column,
+  .columns.columns--collapse-below-desktop.columns--align-left
+    > .columns__column
+    > .columns__column-content {
+    @apply items-start;
+  }
+  .columns.columns--collapse-below-desktop.columns--align-right,
+  .columns.columns--collapse-below-desktop.columns--align-right
+    > .columns__column,
+  .columns.columns--collapse-below-desktop.columns--align-right
+    > .columns__column
+    > .columns__column-content {
+    @apply items-end;
+  }
+  .columns.columns--collapse-below-desktop.columns--align-stretch,
+  .columns.columns--collapse-below-desktop.columns--align-stretch
+    > .columns__column,
+  .columns.columns--collapse-below-desktop.columns--align-stretch
+    > .columns__column
+    > .columns__column-content {
+    @apply items-stretch;
+  }
+  .columns:not(.columns--collapse-below-desktop).columns--align-y-bottom,
+  .columns:not(.columns--collapse-below-desktop).columns--align-y-bottom
+    > .columns__column,
+  .columns:not(.columns--collapse-below-desktop).columns--align-y-bottom
+    > .columns__column
+    > .columns__column-content {
+    @apply items-end;
+  }
+  .columns:not(.columns--collapse-below-desktop).columns--align-y-center,
+  .columns:not(.columns--collapse-below-desktop).columns--align-y-center
+    > .columns__column,
+  .columns:not(.columns--collapse-below-desktop).columns--align-y-center
+    > .columns__column
+    > .columns__column-content {
+    @apply items-center;
+  }
+  .columns:not(.columns--collapse-below-desktop).columns--align-y-stretch,
+  .columns:not(.columns--collapse-below-desktop).columns--align-y-stretch
+    > .columns__column,
+  .columns:not(.columns--collapse-below-desktop).columns--align-y-stretch
+    > .columns__column
+    > .columns__column-content {
+    @apply items-stretch;
+  }
+  .columns:not(.columns--collapse-below-desktop).columns--align-y-top,
+  .columns:not(.columns--collapse-below-desktop).columns--align-y-top
+    > .columns__column,
+  .columns:not(.columns--collapse-below-desktop).columns--align-y-top
+    > .columns__column
+    > .columns__column-content {
+    @apply items-start;
+  }
+}
+@media screen and (min-width: 993px) {
+  .columns.columns--align-y-bottom,
+  .columns.columns--align-y-bottom > .columns__column,
+  .columns.columns--align-y-bottom
+    > .columns__column
+    > .columns__column-content {
+    @apply items-end;
+  }
+  .columns.columns--align-y-center,
+  .columns.columns--align-y-center > .columns__column,
+  .columns.columns--align-y-center
+    > .columns__column
+    > .columns__column-content {
+    @apply items-center;
+  }
+  .columns.columns--align-y-stretch,
+  .columns.columns--align-y-stretch > .columns__column,
+  .columns.columns--align-y-stretch
+    > .columns__column
+    > .columns__column-content {
+    @apply items-stretch;
+  }
+  .columns.columns--align-y-top,
+  .columns.columns--align-y-top > .columns__column,
+  .columns.columns--align-y-top > .columns__column > .columns__column-content {
+    @apply items-start;
   }
 }
 </style>

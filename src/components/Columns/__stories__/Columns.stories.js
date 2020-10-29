@@ -1,6 +1,7 @@
 import breakpoints from '../../../constants/breakpoints'
 import columnWidths from '../../../constants/columnWidths'
 import spacingAliases from '../../../constants/spacingAliases'
+import stackAlignments from '../../../constants/stackAlignments'
 import verticalAlignments from '../../../constants/verticalAlignments'
 import Columns from '../index'
 export { default as Default } from './ColumnsDefault.story'
@@ -10,6 +11,12 @@ export default {
   title: 'Components/Columns',
   component: Columns,
   argTypes: {
+    align: {
+      control: {
+        type: 'inline-radio',
+        options: stackAlignments,
+      },
+    },
     alignY: {
       control: {
         type: 'inline-radio',
@@ -37,6 +44,7 @@ export default {
     },
   },
   args: {
+    align: 'stretch',
     alignY: 'top',
     firstColumnWidth: 'fluid',
     isReversed: false,

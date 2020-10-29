@@ -14,7 +14,7 @@ const Template = (args, { argTypes }) => ({
     this.ScreenSize.stopWatching()
   },
   template: `
-    <Columns v-bind="$props" :space="['xsmall', 'gutter', 'xlarge']">
+    <Columns v-bind="$props" :isReversed="[true, false, true]" :space="['xsmall', 'gutter', 'xlarge']">
       <Column :width="firstColumnWidth">
         <Box backgroundColor="subtle" class="flex-grow" padding="small">
           {{ firstColumnWidth }} {{ ScreenSize.type }}

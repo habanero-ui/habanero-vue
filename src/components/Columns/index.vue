@@ -6,6 +6,7 @@ import map from 'lodash/map'
 import breakpoints from '../../constants/breakpoints'
 import stackAlignments from '../../constants/stackAlignments'
 import verticalAlignments from '../../constants/verticalAlignments'
+import getResponsivePropValue from '../../helpers/getResponsivePropValue'
 import PropValidation from '../../mixins/PropValidation'
 import WithScreenSize from '../../mixins/WithScreenSize'
 import Box from '../Box/index'
@@ -34,7 +35,7 @@ export default {
     },
     isReversed: {
       default: false,
-      type: Boolean,
+      type: [Array, Boolean],
     },
     space: {
       default: '',
@@ -45,7 +46,7 @@ export default {
     classes() {
       return [
         'columns',
-        { 'columns--is-reversed': this.isReversed },
+        { 'columns--is-reversed': this.responsiveIsReversed },
         `columns--align-${this.align}`,
         `columns--align-y-${this.alignY}`,
         this.collapseBelow
@@ -55,7 +56,7 @@ export default {
     },
 
     columnPaddingBottom() {
-      if (!this.isReversed) {
+      if (!this.responsiveIsReversed) {
         return ''
       }
 
@@ -72,7 +73,7 @@ export default {
     },
 
     columnPaddingLeft() {
-      if (this.isReversed) {
+      if (this.responsiveIsReversed) {
         return ''
       }
 
@@ -89,7 +90,7 @@ export default {
     },
 
     columnPaddingRight() {
-      if (!this.isReversed) {
+      if (!this.responsiveIsReversed) {
         return ''
       }
 
@@ -106,7 +107,7 @@ export default {
     },
 
     columnPaddingTop() {
-      if (this.isReversed) {
+      if (this.responsiveIsReversed) {
         return ''
       }
 
@@ -121,10 +122,20 @@ export default {
 
       return ''
     },
+
+    responsiveIsReversed() {
+      return getResponsivePropValue(this.isReversed, this.ScreenSize.type)
+    },
   },
   watch: {
     collapseBelow() {
       if (this.collapseBelow) {
+        this.ScreenSize.startWatching()
+      }
+    },
+
+    isReversed() {
+      if (isArray(this.isReversed)) {
         this.ScreenSize.startWatching()
       }
     },
@@ -136,7 +147,7 @@ export default {
     },
   },
   mounted() {
-    if (this.collapseBelow || isArray(this.space)) {
+    if (this.collapseBelow || isArray(this.isReversed) || isArray(this.space)) {
       this.ScreenSize.startWatching()
     }
   },

@@ -2,6 +2,7 @@ import { action } from '@storybook/addon-actions'
 
 import DateTimePicker from '../index'
 export { default as Default } from './DateTimePickerDefault.story'
+export { default as GetDateFormat } from './DateTimePickerGetDateFormat.story'
 
 export default {
   title: 'Components/DateTimePicker',

@@ -51,6 +51,7 @@
     "lint-staged": "10.4.2",
     "prettier": "2.1.2",
     "rimraf": "3.0.2",
+    "spacetime": "6.8.0",
     "tailwindcss": "1.9.5",
     "vue-template-compiler": "2.6.12"
   },

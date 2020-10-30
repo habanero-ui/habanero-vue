@@ -23,7 +23,7 @@ export default {
       type: Boolean,
     },
     width: {
-      required: true,
+      default: 'fluid',
       type: String,
     },
   },

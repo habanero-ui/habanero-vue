@@ -39,8 +39,12 @@ export default {
       type: String,
     },
     format: {
-      default: 'm/d/Y h:i K',
+      default: undefined,
       type: String,
+    },
+    getDateFormat: {
+      default: undefined,
+      type: Function,
     },
     helperText: {
       default: '',
@@ -119,6 +123,10 @@ export default {
       this.updateFlatpickr()
     },
 
+    getDateFormat() {
+      this.updateFlatpickr()
+    },
+
     maxDate() {
       this.updateFlatpickr()
     },
@@ -190,9 +198,12 @@ export default {
     },
 
     updateFlatpickr() {
+      const dateFormat = this.format || 'm/d/Y h:i K'
+
       this.picker = flatpickr(this.$refs.textInput.$refs.input, {
-        dateFormat: this.format,
+        dateFormat: this.getDateFormat ? undefined : dateFormat,
         enableTime: this.isTimeEnabled,
+        formatDate: this.getDateFormat,
         maxDate: this.maxDate,
         maxTime: this.maxTime,
         minDate: this.minDate,

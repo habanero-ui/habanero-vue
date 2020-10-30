@@ -6,7 +6,7 @@ const Template = (args, { argTypes }) => ({
   components: { DateTimePicker },
   props: Object.keys(argTypes),
   template: `
-    <div class="flex flex-col">
+    <div class="flex flex-col max-w-xs w-screen">
       <DateTimePicker
         v-bind="$props"
         :maxDate="new Date(maxDate)"

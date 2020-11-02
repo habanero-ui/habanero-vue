@@ -23,6 +23,7 @@ export default [
   'child',
   'close',
   'cog',
+  'copy',
   'currency',
   'edit',
   'error',

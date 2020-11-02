@@ -13,6 +13,7 @@
 
 <script>
 import flatpickr from 'flatpickr'
+import isEmpty from 'lodash/isEmpty'
 import isEqual from 'lodash/isEqual'
 import map from 'lodash/map'
 
@@ -145,7 +146,7 @@ export default {
 
     selectedDate() {
       if (
-        !this.picker ||
+        isEmpty(this.picker) ||
         (this.selectedDate &&
           this.picker.selectedDates[0] &&
           this.selectedDate.getTime() ===
@@ -158,7 +159,7 @@ export default {
 
     selectedDates() {
       if (
-        !this.picker ||
+        isEmpty(this.picker) ||
         (this.selectedDates &&
           isEqual(
             map(this.selectedDates, (selectedDate) => selectedDate.getTime()),
@@ -217,7 +218,7 @@ export default {
         onClose: this.handleFlatpickrChange,
       })
 
-      if (!this.picker) return
+      if (isEmpty(this.picker)) return
 
       this.picker.setDate(this.selectedDate || this.selectedDates, false)
     },

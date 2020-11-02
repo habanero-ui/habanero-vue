@@ -13,7 +13,6 @@
 
 <script>
 import flatpickr from 'flatpickr'
-import isEmpty from 'lodash/isEmpty'
 import isEqual from 'lodash/isEqual'
 import map from 'lodash/map'
 
@@ -121,32 +120,46 @@ export default {
   }),
   watch: {
     format() {
-      this.updateFlatpickr()
+      if (!this.picker) return
+
+      const dateFormat = this.format || 'm/d/Y h:i K'
+
+      this.picker.set('dateFormat', this.getDateFormat ? undefined : dateFormat)
     },
 
     getDateFormat() {
-      this.updateFlatpickr()
+      if (!this.picker) return
+
+      this.picker.set('formatDate', this.getDateFormat)
     },
 
     maxDate() {
-      this.updateFlatpickr()
+      if (!this.picker) return
+
+      this.picker.set('maxDate', this.maxDate)
     },
 
     maxTime() {
-      this.updateFlatpickr()
+      if (!this.picker) return
+
+      this.picker.set('maxTime', this.maxTime)
     },
 
     minDate() {
-      this.updateFlatpickr()
+      if (!this.picker) return
+
+      this.picker.set('minDate', this.minDate)
     },
 
     minTime() {
-      this.updateFlatpickr()
+      if (!this.picker) return
+
+      this.picker.set('minTime', this.minTime)
     },
 
     selectedDate() {
       if (
-        isEmpty(this.picker) ||
+        !this.picker ||
         (this.selectedDate &&
           this.picker.selectedDates[0] &&
           this.selectedDate.getTime() ===
@@ -159,7 +172,7 @@ export default {
 
     selectedDates() {
       if (
-        isEmpty(this.picker) ||
+        !this.picker ||
         (this.selectedDates &&
           isEqual(
             map(this.selectedDates, (selectedDate) => selectedDate.getTime()),
@@ -179,7 +192,23 @@ export default {
     }
   },
   mounted() {
-    this.updateFlatpickr()
+    const dateFormat = this.format || 'm/d/Y h:i K'
+
+    this.picker = flatpickr(this.$refs.textInput.$refs.input, {
+      dateFormat: this.getDateFormat ? undefined : dateFormat,
+      enableTime: this.isTimeEnabled,
+      formatDate: this.getDateFormat,
+      maxDate: this.maxDate,
+      maxTime: this.maxTime,
+      minDate: this.minDate,
+      minTime: this.minTime,
+      mode: this.mode,
+      monthSelectorType: 'static',
+      noCalendar: !this.isCalendarEnabled,
+      onClose: this.handleFlatpickrChange,
+    })
+
+    this.picker.setDate(this.selectedDate || this.selectedDates, false)
   },
   methods: {
     handleFlatpickrChange(selectedDates) {
@@ -199,28 +228,6 @@ export default {
       if (this.onValueChange) {
         this.onValueChange(this.$refs.textInput.$refs.input.value)
       }
-    },
-
-    updateFlatpickr() {
-      const dateFormat = this.format || 'm/d/Y h:i K'
-
-      this.picker = flatpickr(this.$refs.textInput.$refs.input, {
-        dateFormat: this.getDateFormat ? undefined : dateFormat,
-        enableTime: this.isTimeEnabled,
-        formatDate: this.getDateFormat,
-        maxDate: this.maxDate,
-        maxTime: this.maxTime,
-        minDate: this.minDate,
-        minTime: this.minTime,
-        mode: this.mode,
-        monthSelectorType: 'static',
-        noCalendar: !this.isCalendarEnabled,
-        onClose: this.handleFlatpickrChange,
-      })
-
-      if (isEmpty(this.picker)) return
-
-      this.picker.setDate(this.selectedDate || this.selectedDates, false)
     },
   },
 }

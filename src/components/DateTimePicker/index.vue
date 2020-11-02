@@ -145,9 +145,11 @@ export default {
 
     selectedDate() {
       if (
-        this.selectedDate &&
-        this.picker.selectedDates[0] &&
-        this.selectedDate.getTime() === this.picker.selectedDates[0].getTime()
+        !this.picker ||
+        (this.selectedDate &&
+          this.picker.selectedDates[0] &&
+          this.selectedDate.getTime() ===
+            this.picker.selectedDates[0].getTime())
       )
         return
 
@@ -156,13 +158,14 @@ export default {
 
     selectedDates() {
       if (
-        this.selectedDates &&
-        isEqual(
-          map(this.selectedDates, (selectedDate) => selectedDate.getTime()),
-          map(this.picker.selectedDates, (selectedDate) =>
-            selectedDate.getTime(),
-          ),
-        )
+        !this.picker ||
+        (this.selectedDates &&
+          isEqual(
+            map(this.selectedDates, (selectedDate) => selectedDate.getTime()),
+            map(this.picker.selectedDates, (selectedDate) =>
+              selectedDate.getTime(),
+            ),
+          ))
       )
         return
 
@@ -213,6 +216,9 @@ export default {
         noCalendar: !this.isCalendarEnabled,
         onClose: this.handleFlatpickrChange,
       })
+
+      if (!this.picker) return
+
       this.picker.setDate(this.selectedDate || this.selectedDates, false)
     },
   },

@@ -8,6 +8,7 @@
     <Box class="modal__window" paddingY="gutter">
       <Stack space="gutter">
         <ModalHeader
+          v-if="helperText || titleText"
           :helperText="helperText"
           :onCloseModal="headerCloseModalHandler"
           :titleText="titleText"

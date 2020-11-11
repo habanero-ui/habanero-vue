@@ -1,5 +1,5 @@
 <template>
-  <header v-if="helperText || titleText">
+  <header>
     <Box paddingX="gutter">
       <Columns space="6">
         <Column>

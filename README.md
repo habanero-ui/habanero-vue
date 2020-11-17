@@ -20,6 +20,8 @@ Spur's Design System and Component Library
 - [ ] Establish z-index ordering for elements (so far `Modal`, `Select`, and `Spinner` leverage style)
 - [ ] Swap out chevrons on Flatpickr to use our icons
 - [ ] Support better styling for Flatpickr when date and time selections are both available
+- [ ] Support table rows opening a new window in a tab
+- [ ] Support tooltips for form labels (`TextInput`, `Select`, `FormGroup`, etc.)
 
 # Discussion Points
 

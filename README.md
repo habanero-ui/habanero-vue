@@ -1,6 +1,6 @@
 # Habanero for Vue
 
-Spur's Design System and Component Library
+[![Build Status](https://travis-ci.org/habanero-ui/habanero-vue.svg?branch=master)](https://travis-ci.org/habanero-ui/habanero-vue)
 
 [![npm](https://img.shields.io/npm/v/habanero-vue.svg?style=flat-square)](https://www.npmjs.com/package/habanero-vue)
 

@@ -210,8 +210,8 @@ export default {
   },
   data: () => ({
     isOpenState: false,
-    searchQueryState: '',
     maxCharLength: 42,
+    searchQueryState: '',
     shortenedLength: 10,
   }),
   computed: {
@@ -264,7 +264,6 @@ export default {
         filter(this.items, this.getIsSelected),
         this.getText,
       )
-      console.log('sortedSelectedItemsCount', sortedSelectedItems.length)
       const tagCharCount = reduce(
         sortedSelectedItems,
         (sum, value) => sum + this.getText(value).length,

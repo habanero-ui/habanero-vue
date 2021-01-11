@@ -39,11 +39,24 @@
                             :key="remainingTag.id"
                             variant="label-small"
                           >
-                            {{ remainingTag.text }}
+                            {{ remainingTag.tooltip }}
                           </Typography>
                         </Stack>
                       </Box>
                     </template>
+                  </Tooltip>
+                  <Tooltip
+                    v-else-if="tag.showtooltip"
+                    :key="tag.id"
+                    :text="tag.tooltip"
+                    class="cursor-default"
+                  >
+                    <Tag
+                      :key="tag.id"
+                      :onDelete="handleTagDelete"
+                      :text="tag.text"
+                      :value="tag.id"
+                    />
                   </Tooltip>
                   <Tag
                     v-else
@@ -112,6 +125,7 @@ import every from 'lodash/every'
 import filter from 'lodash/filter'
 import includes from 'lodash/includes'
 import map from 'lodash/map'
+import reduce from 'lodash/reduce'
 import sortBy from 'lodash/sortBy'
 import take from 'lodash/take'
 import takeRight from 'lodash/takeRight'
@@ -196,7 +210,9 @@ export default {
   },
   data: () => ({
     isOpenState: false,
+    maxCharLength: 42,
     searchQueryState: '',
+    shortenedLength: 10,
   }),
   computed: {
     areAllItemsSelected() {
@@ -248,9 +264,28 @@ export default {
         filter(this.items, this.getIsSelected),
         this.getText,
       )
+      const tagCharCount = reduce(
+        sortedSelectedItems,
+        (sum, value) => sum + this.getText(value).length,
+        0,
+      )
+
+      const shortenTags = tagCharCount > this.maxCharLength
+
       const allTags = map(sortedSelectedItems, (selectedItem) => ({
         id: this.getId(selectedItem),
-        text: this.getText(selectedItem),
+        text: shortenTags
+          ? this.getText(selectedItem).substring(0, this.shortenedLength)
+              .length < this.shortenedLength
+            ? this.getText(selectedItem)
+            : this.getText(selectedItem).substring(0, this.shortenedLength) +
+              '...'
+          : this.getText(selectedItem),
+        tooltip: this.getText(selectedItem),
+        showtooltip:
+          shortenTags &&
+          this.getText(selectedItem).substring(0, this.shortenedLength)
+            .length >= this.shortenedLength,
       }))
 
       if (allTags.length <= this.maxTagCount) {

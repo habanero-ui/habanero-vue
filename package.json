@@ -16,7 +16,7 @@
     "core-js": "3.6.5",
     "flatpickr": "4.6.6",
     "fuzzysort": "1.1.4",
-    "lodash": "4.17.20",
+    "lodash": "4.17.21",
     "tippy.js": "6.2.7",
     "vue": "2.6.12"
   },
